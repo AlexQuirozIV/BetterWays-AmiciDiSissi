@@ -3,23 +3,39 @@
 /* Funzioni per mappa */
 let leafletMap = {
     initialize: function() {
-                    var map = L.map('map', {zoomControl: false}).setView([0, 0], 13);
+                    const map = L.map('map', {zoomControl: false}).setView([45.312881, 9.497850], 14);
                     
-                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    {
-                        maxZoom: 19,
+                    const bounds = [
+                        [45.328609, 9.47382],
+                        [45.289614, 9.52866]
+                    ];
+
+                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        minZoom: 14,
+                        maxZoom: 18,
                         attribution: '&copy; <a href = "https://www.openstreetmap.org/copyright">'
                     }).addTo(map);
 
+                    // Imposta limiti
+                    map.setMaxBounds(bounds);
+
+                    // Controlli zoom pulsanti
                     L.control.zoom({
                         position: 'bottomleft'
                     }).addTo(map);
+
+                    // Prendi coordinate onClick (in console)
+/* Debugging */     map.on('click', onMapClick);
+
+                    function onMapClick(e) {
+                        console.log("Coordinates: " + e.latlng);
+                    }
                 }
 
-    // Funzioni extra da aggiungere qui
+    // Funzioni extra da aggiungere qui (dopo inizializzazione)
 };
 
-Helpers.onload(function() {
-    console.log("Inizializing map...");
+document.body.onload = () => {
+    console.log("Initializing map...");
     leafletMap.initialize();
-});
+};

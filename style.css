@@ -1,4 +1,8 @@
 * {
-    font-family: 'Comfortaa';
+    font-family: 'Comfortaa', Arial;
 }
-#map { height: 180px; }
+
+#map {
+    height: 750px;
+    width: 750px;
+}
