@@ -1,6 +1,6 @@
 "use strict";
 
-/* Map functions */
+/* Funzioni per mappa */
 let leafletMap = {
     initialize: function() {
                     var map = L.map('map', {zoomControl: false}).setView([0, 0], 13);
@@ -16,7 +16,7 @@ let leafletMap = {
                     }).addTo(map);
                 }
 
-    // Extra settings
+    // Funzioni extra da aggiungere qui
 };
 
 Helpers.onload(function() {
