@@ -44,8 +44,8 @@ let leafletMap = {
                             imageLink = "img/icona.jpg";
                         }
                     
+                        imageLink = "<img class='popupImage' src='" + imageLink + "' alt='" + title + "'>";
                         title = "<p class='popupTitle'>" + title + "</p><br>";
-                        imageLink = "<img class='popupImage' src='" + imageLink + "'>";
                     
                         let marker = L.marker([latitude, longitude]).addTo(map).bindPopup(title + imageLink);
                     
@@ -59,4 +59,5 @@ document.body.onload = () => {
     leafletMap.debugging();
 };
 
-let zucchetti = leafletMap.newMarker(45.301689, 9.492247);
+// Esempio Marker
+let zucchetti = leafletMap.newMarker(45.301689, 9.492247, "Torre Zucchetti", "img/icona.jpg");
