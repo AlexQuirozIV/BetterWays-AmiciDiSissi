@@ -2,7 +2,15 @@
     font-family: 'Comfortaa', Arial;
 }
 
+body {
+    margin: 0px;
+}
+
+#betterWays_titolo {
+    margin-left: 8px;
+}
+
 #map {
-    height: 750px;
-    width: 750px;
+    height: 800px;
+    width: auto;
 }
