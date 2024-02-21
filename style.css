@@ -7,10 +7,12 @@ body {
 }
 
 #betterWays_titolo {
-    background-image: url(./img/);
+    background-image: url(./img/low-angle-shot-mesmerizing-starry-sky_181624-27925.jpg);
     text-align: center;
+    color: #F9BF4D;
+    color
+    font-family: "Beabas Neue" , sans-serif;
     margin: 0;
-    font-size: 250%;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;

@@ -176,16 +176,25 @@ function addMarkerMenu() {
 }
 
 // Menu impostazioni
-function settingsMenu() {
+function hamburgerMenu() {
     var newDiv = document.createElement('div');
-    newDiv.id = 'settingsMenu';
+    newDiv.id = 'hamburgerMenu';
 
+    /* Pulsanti interni */
     var accessibilityBtn = document.createElement('span');
     accessibilityBtn.className = 'material-icons';
     accessibilityBtn.textContent = 'accessibility_new';
-
     newDiv.appendChild(accessibilityBtn);
 
+    var settingsBtn = document.createElement('span');
+    settingsBtn.className = 'material-icons';
+    settingsBtn.textContent = 'settings';
+    newDiv.appendChild(settingsBtn);
+    
+    var placesBtn = document.createElement('span');
+    placesBtn.className = 'material-icons';
+    placesBtn.textContent = 'location_on';
+    newDiv.appendChild(placesBtn);
 
     document.body.appendChild(newDiv).offsetWidth;
 }

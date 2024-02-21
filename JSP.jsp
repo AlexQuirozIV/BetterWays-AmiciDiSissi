@@ -1,4 +1,5 @@
-<%-- 
+<%+
+
 try {
     File file = new File("output.txt");
     Scanner scanner = new Scanner(System.in);
@@ -18,4 +19,4 @@ try {
 } catch (IOException e) {
     e.printStackTrace();
 }   
---%>
+%>
