@@ -5,18 +5,22 @@
 "use strict";
 const map = L.map('map', {zoomControl: false}).setView([45.309055, 9.501972], 14);
 const places = {
-    placesNames:    [
-                        'Torre Zucchetti',
-                        'IIS A. Volta'
-                    ],
-    placesCoords:   [
-                        [45.301689, 9.492247],
-                        [45.303372, 9.498577]
-                    ],
-    placesImages:   [
-                        'img/tappe-popup/Torre-Zucchetti.jpg',
-                        'img/tappe-popup/IIS-A-Volta.jpg'
-                    ]
+    placesNames:        [
+                            'Torre Zucchetti',
+                            'IIS A. Volta'
+                        ],
+    placesCoords:       [
+                            [45.301689, 9.492247],
+                            [45.303372, 9.498577]
+                        ],
+    placesImages:       [
+                            'img/tappe-popup/Torre-Zucchetti.jpg',
+                            'img/tappe-popup/IIS-A-Volta.jpg'
+                        ],
+    placesDescription:  [
+                            'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+                            ''
+                        ]
 }
 const markerIcon = L.icon({
     iconUrl: 'img/marker-icone/markerIcona.png',
@@ -47,7 +51,6 @@ let leafletMap = {
                             position: 'bottomleft'
                         }).addTo(map);
                     },
-                
     "debugging":    function() {
                         map.on('click', onMapClick);
 
@@ -55,20 +58,24 @@ let leafletMap = {
                             console.log('Coordinates: ' + e.latlng);
                         }
                     },
-    
-    "newMarker":    function([latitude, longitude], title, imageLink) {
-                        if(title === undefined) {
-                            title = "Titolo";
+    "newMarker":    function([latitude, longitude], title, imageLink, description) {
+                        if(title === undefined || title == '') {
+                            title = 'Titolo inesistente';
                         }
                     
-                        if(imageLink === undefined) {
-                            imageLink = "img/icona.jpg";
+                        if(imageLink === undefined || imageLink == '') {
+                            imageLink = 'img/icona.jpg';
+                        }
+
+                        if(description === undefined || description === '') {
+                            description = 'Descrizione di "' + title + '" inesistente';
                         }
                     
-                        imageLink = "<img class='popupImage' src='" + imageLink + "' alt='" + title + "'>";
-                        title = "<p class='popupTitle'>" + title + "</p><br>";
-                    
-                        let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(title + imageLink);
+                        imageLink = '<img class="popupImage" src="' + imageLink + '" alt="' + title + '">';
+                        title = '<p class="popupTitle">' + title + '</p>';
+                        description = '<p class="popupDescription">' + description + '</p>';
+               
+                        let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(title + description + imageLink);
                     
                         return marker;
                     }
@@ -156,7 +163,8 @@ function addMarkerMenu() {
             if(availablePlace.includes(selectedPlaceIndex)) {
                 markers[selectedPlaceIndex] = leafletMap.newMarker(places.placesCoords[selectedPlaceIndex],
                                                                    places.placesNames[selectedPlaceIndex],
-                                                                   places.placesImages[selectedPlaceIndex]);
+                                                                   places.placesImages[selectedPlaceIndex],
+                                                                   places.placesDescription[selectedPlaceIndex]);
 
                 availablePlace[selectedPlaceIndex] = -1;
             }
@@ -177,24 +185,26 @@ function addMarkerMenu() {
 
 // Menu impostazioni
 function hamburgerMenu() {
-    var newDiv = document.createElement('div');
-    newDiv.id = 'hamburgerMenu';
+    if(document.getElementById('hamburgerMenu') == null) {
+        var newDiv = document.createElement('div');
+        newDiv.id = 'hamburgerMenu';
 
-    /* Pulsanti interni */
-    var accessibilityBtn = document.createElement('span');
-    accessibilityBtn.className = 'material-icons';
-    accessibilityBtn.textContent = 'accessibility_new';
-    newDiv.appendChild(accessibilityBtn);
+        /* Pulsanti interni */
+        var accessibilityBtn = document.createElement('span');
+        accessibilityBtn.className = 'material-icons';
+        accessibilityBtn.textContent = 'accessibility_new';
+        newDiv.appendChild(accessibilityBtn);
 
-    var settingsBtn = document.createElement('span');
-    settingsBtn.className = 'material-icons';
-    settingsBtn.textContent = 'settings';
-    newDiv.appendChild(settingsBtn);
-    
-    var placesBtn = document.createElement('span');
-    placesBtn.className = 'material-icons';
-    placesBtn.textContent = 'location_on';
-    newDiv.appendChild(placesBtn);
+        var settingsBtn = document.createElement('span');
+        settingsBtn.className = 'material-icons';
+        settingsBtn.textContent = 'settings';
+        newDiv.appendChild(settingsBtn);
+        
+        var placesBtn = document.createElement('span');
+        placesBtn.className = 'material-icons';
+        placesBtn.textContent = 'location_on';
+        newDiv.appendChild(placesBtn);
 
-    document.body.appendChild(newDiv).offsetWidth;
+        document.body.appendChild(newDiv).offsetWidth;
+    }
 }

@@ -1,6 +1,7 @@
 * {
     font-family: 'Comfortaa', Arial;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -27,6 +28,7 @@ body {
     height: 100vh;
     width: auto;
 }
+
 #settingsMenu-btn {
     width: 70px;
     height: 70px;
@@ -44,20 +46,24 @@ body {
     transition: 0.2s ease-in-out;
     z-index: 1000;
     cursor: pointer;
+    user-select: none;
 }
+
 /* Formattazione pop-ups */
 .popupImage {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 25px;
+    margin-top: 20px;
     border-radius: 20px;
 }
 
 .popupTitle {
     margin: 0 !important;
+    margin-bottom: 10px !important;
     padding-top: 30px;
     font-size: 150%;
     text-align: center;
@@ -65,7 +71,41 @@ body {
     color: white;
 }
 
-/* Stile pop-up (?) */
+.popupDescription {
+    color: white;
+    text-align: left;
+    margin: 0 !important;
+    font-size: 115%;
+    line-height: 175%;
+    overflow: auto;
+    overflow-wrap: break-word;
+    max-height: 100px;
+    max-width: 200px;
+    background-color: #3f3f3f;
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Barra scroll popup (e a quanto pare anche del sito) */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {     /* Sfondo barra */
+    background: #4d4d4d;
+}
+
+::-webkit-scrollbar-thumb {     /* Cursore barra */
+    background: #747474;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8d8d8d;
+}
+
+/* Stile pop-up */
 a.leaflet-popup-close-button {
     color: white !important;
     top: 7px !important;
@@ -80,8 +120,7 @@ a.leaflet-popup-close-button {
 a.leaflet-popup-close-button:hover {
     color: #e6e6e6 !important;
     background-color: #797979 !important;
-    translate: 0px -3px;
-    scale: 103%;
+    scale: 110%;
 }
 
 .leaflet-popup-content-wrapper {
