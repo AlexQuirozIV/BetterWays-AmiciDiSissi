@@ -18,6 +18,13 @@ const places = {
                         'img/tappe-popup/IIS-A-Volta.jpg'
                     ]
 }
+const markerIcon = L.icon({
+    iconUrl: 'img/marker-icone/markerIcona.png',
+
+    iconSize:     [64, 64], // size of the icon
+    iconAnchor:   [30, 60], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
 
 let leafletMap = {
     "initialize":   function() {
@@ -61,7 +68,7 @@ let leafletMap = {
                         imageLink = "<img class='popupImage' src='" + imageLink + "' alt='" + title + "'>";
                         title = "<p class='popupTitle'>" + title + "</p><br>";
                     
-                        let marker = L.marker([latitude, longitude]).addTo(map).bindPopup(title + imageLink);
+                        let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(title + imageLink);
                     
                         return marker;
                     }
