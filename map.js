@@ -178,7 +178,7 @@ function addMarkerMenu() {
 // Menu impostazioni
 function settingsMenu() {
     var newDiv = document.createElement('div');
-    
+    newDiv.id = 'settingsMenu';
 
     document.body.appendChild(newDiv).offsetWidth;
 }
