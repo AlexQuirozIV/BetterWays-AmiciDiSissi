@@ -180,5 +180,12 @@ function settingsMenu() {
     var newDiv = document.createElement('div');
     newDiv.id = 'settingsMenu';
 
+    var accessibilityBtn = document.createElement('span');
+    accessibilityBtn.className = 'material-icons';
+    accessibilityBtn.textContent = 'accessibility_new';
+
+    newDiv.appendChild(accessibilityBtn);
+
+
     document.body.appendChild(newDiv).offsetWidth;
 }

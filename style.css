@@ -7,14 +7,14 @@ body {
 }
 
 #betterWays_titolo {
+    background-image: url(./img/);
     text-align: center;
-    background-color: rgb(42, 14, 181);
     margin: 0;
     font-size: 250%;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
-    position: fixed;
+    position: fixed; /* Aggiungi "relative" per consentire al contenuto di sovrapporsi allo sfondo */
     z-index: 1000;
 }
 
