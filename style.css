@@ -7,10 +7,15 @@ body {
     padding: 0;
 }
 
+
 #betterWays_titolo {
     text-align: center;
+    background-color: rgb(117, 185, 80);
 }
-
+header {
+    background-color: rgb(117, 185, 80);
+    
+}
 #map {
     height: 100vh;
     width: auto;
