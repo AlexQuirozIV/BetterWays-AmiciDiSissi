@@ -3,7 +3,21 @@
 */
 
 "use strict";
-const map = L.map('map', {zoomControl: false}).setView([45.312881, 9.497850], 14);
+const map = L.map('map', {zoomControl: false}).setView([45.309055, 9.501972], 14);
+const places = {
+    placesNames:    [
+                        'Torre Zucchetti',
+                        'IIS A. Volta'
+                    ],
+    placesCoords:   [
+                        [45.301689, 9.492247],
+                        [45.303372, 9.498577]
+                    ],
+    placesImages:   [
+                        'img/tappe-popup/Torre-Zucchetti.jpg',
+                        'img/tappe-popup/IIS-A-Volta.jpg'
+                    ]
+}
 
 let leafletMap = {
     "initialize":   function() {
@@ -35,7 +49,7 @@ let leafletMap = {
                         }
                     },
     
-    "newMarker":    function(latitude, longitude, title, imageLink) {
+    "newMarker":    function([latitude, longitude], title, imageLink) {
                         if(title === undefined) {
                             title = "Titolo";
                         }
@@ -59,5 +73,97 @@ document.body.onload = () => {
     leafletMap.debugging();
 };
 
-// Esempio Marker
-let zucchetti = leafletMap.newMarker(45.301689, 9.492247, "Torre Zucchetti", "img/icona.jpg");
+// Flag se il marker esiste già o no (prevenire spam)
+var availablePlace = [];
+for(let i = 0; i < Object.keys(places).length; i++) {
+    availablePlace.push(i);
+}
+
+// Contiene i marker creati
+var markers = [];
+
+// Menu aggiungi/rimuovi markers
+function addMarkerMenu() {
+    if(document.getElementById('addMarkerMenu') == null) {
+        // Div contenitore
+        var newDiv = document.createElement('div');
+        newDiv.id = 'addMarkerMenu';
+
+        // Bottone chiudi
+        var closeButton = document.createElement('span');
+        closeButton.className = 'material-icons';
+
+        closeButton.innerHTML = 'close';
+        
+        newDiv.appendChild(closeButton);
+
+        // Tendina di selezione
+        var selectBox = document.createElement('select');
+
+        places.placesNames.forEach( function(place) {
+                                        let option = document.createElement('option');
+                                        option.text = place;
+                                        selectBox.add(option);
+                                    });
+
+        newDiv.appendChild(selectBox);
+
+        // Bottoni flex-box
+        var buttonWrapper = document.createElement('div');
+
+        // Bottone invia
+        var okButton = document.createElement('button');
+
+        okButton.textContent = 'OK';
+        
+        buttonWrapper.appendChild(okButton);
+
+        // Bottone rimuovi
+        var cancelButton = document.createElement('button');
+
+        cancelButton.textContent = 'Rimuovi';
+        
+        buttonWrapper.appendChild(cancelButton);
+        
+        newDiv.appendChild(buttonWrapper);
+
+        // Aggiungi all'HTML
+        document.body.appendChild(newDiv).offsetWidth;
+
+        // Animazione entrata/uscita menu
+        newDiv.style.transition = '0.2s ease';
+        newDiv.style.transform = 'translate(-50%, -50%) scale(1)';
+
+        // Chiudi menu (con animazione d'uscita)
+        closeButton.addEventListener('click', () => {
+            newDiv.style.transform = 'translate(-50%, -50%) scale(0)';
+            setTimeout(function() {
+                document.body.removeChild(newDiv);
+            }, 300);
+        });
+
+        // Aggiungi marker
+        okButton.addEventListener('click', () => {
+            var selectedPlaceIndex = document.querySelector('#addMarkerMenu select').selectedIndex;
+
+            if(availablePlace.includes(selectedPlaceIndex)) {
+                markers[selectedPlaceIndex] = leafletMap.newMarker(places.placesCoords[selectedPlaceIndex],
+                                                                   places.placesNames[selectedPlaceIndex],
+                                                                   places.placesImages[selectedPlaceIndex]);
+
+                availablePlace[selectedPlaceIndex] = -1;
+            }
+        });
+
+        // Rimuovi marker
+        cancelButton.addEventListener('click', () => {
+            var selectedPlaceIndex = document.querySelector('#addMarkerMenu select').selectedIndex;
+            
+            if(!(availablePlace.includes(selectedPlaceIndex))) {
+                map.removeLayer(markers[selectedPlaceIndex]);
+
+                availablePlace[selectedPlaceIndex] = selectedPlaceIndex;
+            }
+        });
+    }
+}

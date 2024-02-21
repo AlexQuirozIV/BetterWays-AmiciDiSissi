@@ -16,12 +16,15 @@ body {
     width: auto;
 }
 
+/* Formattazione pop-ups */
 .popupImage {
     width: 100px;
     height: 100px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 25px;
+    border-radius: 20px;
 }
 
 .popupTitle {
@@ -30,5 +33,111 @@ body {
     font-size: 150%;
     text-align: center;
     font-weight: bold;
-    /* color: white; */
+    color: white;
+}
+
+/* Stile pop-up (?) */
+a.leaflet-popup-close-button {
+    color: white !important;
+    top: 7px !important;
+    right: 7px !important;
+    background-color: #7c7c7c !important;
+    border-radius: 50% !important;
+    vertical-align: baseline;
+    text-align: center;
+    transition: 0.2s;
+}
+
+a.leaflet-popup-close-button:hover {
+    color: #e6e6e6 !important;
+    background-color: #797979 !important;
+    translate: 0px -3px;
+    scale: 103%;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 40px 20px 40px 40px !important;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background-color: #333333 !important;
+}
+
+.leaflet-popup-content {
+    margin: 13px 20px 13px 20px !important;
+}
+
+/* Marker pulsante */
+#addMarker-btn {
+    width: 70px;
+    height: 70px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 40px;
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    transition: 0.2s ease-in-out;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+#addMarker-btn:hover {
+    scale: 1.15;
+}
+
+/* Menu aggiunta markers */
+#addMarkerMenu {
+    z-index: 1000;
+    width: 200px;
+    height: auto;
+    background-color: #252525;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    text-align: center;
+    filter: blur(0px) !important;
+}
+
+#addMarkerMenu span {
+    position: absolute;
+    color: white;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#addMarkerMenu select {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 2rem;
+    text-align: center;
+    border-radius: 50px;
+    border: none;
+    margin-top: 25px;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+#addMarkerMenu button {
+    text-align: center;
+    border-radius: 50px;
+    padding: 10px;
+    border: none;
+    font-weight: bold;
+}
+
+#addMarkerMenu div {
+    display: flex;
+    justify-content: space-around;
 }
