@@ -10,14 +10,17 @@ body {
     background-image: url(./img/low-angle-shot-mesmerizing-starry-sky_181624-27925.jpg);
     text-align: center;
     color: #F9BF4D;
-    color
-    font-family: "Beabas Neue" , sans-serif;
+    font-family: "Bebas Neue" , sans-serif;
+    font-size: 3.5rem;
     margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     width: 100%;
     position: fixed; /* Aggiungi "relative" per consentire al contenuto di sovrapporsi allo sfondo */
     z-index: 1000;
+    -webkit-text-stroke-color: #f1a918;
+    -webkit-text-stroke-width: 0.06px;
+    letter-spacing: 5px;
 }
 
 #map {
@@ -37,7 +40,7 @@ body {
     font-size: 40px;
     position: fixed;
     left: 1rem;
-    top: 4rem;
+    top: 6rem;
     transition: 0.2s ease-in-out;
     z-index: 1000;
     cursor: pointer;
