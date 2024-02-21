@@ -21,9 +21,9 @@ const places = {
 const markerIcon = L.icon({
     iconUrl: 'img/marker-icone/markerIcona.png',
 
-    iconSize:     [64, 64], // size of the icon
-    iconAnchor:   [30, 60], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconSize:     [64, 64], // Grandezza icona
+    iconAnchor:   [30, 60], // Punto dell'icona che indicherà il punto preciso sulla mappa
+    popupAnchor:  [0, -60] // Punto da dove il popup si apre
 });
 
 let leafletMap = {
@@ -173,4 +173,12 @@ function addMarkerMenu() {
             }
         });
     }
+}
+
+// Menu impostazioni
+function settingsMenu() {
+    var newDiv = document.createElement('div');
+    
+
+    document.body.appendChild(newDiv).offsetWidth;
 }

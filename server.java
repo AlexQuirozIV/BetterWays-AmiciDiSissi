@@ -1,59 +1,54 @@
-/*
- 
- */
-
-package gestione;
-
-/**
- *
- * @author 
- */
-
 public class Gestione {
-    private String Places;
-    private String Coords;
-    private String Images;
-  
-   public Gestione (String Places,String Coords,String Images)
-   {
-   this.Places = Places;
-   this.Coords = Coords;
-   this.Images = Images;
-  
-   }      
-   public Gestione()
-   {
-       this.Places="";
-       this.Coords"";
-       this.Images="";
-   }
+    private String place;
+    private String coords;
+    private String image;
 
-    public String getPlaces() {
-        return Places ;
+    public Gestione(String place, String coords, String image) {
+        this.place = place;
+        this.coords = coords;
+        this.image = image;
     }
 
-    public void setPlaces(String Places) {
-        this.Places = Places;
+    public Gestione() {
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+        this.coords = "";
+        this.image = "";
     }
 
     public String getCoords() {
-        return Coords;
-    }
-  
-    public void setCoords(String Coords) {
-        this.Coords = Coords;
+        return coords;
     }
 
-    public String getImages() {
-        return Images;
+    public void setCoords(String coords) {
+        this.coords = coords;
     }
-  
-    public void setImages(String Images) {
-        this.Images = Images;
+
+    public String getImage() {
+        return image;
     }
-  
-     public String toString() {
-        return  Places + "**" + Coords + "**" + Images + "**";   
-        
-  }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public static void main(String[] args) {
+        Gestione[] places = new Gestione[3];
+        places[0] = new Gestione("Torre Zucchetti", "45.6789, 12.3456", "image1.jpg");
+        places[1] = new Gestione("Colosseo", "41.8902, 12.4922", "image2.jpg");
+        places[2] = new Gestione("Duomo di Milano", "45.4642, 9.1900", "image3.jpg");
+
+        for (Gestione place : places) {
+            System.out.println("Place: " + place.getPlace());
+            System.out.println("Coordinates: " + place.getCoords());
+            System.out.println("Image: " + place.getImage());
+            System.out.println("--------------------");
+        }
+    }
 }

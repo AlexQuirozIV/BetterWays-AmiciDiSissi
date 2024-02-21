@@ -1,26 +1,45 @@
 * {
     font-family: 'Comfortaa', Arial;
 }
-
 body {
     margin: 0;
     padding: 0;
 }
 
-
 #betterWays_titolo {
     text-align: center;
-    background-color: rgb(117, 185, 80);
+    background-color: rgb(42, 14, 181);
+    margin: 0;
+    font-size: 250%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
 }
-header {
-    background-color: rgb(117, 185, 80);
-    
-}
+
 #map {
     height: 100vh;
     width: auto;
 }
-
+#settingsMenu-btn {
+    width: 70px;
+    height: 70px;
+    background-color: rgb(123, 128, 123);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 40px;
+    position: fixed;
+    left: 1rem;
+    top: 4rem;
+    transition: 0.2s ease-in-out;
+    z-index: 1000;
+    cursor: pointer;
+}
 /* Formattazione pop-ups */
 .popupImage {
     width: 100px;
