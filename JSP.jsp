@@ -1,4 +1,9 @@
-<%+
+<%@page import="java.io.FileWriter"%>
+<%@page import="java.io.PrintWriter"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="java"%>
+<%@page import="Dati.Nominativo"%>
+<%@page import="java.util.*"%>
 
 try {
     File file = new File("output.txt");
@@ -11,12 +16,13 @@ try {
         System.out.println("Image: " + place.getImage());
         System.out.println("--------------------");
 
-        String input = scanner.nextLine();
-        printWriter.println(input);
+    String input = scanner.nextLine();
+    printWriter.println(input);
     }
 
     printWriter.close();
 } catch (IOException e) {
-    e.printStackTrace();
+ e.printStackTrace();
 }   
+
 %>
