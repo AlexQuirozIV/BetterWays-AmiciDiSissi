@@ -8,7 +8,7 @@ body {
 }
 
 #betterWays_titolo {
-    background-image: url(./img/low-angle-shot-mesmerizing-starry-sky_181624-27925.jpg);
+    background-image: url(./img/titleHeader.jpg);
     text-align: center;
     color: #F9BF4D;
     font-family: "Bebas Neue" , sans-serif;
@@ -59,13 +59,14 @@ body {
     margin-bottom: 25px;
     margin-top: 20px;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 .popupTitle {
     margin: 0 !important;
     margin-bottom: 10px !important;
-    padding-top: 30px;
-    font-size: 150%;
+    padding-top: 20px;
+    font-size: 175%;
     text-align: center;
     font-weight: bold;
     color: white;
@@ -86,6 +87,18 @@ body {
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.popupRating {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.popupStars {
+    height: 40px;
+    width: 40px;
 }
 
 /* Barra scroll popup (e a quanto pare anche del sito) */

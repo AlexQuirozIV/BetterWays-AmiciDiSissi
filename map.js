@@ -1,35 +1,50 @@
 /**
  * Script gestione mappa
 */
-
 "use strict";
+
+/** LA mappa (dichiarazione e fissata view) */
 const map = L.map('map', {zoomControl: false}).setView([45.309055, 9.501972], 14);
+
+/** Tappe - informazioni */
 const places = {
-    placesNames:        [
-                            'Torre Zucchetti',
-                            'IIS A. Volta'
-                        ],
     placesCoords:       [
                             [45.301689, 9.492247],
-                            [45.303372, 9.498577]
+                            [45.303372, 9.498577],
+                            [45.305723, 9.499810]
+                        ],
+    placesTitles:       [
+                            'Torre Zucchetti',
+                            'IIS A. Volta',
+                            'Casa del Gelato'
+                        ],
+    placesRatings:      [   // Numero di "stelle" piene
+                            4,
+                            2,
+                            5
+                        ],
+    placesDescriptions: [
+                            'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+                            '',
+                            'mmmmmh, buono il gelato'
                         ],
     placesImages:       [
-                            'img/tappe-popup/Torre-Zucchetti.jpg',
-                            'img/tappe-popup/IIS-A-Volta.jpg'
-                        ],
-    placesDescription:  [
-                            'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-                            ''
+                            'Torre-Zucchetti.jpg',
+                            'IIS-A-Volta.jpg',
+                            'Casa-del-Gelato.jpg'
                         ]
 }
+
+/** Icona markers */
 const markerIcon = L.icon({
     iconUrl: 'img/marker-icone/markerIcona.png',
 
-    iconSize:     [64, 64], // Grandezza icona
-    iconAnchor:   [30, 60], // Punto dell'icona che indicherà il punto preciso sulla mappa
-    popupAnchor:  [0, -60] // Punto da dove il popup si apre
+    iconSize:     [32, 64], // Grandezza icona
+    iconAnchor:   [15, 60], // Punto dell'icona che indicherà il punto preciso sulla mappa
+    popupAnchor:  [0, -60]  // Punto da dove il popup si apre
 });
 
+/** Funzione mappa */
 let leafletMap = {
     "initialize":   function() {
                         const bounds = [
@@ -37,6 +52,7 @@ let leafletMap = {
                             [45.289614, 9.52866]
                         ];
 
+                        // Funzioni necessarie (+ min e max zoom)
                         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                             minZoom: 14,
                             maxZoom: 18,
@@ -52,58 +68,81 @@ let leafletMap = {
                         }).addTo(map);
                     },
     "debugging":    function() {
-                        map.on('click', onMapClick);
-
-                        function onMapClick(e) {
-                            console.log('Coordinates: ' + e.latlng);
-                        }
+                        // Clieck e output coordinate in console
+                        map.on('click', (e) => {
+                            console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
+                        });
                     },
-    "newMarker":    function([latitude, longitude], title, imageLink, description) {
+    "newMarker":    function([latitude, longitude], title, ratingCycles, description, imageLink) {
+                        // Controlla che non siano vuoti...
                         if(title === undefined || title == '') {
                             title = 'Titolo inesistente';
                         }
-                    
+                        if([latitude, longitude] == undefined) {
+                            console.log('Impossibile piazzare marker: "' + title + '", coordinate inesistenti!');
+                            return null;
+                        }
                         if(imageLink === undefined || imageLink == '') {
                             imageLink = 'img/icona.jpg';
                         }
-
-                        if(description === undefined || description === '') {
+                        if(description === undefined || description == '') {
                             description = 'Descrizione di "' + title + '" inesistente';
                         }
+                        if(ratingCycles === undefined || ratingCycles < 0) {
+                            ratingCycles = 0;
+                        }
                     
-                        imageLink = '<img class="popupImage" src="' + imageLink + '" alt="' + title + '">';
+                        // Imposta immagine
+                        imageLink = '<img class="popupImage" src="img/tappe-popup/' + imageLink + '" alt="' + title + '">';
+
+                        // Imposta titolo
                         title = '<p class="popupTitle">' + title + '</p>';
+
+                        // Imposta "valutazione"
+                        let rating = '';
+                        for(let i = 0; i < ratingCycles; i++) {
+                            rating += '<img src="img/popup-rating-stars/fullStar.png" class="popupStars">';
+                        }
+                        for(let i = 0; i < (5 - ratingCycles); i++) {
+                            rating += '<img src="img/popup-rating-stars/emptyStar.png" class="popupStars">';
+                        }
+                        rating = '<div class="popupRating">' + rating + '</div>';
+
+                        // Imposta descrizione
                         description = '<p class="popupDescription">' + description + '</p>';
                
-                        let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(title + description + imageLink);
+                        // Crea marker...
+                        let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(title + rating + description + imageLink);
                     
+                        // ... e in output per salvarlo in 'markers' nella funzione 'addMarkerMenu'...
                         return marker;
                     }
 };
 
+/** Inizializza mappa a caricamento pagina */
 document.body.onload = () => {
     console.log('Initializing map...');
     leafletMap.initialize();
     leafletMap.debugging();
 };
 
-// Flag se il marker esiste già o no (prevenire spam)
+/** Flag se il marker esiste già o no (prevenire spam) */
 var availablePlace = [];
-for(let i = 0; i < Object.keys(places).length; i++) {
+for(let i = 0; i < places.placesCoords.length; i++) {
     availablePlace.push(i);
 }
 
-// Contiene i marker creati
-var markers = [];
+var markers = [];   // Contiene i markers creati
 
-// Menu aggiungi/rimuovi markers
+/** Menu aggiungi/rimuovi markers */
 function addMarkerMenu() {
+    /* Previene spam del menu in sé */
     if(document.getElementById('addMarkerMenu') == null) {
-        // Div contenitore
+        /* Div contenitore */
         var newDiv = document.createElement('div');
         newDiv.id = 'addMarkerMenu';
 
-        // Bottone chiudi
+        /* Bottone chiudi */
         var closeButton = document.createElement('span');
         closeButton.className = 'material-icons';
 
@@ -111,10 +150,11 @@ function addMarkerMenu() {
         
         newDiv.appendChild(closeButton);
 
-        // Tendina di selezione
+        /* Tendina di selezione */
         var selectBox = document.createElement('select');
 
-        places.placesNames.forEach( function(place) {
+        // Aggiunge le opzioni una per una
+        places.placesTitles.forEach( function(place) {
                                         let option = document.createElement('option');
                                         option.text = place;
                                         selectBox.add(option);
@@ -122,17 +162,17 @@ function addMarkerMenu() {
 
         newDiv.appendChild(selectBox);
 
-        // Bottoni flex-box
+        /* Bottoni flex-box (per metterli in fila) */
         var buttonWrapper = document.createElement('div');
 
-        // Bottone invia
+        /* Bottone 'invia' */
         var okButton = document.createElement('button');
 
         okButton.textContent = 'OK';
         
         buttonWrapper.appendChild(okButton);
 
-        // Bottone rimuovi
+        /* Bottone 'rimuovi' */
         var cancelButton = document.createElement('button');
 
         cancelButton.textContent = 'Rimuovi';
@@ -141,70 +181,84 @@ function addMarkerMenu() {
         
         newDiv.appendChild(buttonWrapper);
 
-        // Aggiungi all'HTML
+        /* Aggiungi all'HTML */
         document.body.appendChild(newDiv).offsetWidth;
 
-        // Animazione entrata/uscita menu
+        /* Animazione entrata/uscita menu */
         newDiv.style.transition = '0.2s ease';
         newDiv.style.transform = 'translate(-50%, -50%) scale(1)';
 
-        // Chiudi menu (con animazione d'uscita)
+        /* Chiudi menu (con animazione d'uscita) */
         closeButton.addEventListener('click', () => {
             newDiv.style.transform = 'translate(-50%, -50%) scale(0)';
+            // Un po' di ritardo per l'animazione
             setTimeout(function() {
                 document.body.removeChild(newDiv);
             }, 300);
         });
 
-        // Aggiungi marker
+        /* Aggiungi marker */
         okButton.addEventListener('click', () => {
             var selectedPlaceIndex = document.querySelector('#addMarkerMenu select').selectedIndex;
 
+            // Crea il nuovo marker se non già piazzato e lo salva dentro 'markers'
             if(availablePlace.includes(selectedPlaceIndex)) {
+                // La funzione 'newMarker' della mappa, prendendo info direttamente da 'places'
                 markers[selectedPlaceIndex] = leafletMap.newMarker(places.placesCoords[selectedPlaceIndex],
-                                                                   places.placesNames[selectedPlaceIndex],
-                                                                   places.placesImages[selectedPlaceIndex],
-                                                                   places.placesDescription[selectedPlaceIndex]);
-
-                availablePlace[selectedPlaceIndex] = -1;
+                                                                   places.placesTitles[selectedPlaceIndex],
+                                                                   places.placesRatings[selectedPlaceIndex],
+                                                                   places.placesDescriptions[selectedPlaceIndex],
+                                                                   places.placesImages[selectedPlaceIndex]);
+                // Quando un marker non dev'essere piazzato diventa 'null'
+                availablePlace[selectedPlaceIndex] = null;
             }
         });
 
-        // Rimuovi marker
+        /* Rimuovi marker */
         cancelButton.addEventListener('click', () => {
             var selectedPlaceIndex = document.querySelector('#addMarkerMenu select').selectedIndex;
             
+            // Se il marker non è piazzato, lo toglie
             if(!(availablePlace.includes(selectedPlaceIndex))) {
                 map.removeLayer(markers[selectedPlaceIndex]);
 
+                // Il valore viene ripristinato, invece di 'null'
                 availablePlace[selectedPlaceIndex] = selectedPlaceIndex;
             }
         });
     }
 }
 
-// Menu impostazioni
+/** ↓ ↓ Work in Progress ↓ ↓ */
+
+/** Menu Hamburger :P */
 function hamburgerMenu() {
+    /* Previene spam del menu in sé */
     if(document.getElementById('hamburgerMenu') == null) {
+        /* Nuovo div */
         var newDiv = document.createElement('div');
         newDiv.id = 'hamburgerMenu';
 
         /* Pulsanti interni */
+        // Accessibilità
         var accessibilityBtn = document.createElement('span');
         accessibilityBtn.className = 'material-icons';
         accessibilityBtn.textContent = 'accessibility_new';
         newDiv.appendChild(accessibilityBtn);
 
+        // Impostazioni
         var settingsBtn = document.createElement('span');
         settingsBtn.className = 'material-icons';
         settingsBtn.textContent = 'settings';
         newDiv.appendChild(settingsBtn);
         
+        // Tappe
         var placesBtn = document.createElement('span');
         placesBtn.className = 'material-icons';
         placesBtn.textContent = 'location_on';
         newDiv.appendChild(placesBtn);
 
+        /* Aggiungi all'HTML */
         document.body.appendChild(newDiv).offsetWidth;
     }
 }
