@@ -46,86 +46,83 @@ const markerIcon = L.icon({
 
 /** Funzione mappa */
 let leafletMap = {
-"initialize":   function() {
-                    const bounds = [
-                        [45.328609, 9.47382],
-                        [45.289614, 9.52866]
-                    ];
+"initialize":       function() {
+                        const bounds = [
+                            [45.328609, 9.47382],
+                            [45.289614, 9.52866]
+                        ];
 
-                    // Funzioni necessarie (+ min e max zoom)
-                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        minZoom: 14,
-                        maxZoom: 18,
-                        attribution: '<a target="_blank" href="https://google.com">&copy</a>'
-                    }).addTo(map);
+                        // Funzioni necessarie (+ min e max zoom)
+                        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            minZoom: 14,
+                            maxZoom: 18,
+                            attribution: '<a target="_blank" href="https://google.com">&copy</a>'
+                        }).addTo(map);
 
-                    // Imposta limiti
-                    map.setMaxBounds(bounds);
+                        // Imposta limiti
+                        map.setMaxBounds(bounds);
 
-                    // Controlli zoom pulsanti
-                    L.control.zoom({
-                        position: 'bottomleft'
-                    }).addTo(map);
-                },
-"debugging":    function() {
-                    // Clieck e output coordinate in console
-                    map.on('click', (e) => {
-                        console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
-                    });
-                },
-"newMarker":    function([latitude, longitude], title, ratingCycles, description, imageLink) {
-                    // Controlla che non siano vuoti...
-                    if(title === undefined || title == '') {
-                        title = 'Titolo inesistente';
-                    }
-                    if([latitude, longitude] == undefined) {
-                        console.log('Impossibile piazzare marker: "' + title + '", coordinate inesistenti!');
-                        return null;
-                    }
-                    if(imageLink === undefined || imageLink == '') {
-                        imageLink = 'img/icona.jpg';
-                    }
-                    if(description === undefined || description == '') {
-                        description = 'Descrizione di "' + title + '" inesistente';
-                    }
-                    if(ratingCycles === undefined || ratingCycles < 0) {
-                        ratingCycles = 0;
-                    }
-                
-                    // Imposta immagine
-                    imageLink = '<img class="popupImage" src="img/tappe-popup/' + imageLink + '" alt="' + title + '">';
+                        // Controlli zoom pulsanti
+                        L.control.zoom({
+                            position: 'bottomleft'
+                        }).addTo(map);
+                    },
+"debugging":        function() {
+                        // Clieck e output coordinate in console
+                        map.on('click', (e) => {
+                            console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
+                        });
+                    },
+"bindPopupInfos":   function(title, ratingCycles, description, imageLink) {
+                        // Controlla che non siano vuoti...
+                        if(title === undefined || title == '') {
+                            title = 'Titolo inesistente';
+                        }
+                        if(imageLink === undefined || imageLink == '') {
+                            imageLink = 'img/icona.jpg';
+                        }
+                        if(description === undefined || description == '') {
+                            description = 'Descrizione di "' + title + '" inesistente';
+                        }
+                        if(ratingCycles === undefined || ratingCycles < 0) {
+                            ratingCycles = 0;
+                        }
 
-                    // Imposta titolo
-                    title = '<p class="popupTitle">' + title + '</p>';
+                        // Imposta immagine
+                        imageLink = '<img class="popupImage" src="img/tappe-popup/' + imageLink + '" alt="' + title + '">';
 
-                    // Imposta "valutazione"
-                    let rating = '';
-                    for(let i = 0; i < ratingCycles; i++) {
-                        rating += '<img src="img/popup-rating-stars/fullStar.png" class="popupStars">';
-                    }
-                    for(let i = 0; i < (5 - ratingCycles); i++) {
-                        rating += '<img src="img/popup-rating-stars/emptyStar.png" class="popupStars">';
-                    }
-                    rating = '<div class="popupRating">' + rating + '</div>';
+                        // Imposta titolo
+                        title = '<p class="popupTitle">' + title + '</p>';
 
-                    // Imposta descrizione
-                    description = '<p class="popupDescription">' + description + '</p>';
-            
-                    // Crea marker...
-                    let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(title + rating + description + imageLink);
-                
-                    // ... e in output per salvarlo in 'markers' nella funzione 'addMarkerMenu'...
-                    return marker;
-                },
-// TESTING
-"routing":      function(lat, lng) {
-                    L.Routing.control({
-                        waypoints: [
-                            L.latLng(lat[0], lng[0]),
-                            L.latLng(lat[1], lng[1])
-                        ]
-                    }).addTo(map);
-                }
+                        // Imposta "valutazione"
+                        let rating = '';
+                        for(let i = 0; i < ratingCycles; i++) {
+                            rating += '<img src="img/popup-rating-stars/fullStar.png" class="popupStars">';
+                        }
+                        for(let i = 0; i < (5 - ratingCycles); i++) {
+                            rating += '<img src="img/popup-rating-stars/emptyStar.png" class="popupStars">';
+                        }
+                        rating = '<div class="popupRating">' + rating + '</div>';
+
+                        // Imposta descrizione
+                        description = '<p class="popupDescription">' + description + '</p>';
+
+                        // Output valori da usare nel 'bindPopup'
+                        var all = title + rating + description + imageLink;
+                        return all;
+                    },
+"newMarker":        function([latitude, longitude], info) {
+                        if([latitude, longitude] == undefined) {
+                            console.log('Impossibile piazzare marker: "' + title + '", coordinate inesistenti!');
+                            return null;
+                        }
+
+                        // Crea marker...
+                        let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(info);
+                    
+                        // ... e in output per salvarlo in 'markers' nella funzione 'addMarkerMenu'...
+                        return marker;
+                    }
 };
 
 
@@ -144,7 +141,7 @@ for(let i = 0; i < places.placesCoords.length; i++) {
 
 var markers = [];   // Contiene i markers creati
 
-/** Menu aggiungi/rimuovi markers */
+/** Menu aggiungi/rimuovi singoli markers */
 function addMarkerMenu() {
     /* Previene spam del menu in sé */
     if(document.getElementById('addMarkerMenu') == null) {
@@ -214,11 +211,12 @@ function addMarkerMenu() {
             // Crea il nuovo marker se non già piazzato e lo salva dentro 'markers'
             if(availablePlace.includes(selectedPlaceIndex)) {
                 // La funzione 'newMarker' della mappa, prendendo info direttamente da 'places'
-                markers[selectedPlaceIndex] = leafletMap.newMarker(places.placesCoords[selectedPlaceIndex],
-                                                                   places.placesTitles[selectedPlaceIndex],
-                                                                   places.placesRatings[selectedPlaceIndex],
-                                                                   places.placesDescriptions[selectedPlaceIndex],
-                                                                   places.placesImages[selectedPlaceIndex]);
+                var bindingInfos = leafletMap.bindPopupInfos(places.placesTitles[selectedPlaceIndex],
+                                                             places.placesRatings[selectedPlaceIndex],
+                                                             places.placesDescriptions[selectedPlaceIndex],
+                                                             places.placesImages[selectedPlaceIndex]);
+
+                markers[selectedPlaceIndex] = leafletMap.newMarker(places.placesCoords[selectedPlaceIndex], bindingInfos);
                 // Quando un marker non dev'essere piazzato diventa 'null'
                 availablePlace[selectedPlaceIndex] = null;
             }
@@ -239,9 +237,7 @@ function addMarkerMenu() {
     }
 }
 
-/** ↓ ↓ Work in Progress ↓ ↓ */
-
-/** Menu Hamburger :P */
+/** Menu Settings :P */
 var isSettingsMenuOpened = false;
 function settingsMenu() {
     if(isSettingsMenuOpened == false) {
@@ -286,4 +282,81 @@ function settingsMenu() {
         // Update flag
         isSettingsMenuOpened = false;
     }
+}
+
+
+
+/** Pacchetti (WIP) | per adesso, in console: 'startPackage('Package 1');' */
+const packages = {
+/* 
+    Per ogni pacchetto ci sono X array, uno per waypoint.
+    Servono: 1) Coordinate 2) Titolo 3) Rating 4) Descrizione 5) Link all'immagine
+*/
+    "Package 1":[
+                    [[45.301689, 9.492247],
+                    'Torre Zucchetti',
+                    4,
+                    'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+                    'Torre-Zucchetti.jpg'],
+                    
+                    [[45.303372, 9.498577],
+                    'IIS A. Volta',
+                    2,
+                    '',
+                    'IIS-A-Volta.jpg'],
+                    
+                    [[45.305723, 9.499810],
+                    'Casa del Gelato',
+                    5,
+                    'mmmmmh, buono il gelato',
+                    'Casa-del-Gelato.jpg']
+                ]
+    // Più pacchetti da inserire
+}
+
+function startPackage(selectedPackage) {
+    /* Prendi il 'pacchetto' da 'const packages' in base al parametro mandato */
+    var places = packages[selectedPackage];
+
+    /* Preleva le coordinate da 'packages' e le salva in 'waypoints' */
+    var waypoints = places.map((place) => {
+        var latLng = L.latLng(place[0][0], place[0][1]);
+        return latLng;
+    });
+
+    /* Preleva titoli */
+    var titles = places.map((title) => {
+        return title[1];
+    });
+
+    /* Preleva rating */
+    var ratings = places.map((rating) => {
+        return rating[2];
+    });
+
+    /* Preleva description */
+    var descriptions = places.map((description) => {
+        return description[3];
+    });
+
+    /* Preleva imageLink */
+    var imageLinks = places.map((imageLink) => {
+        return imageLink[4];
+    });
+
+    /* Aggiungi alla mappa */
+    L.Routing.control({
+        // Per ogni singolo 'waypoint'
+        waypoints: waypoints,
+        // Impostazioni per evitare 'dragging' dei waypoints e 'lines' (percorsi in rosso)
+        draggableWaypoints: false,
+        addWaypoints: false,
+        // Effettiva creazione (_i e _n sono contatori necessari alla funzione)
+        createMarker: function(_i, waypoint, _n) {
+            return L.marker(waypoint.latLng, {
+                draggable: false,
+                icon: markerIcon    // Paperelle :D
+            }).bindPopup(leafletMap.bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i])); // Aggiungi pop-ups
+        }
+    }).addTo(map);
 }

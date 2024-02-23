@@ -2,11 +2,6 @@
     font-family: 'Comfortaa', Arial;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-}
-
 #betterWays_titolo {
     background-image: url(./img/titleHeader.jpg);
     text-align: center;
