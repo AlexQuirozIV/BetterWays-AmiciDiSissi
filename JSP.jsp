@@ -12,14 +12,18 @@ try {
 
     for 
         (Gestione place : places) {
-        System.out.println("place: " + place.getPlace());
-        System.out.println("coordinates: " + place.getCoords());
+        System.out.println("Place: " + place.getPlace());
+        System.out.println("Coordinates: " + place.getCoords());
+        System.out.printIn("Title:" + place.getTitle());
+        System.out.printIn("Ratings:" + place.getRatings());
+        System.out.prinIn("Description:" +place.getDescription())
         System.out.println("image: " + place.getImage());
         System.out.println("--------------------");
 
     String input = scanner.nextLine();
     printWriter.println(input);
     }
+
 printWriter.close();
 } catch (IOException e) {
  e.printStackTrace();
