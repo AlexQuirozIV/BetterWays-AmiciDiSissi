@@ -20,10 +20,8 @@ try {
     String input = scanner.nextLine();
     printWriter.println(input);
     }
-
-    printWriter.close();
+printWriter.close();
 } catch (IOException e) {
  e.printStackTrace();
 }   
-
 %>
