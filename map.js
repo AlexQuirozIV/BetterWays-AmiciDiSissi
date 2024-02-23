@@ -116,8 +116,18 @@ let leafletMap = {
                 
                     // ... e in output per salvarlo in 'markers' nella funzione 'addMarkerMenu'...
                     return marker;
+                },
+// TESTING
+"routing":      function(lat, lng) {
+                    L.Routing.control({
+                        waypoints: [
+                            L.latLng(lat[0], lng[0]),
+                            L.latLng(lat[1], lng[1])
+                        ]
+                    }).addTo(map);
                 }
 };
+
 
 /** Inizializza mappa a caricamento pagina */
 document.body.onload = () => {
@@ -232,17 +242,48 @@ function addMarkerMenu() {
 /** ↓ ↓ Work in Progress ↓ ↓ */
 
 /** Menu Hamburger :P */
-function hamburgerMenu() {
-    /* Previene spam del menu in sé */
-    if(document.getElementById('settingsMenu-btn') == null) {
+var isSettingsMenuOpened = false;
+function settingsMenu() {
+    if(isSettingsMenuOpened == false) {
+        /* Previene spam del menu in sé */
+        var settingsMenu = document.getElementById('settingsMenu');
         /* Pulsanti interni */
-        // Aggiungi tappa
-        var addPlaceBtn = document.createElement('span');
-        addPlaceBtn.className = 'material-icons';
-        addPlaceBtn.id = 'addPlace-btn';
-        addPlaceBtn.textContent = 'plus';
+        // Aggiungi pacchetto
+        if(document.getElementById('package-btn') == null) {
+            var packageBtn = document.createElement('span');
+            packageBtn.className = 'material-icons';
+            packageBtn.id = 'package-btn';
+            packageBtn.textContent = 'location_on';
+            settingsMenu.appendChild(packageBtn);
+        }
+        // Accessibilità
+        if(document.getElementById('accessibility-btn') == null) {
+            var accessibilityBtn = document.createElement('span');
+            accessibilityBtn.className = 'material-icons';
+            accessibilityBtn.id = 'accessibility-btn';
+            accessibilityBtn.textContent = 'accessibility_new';       
+            settingsMenu.appendChild(accessibilityBtn);
+        }
+        // Impostazioni
+        if(document.getElementById('settings-btn') == null) {
+            var settingsBtn = document.createElement('span');
+            settingsBtn.className = 'material-icons';
+            settingsBtn.id = 'settings-btn';
+            settingsBtn.textContent = 'settings';      
+            settingsMenu.appendChild(settingsBtn);
+        }
 
-        /* Aggiungi all'HTML */
-        document.body.appendChild(newDiv).offsetWidth;
+        // Aggiungi all'HTML
+        document.body.appendChild(settingsMenu).offsetWidth;
+
+        // Update flag
+        isSettingsMenuOpened = true;
+    } else {
+        var packageBtn = document.getElementById('package-btn').remove();
+        var accessibilityBtn = document.getElementById('accessibility-btn').remove();
+        var settingsBtn = document.getElementById('settings-btn').remove();
+
+        // Update flag
+        isSettingsMenuOpened = false;
     }
 }

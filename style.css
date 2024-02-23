@@ -29,17 +29,18 @@ body {
     width: auto;
 }
 
+/* Hamburger Menu */
 #settingsMenu {
-    width: 50px;
-    height: 50px;
-    background-color: rgb(123, 128, 123);
+    width: 60px;
+    height: 60px;
+    background-color: rgb(165, 165, 165);
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     border-radius: 50%;
     color: white;
-    font-size: 30px;
+    font-size: 35px;
     position: fixed;
     left: 1rem;
     top: 5rem;
@@ -49,26 +50,68 @@ body {
     user-select: none;
 }
 
-.hamburgerExtension {
-    width: 50px;
-    height: 50px;
-    background-color: rgb(123, 128, 123);
+/* Pacchetti */
+#package-btn {
+    width: 60px;
+    height: 60px;
+    background-color: rgb(165, 165, 165);
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     border-radius: 50%;
     color: white;
-    font-size: 30px;
+    font-size: 35px;
     position: fixed;
     left: 1rem;
-    top: 8rem;
+    top: 9rem;
     transition: 0.2s ease-in-out;
     z-index: 1000;
     cursor: pointer;
     user-select: none;
 }
 
+/* Accessibilità */
+#accessibility-btn {
+    width: 60px;
+    height: 60px;
+    background-color: rgb(165, 165, 165);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 35px;
+    position: fixed;
+    left: 1rem;
+    top: 13rem;
+    transition: 0.2s ease-in-out;
+    z-index: 1000;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Impostazioni */
+#settings-btn {
+    width: 60px;
+    height: 60px;
+    background-color: rgb(165, 165, 165);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 35px;
+    position: fixed;
+    left: 1rem;
+    top: 17rem;
+    transition: 0.2s ease-in-out;
+    z-index: 1000;
+    cursor: pointer;
+    user-select: none;
+}
 
 /* Formattazione pop-ups */
 .popupImage {
@@ -173,7 +216,7 @@ a.leaflet-popup-close-button:hover {
 #addMarker-btn {
     width: 70px;
     height: 70px;
-    background-color: red;
+    background-color: rgb(31, 181, 69);
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,46 +1,20 @@
 package gestione;
 
-import java.util.List;
+public class Server {
+  private String latitudine;  
+  private String longitudine;
+  private String nome;
+  private String indirizzo;
 
-public class Gestione {
-    private String place;
-    private String coords;
-    private String image;
-    private List<Gestione> places;
-
-    public Gestione(String place, String coords, String image) {
-        this.place = place;
-        this.coords = coords;
-        this.image = image;
+    public Server(String latitudine, String longitudine, String nome, String indirizzo) {
+        this.latitudine = latitudine;
+        this.longitudine = longitudine;
+        this.nome = nome;
+        this.indirizzo = indirizzo;
     }
 
-    public Gestione() {
+    @Override
+    public String toString() {
+        return latitudine + "%%%" + longitudine + "%%%" + nome + "%%%" + indirizzo;
     }
-
-    public String getPlace() {
-        return place;
-    }
-
-    public void setPlace(String place) {
-        this.place = place;
-        this.coords = "";
-        this.image = "";
-    }
-
-    public String getCoords() {
-        return coords;
-    }
-
-    public void setCoords(String coords) {
-        this.coords = coords;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
 }
