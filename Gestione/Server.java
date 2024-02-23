@@ -1,9 +1,12 @@
 package gestione;
 
+import java.util.List;
+
 public class Gestione {
     private String place;
     private String coords;
     private String image;
+    private List<Gestione> places;
 
     public Gestione(String place, String coords, String image) {
         this.place = place;
@@ -39,4 +42,5 @@ public class Gestione {
     public void setImage(String image) {
         this.image = image;
     }
+
 }

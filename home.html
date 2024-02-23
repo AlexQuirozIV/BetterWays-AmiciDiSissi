@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- Icone -->
     <link rel="stylesheet" type="text/css" href="style.css"> <!-- Stile home-->
     <link rel="icon" type="image/x-icon" href="img/icona.jpg"> <!-- Logo del sito -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
     <!-- Leaflet CSS file -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -17,22 +18,24 @@
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
 
-    <!-- Font -->
+    <!-- Font importati -->
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-<title>Better Ways</title> 
+    <title>Better Ways</title> 
 </head>
 <body>
-    <h1 id="betterWays_titolo">BETTER WAYS</h1>    <!-- immagine logo -->
+    <h1 id="betterWays_titolo">BETTER WAYS</h1>    
     
-    <div id="map"></div> <!-- contiene la mappa -->
+    <div id="map"></div> <!-- Contiene la mappa -->
 
-    <span onclick="addMarkerMenu()" id="addMarker-btn" class="material-icons">location_on</span> <!--bottone posizioni-->
+    <span onclick="addMarkerMenu()" id="addMarker-btn" class="material-icons">location_on</span> <!-- Bottone posizioni-->
     
-    <span onclick="hamburgerMenu()" id="settingsMenu-btn" class="material-icons">settings</span> <!--bottone impostazioni-->
-
+    <div id="settingsMenu">
+        <span onclick="hamburgerMenu()" id="settingsMenu-btn" class="material-symbols-outlined">menu</span> <!-- Bottone impostazioni-->
+    </div>
+ 
     <script src="map.js"></script> <!-- Script mappa -->
 </body>
 </html>

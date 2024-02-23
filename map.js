@@ -8,31 +8,31 @@ const map = L.map('map', {zoomControl: false}).setView([45.309055, 9.501972], 14
 
 /** Tappe - informazioni */
 const places = {
-    placesCoords:       [
-                            [45.301689, 9.492247],
-                            [45.303372, 9.498577],
-                            [45.305723, 9.499810]
-                        ],
-    placesTitles:       [
-                            'Torre Zucchetti',
-                            'IIS A. Volta',
-                            'Casa del Gelato'
-                        ],
-    placesRatings:      [   // Numero di "stelle" piene
-                            4,
-                            2,
-                            5
-                        ],
-    placesDescriptions: [
-                            'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-                            '',
-                            'mmmmmh, buono il gelato'
-                        ],
-    placesImages:       [
-                            'Torre-Zucchetti.jpg',
-                            'IIS-A-Volta.jpg',
-                            'Casa-del-Gelato.jpg'
-                        ]
+placesCoords:       [
+                        [45.301689, 9.492247],
+                        [45.303372, 9.498577],
+                        [45.305723, 9.499810]
+                    ],
+placesTitles:       [
+                        'Torre Zucchetti',
+                        'IIS A. Volta',
+                        'Casa del Gelato'
+                    ],
+placesRatings:      [   // Numero di "stelle" piene
+                        4,
+                        2,
+                        5
+                    ],
+placesDescriptions: [
+                        'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+                        '',
+                        'mmmmmh, buono il gelato'
+                    ],
+placesImages:       [
+                        'Torre-Zucchetti.jpg',
+                        'IIS-A-Volta.jpg',
+                        'Casa-del-Gelato.jpg'
+                    ]
 }
 
 /** Icona markers */
@@ -46,77 +46,77 @@ const markerIcon = L.icon({
 
 /** Funzione mappa */
 let leafletMap = {
-    "initialize":   function() {
-                        const bounds = [
-                            [45.328609, 9.47382],
-                            [45.289614, 9.52866]
-                        ];
+"initialize":   function() {
+                    const bounds = [
+                        [45.328609, 9.47382],
+                        [45.289614, 9.52866]
+                    ];
 
-                        // Funzioni necessarie (+ min e max zoom)
-                        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                            minZoom: 14,
-                            maxZoom: 18,
-                            attribution: '<a target="_blank" href="https://google.com">&copy</a>'
-                        }).addTo(map);
+                    // Funzioni necessarie (+ min e max zoom)
+                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        minZoom: 14,
+                        maxZoom: 18,
+                        attribution: '<a target="_blank" href="https://google.com">&copy</a>'
+                    }).addTo(map);
 
-                        // Imposta limiti
-                        map.setMaxBounds(bounds);
+                    // Imposta limiti
+                    map.setMaxBounds(bounds);
 
-                        // Controlli zoom pulsanti
-                        L.control.zoom({
-                            position: 'bottomleft'
-                        }).addTo(map);
-                    },
-    "debugging":    function() {
-                        // Clieck e output coordinate in console
-                        map.on('click', (e) => {
-                            console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
-                        });
-                    },
-    "newMarker":    function([latitude, longitude], title, ratingCycles, description, imageLink) {
-                        // Controlla che non siano vuoti...
-                        if(title === undefined || title == '') {
-                            title = 'Titolo inesistente';
-                        }
-                        if([latitude, longitude] == undefined) {
-                            console.log('Impossibile piazzare marker: "' + title + '", coordinate inesistenti!');
-                            return null;
-                        }
-                        if(imageLink === undefined || imageLink == '') {
-                            imageLink = 'img/icona.jpg';
-                        }
-                        if(description === undefined || description == '') {
-                            description = 'Descrizione di "' + title + '" inesistente';
-                        }
-                        if(ratingCycles === undefined || ratingCycles < 0) {
-                            ratingCycles = 0;
-                        }
-                    
-                        // Imposta immagine
-                        imageLink = '<img class="popupImage" src="img/tappe-popup/' + imageLink + '" alt="' + title + '">';
-
-                        // Imposta titolo
-                        title = '<p class="popupTitle">' + title + '</p>';
-
-                        // Imposta "valutazione"
-                        let rating = '';
-                        for(let i = 0; i < ratingCycles; i++) {
-                            rating += '<img src="img/popup-rating-stars/fullStar.png" class="popupStars">';
-                        }
-                        for(let i = 0; i < (5 - ratingCycles); i++) {
-                            rating += '<img src="img/popup-rating-stars/emptyStar.png" class="popupStars">';
-                        }
-                        rating = '<div class="popupRating">' + rating + '</div>';
-
-                        // Imposta descrizione
-                        description = '<p class="popupDescription">' + description + '</p>';
-               
-                        // Crea marker...
-                        let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(title + rating + description + imageLink);
-                    
-                        // ... e in output per salvarlo in 'markers' nella funzione 'addMarkerMenu'...
-                        return marker;
+                    // Controlli zoom pulsanti
+                    L.control.zoom({
+                        position: 'bottomleft'
+                    }).addTo(map);
+                },
+"debugging":    function() {
+                    // Clieck e output coordinate in console
+                    map.on('click', (e) => {
+                        console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
+                    });
+                },
+"newMarker":    function([latitude, longitude], title, ratingCycles, description, imageLink) {
+                    // Controlla che non siano vuoti...
+                    if(title === undefined || title == '') {
+                        title = 'Titolo inesistente';
                     }
+                    if([latitude, longitude] == undefined) {
+                        console.log('Impossibile piazzare marker: "' + title + '", coordinate inesistenti!');
+                        return null;
+                    }
+                    if(imageLink === undefined || imageLink == '') {
+                        imageLink = 'img/icona.jpg';
+                    }
+                    if(description === undefined || description == '') {
+                        description = 'Descrizione di "' + title + '" inesistente';
+                    }
+                    if(ratingCycles === undefined || ratingCycles < 0) {
+                        ratingCycles = 0;
+                    }
+                
+                    // Imposta immagine
+                    imageLink = '<img class="popupImage" src="img/tappe-popup/' + imageLink + '" alt="' + title + '">';
+
+                    // Imposta titolo
+                    title = '<p class="popupTitle">' + title + '</p>';
+
+                    // Imposta "valutazione"
+                    let rating = '';
+                    for(let i = 0; i < ratingCycles; i++) {
+                        rating += '<img src="img/popup-rating-stars/fullStar.png" class="popupStars">';
+                    }
+                    for(let i = 0; i < (5 - ratingCycles); i++) {
+                        rating += '<img src="img/popup-rating-stars/emptyStar.png" class="popupStars">';
+                    }
+                    rating = '<div class="popupRating">' + rating + '</div>';
+
+                    // Imposta descrizione
+                    description = '<p class="popupDescription">' + description + '</p>';
+            
+                    // Crea marker...
+                    let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(title + rating + description + imageLink);
+                
+                    // ... e in output per salvarlo in 'markers' nella funzione 'addMarkerMenu'...
+                    return marker;
+                }
 };
 
 /** Inizializza mappa a caricamento pagina */
@@ -234,29 +234,13 @@ function addMarkerMenu() {
 /** Menu Hamburger :P */
 function hamburgerMenu() {
     /* Previene spam del menu in sé */
-    if(document.getElementById('hamburgerMenu') == null) {
-        /* Nuovo div */
-        var newDiv = document.createElement('div');
-        newDiv.id = 'hamburgerMenu';
-
+    if(document.getElementById('settingsMenu-btn') == null) {
         /* Pulsanti interni */
-        // Accessibilità
-        var accessibilityBtn = document.createElement('span');
-        accessibilityBtn.className = 'material-icons';
-        accessibilityBtn.textContent = 'accessibility_new';
-        newDiv.appendChild(accessibilityBtn);
-
-        // Impostazioni
-        var settingsBtn = document.createElement('span');
-        settingsBtn.className = 'material-icons';
-        settingsBtn.textContent = 'settings';
-        newDiv.appendChild(settingsBtn);
-        
-        // Tappe
-        var placesBtn = document.createElement('span');
-        placesBtn.className = 'material-icons';
-        placesBtn.textContent = 'location_on';
-        newDiv.appendChild(placesBtn);
+        // Aggiungi tappa
+        var addPlaceBtn = document.createElement('span');
+        addPlaceBtn.className = 'material-icons';
+        addPlaceBtn.id = 'addPlace-btn';
+        addPlaceBtn.textContent = 'plus';
 
         /* Aggiungi all'HTML */
         document.body.appendChild(newDiv).offsetWidth;
