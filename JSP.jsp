@@ -10,10 +10,11 @@ try {
     Scanner scanner = new Scanner(System.in);
     PrintWriter printWriter = new PrintWriter(new FileWriter(file));
 
-    for (Gestione place : places) {
-        System.out.println("Place: " + place.getPlace());
-        System.out.println("Coordinates: " + place.getCoords());
-        System.out.println("Image: " + place.getImage());
+    for 
+        (Gestione place : places) {
+        System.out.println("place: " + place.getPlace());
+        System.out.println("coordinates: " + place.getCoords());
+        System.out.println("image: " + place.getImage());
         System.out.println("--------------------");
 
     String input = scanner.nextLine();
