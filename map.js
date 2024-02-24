@@ -44,247 +44,221 @@ const markerIcon = L.icon({
     popupAnchor:  [0, -60]  // Punto da dove il popup si apre
 });
 
-/** Funzione mappa */
-let leafletMap = {
-"initialize":       function() {
-                        const bounds = [
-                            [45.328609, 9.47382],
-                            [45.289614, 9.52866]
-                        ];
+/** Funzioni mappa */
+/* Inizializza 'onLoad' */
+function initializeMap() {
+    const bounds = [
+        [45.328609, 9.47382],
+        [45.289614, 9.52866]
+    ];
 
-                        // Funzioni necessarie (+ min e max zoom)
-                        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                            minZoom: 14,
-                            maxZoom: 18,
-                            attribution: '<a target="_blank" href="https://google.com">&copy</a>'
-                        }).addTo(map);
+    // Funzioni necessarie (+ min e max zoom)
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        minZoom: 14,
+        maxZoom: 18,
+        attribution: '<a target="_blank" href="https://google.com">&copy</a>'
+    }).addTo(map);
 
-                        // Imposta limiti
-                        map.setMaxBounds(bounds);
+    // Imposta limiti
+    map.setMaxBounds(bounds);
 
-                        // Controlli zoom pulsanti
-                        L.control.zoom({
-                            position: 'bottomleft'
-                        }).addTo(map);
-                    },
-"debugging":        function() {
-                        // Clieck e output coordinate in console
-                        map.on('click', (e) => {
-                            console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
-                        });
-                    },
-"bindPopupInfos":   function(title, ratingCycles, description, imageLink) {
-                        // Controlla che non siano vuoti...
-                        if(title === undefined || title == '') {
-                            title = 'Titolo inesistente';
-                        }
-                        if(imageLink === undefined || imageLink == '') {
-                            imageLink = 'img/icona.jpg';
-                        }
-                        if(description === undefined || description == '') {
-                            description = 'Descrizione di "' + title + '" inesistente';
-                        }
-                        if(ratingCycles === undefined || ratingCycles < 0) {
-                            ratingCycles = 0;
-                        }
+    // Controlli zoom pulsanti
+    L.control.zoom({
+        position: 'bottomleft'
+    }).addTo(map);
+}
 
-                        // Imposta immagine
-                        imageLink = '<img class="popupImage" src="img/tappe-popup/' + imageLink + '" alt="' + title + '">';
+/* Per debugging */
+function coordinatesOnClick() {
+    // Clieck e output coordinate in console
+    map.on('click', (e) => {
+        console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
+    });
+}
 
-                        // Imposta titolo
-                        title = '<p class="popupTitle">' + title + '</p>';
-
-                        // Imposta "valutazione"
-                        let rating = '';
-                        for(let i = 0; i < ratingCycles; i++) {
-                            rating += '<img src="img/popup-rating-stars/fullStar.png" class="popupStars">';
-                        }
-                        for(let i = 0; i < (5 - ratingCycles); i++) {
-                            rating += '<img src="img/popup-rating-stars/emptyStar.png" class="popupStars">';
-                        }
-                        rating = '<div class="popupRating">' + rating + '</div>';
-
-                        // Imposta descrizione
-                        description = '<p class="popupDescription">' + description + '</p>';
-
-                        // Output valori da usare nel 'bindPopup'
-                        var all = title + rating + description + imageLink;
-                        return all;
-                    },
-"newMarker":        function([latitude, longitude], info) {
-                        if([latitude, longitude] == undefined) {
-                            console.log('Impossibile piazzare marker: "' + title + '", coordinate inesistenti!');
-                            return null;
-                        }
-
-                        // Crea marker...
-                        let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(info);
-                    
-                        // ... e in output per salvarlo in 'markers' nella funzione 'addMarkerMenu'...
-                        return marker;
-                    }
-};
-
-
-/** Inizializza mappa a caricamento pagina */
 document.body.onload = () => {
     console.log('Initializing map...');
-    leafletMap.initialize();
-    leafletMap.debugging();
+    initializeMap();
+    coordinatesOnClick();
 };
 
-/** Flag se il marker esiste già o no (prevenire spam) */
-var availablePlace = [];
+/* Genera 'div' con 'img' in base al valore inserito sono 'piene' o no (necessaria per 'bindPopupInfos') */
+function rate(fullStarsNumber) {
+    let rating = '';
+    for(let i = 0; i < fullStarsNumber; i++) {
+        rating += '<img src="img/popup-rating-stars/fullStar.png" class="popupStars">';
+    }
+    for(let i = 0; i < (5 - fullStarsNumber); i++) {
+        rating += '<img src="img/popup-rating-stars/emptyStar.png" class="popupStars">';
+    }
+    rating = '<div class="popupRating">' + rating + '</div>'
+    
+    return rating;
+}
+/* Genera le 'info' necessarie da aggiungere a ciascun popup tramite '.bindPopup(info)' */
+function bindPopupInfos(title, rating, description, imageLink) {
+    if(title === undefined || title == '') { title = 'Titolo inesistente'; }
+    if(imageLink === undefined || imageLink == '') { imageLink = 'img/icona.jpg'; }
+    if(description === undefined || description == '') { description = 'Descrizione di "' + title + '" inesistente'; }
+    if(rating === undefined || rating < 0) { rating = 0; }
+
+    imageLink = '<img class="popupImage" src="img/tappe-popup/' + imageLink + '" alt="' + title + '">';
+    title = '<p class="popupTitle">' + title + '</p>';
+    rating = rate(rating);
+    description = '<p class="popupDescription">' + description + '</p>';
+
+    let info = title + rating + description + imageLink;
+    return info;
+}
+
+/** Markers */
+/* Genera un singolo marker */
+function newSingleMarker([latitude, longitude], info) {
+    if([latitude, longitude] == undefined) {
+        console.log('Impossibile piazzare marker: "' + title + '", coordinate inesistenti!');
+        return null;
+    }
+
+    // Crea marker...
+    let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(info);
+
+    // ... e in output per salvarlo in 'markers' nella funzione 'addMarkerMenu'...
+    return marker;
+}
+
+/* Menu aggiungi/rimuovi singoli markers */
+var availablePlace = [];    // Flag se il marker esiste già o no (prevenire spam)
 for(let i = 0; i < places.placesCoords.length; i++) {
     availablePlace.push(i);
 }
+var singleMarkers = [];   // Contiene i singoli markers creati
 
-var markers = [];   // Contiene i markers creati
+function addSingleMarkerMenu() {
+    if(!(document.getElementById('addMarkerMenu') == null)) {
+        return;
+    }
+    /* Div contenitore */
+    var menu = document.createElement('div');
+    menu.id = 'addMarkerMenu';
 
-/** Menu aggiungi/rimuovi singoli markers */
-function addMarkerMenu() {
-    /* Previene spam del menu in sé */
-    if(document.getElementById('addMarkerMenu') == null) {
-        /* Div contenitore */
-        var newDiv = document.createElement('div');
-        newDiv.id = 'addMarkerMenu';
+    /* Bottone chiudi */
+    var closeButton = createActionButton('close');
+    menu.appendChild(closeButton);
 
-        /* Bottone chiudi */
-        var closeButton = document.createElement('span');
-        closeButton.className = 'material-icons';
+    /* Tendina di selezione */
+    var selectBox = document.createElement('select');
+    places.placesTitles.forEach((place) => {
+        let option = document.createElement('option');
+        option.text = place;
+        selectBox.add(option);
+    });
 
-        closeButton.innerHTML = 'close';
-        
-        newDiv.appendChild(closeButton);
+    menu.appendChild(selectBox);
 
-        /* Tendina di selezione */
-        var selectBox = document.createElement('select');
+    /* Bottoni flex-box (per metterli in fila) */
+    var buttonWrapper = document.createElement('div');
 
-        // Aggiunge le opzioni una per una
-        places.placesTitles.forEach( function(place) {
-                                        let option = document.createElement('option');
-                                        option.text = place;
-                                        selectBox.add(option);
-                                    });
+    // Bottone 'invia'
+    var okButton = document.createElement('button');
+    okButton.textContent = 'OK';
+    okButton.setAttribute('onclick', 'singleMarkerMenuPlace()');
+    buttonWrapper.appendChild(okButton);
+    
+    // Bottone 'rimuovi'
+    var cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Rimuovi';
+    cancelButton.setAttribute('onclick', 'singleMarkerMenuRemove()');
+    buttonWrapper.appendChild(cancelButton);
+    
+    menu.appendChild(buttonWrapper);
 
-        newDiv.appendChild(selectBox);
+    /* Aggiungi all'HTML */
+    document.body.appendChild(menu).offsetWidth;
 
-        /* Bottoni flex-box (per metterli in fila) */
-        var buttonWrapper = document.createElement('div');
+    /* Animazione entrata/uscita menu */
+    menu.style.transition = '0.2s ease';
+    menu.style.transform = 'translate(-50%, -50%) scale(1)';
 
-        /* Bottone 'invia' */
-        var okButton = document.createElement('button');
+    /* Chiudi menu (con animazione d'uscita) */
+    closeButton.addEventListener('click', () => {
+        menu.style.transform = 'translate(-50%, -50%) scale(0)';
+        // Un po' di ritardo per l'animazione
+        setTimeout(function() {
+            document.body.removeChild(menu);
+        }, 300);
+    });
+}
+function singleMarkerMenuPlace() {
+    var selectedPlaceIndex = document.querySelector('#addMarkerMenu select').selectedIndex;
 
-        okButton.textContent = 'OK';
-        
-        buttonWrapper.appendChild(okButton);
+    // Crea il nuovo marker se non già piazzato e lo salva dentro 'markers'
+    if(availablePlace.includes(selectedPlaceIndex)) {
+        // La funzione 'newMarker' della mappa, prendendo info direttamente da 'places'
+        var bindingInfos = bindPopupInfos(places.placesTitles[selectedPlaceIndex],
+                                          places.placesRatings[selectedPlaceIndex],
+                                          places.placesDescriptions[selectedPlaceIndex],
+                                          places.placesImages[selectedPlaceIndex]);
 
-        /* Bottone 'rimuovi' */
-        var cancelButton = document.createElement('button');
-
-        cancelButton.textContent = 'Rimuovi';
-        
-        buttonWrapper.appendChild(cancelButton);
-        
-        newDiv.appendChild(buttonWrapper);
-
-        /* Aggiungi all'HTML */
-        document.body.appendChild(newDiv).offsetWidth;
-
-        /* Animazione entrata/uscita menu */
-        newDiv.style.transition = '0.2s ease';
-        newDiv.style.transform = 'translate(-50%, -50%) scale(1)';
-
-        /* Chiudi menu (con animazione d'uscita) */
-        closeButton.addEventListener('click', () => {
-            newDiv.style.transform = 'translate(-50%, -50%) scale(0)';
-            // Un po' di ritardo per l'animazione
-            setTimeout(function() {
-                document.body.removeChild(newDiv);
-            }, 300);
-        });
-
-        /* Aggiungi marker */
-        okButton.addEventListener('click', () => {
-            var selectedPlaceIndex = document.querySelector('#addMarkerMenu select').selectedIndex;
-
-            // Crea il nuovo marker se non già piazzato e lo salva dentro 'markers'
-            if(availablePlace.includes(selectedPlaceIndex)) {
-                // La funzione 'newMarker' della mappa, prendendo info direttamente da 'places'
-                var bindingInfos = leafletMap.bindPopupInfos(places.placesTitles[selectedPlaceIndex],
-                                                             places.placesRatings[selectedPlaceIndex],
-                                                             places.placesDescriptions[selectedPlaceIndex],
-                                                             places.placesImages[selectedPlaceIndex]);
-
-                markers[selectedPlaceIndex] = leafletMap.newMarker(places.placesCoords[selectedPlaceIndex], bindingInfos);
-                // Quando un marker non dev'essere piazzato diventa 'null'
-                availablePlace[selectedPlaceIndex] = null;
-            }
-        });
-
-        /* Rimuovi marker */
-        cancelButton.addEventListener('click', () => {
-            var selectedPlaceIndex = document.querySelector('#addMarkerMenu select').selectedIndex;
-            
-            // Se il marker non è piazzato, lo toglie
-            if(!(availablePlace.includes(selectedPlaceIndex))) {
-                map.removeLayer(markers[selectedPlaceIndex]);
-
-                // Il valore viene ripristinato, invece di 'null'
-                availablePlace[selectedPlaceIndex] = selectedPlaceIndex;
-            }
-        });
+        singleMarkers[selectedPlaceIndex] = newSingleMarker(places.placesCoords[selectedPlaceIndex], bindingInfos);
+        // Quando un marker non dev'essere piazzato diventa 'null'
+        availablePlace[selectedPlaceIndex] = null;
     }
 }
+function singleMarkerMenuRemove() {
+    var selectedPlaceIndex = document.querySelector('#addMarkerMenu select').selectedIndex;
+    
+    // Se il marker non è piazzato, lo toglie
+    if(!(availablePlace.includes(selectedPlaceIndex))) {
+        map.removeLayer(singleMarkers[selectedPlaceIndex]);
+
+        // Il valore viene ripristinato, invece di 'null'
+        availablePlace[selectedPlaceIndex] = selectedPlaceIndex;
+    }
+}
+
 
 /** Menu Settings :P */
 var isSettingsMenuOpened = false;
 function settingsMenu() {
-    if(isSettingsMenuOpened == false) {
-        /* Previene spam del menu in sé */
-        var settingsMenu = document.getElementById('settingsMenu');
-        /* Pulsanti interni */
-        // Aggiungi pacchetto
-        if(document.getElementById('package-btn') == null) {
-            var packageBtn = document.createElement('span');
-            packageBtn.className = 'material-icons';
-            packageBtn.id = 'package-btn';
-            packageBtn.textContent = 'location_on';
-            settingsMenu.appendChild(packageBtn);
-        }
-        // Accessibilità
-        if(document.getElementById('accessibility-btn') == null) {
-            var accessibilityBtn = document.createElement('span');
-            accessibilityBtn.className = 'material-icons';
-            accessibilityBtn.id = 'accessibility-btn';
-            accessibilityBtn.textContent = 'accessibility_new';       
-            settingsMenu.appendChild(accessibilityBtn);
-        }
-        // Impostazioni
-        if(document.getElementById('settings-btn') == null) {
-            var settingsBtn = document.createElement('span');
-            settingsBtn.className = 'material-icons';
-            settingsBtn.id = 'settings-btn';
-            settingsBtn.textContent = 'settings';      
-            settingsMenu.appendChild(settingsBtn);
-        }
+    const buttons = [
+        ['package-btn', 'location_on'],
+        ['accessibility-btn', 'accessibility_new'],
+        ['settings-btn', 'settings']
+    ];
 
-        // Aggiungi all'HTML
-        document.body.appendChild(settingsMenu).offsetWidth;
-
-        // Update flag
-        isSettingsMenuOpened = true;
-    } else {
-        var packageBtn = document.getElementById('package-btn').remove();
-        var accessibilityBtn = document.getElementById('accessibility-btn').remove();
-        var settingsBtn = document.getElementById('settings-btn').remove();
-
-        // Update flag
+    if(isSettingsMenuOpened == true) {
+        for(let i = 0; i < buttons.length; i++) {
+            for(let j = 0; j < buttons[i].length; j++) {
+                document.getElementById(buttons[i][j]).remove();
+            }
+        }
         isSettingsMenuOpened = false;
+        return;
     }
+
+    var settingsMenu = document.getElementById('settingsMenu');
+    for(let i = 0; i < buttons.length; i++) {
+        for(let j = 0; j < buttons[i].length; j++) {
+            let button = createActionButton(buttons[i][j + 1], buttons[i][j]);
+            
+            settingsMenu.appendChild(button);
+        }
+    }
+
+    document.body.appendChild(settingsMenu).offsetWidth;
+    isSettingsMenuOpened = true;
 }
 
+/** Utils */
+// Crea pulsanti con icona da Google + può assegnare un id
+function createActionButton(iconName, id) {
+    var button = document.createElement('span');
+    button.className = 'material-icons';
+    if(id !== undefined) { button.id = id; }
+    button.textContent = iconName;
 
+    return button;
+}
 
 /** Pacchetti (WIP) | per adesso, in console: 'startPackage('Package 1');' */
 const packages = {
