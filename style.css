@@ -45,6 +45,14 @@
     user-select: none;
 }
 
+#settingsMenu > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Pacchetti */
 #package-btn {
     width: 60px;

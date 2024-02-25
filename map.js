@@ -4,7 +4,7 @@
 "use strict";
 
 /** LA mappa (dichiarazione e fissata view) */
-const map = L.map('map', {zoomControl: false}).setView([45.309055, 9.501972], 14);
+const map = L.map('map', {zoomControl: false}).setView([45.309062, 9.501200], 14);
 
 /** Tappe - informazioni */
 const places = {
@@ -12,7 +12,7 @@ const places = {
         [45.301689, 9.492247],
         'Torre Zucchetti',
         4,
-        'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+        'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
         'Torre-Zucchetti.jpg'
     ],
     "IIS-A-Volta": [
@@ -224,16 +224,15 @@ function singleMarkerMenuRemove() {
 var isSettingsMenuOpened = false;
 function settingsMenu() {
     const buttons = [
-        ['package-btn', 'location_on'],
-        ['accessibility-btn', 'accessibility_new'],
-        ['settings-btn', 'settings']
+     // 'Id', 'Google icon name', 'onClickFunction' //TODO: Aggiungere funzioni
+        ['location_on', 'package-btn', ''],
+        ['accessibility_new', 'accessibility-btn', ''],
+        ['settings', 'settings-btn', '']
     ];
 
     if(isSettingsMenuOpened == true) {
         for(let i = 0; i < buttons.length; i++) {
-            for(let j = 0; j < buttons[i].length; j++) {
-                document.getElementById(buttons[i][j]).remove();
-            }
+            document.getElementById(buttons[i][1]).remove();
         }
         isSettingsMenuOpened = false;
         return;
@@ -241,11 +240,8 @@ function settingsMenu() {
 
     var settingsMenu = document.getElementById('settingsMenu');
     for(let i = 0; i < buttons.length; i++) {
-        for(let j = 0; j < buttons[i].length; j++) {
-            let button = createActionButton(buttons[i][j + 1], buttons[i][j]);
-            
-            settingsMenu.appendChild(button);
-        }
+        let button = createActionButton(buttons[i][0], buttons[i][1], buttons[i][2]);
+        settingsMenu.appendChild(button);
     }
 
     document.body.appendChild(settingsMenu).offsetWidth;
@@ -254,24 +250,25 @@ function settingsMenu() {
 
 /** Utils */
 // Crea pulsanti con icona da Google + può assegnare un id
-function createActionButton(iconName, id) {
+function createActionButton(iconName, id, onClickFunction) {
     var button = document.createElement('span');
     button.className = 'material-icons';
-    if(id !== undefined) { button.id = id; }
+    button.id = id;
+    button.setAttribute('onclick', onClickFunction);
     button.textContent = iconName;
 
     return button;
 }
 
-/** Pacchetti (WIP) | per adesso, in console: 'startPackage('Package 1');' */
-var packages = {
+/** Pacchetti (WIP) | per adesso, in console: //!'startPackage('Package 1');' */
+const packages = {
     // L'ordine va da inizio a fine, ovviamente
     "Package 1":[
-                    places["Torre-Zucchetti"],
-                    places["IIS-A-Volta"],
-                    places["Casa-del-Gelato"]
-                ]
-    // Più pacchetti da inserire
+        places["Torre-Zucchetti"],
+        places["IIS-A-Volta"],
+        places["Casa-del-Gelato"]
+    ]
+    // TODO: Più pacchetti da inserire
 }
 
 function startPackage(selectedPackage) {
@@ -300,6 +297,7 @@ function startPackage(selectedPackage) {
     L.Routing.control({
         // Per ogni singolo 'waypoint'
         waypoints: waypoints,
+        language: 'it',
         // Impostazioni per evitare 'dragging' dei waypoints e 'lines' (percorsi in rosso)
         draggableWaypoints: false,
         addWaypoints: false,
