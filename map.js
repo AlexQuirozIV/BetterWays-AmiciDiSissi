@@ -8,31 +8,27 @@ const map = L.map('map', {zoomControl: false}).setView([45.309055, 9.501972], 14
 
 /** Tappe - informazioni */
 const places = {
-placesCoords:       [
-                        [45.301689, 9.492247],
-                        [45.303372, 9.498577],
-                        [45.305723, 9.499810]
-                    ],
-placesTitles:       [
-                        'Torre Zucchetti',
-                        'IIS A. Volta',
-                        'Casa del Gelato'
-                    ],
-placesRatings:      [   // Numero di "stelle" piene
-                        4,
-                        2,
-                        5
-                    ],
-placesDescriptions: [
-                        'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-                        '',
-                        'mmmmmh, buono il gelato'
-                    ],
-placesImages:       [
-                        'Torre-Zucchetti.jpg',
-                        'IIS-A-Volta.jpg',
-                        'Casa-del-Gelato.jpg'
-                    ]
+    "Torre-Zucchetti": [
+        [45.301689, 9.492247],
+        'Torre Zucchetti',
+        4,
+        'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+        'Torre-Zucchetti.jpg'
+    ],
+    "IIS-A-Volta": [
+        [45.303372, 9.498577],
+        'IIS A. Volta',
+        2,
+        '',
+        'IIS-A-Volta.jpg'
+    ],
+    "Casa-del-Gelato": [
+        [45.305723, 9.499810],
+        'Casa del Gelato',
+        5,
+        'mmmmmh, buono il gelato',
+        'Casa-del-Gelato.jpg'
+    ]
 }
 
 /** Icona markers */
@@ -128,8 +124,11 @@ function newSingleMarker([latitude, longitude], info) {
 
 /* Menu aggiungi/rimuovi singoli markers */
 var availablePlace = [];    // Flag se il marker esiste già o no (prevenire spam)
-for(let i = 0; i < places.placesCoords.length; i++) {
-    availablePlace.push(i);
+for (const key in places) {
+    if (!(places.hasOwnProperty(key))) {
+        break;
+    }
+    availablePlace.push(key);
 }
 var singleMarkers = [];   // Contiene i singoli markers creati
 
@@ -147,11 +146,15 @@ function addSingleMarkerMenu() {
 
     /* Tendina di selezione */
     var selectBox = document.createElement('select');
-    places.placesTitles.forEach((place) => {
+    for (const key in places) {
+        if (!(places.hasOwnProperty(key))) {
+            break;
+        }
         let option = document.createElement('option');
-        option.text = place;
+        option.value = key;
+        option.text = places[key][1];
         selectBox.add(option);
-    });
+    }
 
     menu.appendChild(selectBox);
 
@@ -189,30 +192,30 @@ function addSingleMarkerMenu() {
     });
 }
 function singleMarkerMenuPlace() {
-    var selectedPlaceIndex = document.querySelector('#addMarkerMenu select').selectedIndex;
-
+    var selectedPlace = document.querySelector('#addMarkerMenu select').value;
+    
     // Crea il nuovo marker se non già piazzato e lo salva dentro 'markers'
-    if(availablePlace.includes(selectedPlaceIndex)) {
+    if(availablePlace.includes(selectedPlace)) {
         // La funzione 'newMarker' della mappa, prendendo info direttamente da 'places'
-        var bindingInfos = bindPopupInfos(places.placesTitles[selectedPlaceIndex],
-                                          places.placesRatings[selectedPlaceIndex],
-                                          places.placesDescriptions[selectedPlaceIndex],
-                                          places.placesImages[selectedPlaceIndex]);
+        var bindingInfos = bindPopupInfos(places[selectedPlace][1],
+                                          places[selectedPlace][2],
+                                          places[selectedPlace][3],
+                                          places[selectedPlace][4]);
 
-        singleMarkers[selectedPlaceIndex] = newSingleMarker(places.placesCoords[selectedPlaceIndex], bindingInfos);
+        singleMarkers[selectedPlace] = newSingleMarker(places[selectedPlace][0], bindingInfos);
         // Quando un marker non dev'essere piazzato diventa 'null'
-        availablePlace[selectedPlaceIndex] = null;
+        availablePlace[availablePlace.indexOf(selectedPlace)] = null;
     }
 }
 function singleMarkerMenuRemove() {
-    var selectedPlaceIndex = document.querySelector('#addMarkerMenu select').selectedIndex;
+    var selectedPlace = document.querySelector('#addMarkerMenu select').value;
     
     // Se il marker non è piazzato, lo toglie
-    if(!(availablePlace.includes(selectedPlaceIndex))) {
-        map.removeLayer(singleMarkers[selectedPlaceIndex]);
+    if(!(availablePlace.includes(selectedPlace))) {
+        map.removeLayer(singleMarkers[selectedPlace]);
 
         // Il valore viene ripristinato, invece di 'null'
-        availablePlace[selectedPlaceIndex] = selectedPlaceIndex;
+        availablePlace[availablePlace.indexOf(null)] = selectedPlace;
     }
 }
 
@@ -261,29 +264,12 @@ function createActionButton(iconName, id) {
 }
 
 /** Pacchetti (WIP) | per adesso, in console: 'startPackage('Package 1');' */
-const packages = {
-/* 
-    Per ogni pacchetto ci sono X array, uno per waypoint.
-    Servono: 1) Coordinate 2) Titolo 3) Rating 4) Descrizione 5) Link all'immagine
-*/
+var packages = {
+    // L'ordine va da inizio a fine, ovviamente
     "Package 1":[
-                    [[45.301689, 9.492247],
-                    'Torre Zucchetti',
-                    4,
-                    'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-                    'Torre-Zucchetti.jpg'],
-                    
-                    [[45.303372, 9.498577],
-                    'IIS A. Volta',
-                    2,
-                    '',
-                    'IIS-A-Volta.jpg'],
-                    
-                    [[45.305723, 9.499810],
-                    'Casa del Gelato',
-                    5,
-                    'mmmmmh, buono il gelato',
-                    'Casa-del-Gelato.jpg']
+                    places["Torre-Zucchetti"],
+                    places["IIS-A-Volta"],
+                    places["Casa-del-Gelato"]
                 ]
     // Più pacchetti da inserire
 }
@@ -299,24 +285,16 @@ function startPackage(selectedPackage) {
     });
 
     /* Preleva titoli */
-    var titles = places.map((title) => {
-        return title[1];
-    });
+    var titles = places.map((title) => { return title[1]; });
 
     /* Preleva rating */
-    var ratings = places.map((rating) => {
-        return rating[2];
-    });
+    var ratings = places.map((rating) => { return rating[2]; });
 
     /* Preleva description */
-    var descriptions = places.map((description) => {
-        return description[3];
-    });
+    var descriptions = places.map((description) => { return description[3]; });
 
     /* Preleva imageLink */
-    var imageLinks = places.map((imageLink) => {
-        return imageLink[4];
-    });
+    var imageLinks = places.map((imageLink) => { return imageLink[4]; });
 
     /* Aggiungi alla mappa */
     L.Routing.control({
@@ -330,7 +308,7 @@ function startPackage(selectedPackage) {
             return L.marker(waypoint.latLng, {
                 draggable: false,
                 icon: markerIcon    // Paperelle :D
-            }).bindPopup(leafletMap.bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i])); // Aggiungi pop-ups
+            }).bindPopup(bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i])); // Aggiungi pop-ups
         }
     }).addTo(map);
 }
