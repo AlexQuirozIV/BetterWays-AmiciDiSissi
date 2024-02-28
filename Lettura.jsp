@@ -19,53 +19,68 @@
         
     </head>
     <body>
-         <div id="map"></div>
-           <script>   
-        var percorso=[[45.30389319648771, 9.498632761854047]];
-        var inizio;
-        var fine;
-        var popup;
-        var mymap, mappa, marker, testo="IIS'A.Volta'", map;
-        // Creare una nuova mappa Leaflet
-        var map = L.map('map').setView([45.30389319648771, 9.498632761854047], 14);
+        <div id="map"></div>
+        <script>   
+            const map = L.map('map', {zoomControl: false}).setView([45.309062, 9.501200], 14);
 
-        // Aggiungere un livello di base alla mappa
-         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-         }).addTo(map);
-        marker = L.marker([45.30389319648771, 9.498632761854047]).addTo(map);
-        popup = L.popup().setContent("Partenza: IIS");
-         marker.bindPopup(popup).openPopup();
-        // marker.bindPopup(testo);
-        </script>
-        <script>
-            //determino il luogo di partenza
-           // inizio=L.latLng(45.30408592976634, 9.49930594969152);
+            /** Tappe - informazioni */
+            const places = {
+                "Torre-Zucchetti": [
+                    [45.301689, 9.492247],
+                    'Torre Zucchetti',
+                    4,
+                    'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+                    'Torre-Zucchetti.jpg'
+                ],
+                "IIS-A-Volta": [
+                    [45.303372, 9.498577],
+                    'IIS A. Volta',
+                    ,
+                    '',
+                    'IIS-A-Volta.jpg'
+                ],
+                "Casa-del-Gelato": [
+                    [45.305723, 9.499810],
+                    'Casa del Gelato',
+                    5,
+                    'mmmmmh, buono il gelato',
+                    'Casa-del-Gelato.jpg'
+                ]
+            }
         </script>
         <%
         //Dichiaro un oggetto file con l'indicazione del nome del file (Server.txt)
         FileInputStream file = new FileInputStream("Server.txt");
+
         //Oggetto scanner per leggere una linea
         Scanner lettore=new Scanner(file);
+
         //conterrà una riga letta da Server.txt
         String linea;
+
         //oggetto che permette lo split
         StringTokenizer locale;
+
         //variabili String che memorizzeranno i dati del locle
         String lg="",lt="",nome="", indirizzo="";
+
         //inizio del ciclo di lettura
-         while(lettore.hasNextLine()==true){
-             //si legge una linea dal file POI.txt
+        while(lettore.hasNextLine()==true){
+
+            //si legge una linea dal file POI.txt
             linea=lettore.nextLine();
+
             // inizalizzo l'oggetto locale,in modo che spezzetti i dati,
             //passando al costruttore la linea letta
             // e indicando i caratteri di separazione dei dati
             locale = new StringTokenizer(linea,"%%%");
+
             //attribuisco i dati alle variabili string
             lt=locale.nextToken();
             lg=locale.nextToken();
             nome=locale.nextToken();
             indirizzo=locale.nextToken();
+
             //creo il testo del popup
             String tst;
             tst="<b>"+nome+"</b><br>";
@@ -79,6 +94,7 @@
                 lat=<%=lt%>;
                 long=<%=lg%>;
                 testo="<%=tst%>";
+
                 //funzione javascript che mette un marker sulla mappa
                 //e collegato al marker un popup
                 //MarkerPopup(lat,long,testo);
@@ -111,6 +127,7 @@
             position: 'bottomleft',
             dragrable: 'true'
        }).addTo(map);
+       
        // L.Routing.hidden():
         </script>
     </body>

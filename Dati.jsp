@@ -13,23 +13,26 @@
         <h2>Memorizzazione dati </h2>
         <%
         //ricezione dati del Server
-        String lat=request.getParameter("lat");
-        String lon=request.getParameter("long");
+        String lat = request.getParameter("lat");
+        String lon = request.getParameter("long");
         String name = request.getParameter("nome");
-        String address=request.getParameter("indirizzo");
+        String address = request.getParameter("indirizzo");
         
         //Creazione di un oggetto punto della classe Server
         Server punto=new Server(lat,lon,name,address);
+
         //creazione della stringa da memorizzare nel file testo
         String linea=punto.toString();
         
         //fasi di apertura del file testo
         
         //1.creare una stringa che contiene il nome del file
-        String FileDati=new String("Server.txt");
+        String FileDati=new String("Desktop/Server.txt");
+
         //2.creazione dell'oggetto stream
         //se non esiste lo crea
         FileWriter file=new FileWriter(FileDati,true);
+
         //3.Creazione dell'oggetto del flusso di scrittura
         PrintWriter scrivi = new PrintWriter(file);
         

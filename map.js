@@ -18,7 +18,7 @@ const places = {
     "IIS-A-Volta": [
         [45.303372, 9.498577],
         'IIS A. Volta',
-        2,
+        ,
         '',
         'IIS-A-Volta.jpg'
     ],
@@ -35,10 +35,11 @@ const places = {
 const markerIcon = L.icon({
     iconUrl: 'img/marker-icone/markerIcona.png',
 
-    iconSize:     [32, 64], // Grandezza icona
-    iconAnchor:   [15, 60], // Punto dell'icona che indicherà il punto preciso sulla mappa
+    iconSize:     [48, 48], // Grandezza icona
+    iconAnchor:   [35, 60], // Punto dell'icona che indicherà il punto preciso sulla mappa
     popupAnchor:  [0, -60]  // Punto da dove il popup si apre
 });
+
 
 /** Funzioni mappa */
 /* Inizializza 'onLoad' */
@@ -107,6 +108,7 @@ function bindPopupInfos(title, rating, description, imageLink) {
     return info;
 }
 
+
 /** Markers */
 /* Genera un singolo marker */
 function newSingleMarker([latitude, longitude], info) {
@@ -141,7 +143,9 @@ function addSingleMarkerMenu() {
     menu.id = 'addMarkerMenu';
 
     /* Bottone chiudi */
-    var closeButton = createActionButton('close');
+    var closeButton = document.createElement('span');
+    closeButton.className = 'material-icons';
+    closeButton.textContent = 'close';
     menu.appendChild(closeButton);
 
     /* Tendina di selezione */
@@ -224,10 +228,11 @@ function singleMarkerMenuRemove() {
 var isSettingsMenuOpened = false;
 function settingsMenu() {
     const buttons = [
-     // 'Id', 'Google icon name', 'onClickFunction' //TODO: Aggiungere funzioni
-        ['location_on', 'package-btn', ''],
-        ['accessibility_new', 'accessibility-btn', ''],
-        ['settings', 'settings-btn', '']
+     // 'Google icon name', 'id', 'onClickFunction', 'description' //TODO: Aggiungere funzioni
+        ['location_on', 'package-btn', '', 'ciao'],
+        ['accessibility_new', 'accessibility-btn', '', 'ciao'],
+        ['settings', 'settings-btn', '', 'ciao'],
+        ['groups', 'groups-btn', '', 'ciao']
     ];
 
     if(isSettingsMenuOpened == true) {
@@ -240,7 +245,8 @@ function settingsMenu() {
 
     var settingsMenu = document.getElementById('settingsMenu');
     for(let i = 0; i < buttons.length; i++) {
-        let button = createActionButton(buttons[i][0], buttons[i][1], buttons[i][2]);
+        let button = createActionButton(buttons[i][0], buttons[i][1], buttons[i][2], buttons[i][3]);
+
         settingsMenu.appendChild(button);
     }
 
@@ -248,17 +254,30 @@ function settingsMenu() {
     isSettingsMenuOpened = true;
 }
 
+
 /** Utils */
 // Crea pulsanti con icona da Google + può assegnare un id
-function createActionButton(iconName, id, onClickFunction) {
-    var button = document.createElement('span');
-    button.className = 'material-icons';
+function createActionButton(iconName, id, onClickFunction, info) {
+    let button = document.createElement('span');
+    button.className = 'material-icons settingsButton-btns';
     button.id = id;
     button.setAttribute('onclick', onClickFunction);
     button.textContent = iconName;
 
+    let description = document.createElement('span');
+    description.textContent = info;
+    description.setAttribute('onclick', 'showInfoSettingsMenuButtons()')
+    button.appendChild(description);
+
     return button;
 }
+
+function showInfoSettingsMenuButtons() {
+    let info = document.querySelector('.settingsButton-btns');
+
+    info.style.display = 'block';
+}
+
 
 /** Pacchetti (WIP) | per adesso, in console: //!'startPackage('Package 1');' */
 const packages = {
