@@ -227,12 +227,14 @@ function singleMarkerMenuRemove() {
 /** Menu Settings :P */
 var isSettingsMenuOpened = false;
 function settingsMenu() {
+    let div = document.createElement('div');
+    div.id = 'curtain-background';
     const buttons = [
      // 'Google icon name', 'id', 'onClickFunction', 'description' //TODO: Aggiungere funzioni
-        ['location_on', 'package-btn', '', 'ciao'],
-        ['accessibility_new', 'accessibility-btn', '', 'ciao'],
-        ['settings', 'settings-btn', '', 'ciao'],
-        ['groups', 'groups-btn', '', 'ciao']
+        ['location_on', 'package-btn', ''],
+        ['accessibility_new', 'accessibility-btn', ''],
+        ['settings', 'settings-btn', ''],
+        ['groups', 'groups-btn', 'groupsBtnMenu()']
     ];
 
     if(isSettingsMenuOpened == true) {
@@ -245,37 +247,35 @@ function settingsMenu() {
 
     var settingsMenu = document.getElementById('settingsMenu');
     for(let i = 0; i < buttons.length; i++) {
-        let button = createActionButton(buttons[i][0], buttons[i][1], buttons[i][2], buttons[i][3]);
+        let button = createActionButton(buttons[i][0], buttons[i][1], buttons[i][2]);
 
         settingsMenu.appendChild(button);
     }
 
     document.body.appendChild(settingsMenu).offsetWidth;
     isSettingsMenuOpened = true;
+
+    
+}
+
+function groupsBtnMenu() {
+    let div = document.createElement('div');
+    div.id = 'groupsBtnMenu';
+    div.innerHTML = "<div class='prova'>Il nostro team</div> Benvenuti nel mondo di 'Better Ways'!  Siamo cinque studenti della classe 4ID dell'istituto IIS A. Volta di Lodi. Ci chiamiamo: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti e Linda Tessadori. Il nostro sito, 'Better Ways', è incentrato sul turismo di Lodi, per scoprire le meraviglie che questa piccola città ha da offrire.";
+    document.body.appendChild(div).offsetWidth;
 }
 
 
 /** Utils */
 // Crea pulsanti con icona da Google + può assegnare un id
-function createActionButton(iconName, id, onClickFunction, info) {
+function createActionButton(iconName, id, onClickFunction) {
     let button = document.createElement('span');
-    button.className = 'material-icons settingsButton-btns';
+    button.className = 'material-icons';
     button.id = id;
     button.setAttribute('onclick', onClickFunction);
     button.textContent = iconName;
 
-    let description = document.createElement('span');
-    description.textContent = info;
-    description.setAttribute('onclick', 'showInfoSettingsMenuButtons()')
-    button.appendChild(description);
-
     return button;
-}
-
-function showInfoSettingsMenuButtons() {
-    let info = document.querySelector('.settingsButton-btns');
-
-    info.style.display = 'block';
 }
 
 
