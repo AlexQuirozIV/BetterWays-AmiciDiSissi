@@ -3,45 +3,136 @@
 */
 "use strict";
 
-/** LA mappa (dichiarazione e fissata view) */
+//! Costante con 'LA MAPPA'
 const map = L.map('map', {zoomControl: false}).setView([45.309062, 9.501200], 14);
 
-/** Tappe - informazioni */
+//! Informazioni tappe
 const places = {
-    "Torre-Zucchetti": [
-        [45.301689, 9.492247],
-        'Torre Zucchetti',
-        4,
-        'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-        'Torre-Zucchetti.jpg'
-    ],
-    "IIS-A-Volta": [
-        [45.303372, 9.498577],
-        'IIS A. Volta',
-        ,
-        '',
-        'IIS-A-Volta.jpg'
-    ],
-    "Casa-del-Gelato": [
-        [45.305723, 9.499810],
-        'Casa del Gelato',
+    "Parco-Adda-Sud": [
+        [45.314040272551736, 9.498271300674975],
+        "Parco Adda Sud",
         5,
-        'mmmmmh, buono il gelato',
-        'Casa-del-Gelato.jpg'
+        '',
+        ''
+    ],
+    "Duomo-di-Lodi": [
+        [45.314214319510235, 9.503150096251492],
+        "Duomo di Lodi",
+        5,
+        '',
+        ''
+    ],
+    "Parco-Isola-Carolina": [
+        [45.315097006869266, 9.498896680791935],
+        "Parco dell'Isola Carolina",
+        5,
+        '',
+        ''
+    ],
+    "Parco-Villa-Braila": [
+        [45.30376301489828, 9.508691843847435],
+        "Parco Villa Braila",
+        5,
+        '',
+        ''
+    ],
+    "Museo-della-Stampa": [
+        [45.31796325796598, 9.502647436164928],
+        "Museo della Stampa",
+        5,
+        '',
+        ''
+    ],
+    "Museo-dello-Strumento-Musicale-&-della-Musica": [
+        [45.30701338770822, 9.50199549913424],
+        "Museo dello Strumento Musicale & della Musica",
+        5,
+        '',
+        ''
+    ],
+    "Teatro-Alle-Vigne": [
+        [45.31506910520015, 9.506154729318768],
+        "Teatro Alle Vigne",
+        5,
+        '',
+        ''
+    ],
+    "Teatro-civico-Incoronata": [
+        [45.31465971960593, 9.502055674244136],
+        "Teatro Civico dell'Incoronata",
+        5,
+        '',
+        ''
+    ],
+    "Monumento-alla-Resistenza": [
+        [45.31043780366223, 9.501946341831502],
+        "Monumento alla Resistenza",
+        5,
+        '',
+        ''
+    ],
+    "Museo-di-Paolo-Gorini": [
+        [45.3138348117735, 9.508056454515657],
+        "Museo di Paolo Gorini",
+        5,
+        '',
+        ''
+    ],
+    "Chiesa-di-San-Francesco": [
+        [45.314617754968054, 9.507929720552477],
+        "Chiesa di San Francesco",
+        5,
+        '',
+        ''
+    ],
+    "Castello-Visconteo": [
+        [45.312376641034014, 9.498816848941937],
+        "Castello Visconteo",
+        5,
+        '',
+        ''
+    ],
+    "Torrione-di-Lodi": [
+        [45.3126397552172, 9.498001343678204],
+        "Torrione di Lodi",
+        5,
+        '',
+        ''
+    ],
+    "Stadio-Dossenina": [
+        [45.30739132224016, 9.495022000717784],
+        "Stadio Dossenina",
+        5,
+        '',
+        ''
+    ],
+    "Faustina-Sporting-Club": [
+        [45.300695861177324, 9.506869003676572],
+        "Faustina Sporting Club",
+        5,
+        '',
+        ''
+    ],
+    "Palazzetto-Palacastellotti": [
+        [45.297359483089814, 9.510770296119013],
+        "Palazzetto Palacastellotti",
+        5,
+        '',
+        ''
     ]
 }
 
-/** Icona markers */
+//! Icona markers
 const markerIcon = L.icon({
     iconUrl: 'img/marker-icone/markerIcona.png',
 
     iconSize:     [48, 48], // Grandezza icona
     iconAnchor:   [35, 60], // Punto dell'icona che indicherà il punto preciso sulla mappa
-    popupAnchor:  [0, -60]  // Punto da dove il popup si apre
+    popupAnchor:  [-10, -60]  // Punto da dove il popup si apre
 });
 
 
-/** Funzioni mappa */
+//! Funzioni mappa
 /* Inizializza 'onLoad' */
 function initializeMap() {
     const bounds = [
@@ -73,10 +164,25 @@ function coordinatesOnClick() {
     });
 }
 
+/* Chiudi tutti menu aperti se click sulla mappa */
+//TODO: Aggiungere altri menu se mai verranno creati
+function closeOpenMenus() {
+    map.on('click', () => {
+        if(document.getElementById('packagesMenu') != null) {
+            closePackagesMenu();
+        }
+        if(document.getElementById('addMarkerMenu') != null) {
+            closeAddSingleMarkerMenu();
+        }
+    });
+}
+
+/* Avvia mappa a caricamento pagina */
 document.body.onload = () => {
     console.log('Initializing map...');
     initializeMap();
     coordinatesOnClick();
+    closeOpenMenus();
 };
 
 /* Genera 'div' con 'img' in base al valore inserito sono 'piene' o no (necessaria per 'bindPopupInfos') */
@@ -108,45 +214,28 @@ function bindPopupInfos(title, rating, description, imageLink) {
     return info;
 }
 
+//! Utilità
+// Crea pulsanti con icona da Google + può assegnare un id + onClickFunction
+function createActionButton(iconName, id, onClickFunction) {
+    let button = document.createElement('span');
+    button.className = 'material-icons';
+    button.id = id;
+    button.setAttribute('onclick', onClickFunction);
+    button.textContent = iconName;
 
-/** Markers */
-/* Genera un singolo marker */
-function newSingleMarker([latitude, longitude], info) {
-    if([latitude, longitude] == undefined) {
-        console.log('Impossibile piazzare marker: "' + title + '", coordinate inesistenti!');
-        return null;
-    }
-
-    // Crea marker...
-    let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(info);
-
-    // ... e in output per salvarlo in 'markers' nella funzione 'addMarkerMenu'...
-    return marker;
+    return button;
 }
 
-/* Menu aggiungi/rimuovi singoli markers */
-var availablePlace = [];    // Flag se il marker esiste già o no (prevenire spam)
-for (const key in places) {
-    if (!(places.hasOwnProperty(key))) {
-        break;
-    }
-    availablePlace.push(key);
-}
-var singleMarkers = [];   // Contiene i singoli markers creati
-
+//! Marker singoli
+/* Menu marker singolo -> apri & chiudi */
 function addSingleMarkerMenu() {
     if(!(document.getElementById('addMarkerMenu') == null)) {
+        closeAddSingleMarkerMenu();
         return;
     }
     /* Div contenitore */
     var menu = document.createElement('div');
     menu.id = 'addMarkerMenu';
-
-    /* Bottone chiudi */
-    var closeButton = document.createElement('span');
-    closeButton.className = 'material-icons';
-    closeButton.textContent = 'close';
-    menu.appendChild(closeButton);
 
     /* Tendina di selezione */
     var selectBox = document.createElement('select');
@@ -163,21 +252,37 @@ function addSingleMarkerMenu() {
     menu.appendChild(selectBox);
 
     /* Bottoni flex-box (per metterli in fila) */
-    var buttonWrapper = document.createElement('div');
+    var buttonWrapperTop = document.createElement('div');
 
     // Bottone 'invia'
     var okButton = document.createElement('button');
     okButton.textContent = 'OK';
     okButton.setAttribute('onclick', 'singleMarkerMenuPlace()');
-    buttonWrapper.appendChild(okButton);
+    buttonWrapperTop.appendChild(okButton);
     
     // Bottone 'rimuovi'
     var cancelButton = document.createElement('button');
     cancelButton.textContent = 'Rimuovi';
     cancelButton.setAttribute('onclick', 'singleMarkerMenuRemove()');
-    buttonWrapper.appendChild(cancelButton);
+    buttonWrapperTop.appendChild(cancelButton);
+
+    var buttonWrapperBottom = document.createElement('div');
+
+    // Bottone 'aggiungi tutti'
+    var addAllButton = document.createElement('button');
+    addAllButton.textContent = 'Aggiungi tutti';
+    addAllButton.setAttribute('onclick', 'singleMarkerMenuAddAll()');
+    buttonWrapperBottom.appendChild(addAllButton);
+
+    // Bottone 'rimuovi tutti'
+    var cancelAllButton = document.createElement('button');
+    cancelAllButton.textContent = 'Rimuovi tutti';
+    cancelAllButton.setAttribute('onclick', 'singleMarkerMenuRemoveAll()');
+    buttonWrapperBottom.appendChild(cancelAllButton);
+
     
-    menu.appendChild(buttonWrapper);
+    menu.appendChild(buttonWrapperTop);
+    menu.appendChild(buttonWrapperBottom);
 
     /* Aggiungi all'HTML */
     document.body.appendChild(menu).offsetWidth;
@@ -185,16 +290,36 @@ function addSingleMarkerMenu() {
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
     menu.style.transform = 'translate(-50%, -50%) scale(1)';
-
-    /* Chiudi menu (con animazione d'uscita) */
-    closeButton.addEventListener('click', () => {
-        menu.style.transform = 'translate(-50%, -50%) scale(0)';
-        // Un po' di ritardo per l'animazione
-        setTimeout(function() {
-            document.body.removeChild(menu);
-        }, 300);
-    });
 }
+function closeAddSingleMarkerMenu() {
+    document.getElementById('addMarkerMenu').style.transform = 'translate(-50%, -50%) scale(0)';
+    setTimeout(function() {
+        document.getElementById('addMarkerMenu').remove();
+    }, 300);
+}
+
+var availablePlace = [];    // Flag se il marker esiste già o no (prevenire spam)
+for (const key in places) {
+    if (!(places.hasOwnProperty(key))) {
+        break;
+    }
+    availablePlace.push(key);
+}
+var singleMarkers = [];   // Contiene i singoli markers creati
+/* Genera un singolo marker */
+function newSingleMarker([latitude, longitude], info) {
+    if([latitude, longitude] == undefined) {
+        console.log('Impossibile piazzare marker: "' + title + '", coordinate inesistenti!');
+        return null;
+    }
+
+    // Crea marker...
+    let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(info);
+
+    // ... e in output per salvarlo in 'markers' nella funzione 'addMarkerMenu'...
+    return marker;
+}
+/* Metti / togli marker singolo piazzato */
 function singleMarkerMenuPlace() {
     var selectedPlace = document.querySelector('#addMarkerMenu select').value;
     
@@ -222,44 +347,86 @@ function singleMarkerMenuRemove() {
         availablePlace[availablePlace.indexOf(null)] = selectedPlace;
     }
 }
+/* Metti / togli TUTTI i marker piazzati */
+function singleMarkerMenuAddAll() {
+    if (availablePlace.every(element => element === null)) {
+        return;
+    }
 
-/** Utils */
-// Crea pulsanti con icona da Google + può assegnare un id
-function createActionButton(iconName, id, onClickFunction) {
-    let button = document.createElement('span');
-    button.className = 'material-icons';
-    button.id = id;
-    button.setAttribute('onclick', onClickFunction);
-    button.textContent = iconName;
+    for (let i = 0; i < availablePlace.length; i++) {
+        let marker = availablePlace[i];
 
-    return button;
+        if (marker === null) {
+            continue; // Skip to the next iteration if marker is null
+        }
+
+        // La funzione 'newMarker' della mappa, prendendo info direttamente da 'places'
+        var bindingInfos = bindPopupInfos(places[marker][1],
+                                          places[marker][2],
+                                          places[marker][3],
+                                          places[marker][4]);
+
+        singleMarkers[marker] = newSingleMarker(places[marker][0], bindingInfos);
+        // Quando un marker non dev'essere piazzato diventa 'null'
+        availablePlace[i] = null;
+    }
+}
+function singleMarkerMenuRemoveAll() {
+    for(const marker in singleMarkers) {
+        map.removeLayer(singleMarkers[marker]);
+    }
+    availablePlace = [];
+    for (const key in places) {
+        if (!(places.hasOwnProperty(key))) {
+            break;
+        }
+        availablePlace.push(key);
+    }
 }
 
-
-/** Pacchetti (WIP) | per adesso, in console: //!'startPackage('Package 1');' */
+//! Pacchetti
 const packages = {
     // L'ordine va da inizio a fine, ovviamente
-    "Package 1":[
-        places["Torre-Zucchetti"],
-        places["IIS-A-Volta"],
-        places["Casa-del-Gelato"]
-    ]
-    // TODO: Più pacchetti da inserire
+    // La 'key' sarà mostrata nel menu di select
+    "Parchi": [
+        places["Parco-Adda-Sud"],
+        places["Parco-Isola-Carolina"],
+        places["Parco-Villa-Braila"]
+    ],
+    "Musei & Teatri": [
+        places["Museo-della-Stampa"],
+        places["Museo-di-Paolo-Gorini"],
+        places["Teatro-Alle-Vigne"],
+        places["Museo-dello-Strumento-Musicale-&-della-Musica"]
+    ],
+    "Monumenti Onoranti": [
+        places["Monumento-alla-Resistenza"]             // ! Uno solo non va!!!
+    ],
+    "Religione": [
+        places["Duomo-di-Lodi"],
+        places["Teatro-civico-Incoronata"],
+        places["Chiesa-di-San-Francesco"]
+    ],
+    "Castelli": [
+        places["Castello-Visconteo"],
+        places["Torrione-di-Lodi"]
+    ],
+    "Strutture Sportive": [
+        places["Stadio-Dossenina"],
+        places["Faustina-Sporting-Club"],
+        places["Palazzetto-Palacastellotti"]
+    ],
 }
 
+/* Menu pacchetti -> apri & chiudi */
 function packagesMenu() {
     if(!(document.getElementById('packagesMenu') == null)) {
+        closePackagesMenu();
         return;
     }
     /* Div contenitore */
     var menu = document.createElement('div');
     menu.id = 'packagesMenu';
-
-    /* Bottone chiudi */
-    var closeButton = document.createElement('span');
-    closeButton.className = 'material-icons';
-    closeButton.textContent = 'close';
-    menu.appendChild(closeButton);
 
     /* Tendina di selezione */
     var selectBox = document.createElement('select');
@@ -278,13 +445,13 @@ function packagesMenu() {
     // Bottone 'invia'
     var okButton = document.createElement('button');
     okButton.textContent = 'OK';
-    okButton.setAttribute('onclick', 'startPackage()');
+    okButton.setAttribute('onclick', 'layPackage()');
     buttonWrapper.appendChild(okButton);
     
     // Bottone 'rimuovi'
     var cancelButton = document.createElement('button');
     cancelButton.textContent = 'Rimuovi';
-    cancelButton.setAttribute('onclick', '');
+    cancelButton.setAttribute('onclick', 'removeLaidPackage()');
     buttonWrapper.appendChild(cancelButton);
     
     menu.appendChild(buttonWrapper);
@@ -295,17 +462,21 @@ function packagesMenu() {
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
     menu.style.transform = 'translate(-50%, -50%) scale(1)';
-
-    /* Chiudi menu (con animazione d'uscita) */
-    closeButton.addEventListener('click', () => {
-        menu.style.transform = 'translate(-50%, -50%) scale(0)';
-        // Un po' di ritardo per l'animazione
-        setTimeout(function() {
-            document.body.removeChild(menu);
-        }, 300);
-    });
 }
-function startPackage(selectedPackage) {
+function closePackagesMenu() {
+    document.getElementById('packagesMenu').style.transform = 'translate(-50%, -50%) scale(0)';
+    setTimeout(function() {
+        document.getElementById('packagesMenu').remove();
+    }, 300);
+}
+
+/* Metti / togli itinerario piazzato */
+var isPackageLaid = false;
+var currentPackageRouting;
+function layPackage() {
+    removeLaidPackage();
+
+    const selectedPackage = document.querySelector('#packagesMenu select').value;
     /* Prendi il 'pacchetto' da 'const packages' in base al parametro mandato */
     var places = packages[selectedPackage];
 
@@ -328,7 +499,7 @@ function startPackage(selectedPackage) {
     var imageLinks = places.map((imageLink) => { return imageLink[4]; });
 
     /* Aggiungi alla mappa */
-    L.Routing.control({
+    currentPackageRouting = L.Routing.control({
         // Per ogni singolo 'waypoint'
         waypoints: waypoints,
         language: 'it',
@@ -343,4 +514,16 @@ function startPackage(selectedPackage) {
             }).bindPopup(bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i])); // Aggiungi pop-ups
         }
     }).addTo(map);
+
+    isPackageLaid = true;
+}
+function removeLaidPackage() {
+    if (!isPackageLaid || !currentPackageRouting) {
+        return;
+    }
+
+    map.removeControl(currentPackageRouting);
+
+    isPackageLaid = false;
+    currentPackageRouting = null;
 }

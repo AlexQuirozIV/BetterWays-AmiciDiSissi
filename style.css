@@ -63,7 +63,6 @@
     overflow: auto;
     overflow-wrap: break-word;
     max-height: 100px;
-    max-width: 200px;
     background-color: #3f3f3f;
     border-radius: 10px;
     padding: 5px;
@@ -157,14 +156,16 @@ a.leaflet-popup-close-button:hover {
 /* Menu aggiunta markers */
 #addMarkerMenu, #packagesMenu {
     z-index: 1000;
-    width: 200px;
+    width: 300px;
     height: auto;
     background-color: #252525;
     position: fixed;
-    top: 50%;
-    left: 50%;
+    bottom: 2rem;
+    right: -8rem;
     transform: translate(-50%, -50%) scale(0);
-    padding: 20px;
+    padding: 25px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     box-sizing: border-box;
     border-radius: 25px;
     text-align: center;
@@ -187,7 +188,6 @@ a.leaflet-popup-close-button:hover {
     text-align: center;
     border-radius: 50px;
     border: none;
-    margin-top: 25px;
     font-weight: bold;
     font-size: 90%;
 }
@@ -201,6 +201,7 @@ a.leaflet-popup-close-button:hover {
 }
 
 #addMarkerMenu div, #packagesMenu div {
+    margin-top: 10px;
     display: flex;
     justify-content: space-around;
 }
