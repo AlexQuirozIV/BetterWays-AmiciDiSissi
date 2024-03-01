@@ -1,3 +1,10 @@
+:root {
+    --navbar-width: 100px;
+    --navbar-height: calc(100%vw);
+    --highlight-color: #F9BF4D;
+    --base-color: #747474;
+}
+
 * {
     font-family: 'Comfortaa', Arial;
 }
@@ -22,140 +29,6 @@
 #map {
     height: 100vh;
     width: auto;
-}
-
-/* Hamburger Menu */
-#settingsMenu {
-    width: 60px;
-    height: 60px;
-    background-color: rgb(165, 165, 165);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 35px;
-    position: fixed;
-    left: 1rem;
-    top: 5rem;
-    transition: 0.2s ease-in-out;
-    z-index: 1000;
-    cursor: pointer;
-    user-select: none;
-    
-}
-
-#settingsMenu > div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#curtain-background {
-    width: 70px;
-    height: 16rem;
-    background-color: rgb(86, 61, 61);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 35px;
-    position: fixed;
-    left: 1rem;
-    top: 5rem;
-    transition: 0.2s ease-in-out;
-    z-index: 1000;
-    cursor: pointer;
-    user-select: none;
-}
-
-
-/* Pacchetti */
-#package-btn {
-    width: 60px;
-    height: 60px;
-    background-color: rgb(165, 165, 165);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 35px;
-    position: fixed;
-    left: 1rem;
-    top: 9rem;
-    transition: 0.2s ease-in-out;
-    z-index: 1000;
-    cursor: pointer;
-    user-select: none;
-}
-
-/* Accessibilità */
-#accessibility-btn {
-    width: 60px;
-    height: 60px;
-    background-color: rgb(165, 165, 165);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 35px;
-    position: fixed;
-    left: 1rem;
-    top: 13rem;
-    transition: 0.2s ease-in-out;
-    z-index: 1000;
-    cursor: pointer;
-    user-select: none;
-}
-
-/* Impostazioni */
-#settings-btn {
-    width: 60px;
-    height: 60px;
-    background-color: rgb(165, 165, 165);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 35px;
-    position: fixed;
-    left: 1rem;
-    top: 17rem;
-    transition: 0.2s ease-in-out;
-    z-index: 1000;
-    cursor: pointer;
-    user-select: none;
-}
-
-/* Gruppo */
-#groups-btn {
-    width: 60px;
-    height: 60px;
-    background-color: rgb(165, 165, 165);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 35px;
-    position: fixed;
-    left: 1rem;
-    top: 21rem;
-    transition: 0.2s ease-in-out;
-    z-index: 1000;
-    cursor: pointer;
-    user-select: none;
 }
 
 /* Formattazione pop-ups */
@@ -282,7 +155,7 @@ a.leaflet-popup-close-button:hover {
 }
 
 /* Menu aggiunta markers */
-#addMarkerMenu {
+#addMarkerMenu, #packagesMenu {
     z-index: 1000;
     width: 200px;
     height: auto;
@@ -298,7 +171,7 @@ a.leaflet-popup-close-button:hover {
     filter: blur(0px) !important;
 }
 
-#addMarkerMenu span {
+#addMarkerMenu span, #packagesMenu span {
     position: absolute;
     color: white;
     top: 10px;
@@ -307,7 +180,7 @@ a.leaflet-popup-close-button:hover {
     font-size: 20px;
 }
 
-#addMarkerMenu select {
+#addMarkerMenu select, #packagesMenu select {
     margin-bottom: 10px;
     width: 100%;
     height: 2rem;
@@ -319,7 +192,7 @@ a.leaflet-popup-close-button:hover {
     font-size: 90%;
 }
 
-#addMarkerMenu button {
+#addMarkerMenu button, #packagesMenu button {
     text-align: center;
     border-radius: 50px;
     padding: 10px;
@@ -327,35 +200,165 @@ a.leaflet-popup-close-button:hover {
     font-weight: bold;
 }
 
-#addMarkerMenu div {
+#addMarkerMenu div, #packagesMenu div {
     display: flex;
     justify-content: space-around;
 }
 
-/* div groups */
-#groupsBtnMenu {
-    width: 20rem;
-    height: 27rem;
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: left;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    position: fixed;
-    left: 5.44rem;
-    top: 5rem;
-    transition: 0.2s ease-in-out;
-    z-index: 1000;
-    cursor: auto;
-    user-select: none;
-    border-radius: 5%;
-    font-size: 20px;
-    line-height: 140%;
-    padding: 1%;
+#packagesMenu {
+    top: 10.55rem;
+    left: 18rem;
+    width: 300px;
+    height: 10rem;
 }
 
-.prova {
-    color: green;
+#packagesMenu div {
+    margin-top: 15px;
+}
+
+/* Ciao Alecs :D */
+/* Navbar */
+#navbarWrapper {
+    background-color: #444444;
+    position: absolute;
+    height: var(--navbar-height);
+    width: var(--navbar-width);
+    z-index: 1000;
+    left: 2vh;
+    top: 5.5rem;
+    display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-start;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+#navbarHeader {
+    position: relative;
+    background-image: url(./img/titleHeader.jpg);
     text-align: center;
-    
+    width: inherit;
+    color: var(--highlight-color);
+    font-family: "Bebas Neue" , sans-serif;
+    font-size: 100%;
+    padding: 25px;
+    padding-left: 0px;
+    padding-right: 0px;
+    display: flex;
+        justify-content: flex-start;
+        align-items: center;
+}
+
+#navbarHeader > span {
+    font-size: 180%;
+    cursor: pointer;
+    background-color: var(--base-color);
+    border-radius: 50%;
+    padding: 15px;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+
+#navbarHeader > h1 {
+    margin: 0;
+}
+
+#navbarContent {
+    position: relative;
+    width: var(--navbar-width);
+    height: 388px;
+    display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    background-color: #444444;
+    overflow-x: hidden;
+}
+
+.navButton {
+    width: var(--navbar-width);
+    display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.navButtonInfo {
+    font-size: 100%;
+    background-color: var(--highlight-color);
+    padding: 5px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #5f5f5f;
+}
+
+.navButtonIcon {
+    font-size: 180% !important;
+    background-color: var(--base-color);
+    color: var(--highlight-color);
+    border-radius: 50%;
+    padding: 15px;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+
+.navbarSeparator {
+    border-color: #292929;
+    border-radius: 200px;
+    border-width: 2px;
+    border-style: solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: calc(var(--navbar-width) - 15px);
+}
+
+#navbarFooter {
+    height: 100%;
+    display: flex;
+        align-items: flex-end;
+}
+
+#navbarFooter > div{
+    background-image: url(./img/titleHeader.jpg);
+    width: var(--navbar-width);
+    display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    padding-top: 20px;
+    padding-bottom: 25px;
+}
+
+#navbarFooter > div > span {
+    font-size: 180% !important;
+    background-color: var(--base-color);
+    color: var(--highlight-color);
+    border-radius: 50%;
+    padding: 15px;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+
+#navbarFooter > div > h1 {
+    margin: 0;
+    color: var(--highlight-color);
+    background-color: var(--base-color);
+    padding: 15px;
+    border-radius: 25px;
+    font-size: 150%;
+}
+
+.leaflet-control-zoom {
+    top: 5rem !important;
+}
+
+@media only screen and (max-height: 600px) {
+    #navbarWrapper {
+        scale: 80%;
+        top: 2rem !important;
+    }
 }

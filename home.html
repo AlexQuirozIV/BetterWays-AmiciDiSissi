@@ -8,12 +8,8 @@
     <link rel="icon" type="image/x-icon" href="img/icona.jpg"> <!-- Logo del sito -->
 
     <!-- Icone bottoni -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /> <!-- menu -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> <!-- add_location -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> <!-- accessibility_new -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> <!-- settings -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> <!-- groups -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> <!-- location_on -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+
     
     <!-- Leaflet CSS file -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -43,13 +39,41 @@
     
     <div id="map"></div> <!-- Contiene la mappa -->
 
-    <span onclick="addSingleMarkerMenu()" id="addMarker-btn" class="material-icons">add_location</span> <!-- Bottone posizioni-->
-    
-    <div id="settingsMenu">
-        <div onclick="settingsMenu()">
-           <span id="settingsMenu-btn" class="material-symbols-outlined">menu</span> <!-- Bottone impostazioni-->
+    <div id="navbarWrapper">    <!--  raggruppa tutti gli elementi della barra di navigazione -->
+        <div id="navbarHeader"> <!-- intestazione della barra di navigazione -->
+            <span class="material-symbols-outlined">person</span>
+        </div>
+        <div id="navbarContent">
+            <hr class="navbarSeparator">    <!-- linea di separazione dei bottoni -->
+            <div class="navButton">
+                <span onclick="packagesMenu()" class="navButtonIcon material-symbols-outlined">location_on</span>
+            </div>
+
+            <hr class="navbarSeparator">
+
+            <div class="navButton">
+                <span class="navButtonIcon material-symbols-outlined">accessibility_new</span>
+            </div>
+
+            <hr class="navbarSeparator">
+
+            <div class="navButton">
+                <span class="navButtonIcon material-symbols-outlined">settings</span>
+            </div>
+
+            <hr class="navbarSeparator">
+
+            <div class="navButton">
+                <span class="navButtonIcon material-symbols-outlined">groups</span>
+            </div>
+            
+            <hr class="navbarSeparator">
+
         </div>
     </div>
-    <script src="map.js"></script> <!-- Script mappa -->
+
+    <span onclick="addSingleMarkerMenu()" id="addMarker-btn" class="material-icons">add_location</span> <!-- Bottone posizioni-->
+
+    <script src="map.js"></script> <!-- Script per la mappa -->
 </body>
 </html>

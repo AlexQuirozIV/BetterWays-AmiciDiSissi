@@ -61,7 +61,7 @@ function initializeMap() {
 
     // Controlli zoom pulsanti
     L.control.zoom({
-        position: 'bottomleft'
+        position: 'topright'
     }).addTo(map);
 }
 
@@ -223,49 +223,6 @@ function singleMarkerMenuRemove() {
     }
 }
 
-
-/** Menu Settings :P */
-var isSettingsMenuOpened = false;
-function settingsMenu() {
-    let div = document.createElement('div');
-    div.id = 'curtain-background';
-    const buttons = [
-     // 'Google icon name', 'id', 'onClickFunction', 'description' //TODO: Aggiungere funzioni
-        ['location_on', 'package-btn', ''],
-        ['accessibility_new', 'accessibility-btn', ''],
-        ['settings', 'settings-btn', ''],
-        ['groups', 'groups-btn', 'groupsBtnMenu()']
-    ];
-
-    if(isSettingsMenuOpened == true) {
-        for(let i = 0; i < buttons.length; i++) {
-            document.getElementById(buttons[i][1]).remove();
-        }
-        isSettingsMenuOpened = false;
-        return;
-    }
-
-    var settingsMenu = document.getElementById('settingsMenu');
-    for(let i = 0; i < buttons.length; i++) {
-        let button = createActionButton(buttons[i][0], buttons[i][1], buttons[i][2]);
-
-        settingsMenu.appendChild(button);
-    }
-
-    document.body.appendChild(settingsMenu).offsetWidth;
-    isSettingsMenuOpened = true;
-
-    
-}
-
-function groupsBtnMenu() {
-    let div = document.createElement('div');
-    div.id = 'groupsBtnMenu';
-    div.innerHTML = "<div class='prova'>Il nostro team</div> Benvenuti nel mondo di 'Better Ways'!  Siamo cinque studenti della classe 4ID dell'istituto IIS A. Volta di Lodi. Ci chiamiamo: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti e Linda Tessadori. Il nostro sito, 'Better Ways', è incentrato sul turismo di Lodi, per scoprire le meraviglie che questa piccola città ha da offrire.";
-    document.body.appendChild(div).offsetWidth;
-}
-
-
 /** Utils */
 // Crea pulsanti con icona da Google + può assegnare un id
 function createActionButton(iconName, id, onClickFunction) {
@@ -290,6 +247,64 @@ const packages = {
     // TODO: Più pacchetti da inserire
 }
 
+function packagesMenu() {
+    if(!(document.getElementById('packagesMenu') == null)) {
+        return;
+    }
+    /* Div contenitore */
+    var menu = document.createElement('div');
+    menu.id = 'packagesMenu';
+
+    /* Bottone chiudi */
+    var closeButton = document.createElement('span');
+    closeButton.className = 'material-icons';
+    closeButton.textContent = 'close';
+    menu.appendChild(closeButton);
+
+    /* Tendina di selezione */
+    var selectBox = document.createElement('select');
+    for(const pack in packages) {
+        let option = document.createElement('option');
+        option.value = pack;
+        option.text = pack;
+        selectBox.add(option);
+    }
+
+    menu.appendChild(selectBox);
+
+    /* Bottoni flex-box (per metterli in fila) */
+    var buttonWrapper = document.createElement('div');
+
+    // Bottone 'invia'
+    var okButton = document.createElement('button');
+    okButton.textContent = 'OK';
+    okButton.setAttribute('onclick', 'startPackage()');
+    buttonWrapper.appendChild(okButton);
+    
+    // Bottone 'rimuovi'
+    var cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Rimuovi';
+    cancelButton.setAttribute('onclick', '');
+    buttonWrapper.appendChild(cancelButton);
+    
+    menu.appendChild(buttonWrapper);
+
+    /* Aggiungi all'HTML */
+    document.body.appendChild(menu).offsetWidth;
+
+    /* Animazione entrata/uscita menu */
+    menu.style.transition = '0.2s ease';
+    menu.style.transform = 'translate(-50%, -50%) scale(1)';
+
+    /* Chiudi menu (con animazione d'uscita) */
+    closeButton.addEventListener('click', () => {
+        menu.style.transform = 'translate(-50%, -50%) scale(0)';
+        // Un po' di ritardo per l'animazione
+        setTimeout(function() {
+            document.body.removeChild(menu);
+        }, 300);
+    });
+}
 function startPackage(selectedPackage) {
     /* Prendi il 'pacchetto' da 'const packages' in base al parametro mandato */
     var places = packages[selectedPackage];
