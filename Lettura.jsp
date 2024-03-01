@@ -3,8 +3,8 @@
 <%@page import="java.util.*"%>
 <%@page import="Gestione.Server"%>
 
-<!DOCTYPE html>
-<html>
+ <!DOCTYPE html>
+ <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Marker e routing</title>
@@ -21,16 +21,16 @@
     <body>
         <div id="map"></div>
         <script>   
-            const map = L.map('map', {zoomControl: false}).setView([45.309062, 9.501200], 14);
+        const map = L.map('map', {zoomControl: false}).setView([45.309062, 9.501200], 14);
 
-            /** Tappe - informazioni */
-            const places = {
-                "Torre-Zucchetti": [
-                    [45.301689, 9.492247],
-                    'Torre Zucchetti',
+        /** Tappe - informazioni */
+        const places = {
+            "Torre-Zucchetti": [
+            [45.301689, 9.492247],
+            'Torre Zucchetti',
                     4,
-                    'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-                    'Torre-Zucchetti.jpg'
+            'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+                'Torre-Zucchetti.jpg'
                 ],
                 "IIS-A-Volta": [
                     [45.303372, 9.498577],
@@ -47,50 +47,48 @@
                     'Casa-del-Gelato.jpg'
                 ]
             }
-        </script>
+         </script>
         <%
         //Dichiaro un oggetto file con l'indicazione del nome del file (Server.txt)
-        FileInputStream file = new FileInputStream("Server.txt");
+         FileInputStream file = new FileInputStream("Server.txt");
 
         //Oggetto scanner per leggere una linea
-        Scanner lettore=new Scanner(file);
+         Scanner lettore=new Scanner(file);
 
         //conterrà una riga letta da Server.txt
-        String linea;
+         String linea;
 
         //oggetto che permette lo split
-        StringTokenizer locale;
+         StringTokenizer locale;
 
         //variabili String che memorizzeranno i dati del locle
-        String lg="",lt="",nome="", indirizzo="";
+         String lg="",lt="",nome="", indirizzo="";
 
         //inizio del ciclo di lettura
-        while(lettore.hasNextLine()==true){
+         while(lettore.hasNextLine()==true){
 
             //si legge una linea dal file POI.txt
-            linea=lettore.nextLine();
+             linea=lettore.nextLine();
 
-            // inizalizzo l'oggetto locale,in modo che spezzetti i dati,
-            //passando al costruttore la linea letta
-            // e indicando i caratteri di separazione dei dati
-            locale = new StringTokenizer(linea,"%%%");
+            // inizalizzo l'oggetto locale,in modo che spezzetti i dati,passando al costruttore la linea letta
+             e indicando i caratteri di separazione dei dati
+              locale = new StringTokenizer(linea,"%%%");
 
             //attribuisco i dati alle variabili string
-            lt=locale.nextToken();
-            lg=locale.nextToken();
-            nome=locale.nextToken();
-            indirizzo=locale.nextToken();
+             lt=locale.nextToken();
+            l g=locale.nextToken();
+             nome=locale.nextToken();
+             indirizzo=locale.nextToken();
 
             //creo il testo del popup
-            String tst;
-            tst="<b>"+nome+"</b><br>";
-            tst+=indirizzo+"<br>";
+             String tst;
+             tst="<b>"+nome+"</b><br>";
+             tst+=indirizzo+"<br>";
             //chiudo java
-            %>
+             %>
             <!--apro javascript-->
-            <script>
-                //passo i dati del Marker e del Popup
-                //con Jason
+             <script>
+                //passo i dati del Marker e del Popup con Jason
                 lat=<%=lt%>;
                 long=<%=lg%>;
                 testo="<%=tst%>";
