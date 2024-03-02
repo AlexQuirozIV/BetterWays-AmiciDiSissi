@@ -143,8 +143,7 @@ function initializeMap() {
     // Funzioni necessarie (+ min e max zoom)
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         minZoom: 14,
-        maxZoom: 18,
-        attribution: '<a target="_blank" href="https://google.com">&copy</a>'
+        maxZoom: 18
     }).addTo(map);
 
     // Imposta limiti
@@ -237,6 +236,11 @@ function addSingleMarkerMenu() {
     var menu = document.createElement('div');
     menu.id = 'addMarkerMenu';
 
+    /* Titolo */
+    var title = document.createElement('span');
+    title.innerHTML = 'Marker Singoli';
+    menu.appendChild(title);
+
     /* Tendina di selezione */
     var selectBox = document.createElement('select');
     for (const key in places) {
@@ -252,37 +256,34 @@ function addSingleMarkerMenu() {
     menu.appendChild(selectBox);
 
     /* Bottoni flex-box (per metterli in fila) */
-    var buttonWrapperTop = document.createElement('div');
+    var buttonWrapper = document.createElement('div');
 
     // Bottone 'invia'
     var okButton = document.createElement('button');
     okButton.textContent = 'OK';
     okButton.setAttribute('onclick', 'singleMarkerMenuPlace()');
-    buttonWrapperTop.appendChild(okButton);
+    buttonWrapper.appendChild(okButton);
     
     // Bottone 'rimuovi'
     var cancelButton = document.createElement('button');
     cancelButton.textContent = 'Rimuovi';
     cancelButton.setAttribute('onclick', 'singleMarkerMenuRemove()');
-    buttonWrapperTop.appendChild(cancelButton);
-
-    var buttonWrapperBottom = document.createElement('div');
+    buttonWrapper.appendChild(cancelButton);
 
     // Bottone 'aggiungi tutti'
     var addAllButton = document.createElement('button');
     addAllButton.textContent = 'Aggiungi tutti';
     addAllButton.setAttribute('onclick', 'singleMarkerMenuAddAll()');
-    buttonWrapperBottom.appendChild(addAllButton);
+    buttonWrapper.appendChild(addAllButton);
 
     // Bottone 'rimuovi tutti'
     var cancelAllButton = document.createElement('button');
     cancelAllButton.textContent = 'Rimuovi tutti';
     cancelAllButton.setAttribute('onclick', 'singleMarkerMenuRemoveAll()');
-    buttonWrapperBottom.appendChild(cancelAllButton);
+    buttonWrapper.appendChild(cancelAllButton);
 
     
-    menu.appendChild(buttonWrapperTop);
-    menu.appendChild(buttonWrapperBottom);
+    menu.appendChild(buttonWrapper);
 
     /* Aggiungi all'HTML */
     document.body.appendChild(menu).offsetWidth;
@@ -427,6 +428,11 @@ function packagesMenu() {
     /* Div contenitore */
     var menu = document.createElement('div');
     menu.id = 'packagesMenu';
+
+    /* Titolo */
+    var title = document.createElement('span');
+    title.innerHTML = 'Itinerari';
+    menu.appendChild(title);
 
     /* Tendina di selezione */
     var selectBox = document.createElement('select');

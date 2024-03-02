@@ -156,16 +156,16 @@ a.leaflet-popup-close-button:hover {
 /* Menu aggiunta markers */
 #addMarkerMenu, #packagesMenu {
     z-index: 1000;
-    width: 300px;
-    height: auto;
+    width: fit-content;
+    height: fit-content;
     background-color: #252525;
     position: fixed;
-    bottom: 2rem;
-    right: -8rem;
+    bottom: 1rem;
+    right: -16.5rem;
     transform: translate(-50%, -50%) scale(0);
     padding: 25px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     box-sizing: border-box;
     border-radius: 25px;
     text-align: center;
@@ -173,16 +173,13 @@ a.leaflet-popup-close-button:hover {
 }
 
 #addMarkerMenu span, #packagesMenu span {
-    position: absolute;
     color: white;
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
     font-size: 20px;
 }
 
 #addMarkerMenu select, #packagesMenu select {
     margin-bottom: 10px;
+    margin-top: 15px;
     width: 100%;
     height: 2rem;
     text-align: center;
@@ -203,14 +200,12 @@ a.leaflet-popup-close-button:hover {
 #addMarkerMenu div, #packagesMenu div {
     margin-top: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 #packagesMenu {
-    top: 10.55rem;
+    top: 11.5rem;
     left: 18rem;
-    width: 300px;
-    height: 10rem;
 }
 
 #packagesMenu div {
@@ -280,11 +275,10 @@ a.leaflet-popup-close-button:hover {
     width: var(--navbar-width);
     display: flex;
         flex-wrap: nowrap;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
     padding-top: 5px;
     padding-bottom: 5px;
-    cursor: pointer;
 }
 
 .navButtonInfo {
@@ -304,8 +298,7 @@ a.leaflet-popup-close-button:hover {
     color: var(--highlight-color);
     border-radius: 50%;
     padding: 15px;
-    margin-left: 20px;
-    margin-right: 30px;
+    cursor: pointer;
 }
 
 .navbarSeparator {
