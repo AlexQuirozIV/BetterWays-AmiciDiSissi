@@ -310,7 +310,7 @@ var singleMarkers = [];   // Contiene i singoli markers creati
 /* Genera un singolo marker */
 function newSingleMarker([latitude, longitude], info) {
     if([latitude, longitude] == undefined) {
-        console.log('Impossibile piazzare marker: "' + title + '", coordinate inesistenti!');
+        console.log('Impossibile piazzare marker, coordinate inesistenti!');
         return null;
     }
 
