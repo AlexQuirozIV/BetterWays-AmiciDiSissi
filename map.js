@@ -173,6 +173,15 @@ function closeOpenMenus() {
         if(document.getElementById('addMarkerMenu') != null) {
             closeAddSingleMarkerMenu();
         }
+        if(document.getElementById('chiSiamoMenu') != null) {
+            closeChiSiamoMenu();
+        }
+        if(document.getElementById('accessibilityMenu') != null) {
+            closeAccessibilityMenu();
+        }
+        if(document.getElementById('settingsMenu') != null) {
+            closeSettingsMenu();
+        }
     });
 }
 
@@ -225,6 +234,7 @@ function createActionButton(iconName, id, onClickFunction) {
     return button;
 }
 
+var availableMenu = [];
 //! Marker singoli
 /* Menu marker singolo -> apri & chiudi */
 function addSingleMarkerMenu() {
@@ -232,6 +242,10 @@ function addSingleMarkerMenu() {
         closeAddSingleMarkerMenu();
         return;
     }
+    if(availableMenu.length != 0) {
+        return;
+    }
+
     /* Div contenitore */
     var menu = document.createElement('div');
     menu.id = 'addMarkerMenu';
@@ -287,6 +301,7 @@ function addSingleMarkerMenu() {
 
     /* Aggiungi all'HTML */
     document.body.appendChild(menu).offsetWidth;
+    availableMenu.push(menu.id);
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
@@ -296,6 +311,7 @@ function closeAddSingleMarkerMenu() {
     document.getElementById('addMarkerMenu').style.transform = 'translate(-50%, -50%) scale(0)';
     setTimeout(function() {
         document.getElementById('addMarkerMenu').remove();
+        availableMenu.pop(document.getElementById('addMarkerMenu'));
     }, 300);
 }
 
@@ -389,10 +405,17 @@ function singleMarkerMenuRemoveAll() {
 const packages = {
     // L'ordine va da inizio a fine, ovviamente
     // La 'key' sarà mostrata nel menu di select
-    "Parchi": [
-        places["Parco-Adda-Sud"],
-        places["Parco-Isola-Carolina"],
-        places["Parco-Villa-Braila"]
+    "Castelli": [
+        places["Castello-Visconteo"],
+        places["Torrione-di-Lodi"]
+    ],
+    "Luoghi Religiosi": [
+        places["Duomo-di-Lodi"],
+        places["Teatro-civico-Incoronata"],
+        places["Chiesa-di-San-Francesco"]
+    ],
+    "Monumenti Onoranti": [
+        places["Monumento-alla-Resistenza"]             // ! Uno solo non va!!!
     ],
     "Musei & Teatri": [
         places["Museo-della-Stampa"],
@@ -400,23 +423,16 @@ const packages = {
         places["Teatro-Alle-Vigne"],
         places["Museo-dello-Strumento-Musicale-&-della-Musica"]
     ],
-    "Monumenti Onoranti": [
-        places["Monumento-alla-Resistenza"]             // ! Uno solo non va!!!
-    ],
-    "Religione": [
-        places["Duomo-di-Lodi"],
-        places["Teatro-civico-Incoronata"],
-        places["Chiesa-di-San-Francesco"]
-    ],
-    "Castelli": [
-        places["Castello-Visconteo"],
-        places["Torrione-di-Lodi"]
+    "Parchi": [
+        places["Parco-Adda-Sud"],
+        places["Parco-Isola-Carolina"],
+        places["Parco-Villa-Braila"]
     ],
     "Strutture Sportive": [
         places["Stadio-Dossenina"],
         places["Faustina-Sporting-Club"],
         places["Palazzetto-Palacastellotti"]
-    ],
+    ]
 }
 
 /* Menu pacchetti -> apri & chiudi */
@@ -425,6 +441,10 @@ function packagesMenu() {
         closePackagesMenu();
         return;
     }
+    if(availableMenu.length != 0) {
+        return;
+    }
+
     /* Div contenitore */
     var menu = document.createElement('div');
     menu.id = 'packagesMenu';
@@ -464,6 +484,7 @@ function packagesMenu() {
 
     /* Aggiungi all'HTML */
     document.body.appendChild(menu).offsetWidth;
+    availableMenu.push(menu.id);
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
@@ -473,6 +494,7 @@ function closePackagesMenu() {
     document.getElementById('packagesMenu').style.transform = 'translate(-50%, -50%) scale(0)';
     setTimeout(function() {
         document.getElementById('packagesMenu').remove();
+        availableMenu.pop(document.getElementById('packagesMenu'));
     }, 300);
 }
 
@@ -532,4 +554,127 @@ function removeLaidPackage() {
 
     isPackageLaid = false;
     currentPackageRouting = null;
+}
+
+
+//! Chi siamo?
+function chiSiamoMenu() {
+    if(!(document.getElementById('chiSiamoMenu') == null)) {
+        closeChiSiamoMenu();
+        return;
+    }
+    if(availableMenu.length != 0) {
+        return;
+    }
+
+    /* Div contenitore */
+    var menu = document.createElement('div');
+    menu.id = 'chiSiamoMenu';
+
+    /* Titolo */
+    var title = document.createElement('div');
+    title.innerHTML = 'Il Nostro Team';
+    menu.appendChild(title);
+
+    /* Bottoni flex-box (per metterli in fila) */
+    var description = document.createElement('span');
+    description.innerHTML = `Benvenuti nel mondo di "<i>Better Ways</i>"! Siamo cinque studenti della classe 4ID dell'istituto IIS A. Volta di Lodi.
+                             <br>Ci chiamiamo: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti e Linda Tessadori.
+                             <br>Il nostro sito, "<i>Better Ways</i>", è incentrato sul turismo di Lodi, per scoprire le meraviglie che questa piccola città ha da offrire.`;
+    menu.appendChild(description);
+
+    /* Aggiungi all'HTML */
+    document.body.appendChild(menu).offsetWidth;
+    availableMenu.push(menu.id);
+
+    /* Animazione entrata/uscita menu */
+    menu.style.transition = '0.2s ease';
+    menu.style.transform = 'translate(-50%, -50%) scale(1)';
+}
+function closeChiSiamoMenu() {
+    document.getElementById('chiSiamoMenu').style.transform = 'translate(-50%, -50%) scale(0)';
+    setTimeout(function() {
+        document.getElementById('chiSiamoMenu').remove();
+        availableMenu.pop(document.getElementById('chiSiamoMenu'));
+    }, 300);
+}
+
+//! Accessibilità menu
+function accessibilityMenu() {
+    if(!(document.getElementById('accessibilityMenu') == null)) {
+        closeAccessibilityMenu();
+        return;
+    }
+    if(availableMenu.length != 0) {
+        return;
+    }
+
+    /* Div contenitore */
+    var menu = document.createElement('div');
+    menu.id = 'accessibilityMenu';
+
+    /* Titolo */
+    var title = document.createElement('div');
+    title.innerHTML = 'Accessibilità';
+    menu.appendChild(title);
+
+    /* Immagine */
+    var image = document.createElement('img');
+    image.setAttribute('src', 'img/work-in-progress.png');
+    menu.appendChild(image);
+
+    /* Aggiungi all'HTML */
+    document.body.appendChild(menu).offsetWidth;
+    availableMenu.push(menu.id);
+
+    /* Animazione entrata/uscita menu */
+    menu.style.transition = '0.2s ease';
+    menu.style.transform = 'translate(-50%, -50%) scale(1)';
+}
+function closeAccessibilityMenu() {
+    document.getElementById('accessibilityMenu').style.transform = 'translate(-50%, -50%) scale(0)';
+    setTimeout(function() {
+        document.getElementById('accessibilityMenu').remove();
+        availableMenu.pop(document.getElementById('accessibilityMenu'));
+    }, 300);
+}
+
+//! Settings menu
+function settingsMenu() {
+    if(!(document.getElementById('settingsMenu') == null)) {
+        closeSettingsMenu();
+        return;
+    }
+    if(availableMenu.length != 0) {
+        return;
+    }
+
+    /* Div contenitore */
+    var menu = document.createElement('div');
+    menu.id = 'settingsMenu';
+
+    /* Titolo */
+    var title = document.createElement('div');
+    title.innerHTML = 'Impostazioni';
+    menu.appendChild(title);
+
+    /* Immagine */
+    var image = document.createElement('img');
+    image.setAttribute('src', 'img/work-in-progress.png');
+    menu.appendChild(image);
+
+    /* Aggiungi all'HTML */
+    document.body.appendChild(menu).offsetWidth;
+    availableMenu.push(menu.id);
+
+    /* Animazione entrata/uscita menu */
+    menu.style.transition = '0.2s ease';
+    menu.style.transform = 'translate(-50%, -50%) scale(1)';
+}
+function closeSettingsMenu() {
+    document.getElementById('settingsMenu').style.transform = 'translate(-50%, -50%) scale(0)';
+    setTimeout(function() {
+        document.getElementById('settingsMenu').remove();
+        availableMenu.pop(document.getElementById('accessibilityMenu'));
+    }, 300);
 }

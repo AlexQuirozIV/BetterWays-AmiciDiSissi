@@ -154,7 +154,7 @@ a.leaflet-popup-close-button:hover {
 }
 
 /* Menu aggiunta markers */
-#addMarkerMenu, #packagesMenu {
+#addMarkerMenu, #packagesMenu, #chiSiamoMenu, #accessibilityMenu, #settingsMenu {
     z-index: 1000;
     width: fit-content;
     height: fit-content;
@@ -172,7 +172,7 @@ a.leaflet-popup-close-button:hover {
     filter: blur(0px) !important;
 }
 
-#addMarkerMenu span, #packagesMenu span {
+#addMarkerMenu span, #packagesMenu span, #chiSiamoMenu span {
     color: white;
     font-size: 20px;
 }
@@ -197,7 +197,7 @@ a.leaflet-popup-close-button:hover {
     font-weight: bold;
 }
 
-#addMarkerMenu div, #packagesMenu div {
+#addMarkerMenu div, #packagesMenu div, #chiSiamoMenu div {
     margin-top: 10px;
     display: flex;
     justify-content: space-evenly;
@@ -212,7 +212,47 @@ a.leaflet-popup-close-button:hover {
     margin-top: 15px;
 }
 
-/* Ciao Alecs :D */
+#chiSiamoMenu {
+    top: 14.4rem;
+    left: 22.5rem;
+    color: white;
+    text-align: left;
+    width: 50ch;
+}
+
+#chiSiamoMenu > div, #accessibilityMenu > div, #settingsMenu > div {
+    color: #F9BF4D;
+    text-align: center;
+    width: 100%;
+    font-size: 2.5ch;
+    padding-bottom: 10px;
+    font-weight: bold;
+    -webkit-text-stroke-color: #f1a918;
+    -webkit-text-stroke-width: 1px;
+}
+
+#chiSiamoMenu > span {
+    font-size: 18px;
+}
+
+#accessibilityMenu > img{
+    height: 15rem;
+    width: 15rem;
+}
+
+#accessibilityMenu {
+    
+}
+
+#settingsMenu > img{
+    height: 15rem;
+    width: 15rem;
+}
+
+#settingsMenu {
+    
+}
+
 /* Navbar */
 #navbarWrapper {
     background-color: #444444;
