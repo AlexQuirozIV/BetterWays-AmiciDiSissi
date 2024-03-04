@@ -19,7 +19,7 @@
     padding-top: 3px;
     padding-bottom: 3px;
     width: 100%;
-    position: fixed; /* Aggiungi "relative" per consentire al contenuto di sovrapporsi allo sfondo */
+    position: relative; /* Aggiungi "relative" per consentire al contenuto di sovrapporsi allo sfondo */
     z-index: 1000;
     -webkit-text-stroke-color: #f1a918;
     -webkit-text-stroke-width: 0.06px;
@@ -27,7 +27,7 @@
 }
 
 #map {
-    height: 100vh;
+    height: calc(100vh - 73px);
     width: auto;
 }
 
@@ -59,7 +59,7 @@
     text-align: left;
     margin: 0 !important;
     font-size: 115%;
-    line-height: 175%;
+    line-height: 1.6;
     overflow: auto;
     overflow-wrap: break-word;
     max-height: 100px;
@@ -154,14 +154,14 @@ a.leaflet-popup-close-button:hover {
 }
 
 /* Menu aggiunta markers */
-#addMarkerMenu, #packagesMenu, #chiSiamoMenu, #accessibilityMenu, #settingsMenu {
+#addMarkerMenu, #packagesMenu, #chiSiamoMenu, #accessibilityMenu, #settingsMenu, #accountMenu {
     z-index: 1000;
     width: fit-content;
     height: fit-content;
     background-color: #252525;
     position: fixed;
     bottom: 1rem;
-    right: -16.5rem;
+    right: -10.75rem;
     transform: translate(-50%, -50%) scale(0);
     padding: 25px;
     padding-top: 30px;
@@ -170,6 +170,10 @@ a.leaflet-popup-close-button:hover {
     border-radius: 25px;
     text-align: center;
     filter: blur(0px) !important;
+}
+
+#addMarkerMenu {
+    width: min-content;
 }
 
 #addMarkerMenu span, #packagesMenu span, #chiSiamoMenu span {
@@ -187,14 +191,23 @@ a.leaflet-popup-close-button:hover {
     border: none;
     font-weight: bold;
     font-size: 90%;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-right: 10px;
+    text-overflow: ellipsis;
 }
 
 #addMarkerMenu button, #packagesMenu button {
     text-align: center;
     border-radius: 50px;
-    padding: 10px;
     border: none;
     font-weight: bold;
+    padding: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
 #addMarkerMenu div, #packagesMenu div, #chiSiamoMenu div {
@@ -213,14 +226,14 @@ a.leaflet-popup-close-button:hover {
 }
 
 #chiSiamoMenu {
-    top: 14.4rem;
+    top: 16.9rem;
     left: 22.5rem;
     color: white;
     text-align: left;
     width: 50ch;
 }
 
-#chiSiamoMenu > div, #accessibilityMenu > div, #settingsMenu > div {
+#chiSiamoMenu div, #accessibilityMenu div, #settingsMenu div, #accountMenu div {
     color: #F9BF4D;
     text-align: center;
     width: 100%;
@@ -231,26 +244,19 @@ a.leaflet-popup-close-button:hover {
     -webkit-text-stroke-width: 1px;
 }
 
-#chiSiamoMenu > span {
+#chiSiamoMenu span {
     font-size: 18px;
+    line-height: 1.6;
 }
 
-#accessibilityMenu > img{
+#accessibilityMenu img, #settingsMenu img, #accountMenu img{
     height: 15rem;
     width: 15rem;
 }
 
-#accessibilityMenu {
-    
-}
-
-#settingsMenu > img{
-    height: 15rem;
-    width: 15rem;
-}
-
-#settingsMenu {
-    
+#accessibilityMenu, #settingsMenu, #accountMenu {
+    left: 17.5rem;
+    top: 16.2rem;
 }
 
 /* Navbar */
@@ -286,7 +292,7 @@ a.leaflet-popup-close-button:hover {
         align-items: center;
 }
 
-#navbarHeader > span {
+#navbarHeader span {
     font-size: 180%;
     cursor: pointer;
     background-color: var(--base-color);
@@ -296,7 +302,7 @@ a.leaflet-popup-close-button:hover {
     margin-right: 30px;
 }
 
-#navbarHeader > h1 {
+#navbarHeader h1 {
     margin: 0;
 }
 
@@ -357,7 +363,7 @@ a.leaflet-popup-close-button:hover {
         align-items: flex-end;
 }
 
-#navbarFooter > div{
+#navbarFooter div{
     background-image: url(./img/titleHeader.jpg);
     width: var(--navbar-width);
     display: flex;
@@ -367,7 +373,7 @@ a.leaflet-popup-close-button:hover {
     padding-bottom: 25px;
 }
 
-#navbarFooter > div > span {
+#navbarFooter div span {
     font-size: 180% !important;
     background-color: var(--base-color);
     color: var(--highlight-color);
@@ -377,7 +383,7 @@ a.leaflet-popup-close-button:hover {
     margin-right: 30px;
 }
 
-#navbarFooter > div > h1 {
+#navbarFooter div h1 {
     margin: 0;
     color: var(--highlight-color);
     background-color: var(--base-color);
@@ -387,10 +393,10 @@ a.leaflet-popup-close-button:hover {
 }
 
 .leaflet-control-zoom {
-    top: 5rem !important;
+    top: 0.4rem !important;
 }
 
-@media only screen and (max-height: 600px) {
+@media only screen and (max-height: 600px), (max-width: 600px) {
     #navbarWrapper {
         scale: 80%;
         top: 2rem !important;

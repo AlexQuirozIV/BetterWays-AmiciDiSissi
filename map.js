@@ -8,115 +8,115 @@ const map = L.map('map', {zoomControl: false}).setView([45.309062, 9.501200], 14
 
 //! Informazioni tappe
 const places = {
-    "Parco-Adda-Sud": [
-        [45.314040272551736, 9.498271300674975],
-        "Parco Adda Sud",
-        5,
-        '',
-        ''
-    ],
-    "Duomo-di-Lodi": [
-        [45.314214319510235, 9.503150096251492],
-        "Duomo di Lodi",
-        5,
-        '',
-        ''
-    ],
-    "Parco-Isola-Carolina": [
-        [45.315097006869266, 9.498896680791935],
-        "Parco dell'Isola Carolina",
-        5,
-        '',
-        ''
-    ],
-    "Parco-Villa-Braila": [
-        [45.30376301489828, 9.508691843847435],
-        "Parco Villa Braila",
-        5,
-        '',
-        ''
-    ],
-    "Museo-della-Stampa": [
-        [45.31796325796598, 9.502647436164928],
-        "Museo della Stampa",
-        5,
-        '',
-        ''
-    ],
-    "Museo-dello-Strumento-Musicale-&-della-Musica": [
-        [45.30701338770822, 9.50199549913424],
-        "Museo dello Strumento Musicale & della Musica",
-        5,
-        '',
-        ''
-    ],
-    "Teatro-Alle-Vigne": [
-        [45.31506910520015, 9.506154729318768],
-        "Teatro Alle Vigne",
-        5,
-        '',
-        ''
-    ],
-    "Teatro-civico-Incoronata": [
-        [45.31465971960593, 9.502055674244136],
-        "Teatro Civico dell'Incoronata",
-        5,
-        '',
-        ''
-    ],
-    "Monumento-alla-Resistenza": [
-        [45.31043780366223, 9.501946341831502],
-        "Monumento alla Resistenza",
-        5,
-        '',
-        ''
-    ],
-    "Museo-di-Paolo-Gorini": [
-        [45.3138348117735, 9.508056454515657],
-        "Museo di Paolo Gorini",
-        5,
+    "Castello-Visconteo": [
+        [45.312376641034014, 9.498816848941937],
+        "Castello Visconteo",
+        undefined,
         '',
         ''
     ],
     "Chiesa-di-San-Francesco": [
         [45.314617754968054, 9.507929720552477],
         "Chiesa di San Francesco",
-        5,
+        undefined,
         '',
         ''
     ],
-    "Castello-Visconteo": [
-        [45.312376641034014, 9.498816848941937],
-        "Castello Visconteo",
-        5,
-        '',
-        ''
-    ],
-    "Torrione-di-Lodi": [
-        [45.3126397552172, 9.498001343678204],
-        "Torrione di Lodi",
-        5,
-        '',
-        ''
-    ],
-    "Stadio-Dossenina": [
-        [45.30739132224016, 9.495022000717784],
-        "Stadio Dossenina",
-        5,
+    "Duomo-di-Lodi": [
+        [45.314214319510235, 9.503150096251492],
+        "Duomo di Lodi",
+        undefined,
         '',
         ''
     ],
     "Faustina-Sporting-Club": [
         [45.300695861177324, 9.506869003676572],
         "Faustina Sporting Club",
-        5,
+        undefined,
+        '',
+        ''
+    ],
+    "Monumento-alla-Resistenza": [
+        [45.31043780366223, 9.501946341831502],
+        "Monumento alla Resistenza",
+        undefined,
+        '',
+        ''
+    ],
+    "Museo-della-Stampa": [
+        [45.31796325796598, 9.502647436164928],
+        "Museo della Stampa",
+        undefined,
+        '',
+        ''
+    ],
+    "Museo-dello-Strumento-Musicale-&-della-Musica": [
+        [45.30701338770822, 9.50199549913424],
+        "Museo dello Strumento Musicale & della Musica",
+        undefined,
+        '',
+        ''
+    ],
+    "Museo-di-Paolo-Gorini": [
+        [45.3138348117735, 9.508056454515657],
+        "Museo di Paolo Gorini",
+        undefined,
         '',
         ''
     ],
     "Palazzetto-Palacastellotti": [
         [45.297359483089814, 9.510770296119013],
         "Palazzetto Palacastellotti",
-        5,
+        undefined,
+        '',
+        ''
+    ],
+    "Parco-Adda-Sud": [
+        [45.314040272551736, 9.498271300674975],
+        "Parco Adda Sud",
+        undefined,
+        '',
+        ''
+    ],
+    "Parco-Isola-Carolina": [
+        [45.315097006869266, 9.498896680791935],
+        "Parco dell'Isola Carolina",
+        undefined,
+        '',
+        ''
+    ],
+    "Parco-Villa-Braila": [
+        [45.30376301489828, 9.508691843847435],
+        "Parco Villa Braila",
+        undefined,
+        '',
+        ''
+    ],
+    "Stadio-Dossenina": [
+        [45.30739132224016, 9.495022000717784],
+        "Stadio Dossenina",
+        undefined,
+        '',
+        ''
+    ],
+    "Teatro-Alle-Vigne": [
+        [45.31506910520015, 9.506154729318768],
+        "Teatro Alle Vigne",
+        undefined,
+        '',
+        ''
+    ],
+    "Teatro-civico-Incoronata": [
+        [45.31465971960593, 9.502055674244136],
+        "Teatro Civico dell'Incoronata",
+        undefined,
+        '',
+        ''
+    ],
+    "Torrione-di-Lodi": [
+        [45.3126397552172, 9.498001343678204],
+        "Torrione di Lodi",
+        undefined,
         '',
         ''
     ]
@@ -143,7 +143,7 @@ function initializeMap() {
     // Funzioni necessarie (+ min e max zoom)
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         minZoom: 14,
-        maxZoom: 18
+        maxZoom: 19
     }).addTo(map);
 
     // Imposta limiti
@@ -166,23 +166,25 @@ function coordinatesOnClick() {
 /* Chiudi tutti menu aperti se click sulla mappa */
 //TODO: Aggiungere altri menu se mai verranno creati
 function closeOpenMenus() {
-    map.on('click', () => {
-        if(document.getElementById('packagesMenu') != null) {
-            closePackagesMenu();
-        }
-        if(document.getElementById('addMarkerMenu') != null) {
-            closeAddSingleMarkerMenu();
-        }
-        if(document.getElementById('chiSiamoMenu') != null) {
-            closeChiSiamoMenu();
-        }
-        if(document.getElementById('accessibilityMenu') != null) {
-            closeAccessibilityMenu();
-        }
-        if(document.getElementById('settingsMenu') != null) {
-            closeSettingsMenu();
-        }
-    });
+    if(document.getElementById('packagesMenu') != null) {
+        closePackagesMenu();
+    }
+    if(document.getElementById('addMarkerMenu') != null) {
+        closeAddSingleMarkerMenu();
+    }
+    if(document.getElementById('chiSiamoMenu') != null) {
+        closeChiSiamoMenu();
+    }
+    if(document.getElementById('accessibilityMenu') != null) {
+        closeAccessibilityMenu();
+    }
+    if(document.getElementById('settingsMenu') != null) {
+        closeSettingsMenu();
+    }
+    if(document.getElementById('accountMenu') != null) {
+        closeAccountMenu();
+    }
+    openedMenuId = undefined;
 }
 
 /* Avvia mappa a caricamento pagina */
@@ -190,7 +192,7 @@ document.body.onload = () => {
     console.log('Initializing map...');
     initializeMap();
     coordinatesOnClick();
-    closeOpenMenus();
+    map.on('click', () => { closeOpenMenus(); });
 };
 
 /* Genera 'div' con 'img' in base al valore inserito sono 'piene' o no (necessaria per 'bindPopupInfos') */
@@ -209,11 +211,11 @@ function rate(fullStarsNumber) {
 /* Genera le 'info' necessarie da aggiungere a ciascun popup tramite '.bindPopup(info)' */
 function bindPopupInfos(title, rating, description, imageLink) {
     if(title === undefined || title == '') { title = 'Titolo inesistente'; }
-    if(imageLink === undefined || imageLink == '') { imageLink = 'img/icona.jpg'; }
+    if(imageLink === undefined || imageLink == '') { imageLink = 'Torre-Zucchetti.jpg'; }
     if(description === undefined || description == '') { description = 'Descrizione di "' + title + '" inesistente'; }
-    if(rating === undefined || rating < 0) { rating = 0; }
+    if(rating === undefined || rating < 0) { rating = 4; }
 
-    imageLink = '<img class="popupImage" src="img/tappe-popup/' + imageLink + '" alt="' + title + '">';
+    imageLink = '<img style="color: white" class="popupImage" src="img/tappe-popup/' + imageLink + '" alt="' + title + '">';
     title = '<p class="popupTitle">' + title + '</p>';
     rating = rate(rating);
     description = '<p class="popupDescription">' + description + '</p>';
@@ -234,7 +236,7 @@ function createActionButton(iconName, id, onClickFunction) {
     return button;
 }
 
-var availableMenu = [];
+var openedMenuId;
 //! Marker singoli
 /* Menu marker singolo -> apri & chiudi */
 function addSingleMarkerMenu() {
@@ -242,8 +244,8 @@ function addSingleMarkerMenu() {
         closeAddSingleMarkerMenu();
         return;
     }
-    if(availableMenu.length != 0) {
-        return;
+    if(openedMenuId != undefined) {
+        closeOpenMenus();
     }
 
     /* Div contenitore */
@@ -301,7 +303,7 @@ function addSingleMarkerMenu() {
 
     /* Aggiungi all'HTML */
     document.body.appendChild(menu).offsetWidth;
-    availableMenu.push(menu.id);
+    openedMenuId = menu.id;
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
@@ -311,7 +313,6 @@ function closeAddSingleMarkerMenu() {
     document.getElementById('addMarkerMenu').style.transform = 'translate(-50%, -50%) scale(0)';
     setTimeout(function() {
         document.getElementById('addMarkerMenu').remove();
-        availableMenu.pop(document.getElementById('addMarkerMenu'));
     }, 300);
 }
 
@@ -441,8 +442,8 @@ function packagesMenu() {
         closePackagesMenu();
         return;
     }
-    if(availableMenu.length != 0) {
-        return;
+    if(openedMenuId != undefined) {
+        closeOpenMenus();
     }
 
     /* Div contenitore */
@@ -470,7 +471,7 @@ function packagesMenu() {
 
     // Bottone 'invia'
     var okButton = document.createElement('button');
-    okButton.textContent = 'OK';
+    okButton.textContent = 'Comincia';
     okButton.setAttribute('onclick', 'layPackage()');
     buttonWrapper.appendChild(okButton);
     
@@ -484,7 +485,7 @@ function packagesMenu() {
 
     /* Aggiungi all'HTML */
     document.body.appendChild(menu).offsetWidth;
-    availableMenu.push(menu.id);
+    openedMenuId = menu.id;
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
@@ -494,7 +495,6 @@ function closePackagesMenu() {
     document.getElementById('packagesMenu').style.transform = 'translate(-50%, -50%) scale(0)';
     setTimeout(function() {
         document.getElementById('packagesMenu').remove();
-        availableMenu.pop(document.getElementById('packagesMenu'));
     }, 300);
 }
 
@@ -563,8 +563,8 @@ function chiSiamoMenu() {
         closeChiSiamoMenu();
         return;
     }
-    if(availableMenu.length != 0) {
-        return;
+    if(openedMenuId != undefined) {
+        closeOpenMenus();
     }
 
     /* Div contenitore */
@@ -585,7 +585,7 @@ function chiSiamoMenu() {
 
     /* Aggiungi all'HTML */
     document.body.appendChild(menu).offsetWidth;
-    availableMenu.push(menu.id);
+    openedMenuId = menu.id;
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
@@ -595,7 +595,6 @@ function closeChiSiamoMenu() {
     document.getElementById('chiSiamoMenu').style.transform = 'translate(-50%, -50%) scale(0)';
     setTimeout(function() {
         document.getElementById('chiSiamoMenu').remove();
-        availableMenu.pop(document.getElementById('chiSiamoMenu'));
     }, 300);
 }
 
@@ -605,8 +604,8 @@ function accessibilityMenu() {
         closeAccessibilityMenu();
         return;
     }
-    if(availableMenu.length != 0) {
-        return;
+    if(openedMenuId != undefined) {
+        closeOpenMenus();
     }
 
     /* Div contenitore */
@@ -625,7 +624,7 @@ function accessibilityMenu() {
 
     /* Aggiungi all'HTML */
     document.body.appendChild(menu).offsetWidth;
-    availableMenu.push(menu.id);
+    openedMenuId = menu.id;
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
@@ -635,7 +634,6 @@ function closeAccessibilityMenu() {
     document.getElementById('accessibilityMenu').style.transform = 'translate(-50%, -50%) scale(0)';
     setTimeout(function() {
         document.getElementById('accessibilityMenu').remove();
-        availableMenu.pop(document.getElementById('accessibilityMenu'));
     }, 300);
 }
 
@@ -645,8 +643,8 @@ function settingsMenu() {
         closeSettingsMenu();
         return;
     }
-    if(availableMenu.length != 0) {
-        return;
+    if(openedMenuId != undefined) {
+        closeOpenMenus();
     }
 
     /* Div contenitore */
@@ -665,7 +663,7 @@ function settingsMenu() {
 
     /* Aggiungi all'HTML */
     document.body.appendChild(menu).offsetWidth;
-    availableMenu.push(menu.id);
+    openedMenuId = menu.id;
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
@@ -675,6 +673,44 @@ function closeSettingsMenu() {
     document.getElementById('settingsMenu').style.transform = 'translate(-50%, -50%) scale(0)';
     setTimeout(function() {
         document.getElementById('settingsMenu').remove();
-        availableMenu.pop(document.getElementById('accessibilityMenu'));
+    }, 300);
+}
+
+//! Account menu
+function accountMenu() {
+    if(!(document.getElementById('accountMenu') == null)) {
+        closeAccountMenu();
+        return;
+    }
+    if(openedMenuId != undefined) {
+        closeOpenMenus();
+    }
+
+    /* Div contenitore */
+    var menu = document.createElement('div');
+    menu.id = 'accountMenu';
+
+    /* Titolo */
+    var title = document.createElement('div');
+    title.innerHTML = 'Account';
+    menu.appendChild(title);
+
+    /* Immagine */
+    var image = document.createElement('img');
+    image.setAttribute('src', 'img/work-in-progress.png');
+    menu.appendChild(image);
+
+    /* Aggiungi all'HTML */
+    document.body.appendChild(menu).offsetWidth;
+    openedMenuId = menu.id;
+
+    /* Animazione entrata/uscita menu */
+    menu.style.transition = '0.2s ease';
+    menu.style.transform = 'translate(-50%, -50%) scale(1)';
+}
+function closeAccountMenu() {
+    document.getElementById('accountMenu').style.transform = 'translate(-50%, -50%) scale(0)';
+    setTimeout(function() {
+        document.getElementById('accountMenu').remove();
     }, 300);
 }
