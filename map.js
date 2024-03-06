@@ -157,7 +157,7 @@ function initializeMap() {
 
 /* Per debugging */
 function coordinatesOnClick() {
-    // Clieck e output coordinate in console
+    // Click e output coordinate in console
     map.on('click', (e) => {
         console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
     });
@@ -240,7 +240,7 @@ var openedMenuId;
 //! Marker singoli
 /* Menu marker singolo -> apri & chiudi */
 function addSingleMarkerMenu() {
-    if(!(document.getElementById('addMarkerMenu') == null)) {
+    if(!(document.getElementById('addMarkerMenu') != null)) {
         closeAddSingleMarkerMenu();
         return;
     }
