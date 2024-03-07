@@ -240,7 +240,7 @@ var openedMenuId;
 //! Marker singoli
 /* Menu marker singolo -> apri & chiudi */
 function addSingleMarkerMenu() {
-    if(!(document.getElementById('addMarkerMenu') != null)) {
+    if(!(document.getElementById('addMarkerMenu') == null)) {
         closeAddSingleMarkerMenu();
         return;
     }
