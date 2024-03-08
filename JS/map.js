@@ -153,9 +153,6 @@ function initializeMap() {
     L.control.zoom({
         position: 'topright'
     }).addTo(map);
-
-    // Per cercare i luoghi
-    L.Control.geocoder().addTo(map);        // ! WIP
 }
 
 /* Per debugging */
@@ -513,8 +510,8 @@ function layPackage() {
 
     /* Preleva le coordinate da 'packages' e le salva in 'waypoints' */
     var waypoints = places.map((place) => {
-        var latLng = L.latLng(place[0][0], place[0][1]);
-        return latLng;
+        let coords = [place[0][0], place[0][1]];
+        return coords;
     });
 
     /* Preleva titoli */
