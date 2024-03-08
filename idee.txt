@@ -1,5 +1,8 @@
-da aggiungere in "chi siamo?"
-Il nostro team
-"Benvenuti nel mondo di "Better Ways"! Siamo cinque studenti della classe 4ID dell'istituto IIS A. Volta di Lodi.
-Ci chiamiamo: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti e Linda Tessadori.
-Il nostro sito, "Better Ways", è incentrato sul turismo di Lodi, per scoprire le meraviglie che questa piccola città ha da offrire.
+Suggerimenti:
+- riguardare i requisiti fondamentali
+    > convalidare ;
+- aggiungere una home (?);
+- finire i "work in progress";
+
+lav al eregnuigga 
+- aggiungere lingue nelle impostaazioni 
