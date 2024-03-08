@@ -1,8 +1,6 @@
 Suggerimenti:
-- riguardare i requisiti fondamentali
-    > convalidare ;
+- riguardare i requisiti fondamentali;
+- convalidare il percorso;
 - aggiungere una home (?);
 - finire i "work in progress";
-
-lav al eregnuigga 
-- aggiungere lingue nelle impostaazioni 
+- aggiungere lingue nelle impostazioni; 
