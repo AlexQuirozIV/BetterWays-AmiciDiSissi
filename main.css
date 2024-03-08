@@ -1,25 +1,42 @@
 #img_logo {
     width: 20px;
     height: 20px;
-}#sliding_imgs_a{
+}
+
+#sliding_imgs_a {
     width: 5rem;
     height: 4rem;
+    float: left;
 }
+
 #img_mappa {
-    width: 5rem;
-    height: 4rem;
+    width: 25rem;
+    height: 15rem;
+    position: absolute;
+    text-align: center;
+
 }
+
 #central_img:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     transition: 0.5s;
 }
-#sliding_imgs_b{
+
+#sliding_imgs_b {
     width: 5rem;
-    height: 4rem;
+    height: 7rem;
+    position: absolute;
+    float: right;
 }
 
 .gallery {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
+}
+
+body {
+    background-image: url(img/titleHeader.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
