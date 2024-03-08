@@ -1,6 +1,21 @@
 Suggerimenti:
 - riguardare i requisiti fondamentali;
-- convalidare il percorso;
+
 - aggiungere una home (?);
+
 - finire i "work in progress";
-- aggiungere lingue nelle impostazioni; 
+
+- convalidare il raggiungimento delle tappe;
+
+- evidenziare il completamento del percorso;
+
+- aggiungere le lingue nelle impostazioni;
+
+- le informazioni per ogni tappa devono essere recuperate nel
+  contesto «server» (es: coordinate, descrizione, stato, ...);
+
+- le informazioni per ogni tappa devono essere recuperate nel
+  contesto «server» (es: coordinate, descrizione, stato, ...);
+
+- le informazioni per ogni tappa devono essere recuperate nel
+  contesto «server» (es: coordinate, descrizione, stato, ...).

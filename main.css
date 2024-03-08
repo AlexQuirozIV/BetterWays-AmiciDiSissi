@@ -1,0 +1,25 @@
+#img_logo {
+    width: 20px;
+    height: 20px;
+}#sliding_imgs_a{
+    width: 5rem;
+    height: 4rem;
+}
+#img_mappa {
+    width: 5rem;
+    height: 4rem;
+}
+#central_img:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+#sliding_imgs_b{
+    width: 5rem;
+    height: 4rem;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}

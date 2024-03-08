@@ -153,6 +153,9 @@ function initializeMap() {
     L.control.zoom({
         position: 'topright'
     }).addTo(map);
+
+    // Per cercare i luoghi
+    L.Control.geocoder().addTo(map);        // ! WIP
 }
 
 /* Per debugging */
