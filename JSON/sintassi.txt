@@ -1,0 +1,39 @@
+"places.json":
+
+"ID-del-luogo": [
+    [latitudine, longitudine],
+    "Titolo da mostrare nel popup",
+    livelloDiAccessibilità,
+    "Descrizione",
+    "Link/all'immagine"
+]
+
+esempio:
+
+"Castello-Visconteo": [
+    [45.312376641034014, 9.498816848941937],
+    "Castello Visconteo",
+    4,                                          // Livello di accessibilità -> 4 su 5
+    "Bellissimo castello magico",
+    "img/tappe-popup/Castello-Visconteo.jpg"
+]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+"packages.json":
+
+"Nome Itinerario": [        // Si, verrà visualizzato. No, non è l'ID
+    "Luogo-1",              // Dovranno essere gli stessi degli ID dei desiderati luoghi da "places"
+    "Luogo-2",
+    "Luogo-3",
+    "Luogo-4"
+]
+
+esempio:
+
+"Musei & Teatri": [
+    "Museo-della-Stampa",
+    "Museo-di-Paolo-Gorini",
+    "Teatro-Alle-Vigne",
+    "Museo-dello-Strumento-Musicale-&-della-Musica"
+]

@@ -1,0 +1,30 @@
+{
+    "Castelli": [
+        "Castello-Visconteo",
+        "Torrione-di-Lodi"
+    ],
+    "Luoghi Religiosi": [
+        "Duomo-di-Lodi",
+        "Teatro-civico-Incoronata",
+        "Chiesa-di-San-Francesco"
+    ],
+    "Monumenti Onoranti": [
+        "Monumento-alla-Resistenza"
+    ],
+    "Musei & Teatri": [
+        "Museo-della-Stampa",
+        "Museo-di-Paolo-Gorini",
+        "Teatro-Alle-Vigne",
+        "Museo-dello-Strumento-Musicale-&-della-Musica"
+    ],
+    "Parchi": [
+        "Parco-Adda-Sud",
+        "Parco-Isola-Carolina",
+        "Parco-Villa-Braila"
+    ],
+    "Strutture Sportive": [
+        "Stadio-Dossenina",
+        "Faustina-Sporting-Club",
+        "Palazzetto-Palacastellotti"
+    ]
+}

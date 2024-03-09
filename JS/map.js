@@ -6,130 +6,74 @@
 //! Costante con 'LA MAPPA'
 const map = L.map('map', {zoomControl: false}).setView([45.309062, 9.501200], 14);
 
-//! Informazioni tappe
-const places = {
-    "Castello-Visconteo": [
-        [45.312376641034014, 9.498816848941937],
-        "Castello Visconteo",
-        undefined,
-        '',
-        ''
-    ],
-    "Chiesa-di-San-Francesco": [
-        [45.314617754968054, 9.507929720552477],
-        "Chiesa di San Francesco",
-        undefined,
-        '',
-        ''
-    ],
-    "Duomo-di-Lodi": [
-        [45.314214319510235, 9.503150096251492],
-        "Duomo di Lodi",
-        undefined,
-        '',
-        ''
-    ],
-    "Faustina-Sporting-Club": [
-        [45.300695861177324, 9.506869003676572],
-        "Faustina Sporting Club",
-        undefined,
-        '',
-        ''
-    ],
-    "Monumento-alla-Resistenza": [
-        [45.31043780366223, 9.501946341831502],
-        "Monumento alla Resistenza",
-        undefined,
-        '',
-        ''
-    ],
-    "Museo-della-Stampa": [
-        [45.31796325796598, 9.502647436164928],
-        "Museo della Stampa",
-        undefined,
-        '',
-        ''
-    ],
-    "Museo-dello-Strumento-Musicale-&-della-Musica": [
-        [45.30701338770822, 9.50199549913424],
-        "Museo dello Strumento Musicale & della Musica",
-        undefined,
-        '',
-        ''
-    ],
-    "Museo-di-Paolo-Gorini": [
-        [45.3138348117735, 9.508056454515657],
-        "Museo di Paolo Gorini",
-        undefined,
-        '',
-        ''
-    ],
-    "Palazzetto-Palacastellotti": [
-        [45.297359483089814, 9.510770296119013],
-        "Palazzetto Palacastellotti",
-        undefined,
-        '',
-        ''
-    ],
-    "Parco-Adda-Sud": [
-        [45.314040272551736, 9.498271300674975],
-        "Parco Adda Sud",
-        undefined,
-        '',
-        ''
-    ],
-    "Parco-Isola-Carolina": [
-        [45.315097006869266, 9.498896680791935],
-        "Parco dell'Isola Carolina",
-        undefined,
-        '',
-        ''
-    ],
-    "Parco-Villa-Braila": [
-        [45.30376301489828, 9.508691843847435],
-        "Parco Villa Braila",
-        undefined,
-        '',
-        ''
-    ],
-    "Stadio-Dossenina": [
-        [45.30739132224016, 9.495022000717784],
-        "Stadio Dossenina",
-        undefined,
-        '',
-        ''
-    ],
-    "Teatro-Alle-Vigne": [
-        [45.31506910520015, 9.506154729318768],
-        "Teatro Alle Vigne",
-        undefined,
-        '',
-        ''
-    ],
-    "Teatro-civico-Incoronata": [
-        [45.31465971960593, 9.502055674244136],
-        "Teatro Civico dell'Incoronata",
-        undefined,
-        '',
-        ''
-    ],
-    "Torrione-di-Lodi": [
-        [45.3126397552172, 9.498001343678204],
-        "Torrione di Lodi",
-        undefined,
-        '',
-        ''
-    ]
-}
 
 //! Icona markers
 const markerIcon = L.icon({
     iconUrl: 'img/marker-icone/markerIcona.png',
 
-    iconSize:     [48, 48], // Grandezza icona
-    iconAnchor:   [35, 60], // Punto dell'icona che indicherà il punto preciso sulla mappa
-    popupAnchor:  [-10, -60]  // Punto da dove il popup si apre
+    iconSize:     [48, 48],     // Grandezza icona
+    iconAnchor:   [35, 60],     // Punto dell'icona che indicherà il punto preciso sulla mappa
+    popupAnchor:  [-10, -60]    // Punto da dove il popup si apre
 });
+
+
+//! Variabili globali e flags
+var openedMenuId;           // Contiene l'id del menu correntemente aperto
+var availablePlace = [];    // Flag se il marker esiste già o no (prevenire spam)
+var singleMarkers = [];     // Contiene i singoli markers creati
+var isPackageLaid = false;  // C'è un pacchetto iniziato?
+var currentPackageRouting;  // Quale pacchetto è "piazzato"?
+var places;                 // Contiene i "places" presi dal JSON
+var packages;               // Contiene i "packages" presi dal JSON (riformattati, vedi il 'for' in "fetchPackages")
+
+
+//! "places" e "packages" fetch e inizializzazione
+/* Prendi "places" dal JSON... */
+async function fetchPlaces() {
+    try {
+        const response = await fetch('JSON/places.json');
+        places = await response.json();
+        
+        // Per "available place" (dev'essere assegnata qui in quanto globale)
+        for (const key in places) {
+            if (!(places.hasOwnProperty(key))) {
+                break;
+            }
+            availablePlace.push(key);
+        }
+
+        // Messaggio di successo
+        console.log('Places fetched successfully:', places);
+    } catch (error) {
+        // Qualcosa è andato storto :(
+        console.error('Error fetching places data:', error);
+    }
+}
+async function fetchPackages() {
+    try {
+        const response = await fetch('JSON/packages.json');
+        packages = await response.json();
+
+        // Riassegna "packages" con i valori completi da "places" (non solo la key)
+        for (const key in packages) {
+            const values = packages[key].map(reference => places[reference]);
+            packages[key] = values;
+        }
+
+        // Messaggio di successo
+        console.log('Packages fetched successfully:', packages);
+    } catch (error) {
+        // Qualcosa è andato storto :(
+        console.error('Error fetching packages data:', error);
+    }
+}
+
+//* Attendiamo di aver preso i dati prima di procedere all'avvio della pagina... */
+async function startWebsite() {
+    await fetchPlaces();
+    await fetchPackages();
+}
+startWebsite();
 
 
 //! Funzioni mappa
@@ -161,30 +105,6 @@ function coordinatesOnClick() {
     map.on('click', (e) => {
         console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
     });
-}
-
-/* Chiudi tutti menu aperti se click sulla mappa */
-//TODO: Aggiungere altri menu se mai verranno creati
-function closeOpenMenus() {
-    if(document.getElementById('packagesMenu') != null) {
-        closePackagesMenu();
-    }
-    if(document.getElementById('addMarkerMenu') != null) {
-        closeAddSingleMarkerMenu();
-    }
-    if(document.getElementById('chiSiamoMenu') != null) {
-        closeChiSiamoMenu();
-    }
-    if(document.getElementById('accessibilityMenu') != null) {
-        closeAccessibilityMenu();
-    }
-    if(document.getElementById('settingsMenu') != null) {
-        closeSettingsMenu();
-    }
-    if(document.getElementById('accountMenu') != null) {
-        closeAccountMenu();
-    }
-    openedMenuId = undefined;
 }
 
 /* Avvia mappa a caricamento pagina */
@@ -224,8 +144,9 @@ function bindPopupInfos(title, rating, description, imageLink) {
     return info;
 }
 
+
 //! Utilità
-// Crea pulsanti con icona da Google + può assegnare un id + onClickFunction
+/* Crea pulsanti con icona da Google + può assegnare un id + onClickFunction */
 function createActionButton(iconName, id, onClickFunction) {
     let button = document.createElement('span');
     button.className = 'material-icons';
@@ -236,7 +157,31 @@ function createActionButton(iconName, id, onClickFunction) {
     return button;
 }
 
-var openedMenuId;
+/* Chiudi tutti menu aperti se click sulla mappa */
+//TODO: Aggiungere altri menu se mai verranno creati
+function closeOpenMenus() {
+    if(document.getElementById('packagesMenu') != null) {
+        closePackagesMenu();
+    }
+    if(document.getElementById('addMarkerMenu') != null) {
+        closeAddSingleMarkerMenu();
+    }
+    if(document.getElementById('chiSiamoMenu') != null) {
+        closeChiSiamoMenu();
+    }
+    if(document.getElementById('accessibilityMenu') != null) {
+        closeAccessibilityMenu();
+    }
+    if(document.getElementById('settingsMenu') != null) {
+        closeSettingsMenu();
+    }
+    if(document.getElementById('accountMenu') != null) {
+        closeAccountMenu();
+    }
+    openedMenuId = undefined;
+}
+
+
 //! Marker singoli
 /* Menu marker singolo -> apri & chiudi */
 function addSingleMarkerMenu() {
@@ -316,14 +261,6 @@ function closeAddSingleMarkerMenu() {
     }, 300);
 }
 
-var availablePlace = [];    // Flag se il marker esiste già o no (prevenire spam)
-for (const key in places) {
-    if (!(places.hasOwnProperty(key))) {
-        break;
-    }
-    availablePlace.push(key);
-}
-var singleMarkers = [];   // Contiene i singoli markers creati
 /* Genera un singolo marker */
 function newSingleMarker([latitude, longitude], info) {
     if([latitude, longitude] == undefined) {
@@ -402,40 +339,8 @@ function singleMarkerMenuRemoveAll() {
     }
 }
 
-//! Pacchetti
-const packages = {
-    // L'ordine va da inizio a fine, ovviamente
-    // La 'key' sarà mostrata nel menu di select
-    "Castelli": [
-        places["Castello-Visconteo"],
-        places["Torrione-di-Lodi"]
-    ],
-    "Luoghi Religiosi": [
-        places["Duomo-di-Lodi"],
-        places["Teatro-civico-Incoronata"],
-        places["Chiesa-di-San-Francesco"]
-    ],
-    "Monumenti Onoranti": [
-        places["Monumento-alla-Resistenza"]             // ! Uno solo non va!!!
-    ],
-    "Musei & Teatri": [
-        places["Museo-della-Stampa"],
-        places["Museo-di-Paolo-Gorini"],
-        places["Teatro-Alle-Vigne"],
-        places["Museo-dello-Strumento-Musicale-&-della-Musica"]
-    ],
-    "Parchi": [
-        places["Parco-Adda-Sud"],
-        places["Parco-Isola-Carolina"],
-        places["Parco-Villa-Braila"]
-    ],
-    "Strutture Sportive": [
-        places["Stadio-Dossenina"],
-        places["Faustina-Sporting-Club"],
-        places["Palazzetto-Palacastellotti"]
-    ]
-}
 
+//! Pacchetti
 /* Menu pacchetti -> apri & chiudi */
 function packagesMenu() {
     if(!(document.getElementById('packagesMenu') == null)) {
@@ -499,8 +404,6 @@ function closePackagesMenu() {
 }
 
 /* Metti / togli itinerario piazzato */
-var isPackageLaid = false;
-var currentPackageRouting;
 function layPackage() {
     removeLaidPackage();
 
@@ -510,8 +413,7 @@ function layPackage() {
 
     /* Preleva le coordinate da 'packages' e le salva in 'waypoints' */
     var waypoints = places.map((place) => {
-        let coords = [place[0][0], place[0][1]];
-        return coords;
+        return place[0]; // Coordinates are the first element in each place array
     });
 
     /* Preleva titoli */
@@ -557,7 +459,7 @@ function removeLaidPackage() {
 }
 
 
-//! Chi siamo?
+//! Chi siamo? menu
 function chiSiamoMenu() {
     if(!(document.getElementById('chiSiamoMenu') == null)) {
         closeChiSiamoMenu();
