@@ -176,11 +176,6 @@ a.leaflet-popup-close-button:hover {
     width: min-content;
 }
 
-#addMarkerMenu span, #packagesMenu span, #chiSiamoMenu span {
-    color: white;
-    font-size: 20px;
-}
-
 #addMarkerMenu select, #packagesMenu select {
     margin-bottom: 10px;
     margin-top: 15px;
@@ -218,7 +213,7 @@ a.leaflet-popup-close-button:hover {
 
 #packagesMenu {
     top: 11.5rem;
-    left: 18rem;
+    left: 19rem;
 }
 
 #packagesMenu div {
@@ -233,7 +228,12 @@ a.leaflet-popup-close-button:hover {
     width: 50ch;
 }
 
-#chiSiamoMenu div, #accessibilityMenu div, #settingsMenu div, #accountMenu div {
+#chiSiamoMenu div,
+#accessibilityMenu div,
+#settingsMenu div,
+#accountMenu div,
+#addMarkerMenu span,
+#packagesMenu span {
     color: #F9BF4D;
     text-align: center;
     width: 100%;

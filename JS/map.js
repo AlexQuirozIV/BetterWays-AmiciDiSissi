@@ -8,13 +8,19 @@ const map = L.map('map', {zoomControl: false}).setView([45.309062, 9.501200], 14
 
 
 //! Icona markers
-const markerIcon = L.icon({
-    iconUrl: 'img/marker-icone/markerIcona.png',
+function createMarkerIcon(url) {
+    return L.icon({
+        iconUrl: url,
+    
+        iconSize:     [48, 48],     // Grandezza icona
+        iconAnchor:   [35, 60],     // Punto dell'icona che indicherà il punto preciso sulla mappa
+        popupAnchor:  [-10, -60]    // Punto da dove il popup si apre
+    });
+}
 
-    iconSize:     [48, 48],     // Grandezza icona
-    iconAnchor:   [35, 60],     // Punto dell'icona che indicherà il punto preciso sulla mappa
-    popupAnchor:  [-10, -60]    // Punto da dove il popup si apre
-});
+const markerIcon = createMarkerIcon('img/marker-icone/markerIcona.png');
+const startMarkerIcon = createMarkerIcon('img/marker-icone/startMarkerIcona.png');
+const finishMarkerIcon = createMarkerIcon('img/marker-icone/finishMarkerIcona.png');
 
 
 //! Variabili globali e flags
@@ -25,7 +31,14 @@ var isPackageLaid = false;  // C'è un pacchetto iniziato?
 var currentPackageRouting;  // Quale pacchetto è "piazzato"?
 var places;                 // Contiene i "places" presi dal JSON
 var packages;               // Contiene i "packages" presi dal JSON (riformattati, vedi il 'for' in "fetchPackages")
-
+var menus = [               // ID di ogni singolo menu esistente  //TODO: Aggiungere altri menu se mai verranno creati
+    "addMarkerMenu",
+    "packagesMenu",
+    "chiSiamoMenu",
+    "accessibilityMenu",
+    "settingsMenu",
+    "accountMenu"
+]
 
 //! "places" e "packages" fetch e inizializzazione
 /* Prendi "places" dal JSON... */
@@ -49,6 +62,7 @@ async function fetchPlaces() {
         console.error('Error fetching places data:', error);
     }
 }
+/* Prendi "packages" dal JSON e riformattali... */
 async function fetchPackages() {
     try {
         const response = await fetch('JSON/packages.json');
@@ -73,6 +87,7 @@ async function startWebsite() {
     await fetchPlaces();
     await fetchPackages();
 }
+
 startWebsite();
 
 
@@ -158,35 +173,34 @@ function createActionButton(iconName, id, onClickFunction) {
 }
 
 /* Chiudi tutti menu aperti se click sulla mappa */
-//TODO: Aggiungere altri menu se mai verranno creati
 function closeOpenMenus() {
-    if(document.getElementById('packagesMenu') != null) {
-        closePackagesMenu();
+    menus.forEach(menu => {
+        closeMenu(menu);
+    });
+}
+
+/* Chiudi singolo menu per ID */
+function closeMenu(menu) {
+    menu = document.getElementById(menu);
+
+    if(menu === null) {
+        return;
     }
-    if(document.getElementById('addMarkerMenu') != null) {
-        closeAddSingleMarkerMenu();
-    }
-    if(document.getElementById('chiSiamoMenu') != null) {
-        closeChiSiamoMenu();
-    }
-    if(document.getElementById('accessibilityMenu') != null) {
-        closeAccessibilityMenu();
-    }
-    if(document.getElementById('settingsMenu') != null) {
-        closeSettingsMenu();
-    }
-    if(document.getElementById('accountMenu') != null) {
-        closeAccountMenu();
-    }
+
+    menu.style.transform = 'translate(-50%, -50%) scale(0)';
+    setTimeout(function() {
+        menu.remove();
+    }, 300);
+
     openedMenuId = undefined;
 }
 
 
 //! Marker singoli
-/* Menu marker singolo -> apri & chiudi */
+/* Menu marker singolo */
 function addSingleMarkerMenu() {
     if(!(document.getElementById('addMarkerMenu') == null)) {
-        closeAddSingleMarkerMenu();
+        closeMenu("addMarkerMenu");
         return;
     }
     if(openedMenuId != undefined) {
@@ -253,12 +267,6 @@ function addSingleMarkerMenu() {
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
     menu.style.transform = 'translate(-50%, -50%) scale(1)';
-}
-function closeAddSingleMarkerMenu() {
-    document.getElementById('addMarkerMenu').style.transform = 'translate(-50%, -50%) scale(0)';
-    setTimeout(function() {
-        document.getElementById('addMarkerMenu').remove();
-    }, 300);
 }
 
 /* Genera un singolo marker */
@@ -341,10 +349,10 @@ function singleMarkerMenuRemoveAll() {
 
 
 //! Pacchetti
-/* Menu pacchetti -> apri & chiudi */
+/* Menu pacchetti */
 function packagesMenu() {
     if(!(document.getElementById('packagesMenu') == null)) {
-        closePackagesMenu();
+        closeMenu("packagesMenu");
         return;
     }
     if(openedMenuId != undefined) {
@@ -396,12 +404,6 @@ function packagesMenu() {
     menu.style.transition = '0.2s ease';
     menu.style.transform = 'translate(-50%, -50%) scale(1)';
 }
-function closePackagesMenu() {
-    document.getElementById('packagesMenu').style.transform = 'translate(-50%, -50%) scale(0)';
-    setTimeout(function() {
-        document.getElementById('packagesMenu').remove();
-    }, 300);
-}
 
 /* Metti / togli itinerario piazzato */
 function layPackage() {
@@ -438,9 +440,13 @@ function layPackage() {
         addWaypoints: false,
         // Effettiva creazione (_i e _n sono contatori necessari alla funzione)
         createMarker: function(_i, waypoint, _n) {
+            var icon = _i === 0 ? startMarkerIcon :
+                       _i === waypoints.length - 1 ? finishMarkerIcon :
+                       markerIcon
+
             return L.marker(waypoint.latLng, {
                 draggable: false,
-                icon: markerIcon    // Paperelle :D
+                icon: icon
             }).bindPopup(bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i])); // Aggiungi pop-ups
         }
     }).addTo(map);
@@ -462,7 +468,7 @@ function removeLaidPackage() {
 //! Chi siamo? menu
 function chiSiamoMenu() {
     if(!(document.getElementById('chiSiamoMenu') == null)) {
-        closeChiSiamoMenu();
+        closeMenu("chiSiamoMenu");
         return;
     }
     if(openedMenuId != undefined) {
@@ -493,17 +499,11 @@ function chiSiamoMenu() {
     menu.style.transition = '0.2s ease';
     menu.style.transform = 'translate(-50%, -50%) scale(1)';
 }
-function closeChiSiamoMenu() {
-    document.getElementById('chiSiamoMenu').style.transform = 'translate(-50%, -50%) scale(0)';
-    setTimeout(function() {
-        document.getElementById('chiSiamoMenu').remove();
-    }, 300);
-}
 
 //! Accessibilità menu
 function accessibilityMenu() {
     if(!(document.getElementById('accessibilityMenu') == null)) {
-        closeAccessibilityMenu();
+        closeMenu("accessibilityMenu");
         return;
     }
     if(openedMenuId != undefined) {
@@ -532,17 +532,11 @@ function accessibilityMenu() {
     menu.style.transition = '0.2s ease';
     menu.style.transform = 'translate(-50%, -50%) scale(1)';
 }
-function closeAccessibilityMenu() {
-    document.getElementById('accessibilityMenu').style.transform = 'translate(-50%, -50%) scale(0)';
-    setTimeout(function() {
-        document.getElementById('accessibilityMenu').remove();
-    }, 300);
-}
 
 //! Settings menu
 function settingsMenu() {
     if(!(document.getElementById('settingsMenu') == null)) {
-        closeSettingsMenu();
+        closeMenu("settingsMenu");
         return;
     }
     if(openedMenuId != undefined) {
@@ -571,17 +565,11 @@ function settingsMenu() {
     menu.style.transition = '0.2s ease';
     menu.style.transform = 'translate(-50%, -50%) scale(1)';
 }
-function closeSettingsMenu() {
-    document.getElementById('settingsMenu').style.transform = 'translate(-50%, -50%) scale(0)';
-    setTimeout(function() {
-        document.getElementById('settingsMenu').remove();
-    }, 300);
-}
 
 //! Account menu
 function accountMenu() {
     if(!(document.getElementById('accountMenu') == null)) {
-        closeAccountMenu();
+        closeMenu("accountMenu");
         return;
     }
     if(openedMenuId != undefined) {
@@ -609,10 +597,4 @@ function accountMenu() {
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
     menu.style.transform = 'translate(-50%, -50%) scale(1)';
-}
-function closeAccountMenu() {
-    document.getElementById('accountMenu').style.transform = 'translate(-50%, -50%) scale(0)';
-    setTimeout(function() {
-        document.getElementById('accountMenu').remove();
-    }, 300);
 }

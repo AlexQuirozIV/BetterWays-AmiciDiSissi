@@ -12,10 +12,4 @@ Suggerimenti:
 - aggiungere le lingue nelle impostazioni;
 
 - le informazioni per ogni tappa devono essere recuperate nel
-  contesto «server» (es: coordinate, descrizione, stato, ...);
-
-- le informazioni per ogni tappa devono essere recuperate nel
-  contesto «server» (es: coordinate, descrizione, stato, ...);
-
-- le informazioni per ogni tappa devono essere recuperate nel
   contesto «server» (es: coordinate, descrizione, stato, ...).
