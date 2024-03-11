@@ -19,12 +19,12 @@ function createMarkerIcon(url) {
 }
 
 const markerIcon = createMarkerIcon('img/marker-icone/markerIcona.png');
-const startMarkerIcon = createMarkerIcon('img/marker-icone/startMarkerIcona.png');
+const startMarkerIcon = createMarkerIcon('img/marker-icone/startMarkerIcona.png');      //TODO: Texture belle pls
 const finishMarkerIcon = createMarkerIcon('img/marker-icone/finishMarkerIcona.png');
 
 
 //! Variabili globali e flags
-var openedMenuId;           // Contiene l'id del menu correntemente aperto
+var openedMenuId;           // Contiene l'id del menu aperto in quel momento
 var availablePlace = [];    // Flag se il marker esiste già o no (prevenire spam)
 var singleMarkers = [];     // Contiene i singoli markers creati
 var isPackageLaid = false;  // C'è un pacchetto iniziato?
