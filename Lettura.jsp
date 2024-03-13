@@ -30,10 +30,10 @@
             'Torre Zucchetti',
                     4,
             'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-                'Torre-Zucchetti.jpg'
+             'Torre-Zucchetti.jpg'
                 ],
                 "IIS-A-Volta": [
-                    [45.303372, 9.498577],
+                   [45.303372, 9.498577],
                     'IIS A. Volta',
                     ,
                     '',
@@ -50,56 +50,56 @@
          </script>
         <%
         //Dichiaro un oggetto file con l'indicazione del nome del file (Server.txt)
-         FileInputStream file = new FileInputStream("Server.txt");
+          FileInputStream file = new FileInputStream("Server.txt");
 
         //Oggetto scanner per leggere una linea
-         Scanner lettore=new Scanner(file);
+          Scanner lettore=new Scanner(file);
 
         //conterrà una riga letta da Server.txt
-         String linea;
+          String linea;
 
         //oggetto che permette lo split
-         StringTokenizer locale;
+          StringTokenizer locale;
 
         //variabili String che memorizzeranno i dati del locle
-         String lg="",lt="",nome="", indirizzo="";
+          String lg="",lt="",nome="", indirizzo="";
 
         //inizio del ciclo di lettura
-         while(lettore.hasNextLine()==true){
+          while(lettore.hasNextLine()==true){
 
             //si legge una linea dal file POI.txt
-             linea=lettore.nextLine();
+              linea=lettore.nextLine();
 
             // inizalizzo l'oggetto locale,in modo che spezzetti i dati,passando al costruttore la linea letta
-             e indicando i caratteri di separazione dei dati
-              locale = new StringTokenizer(linea,"%%%");
+               e indicando i caratteri di separazione dei dati
+                locale = new StringTokenizer(linea,"%%%");
 
             //attribuisco i dati alle variabili string
-             lt=locale.nextToken();
-            l g=locale.nextToken();
-             nome=locale.nextToken();
-             indirizzo=locale.nextToken();
+              lt=locale.nextToken();
+              l g=locale.nextToken();
+              nome=locale.nextToken();
+              indirizzo=locale.nextToken();
 
             //creo il testo del popup
-             String tst;
-             tst="<b>"+nome+"</b><br>";
-             tst+=indirizzo+"<br>";
+              String tst;
+              tst="<b>"+nome+"</b><br>";
+              tst+=indirizzo+"<br>";
             //chiudo java
              %>
             <!--apro javascript-->
              <script>
-                //passo i dati del Marker e del Popup con Jason
-                lat=<%=lt%>;
-                long=<%=lg%>;
-                testo="<%=tst%>";
+               //passo i dati del Marker e del Popup con Jason
+                 lat=<%=lt%>;
+                 long=<%=lg%>;
+                 testo="<%=tst%>";
 
                 //funzione javascript che mette un marker sulla mappa
                 //e collegato al marker un popup
                 //MarkerPopup(lat,long,testo);
-                marker = L.marker([lat,long]).addTo(map);
+                  marker = L.marker([lat,long]).addTo(map);
               /*  popup = L.popup()
-               .setContent(testo);
-               marker.bindPopup(popup).openPopup();
+                .setContent(testo);
+                 marker.bindPopup(popup).openPopup();
                // marker.bindPopup(testo);*/
             </script>
             <!--chiudo javascript-->
@@ -107,10 +107,10 @@
         <script>
             //creazione del vettore percorso che costituiscono
             //i luoghi da visitare (waypoints del routing)
-            percorso.push(L.latLng(lat,long));
+             percorso.push(L.latLng(lat,long));
         </script>
             <%
-                //riapro java per chiudere il while
+              //riapro java per chiudere il while
         }
         //chiudo il file
         file.close();
@@ -120,10 +120,10 @@
             //inizio=L.latLng(45.30394584938996,9.4984909083659);
         //  Strada();
         // Creare un nuovo oggetto L.Routing.Control e aggiungerlo alla mappa
-        L.Routing.control({
-            waypoints: percorso,
-            position: 'bottomleft',
-            dragrable: 'true'
+           L.Routing.control({
+             waypoints: percorso,
+             position: 'bottomleft',
+             dragrable: 'true'
        }).addTo(map);
        
        // L.Routing.hidden():
