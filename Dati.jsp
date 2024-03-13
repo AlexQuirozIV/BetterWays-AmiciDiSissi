@@ -26,7 +26,7 @@
         
         //fasi di apertura del file testo
         
-        //1.creare una stringa contenente il nome del file
+        //1.creazione di una stringa contenente il nome del file
         String FileDati=new String("Desktop/Server.txt");
 
         //2.creazione dell'oggetto stream
@@ -42,8 +42,8 @@
         //chiusura file
         scrivi.close();
         
-        %>
-        <%
+         %>
+         <%
           String curDir = System.getProperty("user.dir");
 
           out.println("\nIl file si trova nella cartella:");
