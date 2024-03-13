@@ -15,60 +15,91 @@
     width: 100%;
     position: relative; /* Aggiungi "relative" per consentire al contenuto di sovrapporsi allo sfondo */
     letter-spacing: 5px;
+    text-shadow: 2px 2px 5px red;
 }
-
-#img_logo {
-    width: 20px;
-    height: 20px;
+a {
+    width: auto;
 }
-
-#sliding_imgs_a {
-    width: 5rem;
-    height: 4rem;
-    float: left;
+#img-mappa {
+    display: block;
+    margin: 10% auto ;
+    max-width: 100%;
+    width: 40rem;
+    border: 1.5px solid #F9BF4D;
+    box-shadow: 0 0 10px #F9BF4D;
+    border-radius: 2.5%;
 }
-
-#img_mappa {
-    width: 25rem;
-    height: 15rem;
+.container {
+    display: block;
+    margin: 10% auto ;
+    max-width: 100%;
+    width: 40rem;
+    border-radius: 2.5%;
+  }
+  .overlay {
     position: absolute;
-    text-align: center;
-
-}
-
-#central_img:hover {
+    display: block;
+    margin: 10% auto ;
+    max-width: 100%;
+    width: 40rem;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgb(45, 45, 45);
+  }
+#img-mappa:hover {
     transform: scale(1.1);
-    transition: 1s;
+    transition: 0.5s;
 }
 
-#grigio {
-    width: 0;
-    height: 0;
-    
-    opacity: 100%;
+  
+.container:hover #img-mappa {
+    opacity: 0.3;
+  }
+  
+.container:hover .overlay {
+    opacity: 1;
+  }
+  
+.text {
+    display: block;
+    margin: 10% auto ;
+    max-width: 100%;
+    width: 40rem;
+    color: white;
+    font-size: 20px;
     position: absolute;
     text-align: center;
-}
+  }
+  
 
-#grigio:hover {
-    opacity: 60%;
-    width: 25rem;
-    height: 15rem;
-    transition: 1s;
-}
-
-#sliding_imgs_b {
-    width: 5rem;
-    height: 7rem;
+.sliding-imgs{
+    width: 10rem;
+    height: auto;
     position: absolute;
-    float: right;
+    text-align: center;
+    top: 50%;
+    right: 10%;
 }
 
-.gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 body {
     background-image: url(img/sfondo.jpg);

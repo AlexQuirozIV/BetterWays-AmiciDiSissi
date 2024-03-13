@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="main.css"> <!-- Stile main-->
+    <link rel="icon" type="image/x-icon" href="img/icona.jpg"> <!-- Logo del sito -->
     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+
     <!-- Font importati -->
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,25 +18,33 @@
 </head>
 <body style="margin: 0">
     <div id="betterWays_titolo2">BETTER WAYS</div>
-    <div id="corpo">
-        <div class="gallery">
-        <div>
-            <img id="sliding_imgs_a" src="img/work-in-progress.png" alt="Immagini a scorrimento"> <!-- Immagini a scorrimento a sinistra -->
-        </div>
-        
-        <div id="grigio"> </div>
-        
-        <div id="central_img">
-                <a href="home.html"><img id="img_mappa" src="img/Mappa.png" alt="Immagine Mappa"></a> <!-- Immagine mappa centrale -->
+        <div id="corpo">
+            <div class="container">
+                <div>
+                    <img class="sliding-imgs" src="img/tappe-popup/Stadio_Dossenina.jpg" alt="Immagini a scorrimento"> <!-- Immagini a scorrimento a sinistra -->
+                </div>
+                
+                <div id="container_grigio">
+                            <a href="home.html"><img id="img-mappa" src="img/Mappa.png" alt="Immagine Mappa"><a> <!-- Immagine mappa centrale -->
+                        <div class="overlay">
+                            <div class="text">Mappa</div>
+                        </div>
+                </div>
             </div>
-    
-        <div>
-            <img id="sliding_imgs_b" src="img/work-in-progress.png" alt="Immagini a scorrimento"> <!-- Immagini a scorrimento a destra -->
         </div>
+    </div>
 
-    </div>
+    <div id="sliding-imgs-wrapper">
+        <img class="sliding-imgs" src="img/a scorrimento/IMG1.jpg" alt="Immagini a scorrimento">
+        <img class="sliding-imgs" src="img/a scorrimento/IMG2.jpg" alt="Immagini a scorrimento">
+        <img class="sliding-imgs" src="img/a scorrimento/IMG3.jpg" alt="Immagini a scorrimento">
+        <img class="sliding-imgs" src="img/a scorrimento/IMG4.jpg" alt="Immagini a scorrimento">
+        <img class="sliding-imgs" src="img/a scorrimento/IMG5.jpg" alt="Immagini a scorrimento">
+
+        <button onclick="slide(-1)"><span class="material-symbols-outlined">chevron_left</span></button>
+        <button onclick="slide(+1)"><span class="material-symbols-outlined">chevron_right</span></button>
     </div>
     
-    
+    <script src="JS/main.js"></script>
 </body>
 </html>

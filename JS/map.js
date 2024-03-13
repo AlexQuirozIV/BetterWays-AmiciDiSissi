@@ -1,6 +1,7 @@
 /**
  * Script gestione mappa
 */
+
 "use strict";
 
 //! Costante con 'LA MAPPA'
@@ -18,9 +19,8 @@ function createMarkerIcon(url) {
     });
 }
 
+const markerIconDark = createMarkerIcon('img/marker-icone/markerIcona-dark.png');
 const markerIcon = createMarkerIcon('img/marker-icone/markerIcona.png');
-const startMarkerIcon = createMarkerIcon('img/marker-icone/startMarkerIcona.png');      //TODO: Texture belle pls
-const finishMarkerIcon = createMarkerIcon('img/marker-icone/finishMarkerIcona.png');
 
 
 //! Variabili globali e flags
@@ -440,9 +440,9 @@ function layPackage() {
         addWaypoints: false,
         // Effettiva creazione (_i e _n sono contatori necessari alla funzione)
         createMarker: function(_i, waypoint, _n) {
-            var icon = _i === 0 ? startMarkerIcon :
-                       _i === waypoints.length - 1 ? finishMarkerIcon :
-                       markerIcon
+            var icon = _i === 0 ? markerIconDark :
+                       _i === waypoints.length - 1 ? markerIconDark :
+                       markerIcon;
 
             return L.marker(waypoint.latLng, {
                 draggable: false,
