@@ -150,7 +150,7 @@ function bindPopupInfos(title, rating, description, imageLink) {
     if(description === undefined || description == '') { description = 'Descrizione di "' + title + '" inesistente'; }
     if(rating === undefined || rating < 0) { rating = 4; }
 
-    imageLink = '<img style="color: white" class="popupImage" src="img/tappe-popup/' + imageLink + '" alt="' + title + '">';
+    imageLink = '<img src="img/tappe-popup/' + imageLink + '" alt="' + title + '" style="color: white" class="popupImage">';
     title = '<p class="popupTitle">' + title + '</p>';
     rating = rate(rating);
     description = '<p class="popupDescription">' + description + '</p>';

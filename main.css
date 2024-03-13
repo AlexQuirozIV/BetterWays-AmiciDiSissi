@@ -1,3 +1,22 @@
+* {
+    font-family: 'Comfortaa', Arial;
+}
+
+#betterWays_titolo2 {
+    background-image: url(./img/titleHeader.jpg);
+    text-align: center;
+    color: #F9BF4D;
+    font-family: "Bebas Neue" , sans-serif;
+    font-size: 3.2rem;
+    margin: 0;
+    padding: 0;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 100%;
+    position: relative; /* Aggiungi "relative" per consentire al contenuto di sovrapporsi allo sfondo */
+    letter-spacing: 5px;
+}
+
 #img_logo {
     width: 20px;
     height: 20px;
@@ -19,7 +38,23 @@
 
 #central_img:hover {
     transform: scale(1.1);
-    transition: 0.5s;
+    transition: 1s;
+}
+
+#grigio {
+    width: 0;
+    height: 0;
+    
+    opacity: 100%;
+    position: absolute;
+    text-align: center;
+}
+
+#grigio:hover {
+    opacity: 60%;
+    width: 25rem;
+    height: 15rem;
+    transition: 1s;
 }
 
 #sliding_imgs_b {
@@ -36,7 +71,7 @@
 }
 
 body {
-    background-image: url(img/titleHeader.jpg);
+    background-image: url(img/sfondo.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
