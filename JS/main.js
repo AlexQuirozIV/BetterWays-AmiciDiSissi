@@ -20,8 +20,9 @@ function automaticSlide() {
 }
 
 function showImage(index) {
-    var images = document.getElementsByClassName("sliding-imgs");
+    var images = document.getElementsByClassName("sliding-imgs2");
 
+    // Loop intorno
     if(index > images.length) {
         slideIndex = 1;
     }
@@ -29,8 +30,10 @@ function showImage(index) {
         slideIndex = images.length;
     }
 
+    // Display none a tutte...
     for(let i = 0; i < images.length; i++) {
         images[i].style.display = "none";  
     }
+    // ...tranne quella selezionata
     images[slideIndex-1].style.display = "block";  
 }

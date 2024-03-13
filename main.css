@@ -72,14 +72,15 @@ a {
   }
   
 
-.sliding-imgs{
-    width: 10rem;
+  .sliding-imgs1{
+    margin: 10% auto ;
+    max-width: 10%;
+    width: 1rem;
     height: auto;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    right: 10%;
-}
+    border: 1.5px solid #F9BF4D;
+    box-shadow: 0 0 10px #F9BF4D;
+    border-radius: 2.5%;
+  }
 
 
 
