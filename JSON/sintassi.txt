@@ -13,12 +13,12 @@ esempio:
 "Castello-Visconteo": [
     [45.312376641034014, 9.498816848941937],
     "Castello Visconteo",
-    4,                                          // Livello di accessibilità -> 4 su 5
+    4,                                          // Livello di accessibilità -> 4 su 5 (per adesso sono random)
     "Bellissimo castello magico",
     "img/tappe-popup/Castello-Visconteo.jpg"
 ]
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 "packages.json":
 

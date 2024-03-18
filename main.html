@@ -17,32 +17,37 @@
     <title>Home Better Ways</title>
 </head>
 <body style="margin: 0">
-    <div id="betterWays_titolo2">BETTER WAYS</div>
-        <div id="corpo">
-            <div class="container">
-                <div>
-                    <img class="sliding-imgs1" src="img/tappe-popup/Stadio_Dossenina.jpg" alt="Immagini a scorrimento"> <!-- Immagini a scorrimento a sinistra -->
-                </div>
-                
-                <div id="container_grigio">
-                            <a href="home.html"><img id="img-mappa" src="img/Mappa.png" alt="Immagine Mappa"><a> <!-- Immagine mappa centrale -->
-                        <div class="overlay">
-                            <div class="text">Mappa</div>
-                        </div>
-                </div>
-            </div>
+    <div id="betterWaysTitolo">BETTER WAYS</div>
+    
+    <div id="content">
+        <div id="slidingImages1">
+            <img class="slidingImageLeft" src="img/a scorrimento/IMG1.jpg" alt="Immagini a scorrimento">
+            <img class="slidingImageLeft" src="img/a scorrimento/IMG2.jpg" alt="Immagini a scorrimento">
+            <img class="slidingImageLeft" src="img/a scorrimento/IMG3.jpg" alt="Immagini a scorrimento">
+            <img class="slidingImageLeft" src="img/a scorrimento/IMG4.jpg" alt="Immagini a scorrimento">
+            <img class="slidingImageLeft" src="img/a scorrimento/IMG5.jpg" alt="Immagini a scorrimento">
+
+            <button onclick="slideLeft(-1)"><span class="material-symbols-outlined">chevron_left</span></button>
+            <button onclick="slideLeft(+1)"><span class="material-symbols-outlined">chevron_right</span></button>
         </div>
-    </div>
 
-    <div id="sliding-imgs-wrapper">
-        <img class="sliding-imgs2" src="img/a scorrimento/IMG1.jpg" alt="Immagini a scorrimento">
-        <img class="sliding-imgs2" src="img/a scorrimento/IMG2.jpg" alt="Immagini a scorrimento">
-        <img class="sliding-imgs2" src="img/a scorrimento/IMG3.jpg" alt="Immagini a scorrimento">
-        <img class="sliding-imgs2" src="img/a scorrimento/IMG4.jpg" alt="Immagini a scorrimento">
-        <img class="sliding-imgs2" src="img/a scorrimento/IMG5.jpg" alt="Immagini a scorrimento">
+        <div id="map">
+            <img src="img/Mappa.png" alt="Immagine Mappa">   <!-- Immagine mappa centrale -->
+            <a href="home.html">
+                <div><span>Mappa</span></div>
+            </a>
+        </div>
 
-        <button onclick="slide(-1)"><span class="material-symbols-outlined">chevron_left</span></button>
-        <button onclick="slide(+1)"><span class="material-symbols-outlined">chevron_right</span></button>
+        <div id="slidingImages2">
+            <img class="slidingImageRight" src="img/a scorrimento/IMG1.jpg" alt="Immagini a scorrimento">
+            <img class="slidingImageRight" src="img/a scorrimento/IMG2.jpg" alt="Immagini a scorrimento">
+            <img class="slidingImageRight" src="img/a scorrimento/IMG3.jpg" alt="Immagini a scorrimento">
+            <img class="slidingImageRight" src="img/a scorrimento/IMG4.jpg" alt="Immagini a scorrimento">
+            <img class="slidingImageRight" src="img/a scorrimento/IMG5.jpg" alt="Immagini a scorrimento">
+
+            <button onclick="slideRight(-1)"><span class="material-symbols-outlined">chevron_left</span></button>
+            <button onclick="slideRight(+1)"><span class="material-symbols-outlined">chevron_right</span></button>
+        </div>
     </div>
     
     <script src="JS/main.js"></script>

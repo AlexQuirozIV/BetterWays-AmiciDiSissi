@@ -2,7 +2,13 @@
     font-family: 'Comfortaa', Arial;
 }
 
-#betterWays_titolo2 {
+body {
+    background-image: url(img/sfondo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#betterWaysTitolo {
     background-image: url(./img/titleHeader.jpg);
     text-align: center;
     color: #F9BF4D;
@@ -10,14 +16,193 @@
     font-size: 3.2rem;
     margin: 0;
     padding: 0;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding-top: 0.06em;
+    padding-bottom: 0.06em;
     width: 100%;
-    position: relative; /* Aggiungi "relative" per consentire al contenuto di sovrapporsi allo sfondo */
+    position: fixed; /* Aggiungi "relative" per consentire al contenuto di sovrapporsi allo sfondo */
     letter-spacing: 5px;
     text-shadow: 2px 2px 5px red;
+    z-index: 2;
 }
-a {
+
+#content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+
+/* Mappa */
+
+#map {
+    position: relative;
+    border-radius: 25px;
+}
+
+#map img {
+    width: 40rem;
+    border-radius: 25px;
+    border: 1.5px solid #F9BF4D;
+    box-shadow: 0 0 10px #F9BF4D;
+    transition: 0.3s;
+}
+
+#map div {
+    background-color: #2d2d2d;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 1em;
+    font-weight: bold;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#map:hover img {
+    transform: scale(1.03);
+    filter: blur(1.5px);
+}
+
+#map:hover div {
+    opacity: 1;
+}
+
+#map span {
+    display: inline-block;
+    position: relative;
+}
+  
+#map span::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #F9BF4D;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+#map span:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/* Sliding images */
+
+.slidingImageLeft, .slidingImageRight {
+    display: none;
+    width: 30rem;
+    border: 1.5px solid #F9BF4D;
+    box-shadow: 0 0 10px #F9BF4D;
+    border-radius: 15px;
+    transition: 0.3s ease-in-out;
+}
+
+#slidingImages1, #slidingImages2 {
+    position: relative;
+}
+
+/* Bottoni sliding images */
+#slidingImages1 button, #slidingImages2 button {
+    border: none;
+    background-color: #363636;
+    color: #F9BF4D;
+    padding: 5px;
+}
+
+#slidingImages1 button:first-of-type,
+#slidingImages2 button:first-of-type {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    border-radius: 0px 100px 100px 0px;
+    transform: translateY(-50%);
+}
+
+#slidingImages1 button:first-of-type span,
+#slidingImages2 button:first-of-type span {
+    transition: 0.2s;
+}
+
+#slidingImages1 button:first-of-type:hover span,
+#slidingImages2 button:first-of-type:hover span {
+    transform: translateX(-25%);
+}
+
+#slidingImages1 button:nth-of-type(2) span,
+#slidingImages2 button:nth-of-type(2) span {
+    transition: 0.2s;
+}
+
+#slidingImages1 button:nth-of-type(2):hover span,
+#slidingImages2 button:nth-of-type(2):hover span {
+    transform: translateX(25%);
+}
+
+#slidingImages1 button:nth-of-type(2),
+#slidingImages2 button:nth-of-type(2) {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    border-radius: 100px 0px 0px 100px;
+    transform: translateY(-50%);
+}
+
+#slidingImages1 button:hover,
+#slidingImages2 button:hover {
+    cursor: pointer;
+}
+
+
+/* "Responsive" */
+
+@media only screen and (max-height: 600px), (max-width: 1700px) {
+    #map img {
+        width: 30rem;
+    }
+
+    .slidingImageLeft, .slidingImageRight {
+        width: 20rem;
+    }
+}
+
+@media only screen and (max-width: 1180px) {
+    #map img {
+        width: 25rem;
+    }
+
+    .slidingImageLeft, .slidingImageRight {
+        width: 15rem;
+    }
+}
+
+@media only screen and (max-width: 890px) {
+    #content {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding-top: 80px;
+        flex-direction: column;
+    }
+
+    #map img {
+        width: 15rem;
+        height: 20rem;
+        object-fit: cover;
+    }
+}
+
+
+/* a {
     width: auto;
 }
 #img-mappa {
@@ -69,41 +254,4 @@ a {
     font-size: 20px;
     position: absolute;
     text-align: center;
-  }
-  
-
-  .sliding-imgs1{
-    margin: 10% auto ;
-    max-width: 10%;
-    width: 1rem;
-    height: auto;
-    border: 1.5px solid #F9BF4D;
-    box-shadow: 0 0 10px #F9BF4D;
-    border-radius: 2.5%;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-body {
-    background-image: url(img/sfondo.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+  } */
