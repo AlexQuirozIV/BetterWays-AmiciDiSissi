@@ -235,7 +235,7 @@ function addSingleMarkerMenu() {
 
     // Bottone 'invia'
     var okButton = document.createElement('button');
-    okButton.textContent = 'OK';
+    okButton.textContent = 'Aggiungi';
     okButton.setAttribute('onclick', 'singleMarkerMenuPlace()');
     buttonWrapper.appendChild(okButton);
     

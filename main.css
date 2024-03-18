@@ -49,7 +49,23 @@ body {
     transition: 0.3s;
 }
 
-#map div {
+#mapOverlay {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.35);
+    border-radius: 25px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#mapOverlay:hover {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+#mappaLink {
     background-color: #2d2d2d;
     color: white;
     position: absolute;
@@ -61,14 +77,14 @@ body {
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: 0.3s;
+    border-radius: 20px;
 }
 
 #map:hover img {
     transform: scale(1.03);
-    filter: blur(1.5px);
 }
 
-#map:hover div {
+#map:hover #mappaLink {
     opacity: 1;
 }
 
@@ -88,6 +104,7 @@ body {
     background-color: #F9BF4D;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
+    border-radius: 25px;
 }
 
 #map span:hover::after {
@@ -200,58 +217,3 @@ body {
         object-fit: cover;
     }
 }
-
-
-/* a {
-    width: auto;
-}
-#img-mappa {
-    display: block;
-    margin: 10% auto ;
-    max-width: 100%;
-    width: 40rem;
-    border: 1.5px solid #F9BF4D;
-    box-shadow: 0 0 10px #F9BF4D;
-    border-radius: 2.5%;
-}
-.container {
-    display: block;
-    margin: 10% auto ;
-    max-width: 100%;
-    width: 40rem;
-    border-radius: 2.5%;
-  }
-  .overlay {
-    position: absolute;
-    display: block;
-    margin: 10% auto ;
-    max-width: 100%;
-    width: 40rem;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: rgb(45, 45, 45);
-  }
-#img-mappa:hover {
-    transform: scale(1.1);
-    transition: 0.5s;
-}
-
-  
-.container:hover #img-mappa {
-    opacity: 0.3;
-  }
-  
-.container:hover .overlay {
-    opacity: 1;
-  }
-  
-.text {
-    display: block;
-    margin: 10% auto ;
-    max-width: 100%;
-    width: 40rem;
-    color: white;
-    font-size: 20px;
-    position: absolute;
-    text-align: center;
-  } */

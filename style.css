@@ -134,16 +134,7 @@ a.leaflet-popup-close-button:hover {
 #addMarker-btn {
     width: 70px;
     height: 70px;
-    background: radial-gradient(circle,
-                #747474 20%,
-                #676767 30%,
-                #5a5a5a 40%,
-                #4d4d4d 50%,
-                #404040 60%,
-                #333333 70%,
-                #262626 80%,
-                #191919 90%,
-                #0c0c0c);
+    background-color: #444444;
     color: var(--highlight-color);
     display: flex;
     align-items: center;
@@ -170,7 +161,7 @@ a.leaflet-popup-close-button:hover {
     height: fit-content;
     position: fixed;
     bottom: 1rem;
-    right: -10.75rem;
+    right: -12.5rem;
     transform: translate(-50%, -50%) scale(0);
     padding: 25px;
     padding-top: 30px;
@@ -207,12 +198,14 @@ a.leaflet-popup-close-button:hover {
 #addMarkerMenu button, #packagesMenu button {
     background-color: rgba(37, 37, 37, 0.5);
     border: 1px var(--highlight-color) solid;
+    border-radius: 50px;
 
     text-align: center;
+    line-height: 1.2;
     font-weight: bold;
     color: white;
 
-    padding: 7px;
+    padding: 9px;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: 7px;

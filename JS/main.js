@@ -64,5 +64,5 @@ function automaticSlide() {
     setInterval(function() {
         slideLeft(+1);
         slideRight(+1);
-    }, 5000);
+    }, 4000);
 }
