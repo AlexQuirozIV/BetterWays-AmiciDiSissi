@@ -1,43 +1,43 @@
 {
     "menuNames": [
-        "Single Marker",
-            "Add",
-            "Remove",
-            "Add all",
-            "Remove all",
+        "Marker Singolo",
+            "Aggiungi",
+            "Rimuovi",
+            "Aggiungi tutti",
+            "Rimuovi tutti",
         "Account",
-        "Itinerary",
-            "Start",
-            "Remove",
-        "Accessibility",
-        "Settings",
-            "Legend",
-            "Destination not yet reached",
-            "Destination reached",
-            "Itinerary completed",
-            "Language",
-        "Our Team",
-            "Welcome to the world of <i>Better Ways</i>! We are five students from the IIS A. Volta highschool of Lodi.<br>We are: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti and Linda Tessadori.<br>Our website, <i>Better Ways</i>, focuses on the tourism in the city of Lodi, to discover the wonders this small city has to offer."
+        "Itinerari",
+            "Comincia",
+            "Rimuovi",
+        "Accessibilità",
+        "Impostazioni",
+            "Legenda",
+            " = Tappa non raggiunta",
+            " = Tappa raggiunta",
+            " = Percorso completato",
+            "Lingua",
+        "Il Nostro Team",
+            "Benvenuti nel mondo di <i>Better Ways</i>! Siamo cinque studenti della classe 4ID dell'istituto IIS A. Volta di Lodi.<br>Ci chiamiamo: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti e Linda Tessadori.<br>Il nostro sito, <i>Better Ways</i>, è incentrato sul turismo di Lodi, per scoprire le meraviglie che questa piccola città ha da offrire."
     ],
 
     "placesNames": {
-        "Visconti-Castle": [
+        "Castello-Visconteo": [
             [45.312376641034014, 9.498816848941937],
-            "Visconti Castle",
+            "Castello Visconteo",
             3,
             "",
             "img/tappe-popup/Castello_Visconteo.jpg"
         ],
-        "San-Francesco-Church": [
+        "Chiesa-di-San-Francesco": [
             [45.314617754968054, 9.507929720552477],
-            "San Francesco Church",
+            "Chiesa di San Francesco",
             1,
             "",
             "img/tappe-popup/chiesa_san_francesco.jpeg"
         ],
-        "Lodi-Cathedral": [
+        "Duomo-di-Lodi": [
             [45.314214319510235, 9.503150096251492],
-            "Lodi Cathedral",
+            "Duomo di Lodi",
             1,
             "",
             "img/tappe-popup/Lodi_Duomo_facciata.jpg"
@@ -56,79 +56,79 @@
             "",
             "img/tappe-popup/monumento_alla_Resistenza.jpg"
         ],
-        "Museum-of-Printing": [
+        "Museo-della-Stampa": [
             [45.31796325796598, 9.502647436164928],
-            "Museum of Printing",
+            "Museo della Stampa",
             4,
             "",
             "img/tappe-popup/lodi_museo_della_stampa.jpg"
         ],
-        "Museum-of-Musical-Instruments-&-Music": [
+        "Museo-dello-Strumento-Musicale-&-della-Musica": [
             [45.30701338770822, 9.50199549913424],
-            "Museum of Musical Instruments & Music",
+            "Museo dello Strumento Musicale & della Musica",
             3,
             "",
             "img/tappe-popup/museo_dello_strumento_musicale_e_della_musica.jpg"
         ],
-        "Paolo-Gorini-Museum": [
+        "Museo-di-Paolo-Gorini": [
             [45.3138348117735, 9.508056454515657],
-            "Paolo Gorini Museum",
+            "Museo di Paolo Gorini",
             5,
             "",
             "img/tappe-popup/museo-paolo-gorini-lodi.jpg"
         ],
-        "Palacastellotti-Sport-Facility": [
+        "Palazzetto-Palacastellotti": [
             [45.297359483089814, 9.510770296119013],
-            "Palacastellotti Sport Facility",
+            "Palazzetto Palacastellotti",
             1,
             "",
             "img/tappe-popup/palacastellotti.jpg"
         ],
-        "Adda-Sud-Park": [
+        "Parco-Adda-Sud": [
             [45.314040272551736, 9.498271300674975],
-            "Adda Sud Park",
+            "Parco Adda Sud",
             2,
             "",
             "img/tappe-popup/Parco_adda_sud.jpg"
         ],
-        "Isola-Carolina-Park": [
+        "Parco-Isola-Carolina": [
             [45.315097006869266, 9.498896680791935],
-            "Isola Carolina Park",
+            "Parco dell'Isola Carolina",
             2,
             "",
             "img/tappe-popup/isola_carolina.jpg"
         ],
-        "Villa-Braila-Park": [
+        "Parco-Villa-Braila": [
             [45.30376301489828, 9.508691843847435],
-            "Villa Braila Park",
+            "Parco Villa Braila",
             0,
             "",
             "img/tappe-popup/villa_Braila.jpg"
         ],
-        "Dossenina-Stadium": [
+        "Stadio-Dossenina": [
             [45.30739132224016, 9.495022000717784],
-            "Dossenina Stadium",
+            "Stadio Dossenina",
             3,
             "",
             "img/tappe-popup/Stadio_Dossenina.jpg"
         ],
-        "Alle-Vigne-Theater": [
+        "Teatro-Alle-Vigne": [
             [45.31506910520015, 9.506154729318768],
-            "Alle Vigne Theater",
+            "Teatro Alle Vigne",
             3,
             "",
             "img/tappe-popup/Teatro-alle-Vigne.jpg"
         ],
-        "Civic-Temple-of-the-Incoronata": [
+        "Tempio-Civico-Incoronata": [
             [45.31465971960593, 9.502055674244136],
-            "Civic Temple of the Incoronata",
+            "Tempio Civico dell'Incoronata",
             2,
             "",
             "img/tappe-popup/TempioIncoronata.jpg"
         ],
-        "Lodi-Rook": [
+        "Torrione-di-Lodi": [
             [45.3126397552172, 9.498001343678204],
-            "Lodi Rook",
+            "Torrione di Lodi",
             3,
             "",
             "img/tappe-popup/torrione.jpg"
@@ -136,33 +136,33 @@
     },
 
     "itineraryNames": {
-        "Castles": [
-            "Visconti-Castle",
-            "Lodi-Rook"
+        "Castelli": [
+            "Castello-Visconteo",
+            "Torrione-di-Lodi"
         ],
-        "Places of Worship": [
-            "Lodi-Cathedral",
-            "Civic-Temple-of-the-Incoronata",
-            "San-Francesco-Church"
+        "Luoghi Religiosi": [
+            "Duomo-di-Lodi",
+            "Tempio-Civico-Incoronata",
+            "Chiesa-di-San-Francesco"
         ],
-        "Monuments": [
+        "Monumenti Onoranti": [
             "Monumento-alla-Resistenza"
         ],
-        "Museum & Theaters": [
-            "Museum-of-Printing",
-            "Paolo-Gorini-Museum",
-            "Alle Vigne Theater",
-            "Museum-of-Musical-Instruments-&-Music"
+        "Musei & Teatri": [
+            "Museo-della-Stampa",
+            "Museo-di-Paolo-Gorini",
+            "Teatro-Alle-Vigne",
+            "Museo-dello-Strumento-Musicale-&-della-Musica"
         ],
-        "Parks": [
-            "Adda-Sud-Park",
-            "Isola-Carolina-Park",
-            "Villa-Braila-Park"
+        "Parchi": [
+            "Parco-Adda-Sud",
+            "Parco-Isola-Carolina",
+            "Parco-Villa-Braila"
         ],
-        "Sport Buildings": [
-            "Dossenina-Stadium",
+        "Strutture Sportive": [
+            "Stadio-Dossenina",
             "Faustina-Sporting-Club",
-            "Palacastellotti-Sport-Facility"
+            "Palazzetto-Palacastellotti"
         ]
     }
 }

@@ -19,19 +19,11 @@ function createMarkerIcon(url) {
     });
 }
 
+
+//! Costanti globali
 const markerIconDark = createMarkerIcon('img/marker-icone/markerIcona-dark.png');
 const markerIcon = createMarkerIcon('img/marker-icone/markerIcona.png');
-
-
-//! Variabili globali e flags
-var openedMenuId;           // Contiene l'id del menu aperto in quel momento
-var availablePlace = [];    // Flag se il marker esiste già o no (prevenire spam)
-var singleMarkers = [];     // Contiene i singoli markers creati
-var isPackageLaid = false;  // C'è un pacchetto iniziato?
-var currentPackageRouting;  // Quale pacchetto è "piazzato"?
-var places;                 // Contiene i "places" presi dal JSON
-var packages;               // Contiene i "packages" presi dal JSON (riformattati, vedi il 'for' in "fetchPackages")
-var menus = [               // ID di ogni singolo menu esistente  //TODO: Aggiungere altri menu se mai verranno creati
+const menus = [                           // ID di ogni singolo menu esistente  //TODO: Aggiungere altri menu se mai verranno creati
     "addMarkerMenu",
     "packagesMenu",
     "chiSiamoMenu",
@@ -39,8 +31,8 @@ var menus = [               // ID di ogni singolo menu esistente  //TODO: Aggiun
     "settingsMenu",
     "accountMenu"
 ];
-
-var languagesList = [
+const languagesList = [                   // Lista lingue supportate
+    "-",
     "🇮🇹 - Italiano",
     "🇬🇧 - English",
     "🇪🇸 - Español",
@@ -48,81 +40,89 @@ var languagesList = [
     "🇫🇷 - Français",
     "🇵🇹 - Português"
 ];
-var currentLanguage = languagesList[0];
 
-//! "places" e "packages" fetch e inizializzazione
-/* Prendi "places" dal JSON... */
-async function fetchPlaces(currentLanguage) {
-    try {
-        availablePlace = [];
-        singleMarkers = [];
-        currentPackageRouting = undefined;
-        places = undefined;
-        packages = undefined;
-        closeOpenMenus();
 
-        switch (currentLanguage) {
-            case "🇮🇹 - Italiano":
-                var response = await fetch('JSON/places.json');
-                places = await response.json();
-                break;
-            
-            case "🇬🇧 - English":
-                var response = await fetch('JSON/languageTranslations/english.json');
-                places = await response.json();
-                break;
+//! Variabili globali e flags
+var openedMenuId;                       // Contiene l'id del menu aperto in quel momento
+var availablePlace = [];                // Flag se il marker esiste già o no (prevenire spam)
+var singleMarkers = [];                 // Contiene i singoli markers creati
+var isPackageLaid = false;              // C'è un pacchetto iniziato?
+var currentPackageRouting;              // Quale pacchetto è "piazzato"?
+var information;                        // Contiene le informazioni presi dai JSON
+var currentLanguage = languagesList[0]; // Lingua selezionata (default '-', ovvero Italiano)
+
+//! Fetch e inizializzazione informazioni
+/* Prendi informazioni dal JSON... */
+async function fetchInfos(currentLanguage) {
+    availablePlace = [];
+    singleMarkers = [];
+    currentPackageRouting = undefined;
+    information = undefined;
+
+    switch (currentLanguage) {
+        case "🇮🇹 - Italiano":
+            var response = await fetch('JSON/languageTranslations/italiano.json');
+            information = await response.json();
+            availablePlaceLanguageRefill();
+
+            break;
         
-            default:
-                response = await fetch('JSON/places.json');
-                places = await response.json();
+        case "🇬🇧 - English":
+            var response = await fetch('JSON/languageTranslations/english.json');
+            information = await response.json();
+            availablePlaceLanguageRefill();
 
-                for (const key in places) {
-                    if (!(places.hasOwnProperty(key))) {
-                        break;
-                    }
-                    availablePlace.push(key);
-                }
-                break;
-        }
+            break;
+        
+        case "🇪🇸 - Español":
+            var response = await fetch('JSON/languageTranslations/espanol.json');
+            information = await response.json();
+            availablePlaceLanguageRefill();
 
-        for (const key in places[1]) {
-            if (!(places.hasOwnProperty(key))) {
-                break;
-            }
-            availablePlace.push(key);
-        }
+            break;
+        
+        case "🇩🇪 - Deutsch":
+            var response = await fetch('JSON/languageTranslations/deutsch.json');
+            information = await response.json();
+            availablePlaceLanguageRefill();
 
-        // Messaggio di successo
-        console.log('Places fetched successfully:', places);
-    } catch (error) {
-        // Qualcosa è andato storto :(
-        console.error('Error fetching places data:', error);
+            break;
+        
+        case "🇫🇷 - Français":
+            var response = await fetch('JSON/languageTranslations/francais.json');
+            information = await response.json();
+            availablePlaceLanguageRefill();
+
+            break;
+        
+        case "🇵🇹 - Português":
+            var response = await fetch('JSON/languageTranslations/portugues.json');
+            information = await response.json();
+            availablePlaceLanguageRefill();
+
+            break;
+                        
+        default:
+            var response = await fetch('JSON/languageTranslations/italiano.json');
+            information = await response.json();
+            availablePlaceLanguageRefill();
+
+            break;
     }
-}
-/* Prendi "packages" dal JSON e riformattali... */
-async function fetchPackages(currentLanguage) {
-    try {
-        const response = await fetch('JSON/packages.json');
-        packages = await response.json();
 
-        // Riassegna "packages" con i valori completi da "places" (non solo la key)
-        for (const key in packages) {
-            const values = packages[key].map(reference => places[reference]);
-            packages[key] = values;
-        }
-
-        // Messaggio di successo
-        console.log('Packages fetched successfully:', packages);
-    } catch (error) {
-        // Qualcosa è andato storto :(
-        console.error('Error fetching packages data:', error);
+    function availablePlaceLanguageRefill() {
+        Object.keys(information.placesNames).forEach(place => {
+            availablePlace.push(place);
+        });
     }
+
+    // Messaggio di successo
+    console.log('Information fetched successfully:', information);
 }
 
 //* Attendiamo di aver preso i dati prima di procedere all'avvio della pagina... */
 async function startWebsite() {
-    await fetchPlaces();
-    await fetchPackages();
+    await fetchInfos();
 }
 
 startWebsite();
@@ -198,17 +198,6 @@ function bindPopupInfos(title, rating, description, imageLink) {
 
 
 //! Utilità
-/* Crea pulsanti con icona da Google + può assegnare un id + onClickFunction */
-function createActionButton(iconName, id, onClickFunction) {
-    let button = document.createElement('span');
-    button.className = 'material-icons';
-    button.id = id;
-    button.setAttribute('onclick', onClickFunction);
-    button.textContent = iconName;
-
-    return button;
-}
-
 /* Chiudi tutti menu aperti se click sulla mappa */
 function closeOpenMenus() {
     menus.forEach(menu => {
@@ -250,18 +239,17 @@ function addSingleMarkerMenu() {
 
     /* Titolo */
     var title = document.createElement('span');
-    title.innerHTML = 'Marker Singoli';
+    title.innerHTML = information.menuNames[0];
     menu.appendChild(title);
 
     /* Tendina di selezione */
     var selectBox = document.createElement('select');
-    for (const key in places) {
-        if (!(places.hasOwnProperty(key))) {
-            break;
-        }
+    var optionsNames = Object.values(information.placesNames).map(array => array[1]);
+
+    for(let i = 0; i < optionsNames.length; i++) {
         let option = document.createElement('option');
-        option.value = key;
-        option.text = places[key][1];
+        option.value = availablePlace[i];
+        option.text = optionsNames[i];
         selectBox.add(option);
     }
 
@@ -272,25 +260,25 @@ function addSingleMarkerMenu() {
 
     // Bottone 'invia'
     var okButton = document.createElement('button');
-    okButton.textContent = 'Aggiungi';
+    okButton.textContent = information.menuNames[1];
     okButton.setAttribute('onclick', 'singleMarkerMenuPlace()');
     buttonWrapper.appendChild(okButton);
     
     // Bottone 'rimuovi'
     var cancelButton = document.createElement('button');
-    cancelButton.textContent = 'Rimuovi';
+    cancelButton.textContent = information.menuNames[2];
     cancelButton.setAttribute('onclick', 'singleMarkerMenuRemove()');
     buttonWrapper.appendChild(cancelButton);
 
     // Bottone 'aggiungi tutti'
     var addAllButton = document.createElement('button');
-    addAllButton.textContent = 'Aggiungi tutti';
+    addAllButton.textContent = information.menuNames[3];
     addAllButton.setAttribute('onclick', 'singleMarkerMenuAddAll()');
     buttonWrapper.appendChild(addAllButton);
 
     // Bottone 'rimuovi tutti'
     var cancelAllButton = document.createElement('button');
-    cancelAllButton.textContent = 'Rimuovi tutti';
+    cancelAllButton.textContent = information.menuNames[4];
     cancelAllButton.setAttribute('onclick', 'singleMarkerMenuRemoveAll()');
     buttonWrapper.appendChild(cancelAllButton);
 
@@ -326,12 +314,12 @@ function singleMarkerMenuPlace() {
     // Crea il nuovo marker se non già piazzato e lo salva dentro 'markers'
     if(availablePlace.includes(selectedPlace)) {
         // La funzione 'newMarker' della mappa, prendendo info direttamente da 'places'
-        var bindingInfos = bindPopupInfos(places[selectedPlace][1],
-                                          places[selectedPlace][2],
-                                          places[selectedPlace][3],
-                                          places[selectedPlace][4]);
+        var bindingInfos = bindPopupInfos(information.placesNames[selectedPlace][1],
+                                          information.placesNames[selectedPlace][2],
+                                          information.placesNames[selectedPlace][3],
+                                          information.placesNames[selectedPlace][4]);
 
-        singleMarkers[selectedPlace] = newSingleMarker(places[selectedPlace][0], bindingInfos);
+        singleMarkers[selectedPlace] = newSingleMarker(information.placesNames[selectedPlace][0], bindingInfos);
         // Quando un marker non dev'essere piazzato diventa 'null'
         availablePlace[availablePlace.indexOf(selectedPlace)] = null;
     }
@@ -353,20 +341,20 @@ function singleMarkerMenuAddAll() {
         return;
     }
 
-    for (let i = 0; i < availablePlace.length; i++) {
+    for(let i = 0; i < availablePlace.length; i++) {
         let marker = availablePlace[i];
 
-        if (marker === null) {
+        if(marker === null) {
             continue; // Skip to the next iteration if marker is null
         }
 
         // La funzione 'newMarker' della mappa, prendendo info direttamente da 'places'
-        var bindingInfos = bindPopupInfos(places[marker][1],
-                                          places[marker][2],
-                                          places[marker][3],
-                                          places[marker][4]);
+        var bindingInfos = bindPopupInfos(information.placesNames[marker][1],
+                                          information.placesNames[marker][2],
+                                          information.placesNames[marker][3],
+                                          information.placesNames[marker][4]);
 
-        singleMarkers[marker] = newSingleMarker(places[marker][0], bindingInfos);
+        singleMarkers[marker] = newSingleMarker(information.placesNames[marker][0], bindingInfos);
         // Quando un marker non dev'essere piazzato diventa 'null'
         availablePlace[i] = null;
     }
@@ -376,12 +364,9 @@ function singleMarkerMenuRemoveAll() {
         map.removeLayer(singleMarkers[marker]);
     }
     availablePlace = [];
-    for (const key in places) {
-        if (!(places.hasOwnProperty(key))) {
-            break;
-        }
-        availablePlace.push(key);
-    }
+    Object.keys(information.placesNames).forEach(place => {
+        availablePlace.push(place);
+    });
 }
 
 
@@ -402,15 +387,17 @@ function packagesMenu() {
 
     /* Titolo */
     var title = document.createElement('span');
-    title.innerHTML = 'Itinerari';
+    title.innerHTML = information.menuNames[6];
     menu.appendChild(title);
 
     /* Tendina di selezione */
     var selectBox = document.createElement('select');
-    for(const pack in packages) {
+    var optionsNames = Object.keys(information.itineraryNames);
+
+    for(let i = 0; i < optionsNames.length; i++) {
         let option = document.createElement('option');
-        option.value = pack;
-        option.text = pack;
+        option.value = optionsNames[i];
+        option.text = optionsNames[i];
         selectBox.add(option);
     }
 
@@ -421,13 +408,13 @@ function packagesMenu() {
 
     // Bottone 'invia'
     var okButton = document.createElement('button');
-    okButton.textContent = 'Comincia';
+    okButton.textContent = information.menuNames[7];
     okButton.setAttribute('onclick', 'layPackage()');
     buttonWrapper.appendChild(okButton);
     
     // Bottone 'rimuovi'
     var cancelButton = document.createElement('button');
-    cancelButton.textContent = 'Rimuovi';
+    cancelButton.textContent = information.menuNames[8];
     cancelButton.setAttribute('onclick', 'removeLaidPackage()');
     buttonWrapper.appendChild(cancelButton);
     
@@ -448,7 +435,12 @@ function layPackage() {
 
     const selectedPackage = document.querySelector('#packagesMenu select').value;
     /* Prendi il 'pacchetto' da 'const packages' in base al parametro mandato */
-    var places = packages[selectedPackage];
+    var packagePlacesList = information.itineraryNames[selectedPackage];
+
+    var places = [];
+    packagePlacesList.forEach(element => {
+        places.push(information.placesNames[element]);
+    });
 
     /* Preleva le coordinate da 'packages' e le salva in 'waypoints' */
     var waypoints = places.map((place) => {
@@ -518,14 +510,12 @@ function chiSiamoMenu() {
 
     /* Titolo */
     var title = document.createElement('div');
-    title.innerHTML = 'Il Nostro Team';
+    title.innerHTML = information.menuNames[16];
     menu.appendChild(title);
 
     /* Bottoni flex-box (per metterli in fila) */
     var description = document.createElement('span');
-    description.innerHTML = `Benvenuti nel mondo di "<i>Better Ways</i>"! Siamo cinque studenti della classe 4ID dell'istituto IIS A. Volta di Lodi.
-                             <br>Ci chiamiamo: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti e Linda Tessadori.
-                             <br>Il nostro sito, "<i>Better Ways</i>", è incentrato sul turismo di Lodi, per scoprire le meraviglie che questa piccola città ha da offrire.`;
+    description.innerHTML = information.menuNames[17];
     menu.appendChild(description);
 
     /* Aggiungi all'HTML */
@@ -553,7 +543,7 @@ function accessibilityMenu() {
 
     /* Titolo */
     var title = document.createElement('div');
-    title.innerHTML = 'Accessibilità';
+    title.innerHTML = information.menuNames[9];
     menu.appendChild(title);
 
     /* Immagine */
@@ -586,46 +576,50 @@ function settingsMenu() {
 
     /* Titolo */
     var menuTitle = document.createElement('div');
-    menuTitle.innerHTML = 'Impostazioni';
+    menuTitle.innerHTML = information.menuNames[10];
     menu.appendChild(menuTitle);
 
     /* Legenda */
     var legend = document.createElement('div');
-    legend.id = 'legenda';
+    legend.id = 'legend';
 
     var legendTitle = document.createElement('div');
     legendTitle.id = 'legendTitle';
-    legendTitle.innerHTML = 'Legenda';
+    legendTitle.innerHTML = information.menuNames[11];
     legend.appendChild(legendTitle);
 
+    var legendContent = document.createElement('div');
+    legendContent.id = 'legendContent';
+
     var textLegend = [
-        " = Tappa non raggiunta",
-        " = Tappa raggiunta",
-        " = Percorso completato"
+        information.menuNames[12],
+        information.menuNames[13],
+        information.menuNames[14]
     ]
 
     for(let i = 0; i < textLegend.length; i++) {
+        let container = document.createElement('div');
         let marker = document.createElement('span');
         marker.classList.add('material-symbols-outlined');
-        marker.classList.add('coloredMarkersLegend');
+        marker.classList.add('legendContentIcon');
         marker.innerHTML = 'location_on';
-        legend.appendChild(marker);
+        container.appendChild(marker);
 
         let text = document.createElement('span');
-        text.classList.add('textLegend');
+        text.classList.add('legendContentText');
         text.innerHTML = textLegend[i];
-        legend.appendChild(text);
+        container.appendChild(text);
+
+        legendContent.appendChild(container);
     }
+    legend.appendChild(legendContent);
 
     menu.appendChild(legend);
 
     /* Lingue */
     var languageSwitch = document.createElement('div');
     languageSwitch.id = 'languageSwitch';
-
-    var languageSwitchTitle = document.createElement('div');
-    languageSwitchTitle.id = 'languageSwitchTitle';
-    languageSwitchTitle.innerHTML = 'Lingua';
+    var languageSwitchTitle = document.createElement('span');
     languageSwitch.appendChild(languageSwitchTitle);
 
     var selectLanguages = document.createElement('select');
@@ -637,8 +631,9 @@ function settingsMenu() {
         selectLanguages.add(option);
         i++;
     });
+    languageSwitch.appendChild(selectLanguages);
 
-    menu.appendChild(selectLanguages);
+    menu.appendChild(languageSwitch);
     
     
     /* Aggiungi all'HTML */
@@ -648,6 +643,24 @@ function settingsMenu() {
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
     menu.style.transform = 'scale(1)';
+
+    languageChangeListener();
+}
+function languageChangeListener() {
+    if(document.querySelector('#languageSwitch select') == currentLanguage) {
+        return;
+    }
+    
+    document.querySelector('#languageSwitch select').addEventListener('change', function(event) {
+        var selectedOption = event.target.value;
+        console.log('Selected option: ', selectedOption);
+        
+        currentLanguage = selectedOption;
+        singleMarkerMenuRemoveAll();
+        removeLaidPackage();
+
+        fetchInfos(currentLanguage);
+    });
 }
 
 //! Account menu
@@ -666,7 +679,7 @@ function accountMenu() {
 
     /* Titolo */
     var title = document.createElement('div');
-    title.innerHTML = 'Account';
+    title.innerHTML = information.menuNames[5];
     menu.appendChild(title);
 
     /* Immagine */

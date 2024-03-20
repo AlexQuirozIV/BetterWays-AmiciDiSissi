@@ -155,13 +155,21 @@ a.leaflet-popup-close-button:hover {
 }
 
 /* Menu aggiunta markers */
+#addMarkerMenu {
+    bottom: 7rem;
+    right: 2rem;
+}
+
+#packagesMenu, #chiSiamoMenu, #accessibilityMenu, #settingsMenu, #accountMenu {
+    top: 5.6rem;
+    left: 9rem;
+}
+
 #addMarkerMenu, #packagesMenu, #chiSiamoMenu, #accessibilityMenu, #settingsMenu, #accountMenu {
     z-index: 1000;
     width: fit-content;
     height: fit-content;
     position: fixed;
-    bottom: 5rem;
-    right: 5rem;
     transform: scale(0);
     padding: 25px;
     padding-top: 30px;
@@ -204,8 +212,10 @@ a.leaflet-popup-close-button:hover {
     line-height: 1.2;
     font-weight: bold;
     color: white;
+    white-space: nowrap;
+    font-size: 90%;
 
-    padding: 9px;
+    padding: 10px;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: 7px;
@@ -234,18 +244,11 @@ a.leaflet-popup-close-button:hover {
     justify-content: space-evenly;
 }
 
-#packagesMenu {
-    top: 11.5rem;
-    left: 19rem;
-}
-
 #packagesMenu div {
     margin-top: 15px;
 }
 
 #chiSiamoMenu {
-    top: 16.9rem;
-    left: 22.5rem;
     color: white;
     text-align: left;
     width: 50ch;
@@ -253,7 +256,7 @@ a.leaflet-popup-close-button:hover {
 
 #chiSiamoMenu div,
 #accessibilityMenu div,
-#settingsMenu div,
+#settingsMenu > div:first-child,
 #accountMenu div,
 #addMarkerMenu span,
 #packagesMenu span {
@@ -277,15 +280,14 @@ a.leaflet-popup-close-button:hover {
     width: 15rem;
 }
 
-#accessibilityMenu, #settingsMenu, #accountMenu {
-    left: 17.5rem;
-    top: 16.2rem;
+#legendTitle {
+    text-align: left;
 }
 
-#settingsMenu {
-    display: grid;
-    grid-template-columns: auto; /* Una sola colonna */
-    grid-gap: 10px; /* Spazio tra le righe */
+#legend {
+    text-align: left;
+    display: flex;
+    grid-template-columns: auto auto;
 }
 
 /* Navbar */
