@@ -1,0 +1,29 @@
+{
+    "menuNames": [
+        "Einzelner Marker",
+            "Hinzufügen",
+            "Entfernen",
+            "Alle hinzufügen",
+            "Alle entfernen",
+        "Konto",
+        "Reiseroute",
+        "Barrierefreiheit",
+        "Einstellungen",
+            "Legende",
+            "Ziel noch nicht erreicht",
+            "Ziel erreicht",
+            "Reiseroute abgeschlossen",
+            "Sprache",
+        "Unser Team",
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    
+    ],
+
+    "placesNames": [
+        "QUI TRADUZIONE LUOGHI"
+    ],
+
+    "itineraryNames": [
+        "QUI TRADUZIONE ITINERARI"
+    ]
+}

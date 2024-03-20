@@ -1,0 +1,32 @@
+{
+    "menuNames": [
+        "Single Marker",
+            "Add",
+            "Remove",
+            "Add all",
+            "Remove all",
+        "Account",
+        "Itinerary",
+        "Accessibility",
+        "Settings",
+            "Legend",
+            "Destination not yet reached",
+            "Destination reached",
+            "Itinerary completed",
+            "Language",
+        "Our Team",
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    ],
+
+    "placesNames": {
+        "QUI TRADUZIONE LUOGHI": [
+
+        ]
+    },
+
+    "itineraryNames": {
+        "QUI TRADUZIONE ITINERARI": [
+            
+        ]
+    }
+}

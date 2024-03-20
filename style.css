@@ -160,9 +160,9 @@ a.leaflet-popup-close-button:hover {
     width: fit-content;
     height: fit-content;
     position: fixed;
-    bottom: 1rem;
-    right: -12.5rem;
-    transform: translate(-50%, -50%) scale(0);
+    bottom: 5rem;
+    right: 5rem;
+    transform: scale(0);
     padding: 25px;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -280,6 +280,12 @@ a.leaflet-popup-close-button:hover {
 #accessibilityMenu, #settingsMenu, #accountMenu {
     left: 17.5rem;
     top: 16.2rem;
+}
+
+#settingsMenu {
+    display: grid;
+    grid-template-columns: auto; /* Una sola colonna */
+    grid-gap: 10px; /* Spazio tra le righe */
 }
 
 /* Navbar */

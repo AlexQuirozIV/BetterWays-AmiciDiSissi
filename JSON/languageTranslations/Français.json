@@ -1,0 +1,32 @@
+{
+    "menuNames": [
+        "Marqueur unique",
+            "Ajouter",
+            "Supprimer",
+            "Tout ajouter",
+            "Tout supprimer",
+        "Compte",
+        "Itinéraire",
+        "Accessibilité",
+        "Paramètres",
+            "Légende",
+            "Destination non encore atteinte",
+            "Destination atteinte",
+            "Itinéraire terminé",
+            "Langue",
+        "Notre équipe",
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    ],
+
+    "placesNames": {
+        "QUI TRADUZIONE LUOGHI": [
+
+        ]
+    },
+
+    "itineraryNames": {
+        "QUI TRADUZIONE ITINERARI": [
+            
+        ]
+    }
+}

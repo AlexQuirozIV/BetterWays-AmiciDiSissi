@@ -38,17 +38,54 @@ var menus = [               // ID di ogni singolo menu esistente  //TODO: Aggiun
     "accessibilityMenu",
     "settingsMenu",
     "accountMenu"
-]
+];
+
+var languagesList = [
+    "🇮🇹 - Italiano",
+    "🇬🇧 - English",
+    "🇪🇸 - Español",
+    "🇩🇪 - Deutsch",
+    "🇫🇷 - Français",
+    "🇵🇹 - Português"
+];
+var currentLanguage = languagesList[0];
 
 //! "places" e "packages" fetch e inizializzazione
 /* Prendi "places" dal JSON... */
-async function fetchPlaces() {
+async function fetchPlaces(currentLanguage) {
     try {
-        const response = await fetch('JSON/places.json');
-        places = await response.json();
+        availablePlace = [];
+        singleMarkers = [];
+        currentPackageRouting = undefined;
+        places = undefined;
+        packages = undefined;
+        closeOpenMenus();
+
+        switch (currentLanguage) {
+            case "🇮🇹 - Italiano":
+                var response = await fetch('JSON/places.json');
+                places = await response.json();
+                break;
+            
+            case "🇬🇧 - English":
+                var response = await fetch('JSON/languageTranslations/english.json');
+                places = await response.json();
+                break;
         
-        // Per "available place" (dev'essere assegnata qui in quanto globale)
-        for (const key in places) {
+            default:
+                response = await fetch('JSON/places.json');
+                places = await response.json();
+
+                for (const key in places) {
+                    if (!(places.hasOwnProperty(key))) {
+                        break;
+                    }
+                    availablePlace.push(key);
+                }
+                break;
+        }
+
+        for (const key in places[1]) {
             if (!(places.hasOwnProperty(key))) {
                 break;
             }
@@ -63,7 +100,7 @@ async function fetchPlaces() {
     }
 }
 /* Prendi "packages" dal JSON e riformattali... */
-async function fetchPackages() {
+async function fetchPackages(currentLanguage) {
     try {
         const response = await fetch('JSON/packages.json');
         packages = await response.json();
@@ -187,7 +224,7 @@ function closeMenu(menu) {
         return;
     }
 
-    menu.style.transform = 'translate(-50%, -50%) scale(0)';
+    menu.style.transform = 'scale(0)';
     setTimeout(function() {
         menu.remove();
     }, 300);
@@ -266,7 +303,7 @@ function addSingleMarkerMenu() {
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
-    menu.style.transform = 'translate(-50%, -50%) scale(1)';
+    menu.style.transform = 'scale(1)';
 }
 
 /* Genera un singolo marker */
@@ -402,7 +439,7 @@ function packagesMenu() {
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
-    menu.style.transform = 'translate(-50%, -50%) scale(1)';
+    menu.style.transform = 'scale(1)';
 }
 
 /* Metti / togli itinerario piazzato */
@@ -497,7 +534,7 @@ function chiSiamoMenu() {
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
-    menu.style.transform = 'translate(-50%, -50%) scale(1)';
+    menu.style.transform = 'scale(1)';
 }
 
 //! Accessibilità menu
@@ -530,7 +567,7 @@ function accessibilityMenu() {
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
-    menu.style.transform = 'translate(-50%, -50%) scale(1)';
+    menu.style.transform = 'scale(1)';
 }
 
 //! Settings menu
@@ -548,22 +585,69 @@ function settingsMenu() {
     menu.id = 'settingsMenu';
 
     /* Titolo */
-    var title = document.createElement('div');
-    title.innerHTML = 'Impostazioni';
-    menu.appendChild(title);
+    var menuTitle = document.createElement('div');
+    menuTitle.innerHTML = 'Impostazioni';
+    menu.appendChild(menuTitle);
 
-    /* Immagine */
-    var image = document.createElement('img');
-    image.setAttribute('src', 'img/work-in-progress.png');
-    menu.appendChild(image);
+    /* Legenda */
+    var legend = document.createElement('div');
+    legend.id = 'legenda';
 
+    var legendTitle = document.createElement('div');
+    legendTitle.id = 'legendTitle';
+    legendTitle.innerHTML = 'Legenda';
+    legend.appendChild(legendTitle);
+
+    var textLegend = [
+        " = Tappa non raggiunta",
+        " = Tappa raggiunta",
+        " = Percorso completato"
+    ]
+
+    for(let i = 0; i < textLegend.length; i++) {
+        let marker = document.createElement('span');
+        marker.classList.add('material-symbols-outlined');
+        marker.classList.add('coloredMarkersLegend');
+        marker.innerHTML = 'location_on';
+        legend.appendChild(marker);
+
+        let text = document.createElement('span');
+        text.classList.add('textLegend');
+        text.innerHTML = textLegend[i];
+        legend.appendChild(text);
+    }
+
+    menu.appendChild(legend);
+
+    /* Lingue */
+    var languageSwitch = document.createElement('div');
+    languageSwitch.id = 'languageSwitch';
+
+    var languageSwitchTitle = document.createElement('div');
+    languageSwitchTitle.id = 'languageSwitchTitle';
+    languageSwitchTitle.innerHTML = 'Lingua';
+    languageSwitch.appendChild(languageSwitchTitle);
+
+    var selectLanguages = document.createElement('select');
+    let i = 0;
+    languagesList.forEach(language => {
+        let option = document.createElement('option');
+        option.value = language;
+        option.text = languagesList[i];
+        selectLanguages.add(option);
+        i++;
+    });
+
+    menu.appendChild(selectLanguages);
+    
+    
     /* Aggiungi all'HTML */
     document.body.appendChild(menu).offsetWidth;
     openedMenuId = menu.id;
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
-    menu.style.transform = 'translate(-50%, -50%) scale(1)';
+    menu.style.transform = 'scale(1)';
 }
 
 //! Account menu
@@ -596,5 +680,5 @@ function accountMenu() {
 
     /* Animazione entrata/uscita menu */
     menu.style.transition = '0.2s ease';
-    menu.style.transform = 'translate(-50%, -50%) scale(1)';
+    menu.style.transform = 'scale(1)';
 }
