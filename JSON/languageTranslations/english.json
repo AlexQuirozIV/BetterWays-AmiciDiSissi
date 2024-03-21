@@ -12,9 +12,9 @@
         "Accessibility",
         "Settings",
             "Legend",
-            "Destination not yet reached",
-            "Destination reached",
-            "Itinerary completed",
+            " = Destination not yet reached",
+            " = Destination reached",
+            " = Itinerary completed",
             "Language",
         "Our Team",
             "Welcome to the world of <i>Better Ways</i>! We are five students from the IIS A. Volta highschool of Lodi.<br>We are: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti and Linda Tessadori.<br>Our website, <i>Better Ways</i>, focuses on the tourism in the city of Lodi, to discover the wonders this small city has to offer."

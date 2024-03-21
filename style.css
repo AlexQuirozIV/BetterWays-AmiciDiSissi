@@ -280,14 +280,51 @@ a.leaflet-popup-close-button:hover {
     width: 15rem;
 }
 
-#legendTitle {
+#legendTitle, #languageSwitch > span {
     text-align: left;
+    color: white;
+    font-size: 115%;
+    font-weight: bold;
+    padding-right: 15px;
 }
 
 #legend {
     text-align: left;
     display: flex;
-    grid-template-columns: auto auto;
+    flex-direction: column;
+}
+
+#legendContent > div:nth-child(1) {
+    color: rgb(255, 0, 0);
+}
+
+#legendContent > div:nth-child(2) {
+    color: rgb(0, 255, 0);
+}
+
+#legendContent > div:nth-child(3) {
+    color: var(--highlight-color);
+}
+
+#legendContent > div {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+#languageSwitch {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#languageSwitch select {
+    border-radius: 200px;
+    padding-left: 5px;
+    font-size: 100%;
 }
 
 /* Navbar */

@@ -1,5 +1,5 @@
 /**
- * Script gestione mappa
+ * Script gestione mappa e menu... e tutto il resto
 */
 
 "use strict";
@@ -50,9 +50,10 @@ var isPackageLaid = false;              // C'è un pacchetto iniziato?
 var currentPackageRouting;              // Quale pacchetto è "piazzato"?
 var information;                        // Contiene le informazioni presi dai JSON
 var currentLanguage = languagesList[0]; // Lingua selezionata (default '-', ovvero Italiano)
+var currentLanguageID = 'it';
 
 //! Fetch e inizializzazione informazioni
-/* Prendi informazioni dal JSON... */
+/* Prendi informazioni dai JSON... */
 async function fetchInfos(currentLanguage) {
     availablePlace = [];
     singleMarkers = [];
@@ -117,14 +118,14 @@ async function fetchInfos(currentLanguage) {
     }
 
     // Messaggio di successo
-    console.log('Information fetched successfully:', information);
+    console.log('Information fetched successfully for\n',
+                (currentLanguage == undefined || currentLanguage == "-") ? "🇮🇹 - Italiano" : currentLanguage);
 }
 
-//* Attendiamo di aver preso i dati prima di procedere all'avvio della pagina... */
+/* Attendiamo di aver preso i dati prima di procedere all'avvio della pagina... */
 async function startWebsite() {
     await fetchInfos();
 }
-
 startWebsite();
 
 
@@ -170,10 +171,10 @@ document.body.onload = () => {
 /* Genera 'div' con 'img' in base al valore inserito sono 'piene' o no (necessaria per 'bindPopupInfos') */
 function rate(fullStarsNumber) {
     let rating = '';
-    for(let i = 0; i < fullStarsNumber; i++) {
+    for (let i = 0; i < fullStarsNumber; i++) {
         rating += '<img src="img/popup-rating-stars/fullStar.png" class="popupStars">';
     }
-    for(let i = 0; i < (5 - fullStarsNumber); i++) {
+    for (let i = 0; i < (5 - fullStarsNumber); i++) {
         rating += '<img src="img/popup-rating-stars/emptyStar.png" class="popupStars">';
     }
     rating = '<div class="popupRating">' + rating + '</div>'
@@ -182,10 +183,10 @@ function rate(fullStarsNumber) {
 }
 /* Genera le 'info' necessarie da aggiungere a ciascun popup tramite '.bindPopup(info)' */
 function bindPopupInfos(title, rating, description, imageLink) {
-    if(title === undefined || title == '') { title = 'Titolo inesistente'; }
-    if(imageLink === undefined || imageLink == '') { imageLink = 'Torre-Zucchetti.jpg'; }
-    if(description === undefined || description == '') { description = 'Descrizione di "' + title + '" inesistente'; }
-    if(rating === undefined || rating < 0) { rating = 4; }
+    if (title === undefined || title == '') { title = 'Titolo inesistente'; }
+    if (imageLink === undefined || imageLink == '') { imageLink = 'Torre-Zucchetti.jpg'; }
+    if (description === undefined || description == '') { description = 'Descrizione di "' + title + '" inesistente'; }
+    if (rating === undefined || rating < 0) { rating = 4; }
 
     imageLink = '<img src="' + imageLink + '" alt="' + title + '" style="color: white" class="popupImage">';
     title = '<p class="popupTitle">' + title + '</p>';
@@ -197,19 +198,18 @@ function bindPopupInfos(title, rating, description, imageLink) {
 }
 
 
-//! Utilità
+//! Chiusura menu
 /* Chiudi tutti menu aperti se click sulla mappa */
 function closeOpenMenus() {
     menus.forEach(menu => {
         closeMenu(menu);
     });
 }
-
 /* Chiudi singolo menu per ID */
 function closeMenu(menu) {
     menu = document.getElementById(menu);
 
-    if(menu === null) {
+    if (menu === null) {
         return;
     }
 
@@ -223,13 +223,12 @@ function closeMenu(menu) {
 
 
 //! Marker singoli
-/* Menu marker singolo */
 function addSingleMarkerMenu() {
-    if(!(document.getElementById('addMarkerMenu') == null)) {
+    if (!(document.getElementById('addMarkerMenu') == null)) {
         closeMenu("addMarkerMenu");
         return;
     }
-    if(openedMenuId != undefined) {
+    if (openedMenuId != undefined) {
         closeOpenMenus();
     }
 
@@ -246,7 +245,7 @@ function addSingleMarkerMenu() {
     var selectBox = document.createElement('select');
     var optionsNames = Object.values(information.placesNames).map(array => array[1]);
 
-    for(let i = 0; i < optionsNames.length; i++) {
+    for (let i = 0; i < optionsNames.length; i++) {
         let option = document.createElement('option');
         option.value = availablePlace[i];
         option.text = optionsNames[i];
@@ -294,10 +293,11 @@ function addSingleMarkerMenu() {
     menu.style.transform = 'scale(1)';
 }
 
+//* Funzioni */
 /* Genera un singolo marker */
 function newSingleMarker([latitude, longitude], info) {
-    if([latitude, longitude] == undefined) {
-        console.log('Impossibile piazzare marker, coordinate inesistenti!');
+    if ([latitude, longitude] == undefined) {
+        console.log('Could not place marker, coordinates undefined!');
         return null;
     }
 
@@ -312,7 +312,7 @@ function singleMarkerMenuPlace() {
     var selectedPlace = document.querySelector('#addMarkerMenu select').value;
     
     // Crea il nuovo marker se non già piazzato e lo salva dentro 'markers'
-    if(availablePlace.includes(selectedPlace)) {
+    if (availablePlace.includes(selectedPlace)) {
         // La funzione 'newMarker' della mappa, prendendo info direttamente da 'places'
         var bindingInfos = bindPopupInfos(information.placesNames[selectedPlace][1],
                                           information.placesNames[selectedPlace][2],
@@ -328,7 +328,7 @@ function singleMarkerMenuRemove() {
     var selectedPlace = document.querySelector('#addMarkerMenu select').value;
     
     // Se il marker non è piazzato, lo toglie
-    if(!(availablePlace.includes(selectedPlace))) {
+    if (!(availablePlace.includes(selectedPlace))) {
         map.removeLayer(singleMarkers[selectedPlace]);
 
         // Il valore viene ripristinato, invece di 'null'
@@ -341,10 +341,10 @@ function singleMarkerMenuAddAll() {
         return;
     }
 
-    for(let i = 0; i < availablePlace.length; i++) {
+    for (let i = 0; i < availablePlace.length; i++) {
         let marker = availablePlace[i];
 
-        if(marker === null) {
+        if (marker === null) {
             continue; // Skip to the next iteration if marker is null
         }
 
@@ -360,7 +360,7 @@ function singleMarkerMenuAddAll() {
     }
 }
 function singleMarkerMenuRemoveAll() {
-    for(const marker in singleMarkers) {
+    for (const marker in singleMarkers) {
         map.removeLayer(singleMarkers[marker]);
     }
     availablePlace = [];
@@ -371,13 +371,12 @@ function singleMarkerMenuRemoveAll() {
 
 
 //! Pacchetti
-/* Menu pacchetti */
 function packagesMenu() {
-    if(!(document.getElementById('packagesMenu') == null)) {
+    if (!(document.getElementById('packagesMenu') == null)) {
         closeMenu("packagesMenu");
         return;
     }
-    if(openedMenuId != undefined) {
+    if (openedMenuId != undefined) {
         closeOpenMenus();
     }
 
@@ -394,7 +393,7 @@ function packagesMenu() {
     var selectBox = document.createElement('select');
     var optionsNames = Object.keys(information.itineraryNames);
 
-    for(let i = 0; i < optionsNames.length; i++) {
+    for (let i = 0; i < optionsNames.length; i++) {
         let option = document.createElement('option');
         option.value = optionsNames[i];
         option.text = optionsNames[i];
@@ -429,6 +428,7 @@ function packagesMenu() {
     menu.style.transform = 'scale(1)';
 }
 
+//* Funzioni */
 /* Metti / togli itinerario piazzato */
 function layPackage() {
     removeLaidPackage();
@@ -463,7 +463,7 @@ function layPackage() {
     currentPackageRouting = L.Routing.control({
         // Per ogni singolo 'waypoint'
         waypoints: waypoints,
-        language: 'it',
+        language: currentLanguageID,
         // Impostazioni per evitare 'dragging' dei waypoints e 'lines' (percorsi in rosso)
         draggableWaypoints: false,
         addWaypoints: false,
@@ -496,11 +496,11 @@ function removeLaidPackage() {
 
 //! Chi siamo? menu
 function chiSiamoMenu() {
-    if(!(document.getElementById('chiSiamoMenu') == null)) {
+    if (!(document.getElementById('chiSiamoMenu') == null)) {
         closeMenu("chiSiamoMenu");
         return;
     }
-    if(openedMenuId != undefined) {
+    if (openedMenuId != undefined) {
         closeOpenMenus();
     }
 
@@ -529,11 +529,11 @@ function chiSiamoMenu() {
 
 //! Accessibilità menu
 function accessibilityMenu() {
-    if(!(document.getElementById('accessibilityMenu') == null)) {
+    if (!(document.getElementById('accessibilityMenu') == null)) {
         closeMenu("accessibilityMenu");
         return;
     }
-    if(openedMenuId != undefined) {
+    if (openedMenuId != undefined) {
         closeOpenMenus();
     }
 
@@ -562,11 +562,11 @@ function accessibilityMenu() {
 
 //! Settings menu
 function settingsMenu() {
-    if(!(document.getElementById('settingsMenu') == null)) {
+    if (!(document.getElementById('settingsMenu') == null)) {
         closeMenu("settingsMenu");
         return;
     }
-    if(openedMenuId != undefined) {
+    if (openedMenuId != undefined) {
         closeOpenMenus();
     }
 
@@ -595,9 +595,9 @@ function settingsMenu() {
         information.menuNames[12],
         information.menuNames[13],
         information.menuNames[14]
-    ]
+    ];
 
-    for(let i = 0; i < textLegend.length; i++) {
+    for (let i = 0; i < textLegend.length; i++) {
         let container = document.createElement('div');
         let marker = document.createElement('span');
         marker.classList.add('material-symbols-outlined');
@@ -620,6 +620,7 @@ function settingsMenu() {
     var languageSwitch = document.createElement('div');
     languageSwitch.id = 'languageSwitch';
     var languageSwitchTitle = document.createElement('span');
+    languageSwitchTitle.innerHTML = information.menuNames[15];
     languageSwitch.appendChild(languageSwitchTitle);
 
     var selectLanguages = document.createElement('select');
@@ -631,6 +632,9 @@ function settingsMenu() {
         selectLanguages.add(option);
         i++;
     });
+
+    selectLanguages.selectedIndex = languagesList.indexOf(currentLanguage);
+
     languageSwitch.appendChild(selectLanguages);
 
     menu.appendChild(languageSwitch);
@@ -646,30 +650,67 @@ function settingsMenu() {
 
     languageChangeListener();
 }
+
+//* Funzioni */
+/* Sente quando viene cambiata la lingua e la cambia effettivamente */
 function languageChangeListener() {
-    if(document.querySelector('#languageSwitch select') == currentLanguage) {
+    if (document.querySelector('#languageSwitch select') == currentLanguage) {
         return;
     }
     
     document.querySelector('#languageSwitch select').addEventListener('change', function(event) {
         var selectedOption = event.target.value;
-        console.log('Selected option: ', selectedOption);
-        
         currentLanguage = selectedOption;
+
+        switch (selectedOption) {
+            case "🇬🇧 - English":
+                currentLanguageID = 'en';
+                break;
+            
+            case "🇪🇸 - Español":
+                currentLanguageID = 'es';
+                break;
+
+            case "🇩🇪 - Deutsch":
+                currentLanguageID = 'de';
+                break;
+            
+            case "🇫🇷 - Français":
+                currentLanguageID = 'fr';
+                break;
+
+            case "🇵🇹 - Português":
+                currentLanguageID = 'pt-BR';
+                break;
+
+            default:
+                currentLanguageID = 'it';
+                break;
+        }
+
         singleMarkerMenuRemoveAll();
         removeLaidPackage();
 
         fetchInfos(currentLanguage);
+
+        resetSettingsMenu();
     });
+}
+/* Reset del menu dopo aver cambiato lingua */
+function resetSettingsMenu() {
+    closeMenu('settingsMenu');
+    setTimeout(() => {
+        settingsMenu();
+    }, 300);
 }
 
 //! Account menu
 function accountMenu() {
-    if(!(document.getElementById('accountMenu') == null)) {
+    if (!(document.getElementById('accountMenu') == null)) {
         closeMenu("accountMenu");
         return;
     }
-    if(openedMenuId != undefined) {
+    if (openedMenuId != undefined) {
         closeOpenMenus();
     }
 
