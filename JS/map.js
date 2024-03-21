@@ -21,8 +21,8 @@ function createMarkerIcon(url) {
 
 
 //! Costanti globali
-const markerIconDark = createMarkerIcon('img/marker-icone/markerIcona-dark.png');
-const markerIcon = createMarkerIcon('img/marker-icone/markerIcona.png');
+const markerIconDark = createMarkerIcon('../img/marker-icone/markerIcona-dark.png');
+const markerIcon = createMarkerIcon('../img/marker-icone/markerIcona.png');
 const menus = [                           // ID di ogni singolo menu esistente  //TODO: Aggiungere altri menu se mai verranno creati
     "addMarkerMenu",
     "packagesMenu",
@@ -62,49 +62,49 @@ async function fetchInfos(currentLanguage) {
 
     switch (currentLanguage) {
         case "🇮🇹 - Italiano":
-            var response = await fetch('JSON/languageTranslations/italiano.json');
+            var response = await fetch('../JSON/languageTranslations/italiano.json');
             information = await response.json();
             availablePlaceLanguageRefill();
 
             break;
         
         case "🇬🇧 - English":
-            var response = await fetch('JSON/languageTranslations/english.json');
+            var response = await fetch('../JSON/languageTranslations/english.json');
             information = await response.json();
             availablePlaceLanguageRefill();
 
             break;
         
         case "🇪🇸 - Español":
-            var response = await fetch('JSON/languageTranslations/espanol.json');
+            var response = await fetch('../JSON/languageTranslations/espanol.json');
             information = await response.json();
             availablePlaceLanguageRefill();
 
             break;
         
         case "🇩🇪 - Deutsch":
-            var response = await fetch('JSON/languageTranslations/deutsch.json');
+            var response = await fetch('../JSON/languageTranslations/deutsch.json');
             information = await response.json();
             availablePlaceLanguageRefill();
 
             break;
         
         case "🇫🇷 - Français":
-            var response = await fetch('JSON/languageTranslations/francais.json');
+            var response = await fetch('../JSON/languageTranslations/francais.json');
             information = await response.json();
             availablePlaceLanguageRefill();
 
             break;
         
         case "🇵🇹 - Português":
-            var response = await fetch('JSON/languageTranslations/portugues.json');
+            var response = await fetch('../JSON/languageTranslations/portugues.json');
             information = await response.json();
             availablePlaceLanguageRefill();
 
             break;
                         
         default:
-            var response = await fetch('JSON/languageTranslations/italiano.json');
+            var response = await fetch('../JSON/languageTranslations/italiano.json');
             information = await response.json();
             availablePlaceLanguageRefill();
 
@@ -133,8 +133,8 @@ startWebsite();
 /* Inizializza 'onLoad' */
 function initializeMap() {
     const bounds = [
-        [45.328609, 9.47382],
-        [45.289614, 9.52866]
+        [45.346958, 9.47382],
+        [45.277182, 9.52927]
     ];
 
     // Funzioni necessarie (+ min e max zoom)
@@ -152,12 +152,17 @@ function initializeMap() {
     }).addTo(map);
 }
 
-/* Per debugging */
+//* Per debugging */
 function coordinatesOnClick() {
     // Click e output coordinate in console
     map.on('click', (e) => {
         console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
     });
+}
+function markerFromConsole([latitude, longitude]) {
+    let coords = [latitude, longitude];
+    let output = "[" + coords[0] + ", " + coords[1] + "]";
+    L.marker(coords).addTo(map).bindPopup(output);
 }
 
 /* Avvia mappa a caricamento pagina */
@@ -172,10 +177,10 @@ document.body.onload = () => {
 function rate(fullStarsNumber) {
     let rating = '';
     for (let i = 0; i < fullStarsNumber; i++) {
-        rating += '<img src="img/popup-rating-stars/fullStar.png" class="popupStars">';
+        rating += '<img src="../img/popup-rating-stars/fullStar.png" class="popupStars">';
     }
     for (let i = 0; i < (5 - fullStarsNumber); i++) {
-        rating += '<img src="img/popup-rating-stars/emptyStar.png" class="popupStars">';
+        rating += '<img src="../img/popup-rating-stars/emptyStar.png" class="popupStars">';
     }
     rating = '<div class="popupRating">' + rating + '</div>'
     
@@ -548,7 +553,7 @@ function accessibilityMenu() {
 
     /* Immagine */
     var image = document.createElement('img');
-    image.setAttribute('src', 'img/work-in-progress.png');
+    image.setAttribute('src', '../img/work-in-progress.png');
     menu.appendChild(image);
 
     /* Aggiungi all'HTML */
@@ -725,7 +730,7 @@ function accountMenu() {
 
     /* Immagine */
     var image = document.createElement('img');
-    image.setAttribute('src', 'img/work-in-progress.png');
+    image.setAttribute('src', '../img/work-in-progress.png');
     menu.appendChild(image);
 
     /* Aggiungi all'HTML */

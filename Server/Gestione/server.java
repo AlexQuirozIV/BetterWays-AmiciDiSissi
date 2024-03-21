@@ -17,5 +17,4 @@ public class Server {
     public String toString() {
         return latitudine + "%%%" + longitudine + "%%%" + nome + "%%%" + indirizzo;
     }
-  
 }

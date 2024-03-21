@@ -26,112 +26,112 @@
             "Visconti Castle",
             3,
             "",
-            "img/tappe-popup/Castello_Visconteo.jpg"
+            "../img/tappe-popup/Castello_Visconteo.jpg"
         ],
         "San-Francesco-Church": [
             [45.314617754968054, 9.507929720552477],
             "San Francesco Church",
             1,
             "",
-            "img/tappe-popup/chiesa_san_francesco.jpeg"
+            "../img/tappe-popup/chiesa_san_francesco.jpeg"
         ],
         "Lodi-Cathedral": [
             [45.314214319510235, 9.503150096251492],
             "Lodi Cathedral",
             1,
             "",
-            "img/tappe-popup/Lodi_Duomo_facciata.jpg"
+            "../img/tappe-popup/Lodi_Duomo_facciata.jpg"
         ],
         "Faustina-Sporting-Club": [
             [45.300695861177324, 9.506869003676572],
             "Faustina Sporting Club",
             5,
             "",
-            "img/tappe-popup/faustina.jpg"
+            "../img/tappe-popup/faustina.jpg"
         ],
         "Monumento-alla-Resistenza": [
             [45.31043780366223, 9.501946341831502],
             "Monumento alla Resistenza",
             0,
             "",
-            "img/tappe-popup/monumento_alla_Resistenza.jpg"
+            "../img/tappe-popup/monumento_alla_Resistenza.jpg"
         ],
         "Museum-of-Printing": [
             [45.31796325796598, 9.502647436164928],
             "Museum of Printing",
             4,
             "",
-            "img/tappe-popup/lodi_museo_della_stampa.jpg"
+            "../img/tappe-popup/lodi_museo_della_stampa.jpg"
         ],
         "Museum-of-Musical-Instruments-&-Music": [
             [45.30701338770822, 9.50199549913424],
             "Museum of Musical Instruments & Music",
             3,
             "",
-            "img/tappe-popup/museo_dello_strumento_musicale_e_della_musica.jpg"
+            "../img/tappe-popup/museo_dello_strumento_musicale_e_della_musica.jpg"
         ],
         "Paolo-Gorini-Museum": [
             [45.3138348117735, 9.508056454515657],
             "Paolo Gorini Museum",
             5,
             "",
-            "img/tappe-popup/museo-paolo-gorini-lodi.jpg"
+            "../img/tappe-popup/museo-paolo-gorini-lodi.jpg"
         ],
         "Palacastellotti-Sport-Facility": [
             [45.297359483089814, 9.510770296119013],
             "Palacastellotti Sport Facility",
             1,
             "",
-            "img/tappe-popup/palacastellotti.jpg"
+            "../img/tappe-popup/palacastellotti.jpg"
         ],
         "Adda-Sud-Park": [
             [45.314040272551736, 9.498271300674975],
             "Adda Sud Park",
             2,
             "",
-            "img/tappe-popup/Parco_adda_sud.jpg"
+            "../img/tappe-popup/Parco_adda_sud.jpg"
         ],
         "Isola-Carolina-Park": [
             [45.315097006869266, 9.498896680791935],
             "Isola Carolina Park",
             2,
             "",
-            "img/tappe-popup/isola_carolina.jpg"
+            "../img/tappe-popup/isola_carolina.jpg"
         ],
         "Villa-Braila-Park": [
             [45.30376301489828, 9.508691843847435],
             "Villa Braila Park",
             0,
             "",
-            "img/tappe-popup/villa_Braila.jpg"
+            "../img/tappe-popup/villa_Braila.jpg"
         ],
         "Dossenina-Stadium": [
             [45.30739132224016, 9.495022000717784],
             "Dossenina Stadium",
             3,
             "",
-            "img/tappe-popup/Stadio_Dossenina.jpg"
+            "../img/tappe-popup/Stadio_Dossenina.jpg"
         ],
         "Alle-Vigne-Theater": [
             [45.31506910520015, 9.506154729318768],
             "Alle Vigne Theater",
             3,
             "",
-            "img/tappe-popup/Teatro-alle-Vigne.jpg"
+            "../img/tappe-popup/Teatro-alle-Vigne.jpg"
         ],
         "Civic-Temple-of-the-Incoronata": [
             [45.31465971960593, 9.502055674244136],
             "Civic Temple of the Incoronata",
             2,
             "",
-            "img/tappe-popup/TempioIncoronata.jpg"
+            "../img/tappe-popup/TempioIncoronata.jpg"
         ],
         "Lodi-Rook": [
             [45.3126397552172, 9.498001343678204],
             "Lodi Rook",
             3,
             "",
-            "img/tappe-popup/torrione.jpg"
+            "../img/tappe-popup/torrione.jpg"
         ]
     },
 

@@ -3,13 +3,13 @@
 }
 
 body {
-    background-image: url(img/sfondo.jpg);
+    background-image: url(../img/sfondo.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 #betterWaysTitolo {
-    background-image: url(./img/titleHeader.jpg);
+    background-image: url(../img/titleHeader.jpg);
     text-align: center;
     color: #F9BF4D;
     font-family: "Bebas Neue" , sans-serif;
