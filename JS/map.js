@@ -24,7 +24,7 @@ function createMarkerIcon(url) {
 const markerIconDark = createMarkerIcon('../img/marker-icone/markerIcona-dark.png');
 const markerIcon = createMarkerIcon('../img/marker-icone/markerIcona.png');
 const menus = [                           // ID di ogni singolo menu esistente  //TODO: Aggiungere altri menu se mai verranno creati
-    "addMarkerMenu",
+    "addSingleMarkerMenu",
     "packagesMenu",
     "chiSiamoMenu",
     "accessibilityMenu",
@@ -202,99 +202,77 @@ function bindPopupInfos(title, rating, description, imageLink) {
 }
 
 
-//! Chiusura menu
-/* Chiudi tutti menu aperti se click sulla mappa */
+//! Funzionalità menu
+/* Chiudi tutti menu aperti */
 function closeOpenMenus() {
     menus.forEach(menu => {
-        closeMenu(menu);
+        document.getElementById(menu).classList.remove('activeMenu');
     });
 }
-/* Chiudi singolo menu per ID */
-function closeMenu(menu) {
-    menu = document.getElementById(menu);
-
-    if (menu === null) {
-        return;
+/* Controlla se qualche menu è attivo, se lo è lo chiude */
+function checkOpenMenuFlag() {
+    if (openedMenuId != undefined) {
+        closeOpenMenus();
     }
-
-    menu.style.transform = 'scale(0)';
-    setTimeout(function() {
-        menu.remove();
-    }, 300);
-
-    openedMenuId = undefined;
+}
+/* Toggle attivo / spento menu */
+function handleMenuButtonPress(id) {
+    let menu = document.getElementById(id);
+    menu.classList.toggle('activeMenu');
 }
 
 
 //! Marker singoli
 function addSingleMarkerMenu() {
-    if (!(document.getElementById('addMarkerMenu') == null)) {
-        closeMenu("addMarkerMenu");
+    let id = 'addSingleMarkerMenu';
+    let menu = document.getElementById(id);
+
+    if (menu.classList.contains('activeMenu')) {
+        handleMenuButtonPress(id);
         return;
     }
-    if (openedMenuId != undefined) {
-        closeOpenMenus();
+    checkOpenMenuFlag();
+
+
+    /* Title */
+    menu.querySelector('span').textContent = information.menuNames[0];
+
+    /* Select options */
+    let select = menu.querySelector('select');
+    if (select.hasChildNodes()) {
+        while (select.firstChild) {
+            select.removeChild(select.firstChild);
+        }
     }
-
-    /* Div contenitore */
-    var menu = document.createElement('div');
-    menu.id = 'addMarkerMenu';
-
-    /* Titolo */
-    var title = document.createElement('span');
-    title.innerHTML = information.menuNames[0];
-    menu.appendChild(title);
-
-    /* Tendina di selezione */
-    var selectBox = document.createElement('select');
-    var optionsNames = Object.values(information.placesNames).map(array => array[1]);
+    let optionsNames = Object.values(information.placesNames).map(array => array[1]);
 
     for (let i = 0; i < optionsNames.length; i++) {
         let option = document.createElement('option');
         option.value = availablePlace[i];
         option.text = optionsNames[i];
-        selectBox.add(option);
+        select.appendChild(option);
     }
 
-    menu.appendChild(selectBox);
+    /* Buttons */
+    let buttons = menu.querySelectorAll('div button')
 
-    /* Bottoni flex-box (per metterli in fila) */
-    var buttonWrapper = document.createElement('div');
+    buttons[0].textContent = information.menuNames[1];
+    buttons[0].setAttribute('onclick', 'singleMarkerMenuPlace()');
 
-    // Bottone 'invia'
-    var okButton = document.createElement('button');
-    okButton.textContent = information.menuNames[1];
-    okButton.setAttribute('onclick', 'singleMarkerMenuPlace()');
-    buttonWrapper.appendChild(okButton);
-    
-    // Bottone 'rimuovi'
-    var cancelButton = document.createElement('button');
-    cancelButton.textContent = information.menuNames[2];
-    cancelButton.setAttribute('onclick', 'singleMarkerMenuRemove()');
-    buttonWrapper.appendChild(cancelButton);
+    buttons[1].textContent = information.menuNames[2];
+    buttons[1].setAttribute('onclick', 'singleMarkerMenuRemove()');
 
-    // Bottone 'aggiungi tutti'
-    var addAllButton = document.createElement('button');
-    addAllButton.textContent = information.menuNames[3];
-    addAllButton.setAttribute('onclick', 'singleMarkerMenuAddAll()');
-    buttonWrapper.appendChild(addAllButton);
+    buttons[2].textContent = information.menuNames[3];
+    buttons[2].setAttribute('onclick', 'singleMarkerMenuAddAll()');
 
-    // Bottone 'rimuovi tutti'
-    var cancelAllButton = document.createElement('button');
-    cancelAllButton.textContent = information.menuNames[4];
-    cancelAllButton.setAttribute('onclick', 'singleMarkerMenuRemoveAll()');
-    buttonWrapper.appendChild(cancelAllButton);
+    buttons[3].textContent = information.menuNames[4];
+    buttons[3].setAttribute('onclick', 'singleMarkerMenuRemoveAll()');
 
-    
-    menu.appendChild(buttonWrapper);
+    /* Turn on class */
+    menu.classList.toggle('activeMenu');
 
-    /* Aggiungi all'HTML */
-    document.body.appendChild(menu).offsetWidth;
-    openedMenuId = menu.id;
-
-    /* Animazione entrata/uscita menu */
-    menu.style.transition = '0.2s ease';
-    menu.style.transform = 'scale(1)';
+    /* Update flag */
+    openedMenuId = id;
 }
 
 //* Funzioni */
@@ -308,12 +286,12 @@ function newSingleMarker([latitude, longitude], info) {
     // Crea marker...
     let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(info);
 
-    // ... e in output per salvarlo in 'markers' nella funzione 'addMarkerMenu'...
+    // ... e in output per salvarlo in 'markers' nella funzione 'addSingleMarkerMenu'...
     return marker;
 }
 /* Metti / togli marker singolo piazzato */
 function singleMarkerMenuPlace() {
-    var selectedPlace = document.querySelector('#addMarkerMenu select').value;
+    var selectedPlace = document.querySelector('#addSingleMarkerMenu select').value;
     
     // Crea il nuovo marker se non già piazzato e lo salva dentro 'markers'
     if (availablePlace.includes(selectedPlace)) {
@@ -329,7 +307,7 @@ function singleMarkerMenuPlace() {
     }
 }
 function singleMarkerMenuRemove() {
-    var selectedPlace = document.querySelector('#addMarkerMenu select').value;
+    var selectedPlace = document.querySelector('#addSingleMarkerMenu select').value;
     
     // Se il marker non è piazzato, lo toglie
     if (!(availablePlace.includes(selectedPlace))) {
@@ -374,62 +352,72 @@ function singleMarkerMenuRemoveAll() {
 }
 
 
-//! Pacchetti
-function packagesMenu() {
-    if (!(document.getElementById('packagesMenu') == null)) {
-        closeMenu("packagesMenu");
+//! Account menu
+function accountMenu() {
+    let id = 'accountMenu';
+    let menu = document.getElementById(id);
+
+    if (menu.classList.contains('activeMenu')) {
+        handleMenuButtonPress(id);
         return;
     }
-    if (openedMenuId != undefined) {
-        closeOpenMenus();
+    checkOpenMenuFlag();
+
+    /* Title */
+    menu.querySelector('div').textContent = information.menuNames[5];
+
+    /* Turn on class */
+    menu.classList.toggle('activeMenu');
+
+    /* Update flag */
+    openedMenuId = id;
+}
+
+
+//! Pacchetti
+function packagesMenu() {
+    let id = 'packagesMenu';
+    let menu = document.getElementById(id);
+
+    if (menu.classList.contains('activeMenu')) {
+        handleMenuButtonPress(id);
+        return;
     }
+    checkOpenMenuFlag();
 
-    /* Div contenitore */
-    var menu = document.createElement('div');
-    menu.id = 'packagesMenu';
+    /* Title */
+    menu.querySelector('span').textContent = information.menuNames[6];
 
-    /* Titolo */
-    var title = document.createElement('span');
-    title.innerHTML = information.menuNames[6];
-    menu.appendChild(title);
-
-    /* Tendina di selezione */
-    var selectBox = document.createElement('select');
-    var optionsNames = Object.keys(information.itineraryNames);
+    /* Select options */
+    let select = menu.querySelector('select');
+    if (select.hasChildNodes()) {
+        while (select.firstChild) {
+            select.removeChild(select.firstChild);
+        }
+    }
+    let optionsNames = Object.keys(information.itineraryNames);
 
     for (let i = 0; i < optionsNames.length; i++) {
         let option = document.createElement('option');
         option.value = optionsNames[i];
         option.text = optionsNames[i];
-        selectBox.add(option);
+        select.appendChild(option);
     }
 
-    menu.appendChild(selectBox);
+    /* Buttons */
+    let buttons = menu.querySelectorAll('div button')
 
-    /* Bottoni flex-box (per metterli in fila) */
-    var buttonWrapper = document.createElement('div');
+    buttons[0].textContent = information.menuNames[7];
+    buttons[0].setAttribute('onclick', 'layPackage()');
 
-    // Bottone 'invia'
-    var okButton = document.createElement('button');
-    okButton.textContent = information.menuNames[7];
-    okButton.setAttribute('onclick', 'layPackage()');
-    buttonWrapper.appendChild(okButton);
-    
-    // Bottone 'rimuovi'
-    var cancelButton = document.createElement('button');
-    cancelButton.textContent = information.menuNames[8];
-    cancelButton.setAttribute('onclick', 'removeLaidPackage()');
-    buttonWrapper.appendChild(cancelButton);
-    
-    menu.appendChild(buttonWrapper);
+    buttons[1].textContent = information.menuNames[8];
+    buttons[1].setAttribute('onclick', 'removeLaidPackage()');
 
-    /* Aggiungi all'HTML */
-    document.body.appendChild(menu).offsetWidth;
-    openedMenuId = menu.id;
+    /* Turn on class */
+    menu.classList.toggle('activeMenu');
 
-    /* Animazione entrata/uscita menu */
-    menu.style.transition = '0.2s ease';
-    menu.style.transform = 'scale(1)';
+    /* Update flag */
+    openedMenuId = id;
 }
 
 //* Funzioni */
@@ -498,247 +486,166 @@ function removeLaidPackage() {
 }
 
 
-//! Chi siamo? menu
-function chiSiamoMenu() {
-    if (!(document.getElementById('chiSiamoMenu') == null)) {
-        closeMenu("chiSiamoMenu");
-        return;
-    }
-    if (openedMenuId != undefined) {
-        closeOpenMenus();
-    }
-
-    /* Div contenitore */
-    var menu = document.createElement('div');
-    menu.id = 'chiSiamoMenu';
-
-    /* Titolo */
-    var title = document.createElement('div');
-    title.innerHTML = information.menuNames[16];
-    menu.appendChild(title);
-
-    /* Bottoni flex-box (per metterli in fila) */
-    var description = document.createElement('span');
-    description.innerHTML = information.menuNames[17];
-    menu.appendChild(description);
-
-    /* Aggiungi all'HTML */
-    document.body.appendChild(menu).offsetWidth;
-    openedMenuId = menu.id;
-
-    /* Animazione entrata/uscita menu */
-    menu.style.transition = '0.2s ease';
-    menu.style.transform = 'scale(1)';
-}
-
 //! Accessibilità menu
 function accessibilityMenu() {
-    if (!(document.getElementById('accessibilityMenu') == null)) {
-        closeMenu("accessibilityMenu");
+    let id = 'accessibilityMenu';
+    let menu = document.getElementById(id);
+
+    if (menu.classList.contains('activeMenu')) {
+        handleMenuButtonPress(id);
         return;
     }
-    if (openedMenuId != undefined) {
-        closeOpenMenus();
-    }
+    checkOpenMenuFlag();
 
-    /* Div contenitore */
-    var menu = document.createElement('div');
-    menu.id = 'accessibilityMenu';
+    /* Title */
+    menu.querySelector('div').textContent = information.menuNames[9];
 
-    /* Titolo */
-    var title = document.createElement('div');
-    title.innerHTML = information.menuNames[9];
-    menu.appendChild(title);
+    /* Turn on class */
+    menu.classList.toggle('activeMenu');
 
-    /* Immagine */
-    var image = document.createElement('img');
-    image.setAttribute('src', '../img/work-in-progress.png');
-    menu.appendChild(image);
-
-    //TODO: tre div con uno span + [il pulsante boh non so che elemento sia]
-
-    /* Aggiungi all'HTML */
-    document.body.appendChild(menu).offsetWidth;
-    openedMenuId = menu.id;
-
-    /* Animazione entrata/uscita menu */
-    menu.style.transition = '0.2s ease';
-    menu.style.transform = 'scale(1)';
+    /* Update flag */
+    openedMenuId = id;
 }
+
 
 //! Settings menu
 function settingsMenu() {
-    if (!(document.getElementById('settingsMenu') == null)) {
-        closeMenu("settingsMenu");
+    let id = 'settingsMenu';
+    let menu = document.getElementById(id);
+
+    if (menu.classList.contains('activeMenu')) {
+        handleMenuButtonPress(id);
         return;
     }
-    if (openedMenuId != undefined) {
-        closeOpenMenus();
+    checkOpenMenuFlag();
+
+    /* Title */
+    menu.querySelector('div:first-child').textContent = information.menuNames[10];
+
+    /* Legend */
+    document.getElementById('legendTitle').textContent = information.menuNames[11];
+
+    let legendContentTexts = document.getElementsByClassName('legendContentText');
+    for (let i = 0; i < legendContentTexts.length; i++) {
+        let legendContentText = legendContentTexts[i];
+        legendContentText.textContent = information.menuNames[i + 12];
     }
 
-    /* Div contenitore */
-    var menu = document.createElement('div');
-    menu.id = 'settingsMenu';
+    /* Language Switch */
+    let languageSwitch = document.getElementById('languageSwitch');
+    languageSwitch.querySelector('span').textContent = information.menuNames[15];
 
-    /* Titolo */
-    var menuTitle = document.createElement('div');
-    menuTitle.innerHTML = information.menuNames[10];
-    menu.appendChild(menuTitle);
+    /* Select languages options */
+    let select = languageSwitch.querySelector('select');
 
-    /* Legenda */
-    var legend = document.createElement('div');
-    legend.id = 'legend';
-
-    var legendTitle = document.createElement('div');
-    legendTitle.id = 'legendTitle';
-    legendTitle.innerHTML = information.menuNames[11];
-    legend.appendChild(legendTitle);
-
-    var legendContent = document.createElement('div');
-    legendContent.id = 'legendContent';
-
-    var textLegend = [
-        information.menuNames[12],
-        information.menuNames[13],
-        information.menuNames[14]
-    ];
-
-    for (let i = 0; i < textLegend.length; i++) {
-        let container = document.createElement('div');
-        let marker = document.createElement('span');
-        marker.classList.add('material-symbols-outlined');
-        marker.classList.add('legendContentIcon');
-        marker.innerHTML = 'location_on';
-        container.appendChild(marker);
-
-        let text = document.createElement('span');
-        text.classList.add('legendContentText');
-        text.innerHTML = textLegend[i];
-        container.appendChild(text);
-
-        legendContent.appendChild(container);
+    for (let language of languagesList) {
+        let isOptionPresent = false;
+    
+        // Check if the option is already present
+        for (let option of select.options) {
+            if (option.value === language || option.text === language) {
+                isOptionPresent = true;
+                break;
+            }
+        }
+    
+        // If the option is not present, add it
+        if (!isOptionPresent) {
+            let option = document.createElement('option');
+            option.value = language;
+            option.text = language;
+            select.appendChild(option);
+        }
     }
-    legend.appendChild(legendContent);
 
-    menu.appendChild(legend);
+    /* Turn on class */
+    menu.classList.toggle('activeMenu');
 
-    /* Lingue */
-    var languageSwitch = document.createElement('div');
-    languageSwitch.id = 'languageSwitch';
-    var languageSwitchTitle = document.createElement('span');
-    languageSwitchTitle.innerHTML = information.menuNames[15];
-    languageSwitch.appendChild(languageSwitchTitle);
-
-    var selectLanguages = document.createElement('select');
-    let i = 0;
-    languagesList.forEach(language => {
-        let option = document.createElement('option');
-        option.value = language;
-        option.text = languagesList[i];
-        selectLanguages.add(option);
-        i++;
-    });
-
-    selectLanguages.selectedIndex = languagesList.indexOf(currentLanguage);
-
-    languageSwitch.appendChild(selectLanguages);
-
-    menu.appendChild(languageSwitch);
-    
-    
-    /* Aggiungi all'HTML */
-    document.body.appendChild(menu).offsetWidth;
-    openedMenuId = menu.id;
-
-    /* Animazione entrata/uscita menu */
-    menu.style.transition = '0.2s ease';
-    menu.style.transform = 'scale(1)';
-
+    /* Call necessary functions */
     languageChangeListener();
+
+    /* Update flag */
+    openedMenuId = id;
 }
 
 //* Funzioni */
 /* Sente quando viene cambiata la lingua e la cambia effettivamente */
 function languageChangeListener() {
-    if (document.querySelector('#languageSwitch select') == currentLanguage) {
-        return;
-    }
-    
-    document.querySelector('#languageSwitch select').addEventListener('change', function(event) {
-        var selectedOption = event.target.value;
-        currentLanguage = selectedOption;
+    // Remove previous event listener if it exists
+    document.querySelector('#languageSwitch select').removeEventListener('change', handleLanguageChange);
 
-        switch (selectedOption) {
-            case "🇬🇧 - English":
-                currentLanguageID = 'en';
-                break;
-            
-            case "🇪🇸 - Español":
-                currentLanguageID = 'es';
-                break;
-
-            case "🇩🇪 - Deutsch":
-                currentLanguageID = 'de';
-                break;
-            
-            case "🇫🇷 - Français":
-                currentLanguageID = 'fr';
-                break;
-
-            case "🇵🇹 - Português":
-                currentLanguageID = 'pt-BR';
-                break;
-
-            default:
-                currentLanguageID = 'it';
-                break;
-        }
-
-        singleMarkerMenuRemoveAll();
-        removeLaidPackage();
-
-        fetchInfos(currentLanguage);
-
-        resetSettingsMenu();
-    });
+    // Add new event listener
+    document.querySelector('#languageSwitch select').addEventListener('change', handleLanguageChange);
 }
+/* Gestisce il cambiamento della lingua */
+function handleLanguageChange(event) {
+    var selectedOption = event.target.value;
+    currentLanguage = selectedOption;
+
+    switch (selectedOption) {
+        case "🇬🇧 - English":
+            currentLanguageID = 'en';
+            break;
+        
+        case "🇪🇸 - Español":
+            currentLanguageID = 'es';
+            break;
+
+        case "🇩🇪 - Deutsch":
+            currentLanguageID = 'de';
+            break;
+        
+        case "🇫🇷 - Français":
+            currentLanguageID = 'fr';
+            break;
+
+        case "🇵🇹 - Português":
+            currentLanguageID = 'pt-BR';
+            break;
+
+        default:
+            currentLanguageID = 'it';
+            break;
+    }
+
+    
+    singleMarkerMenuRemoveAll();
+    removeLaidPackage();
+    
+    fetchInfos(currentLanguage);
+
+    resetSettingsMenu();
+}
+
 /* Reset del menu dopo aver cambiato lingua */
 function resetSettingsMenu() {
-    closeMenu('settingsMenu');
+    closeOpenMenus();
     setTimeout(() => {
         settingsMenu();
     }, 300);
 }
 
-//! Account menu
-function accountMenu() {
-    if (!(document.getElementById('accountMenu') == null)) {
-        closeMenu("accountMenu");
+
+//! Chi siamo? menu
+function chiSiamoMenu() {
+    let id = 'chiSiamoMenu';
+    let menu = document.getElementById(id);
+
+    if (menu.classList.contains('activeMenu')) {
+        handleMenuButtonPress(id);
         return;
     }
-    if (openedMenuId != undefined) {
-        closeOpenMenus();
-    }
+    checkOpenMenuFlag();
+    
+    /* Title */
+    menu.querySelector('div').textContent = information.menuNames[16];
 
-    /* Div contenitore */
-    var menu = document.createElement('div');
-    menu.id = 'accountMenu';
+    /* Presentation */
+    menu.querySelector('span').innerHTML = information.menuNames[17];
 
-    /* Titolo */
-    var title = document.createElement('div');
-    title.innerHTML = information.menuNames[5];
-    menu.appendChild(title);
+    /* Turn on class */
+    menu.classList.toggle('activeMenu');
 
-    /* Immagine */
-    var image = document.createElement('img');
-    image.setAttribute('src', '../img/work-in-progress.png');
-    menu.appendChild(image);
-
-    /* Aggiungi all'HTML */
-    document.body.appendChild(menu).offsetWidth;
-    openedMenuId = menu.id;
-
-    /* Animazione entrata/uscita menu */
-    menu.style.transition = '0.2s ease';
-    menu.style.transform = 'scale(1)';
+    /* Update flag */
+    openedMenuId = id;
 }

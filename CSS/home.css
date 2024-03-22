@@ -157,7 +157,7 @@ a.leaflet-popup-close-button:hover {
 }
 
 /* Menu aggiunta markers */
-#addMarkerMenu {
+#addSingleMarkerMenu {
     bottom: 7rem;
     right: 2rem;
 }
@@ -167,12 +167,11 @@ a.leaflet-popup-close-button:hover {
     left: 9rem;
 }
 
-#addMarkerMenu, #packagesMenu, #chiSiamoMenu, #accessibilityMenu, #settingsMenu, #accountMenu {
+#addSingleMarkerMenu, #packagesMenu, #chiSiamoMenu, #accessibilityMenu, #settingsMenu, #accountMenu {
     z-index: 1000;
     width: fit-content;
     height: fit-content;
     position: fixed;
-    transform: scale(0);
     padding: 25px;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -183,13 +182,19 @@ a.leaflet-popup-close-button:hover {
     box-shadow: 3px 5px 0px 2px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(4px);
     border: 1px solid rgba(37, 37, 37, 0.5);
+    scale: 0;
+    transition: all 0.2s;
 }
 
-#addMarkerMenu {
+.activeMenu {
+    scale: 1 !important;
+}
+
+#addSingleMarkerMenu {
     width: min-content;
 }
 
-#addMarkerMenu select, #packagesMenu select {
+#addSingleMarkerMenu select, #packagesMenu select {
     margin-bottom: 10px;
     margin-top: 15px;
     width: 100%;
@@ -205,7 +210,7 @@ a.leaflet-popup-close-button:hover {
     text-overflow: ellipsis;
 }
 
-#addMarkerMenu button, #packagesMenu button {
+#addSingleMarkerMenu button, #packagesMenu button {
     background-color: rgba(37, 37, 37, 0.5);
     border: 1px var(--highlight-color) solid;
     border-radius: 50px;
@@ -227,20 +232,20 @@ a.leaflet-popup-close-button:hover {
     transition: 0.15s ease-in-out;
 }
 
-#addMarkerMenu button:hover, #packagesMenu button:hover {
+#addSingleMarkerMenu button:hover, #packagesMenu button:hover {
     background-color: rgba(54, 54, 54, 0.5);
     border: 1px #f8c55f solid;
     box-shadow: 0px 0px 10px 1px rgba(249, 191, 77, 0.7);
 }
 
-#addMarkerMenu button:active, #packagesMenu button:active {
+#addSingleMarkerMenu button:active, #packagesMenu button:active {
     background-color: rgba(60, 60, 60, 0.5);
     border: 1px var(--base-color) solid;
     box-shadow: 0px 0px 10px 1px rgba(116, 116, 116, 0.7);
     transform: translateY(7%);
 }
 
-#addMarkerMenu div, #packagesMenu div, #chiSiamoMenu div {
+#addSingleMarkerMenu div, #packagesMenu div, #chiSiamoMenu div {
     margin-top: 10px;
     display: flex;
     justify-content: space-evenly;
@@ -260,7 +265,7 @@ a.leaflet-popup-close-button:hover {
 #accessibilityMenu div,
 #settingsMenu > div:first-child,
 #accountMenu div,
-#addMarkerMenu span,
+#addSingleMarkerMenu span,
 #packagesMenu span {
     color: #F9BF4D;
     text-align: center;
