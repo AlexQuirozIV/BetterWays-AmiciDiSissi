@@ -126,9 +126,9 @@
             "",
             "../img/tappe-popup/TempioIncoronata.jpg"
         ],
-        "Torrione-di-Lodi": [
+        "Torrione-de-Lodi": [
             [45.3126397552172, 9.498001343678204],
-            "Torrione di Lodi",
+            "Torrione de Lodi",
             3,
             "",
             "../img/tappe-popup/torrione.jpg"
@@ -136,31 +136,32 @@
     },
 
     "itineraryNames": {
-        "Castelli": [
+        "Castillos": [
             "Castello-Visconteo",
-            "Torrione-di-Lodi"
+            "Torrione-de-Lodi"
         ],
-        "Luoghi Religiosi": [
-            "Duomo-di-Lodi",
-            "Tempio-Civico-Incoronata",
-            "Chiesa-di-San-Francesco"
+        "Lugares Religiosos": [
+            "Catedral-de-Lodi",
+            "Templo-Cívico-Incoronada",
+            "Iglesia-de-San-Francisco"
+            
         ],
-        "Monumenti Onoranti": [
-            "Monumento-alla-Resistenza"
+        "Monumentos Honoríficos": [
+            "Monumento-a-la-Resistencia"
         ],
-        "Musei & Teatri": [
-            "Museo-della-Stampa",
-            "Museo-di-Paolo-Gorini",
+        "Museos y Teatros": [
+            "Museo-de-la-Imprenta",
+            "Museo-de-Paolo-Gorini",
             "Teatro-Alle-Vigne",
-            "Museo-dello-Strumento-Musicale-&-della-Musica"
+            "Museo-del-Instrumento-Musical-y-de-la-Música"
         ],
-        "Parchi": [
-            "Parco-Adda-Sud",
-            "Parco-Isola-Carolina",
-            "Parco-Villa-Braila"
+        "Parques": [
+            "Parque-Adda-Sud",
+            "Parque-Isla-Carolina",
+            "Parque-Villa-Braila"
         ],
-        "Strutture Sportive": [
-            "Stadio-Dossenina",
+        "Instalaciones Deportivas": [
+            "Estadio-Dossenina",
             "Faustina-Sporting-Club",
             "Palazzetto-Palacastellotti"
         ]

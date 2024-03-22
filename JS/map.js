@@ -32,12 +32,11 @@ const menus = [                           // ID di ogni singolo menu esistente  
     "accountMenu"
 ];
 const languagesList = [                   // Lista lingue supportate
-    "-",
     "🇮🇹 - Italiano",
     "🇬🇧 - English",
+    "🇫🇷 - Français",
     "🇪🇸 - Español",
     "🇩🇪 - Deutsch",
-    "🇫🇷 - Français",
     "🇵🇹 - Português"
 ];
 
@@ -119,7 +118,7 @@ async function fetchInfos(currentLanguage) {
 
     // Messaggio di successo
     console.log('Information fetched successfully for\n',
-                (currentLanguage == undefined || currentLanguage == "-") ? "🇮🇹 - Italiano" : currentLanguage);
+                (currentLanguage == undefined) ? "🇮🇹 - Italiano" : currentLanguage);
 }
 
 /* Attendiamo di aver preso i dati prima di procedere all'avvio della pagina... */
@@ -555,6 +554,8 @@ function accessibilityMenu() {
     var image = document.createElement('img');
     image.setAttribute('src', '../img/work-in-progress.png');
     menu.appendChild(image);
+
+    //TODO: tre div con uno span + [il pulsante boh non so che elemento sia]
 
     /* Aggiungi all'HTML */
     document.body.appendChild(menu).offsetWidth;
