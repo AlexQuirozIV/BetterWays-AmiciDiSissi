@@ -4,7 +4,7 @@
 
 "use strict";
 
-//! Costante con 'LA MAPPA'
+//! Costante che contiene LA MAPPA
 const map = L.map('map', {zoomControl: false}).setView([45.309062, 9.501200], 14);
 
 
@@ -23,7 +23,7 @@ function createMarkerIcon(url) {
 //! Costanti globali
 const markerIconDark = createMarkerIcon('../img/marker-icone/markerIcona-dark.png');
 const markerIcon = createMarkerIcon('../img/marker-icone/markerIcona.png');
-const menus = [                           // ID di ogni singolo menu esistente  //TODO: Aggiungere altri menu se mai verranno creati
+const menus = [         // ID di ogni singolo menu esistente  //TODO: Aggiungere altri menu se mai verranno creati
     "addSingleMarkerMenu",
     "packagesMenu",
     "chiSiamoMenu",
@@ -31,7 +31,7 @@ const menus = [                           // ID di ogni singolo menu esistente  
     "settingsMenu",
     "accountMenu"
 ];
-const languagesList = [                   // Lista lingue supportate
+const languagesList = [ // Lista lingue supportate
     "🇮🇹 - Italiano",
     "🇬🇧 - English",
     "🇫🇷 - Français",
@@ -47,76 +47,79 @@ var availablePlace = [];                // Flag se il marker esiste già o no (p
 var singleMarkers = [];                 // Contiene i singoli markers creati
 var isPackageLaid = false;              // C'è un pacchetto iniziato?
 var currentPackageRouting;              // Quale pacchetto è "piazzato"?
-var information;                        // Contiene le informazioni presi dai JSON
-var currentLanguage = languagesList[0]; // Lingua selezionata (default '-', ovvero Italiano)
-var currentLanguageID = 'it';
+var informations;                       // Contiene le informazioni presi dai JSON
+var currentLanguage = languagesList[0]; // Lingua selezionata (default Italiano)
+var currentLanguageID = 'it';           // ID della lingua selezionata (per le indicazioni di Leaflet)
 
 //! Fetch e inizializzazione informazioni
 /* Prendi informazioni dai JSON... */
 async function fetchInfos(currentLanguage) {
+    // Resetta tutto...
     availablePlace = [];
     singleMarkers = [];
     currentPackageRouting = undefined;
-    information = undefined;
+    informations = undefined;
 
+    // Prendi dal JSON giusto...
     switch (currentLanguage) {
         case "🇮🇹 - Italiano":
             var response = await fetch('../JSON/languageTranslations/italiano.json');
-            information = await response.json();
-            availablePlaceLanguageRefill();
+            informations = await response.json();
+            availablePlaceLanguageRefill();     // Refilla 'availablePlace'
 
             break;
         
         case "🇬🇧 - English":
             var response = await fetch('../JSON/languageTranslations/english.json');
-            information = await response.json();
+            informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
         
         case "🇪🇸 - Español":
             var response = await fetch('../JSON/languageTranslations/espanol.json');
-            information = await response.json();
+            informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
         
         case "🇩🇪 - Deutsch":
             var response = await fetch('../JSON/languageTranslations/deutsch.json');
-            information = await response.json();
+            informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
         
         case "🇫🇷 - Français":
             var response = await fetch('../JSON/languageTranslations/francais.json');
-            information = await response.json();
+            informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
         
         case "🇵🇹 - Português":
             var response = await fetch('../JSON/languageTranslations/portugues.json');
-            information = await response.json();
+            informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
                         
         default:
             var response = await fetch('../JSON/languageTranslations/italiano.json');
-            information = await response.json();
+            informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
     }
 
+    // Funzione per refillare 'availablePlace'
     function availablePlaceLanguageRefill() {
-        Object.keys(information.placesNames).forEach(place => {
+        Object.keys(informations.placesNames).forEach(place => {
             availablePlace.push(place);
         });
     }
 
-    // Messaggio di successo
+    // Notifica di quale è stato fetchato
     console.log('Information fetched successfully for\n',
                 (currentLanguage == undefined) ? "🇮🇹 - Italiano" : currentLanguage);
 }
@@ -208,67 +211,78 @@ function closeOpenMenus() {
     menus.forEach(menu => {
         document.getElementById(menu).classList.remove('activeMenu');
     });
+    openedMenuId = undefined;   // Svuota flag
 }
-/* Controlla se qualche menu è attivo, se lo è lo chiude */
-function checkOpenMenuFlag() {
+/* Chiusura / apertura menu a click del rispettivo pulsante */
+function handleMenuButtonPress(menu) {
+    // Se attivo, allora chiudilo
+    if (menu.classList.contains('activeMenu')) {
+        closeOpenMenus();
+        return 'yes';   // Restituisce 'yes' (si, fai 'return') al menu che l'ha invocato (altrimenti lo apre comunque)
+    }
+
+    // Chiusura dei menu al click del pulsante di un altro menu (solo uno aperto alla volta)
     if (openedMenuId != undefined) {
         closeOpenMenus();
     }
-}
-/* Toggle attivo / spento menu */
-function handleMenuButtonPress(id) {
-    let menu = document.getElementById(id);
-    menu.classList.toggle('activeMenu');
 }
 
 
 //! Marker singoli
 function addSingleMarkerMenu() {
     let id = 'addSingleMarkerMenu';
+
+    
+    /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
-
-    if (menu.classList.contains('activeMenu')) {
-        handleMenuButtonPress(id);
-        return;
-    }
-    checkOpenMenuFlag();
+    let shouldThisMenuClose = handleMenuButtonPress(menu);
+    if (shouldThisMenuClose == 'yes') { return; }
 
 
-    /* Title */
-    menu.querySelector('span').textContent = information.menuNames[0];
+    /* Titolo */
+    menu.querySelector('span').textContent = informations.menuNames[0];
 
-    /* Select options */
+    /* Opzioni per il select */
     let select = menu.querySelector('select');
+    let selectedIndex = select.selectedIndex;   // Salva l'index, così rimane alla prossima apertura
+
+    // Svuota il select...
     if (select.hasChildNodes()) {
         while (select.firstChild) {
             select.removeChild(select.firstChild);
         }
     }
-    let optionsNames = Object.values(information.placesNames).map(array => array[1]);
 
+    // ... e riempilo con i "nuovi" options
+    let optionsNames = Object.values(informations.placesNames).map(array => array[1]);
     for (let i = 0; i < optionsNames.length; i++) {
         let option = document.createElement('option');
         option.value = availablePlace[i];
         option.text = optionsNames[i];
         select.appendChild(option);
     }
+    // Ripristina l'index per l'apertura
+    if (selectedIndex >= 0 && selectedIndex < select.options.length) {
+        select.selectedIndex = selectedIndex;
+    }
 
-    /* Buttons */
+    /* Pulsanti */
     let buttons = menu.querySelectorAll('div button')
 
-    buttons[0].textContent = information.menuNames[1];
+    // Testo e funzione per ciascuno
+    buttons[0].textContent = informations.menuNames[1];
     buttons[0].setAttribute('onclick', 'singleMarkerMenuPlace()');
 
-    buttons[1].textContent = information.menuNames[2];
+    buttons[1].textContent = informations.menuNames[2];
     buttons[1].setAttribute('onclick', 'singleMarkerMenuRemove()');
 
-    buttons[2].textContent = information.menuNames[3];
+    buttons[2].textContent = informations.menuNames[3];
     buttons[2].setAttribute('onclick', 'singleMarkerMenuAddAll()');
 
-    buttons[3].textContent = information.menuNames[4];
+    buttons[3].textContent = informations.menuNames[4];
     buttons[3].setAttribute('onclick', 'singleMarkerMenuRemoveAll()');
 
-    /* Turn on class */
+    /* Attiva il menu */
     menu.classList.toggle('activeMenu');
 
     /* Update flag */
@@ -295,14 +309,15 @@ function singleMarkerMenuPlace() {
     
     // Crea il nuovo marker se non già piazzato e lo salva dentro 'markers'
     if (availablePlace.includes(selectedPlace)) {
-        // La funzione 'newMarker' della mappa, prendendo info direttamente da 'places'
-        var bindingInfos = bindPopupInfos(information.placesNames[selectedPlace][1],
-                                          information.placesNames[selectedPlace][2],
-                                          information.placesNames[selectedPlace][3],
-                                          information.placesNames[selectedPlace][4]);
+        // Genera le informazioni da aggiungere al popup con le informazioni da 'informations'
+        var bindingInfos = bindPopupInfos(informations.placesNames[selectedPlace][1],
+                                          informations.placesNames[selectedPlace][2],
+                                          informations.placesNames[selectedPlace][3],
+                                          informations.placesNames[selectedPlace][4]);
 
-        singleMarkers[selectedPlace] = newSingleMarker(information.placesNames[selectedPlace][0], bindingInfos);
-        // Quando un marker non dev'essere piazzato diventa 'null'
+        // Piazza il menu e salvalo in 'singleMarkers'
+        singleMarkers[selectedPlace] = newSingleMarker(informations.placesNames[selectedPlace][0], bindingInfos);
+        // Svuota lo spazio da 'availablePlace'
         availablePlace[availablePlace.indexOf(selectedPlace)] = null;
     }
 }
@@ -319,34 +334,39 @@ function singleMarkerMenuRemove() {
 }
 /* Metti / togli TUTTI i marker piazzati */
 function singleMarkerMenuAddAll() {
+    // Se sono tutti piazzati, esci dalla funzione...
     if (availablePlace.every(element => element === null)) {
         return;
     }
 
+    // ... altrimenti, lo piazza
     for (let i = 0; i < availablePlace.length; i++) {
         let marker = availablePlace[i];
 
         if (marker === null) {
-            continue; // Skip to the next iteration if marker is null
+            continue; // Skippa al prossimo se il corrente è 'null'
         }
 
-        // La funzione 'newMarker' della mappa, prendendo info direttamente da 'places'
-        var bindingInfos = bindPopupInfos(information.placesNames[marker][1],
-                                          information.placesNames[marker][2],
-                                          information.placesNames[marker][3],
-                                          information.placesNames[marker][4]);
+        // Genera le informazioni da aggiungere al popup con le informazioni da 'informations'
+        var bindingInfos = bindPopupInfos(informations.placesNames[marker][1],
+                                          informations.placesNames[marker][2],
+                                          informations.placesNames[marker][3],
+                                          informations.placesNames[marker][4]);
 
-        singleMarkers[marker] = newSingleMarker(information.placesNames[marker][0], bindingInfos);
-        // Quando un marker non dev'essere piazzato diventa 'null'
+        // Piazza il menu e salvalo in 'singleMarkers'
+        singleMarkers[marker] = newSingleMarker(informations.placesNames[marker][0], bindingInfos);
+        // Svuota lo spazio da 'availablePlace'
         availablePlace[i] = null;
     }
 }
 function singleMarkerMenuRemoveAll() {
+    // Per ogni 'marker' in 'singleMarkers', rimuovi dalla mappa con funzione Leaflet
     for (const marker in singleMarkers) {
         map.removeLayer(singleMarkers[marker]);
     }
+    // Svuota e riempi 'availablePlace' con i posti (resettati)
     availablePlace = [];
-    Object.keys(information.placesNames).forEach(place => {
+    Object.keys(informations.placesNames).forEach(place => {
         availablePlace.push(place);
     });
 }
@@ -355,18 +375,16 @@ function singleMarkerMenuRemoveAll() {
 //! Account menu
 function accountMenu() {
     let id = 'accountMenu';
+    
+    /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
+    let shouldThisMenuClose = handleMenuButtonPress(menu);
+    if (shouldThisMenuClose == 'yes') { return; }
 
-    if (menu.classList.contains('activeMenu')) {
-        handleMenuButtonPress(id);
-        return;
-    }
-    checkOpenMenuFlag();
+    /* Titolo */
+    menu.querySelector('div').textContent = informations.menuNames[5];
 
-    /* Title */
-    menu.querySelector('div').textContent = information.menuNames[5];
-
-    /* Turn on class */
+    /* Attiva il menu */
     menu.classList.toggle('activeMenu');
 
     /* Update flag */
@@ -377,43 +395,51 @@ function accountMenu() {
 //! Pacchetti
 function packagesMenu() {
     let id = 'packagesMenu';
+    
+    /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
+    let shouldThisMenuClose = handleMenuButtonPress(menu);
+    if (shouldThisMenuClose == 'yes') { return; }
 
-    if (menu.classList.contains('activeMenu')) {
-        handleMenuButtonPress(id);
-        return;
-    }
-    checkOpenMenuFlag();
+    /* Titolo */
+    menu.querySelector('span').textContent = informations.menuNames[6];
 
-    /* Title */
-    menu.querySelector('span').textContent = information.menuNames[6];
-
-    /* Select options */
+    /* Opzioni per il select */
     let select = menu.querySelector('select');
+    let selectedIndex = select.selectedIndex;   // Salva l'index, così rimane alla prossima apertura
+
+    // Svuota il select...
     if (select.hasChildNodes()) {
         while (select.firstChild) {
             select.removeChild(select.firstChild);
         }
     }
-    let optionsNames = Object.keys(information.itineraryNames);
 
+    // ... e riempilo con i "nuovi" options
+    let optionsNames = Object.keys(informations.itineraryNames);
     for (let i = 0; i < optionsNames.length; i++) {
         let option = document.createElement('option');
         option.value = optionsNames[i];
         option.text = optionsNames[i];
         select.appendChild(option);
     }
+    
+    // Ripristina l'index per l'apertura
+    if (selectedIndex >= 0 && selectedIndex < select.options.length) {
+            select.selectedIndex = selectedIndex;
+    }
 
-    /* Buttons */
+    /* Pulsanti */
     let buttons = menu.querySelectorAll('div button')
 
-    buttons[0].textContent = information.menuNames[7];
+    // Testo e funzione per ciascuno
+    buttons[0].textContent = informations.menuNames[7];
     buttons[0].setAttribute('onclick', 'layPackage()');
 
-    buttons[1].textContent = information.menuNames[8];
+    buttons[1].textContent = informations.menuNames[8];
     buttons[1].setAttribute('onclick', 'removeLaidPackage()');
 
-    /* Turn on class */
+    /* Attiva il menu */
     menu.classList.toggle('activeMenu');
 
     /* Update flag */
@@ -426,17 +452,17 @@ function layPackage() {
     removeLaidPackage();
 
     const selectedPackage = document.querySelector('#packagesMenu select').value;
-    /* Prendi il 'pacchetto' da 'const packages' in base al parametro mandato */
-    var packagePlacesList = information.itineraryNames[selectedPackage];
+    /* Prendi il 'pacchetto' da 'informations.itineraryNames' in base al parametro mandato */
+    var packagePlacesList = informations.itineraryNames[selectedPackage];
 
     var places = [];
     packagePlacesList.forEach(element => {
-        places.push(information.placesNames[element]);
+        places.push(informations.placesNames[element]);
     });
 
-    /* Preleva le coordinate da 'packages' e le salva in 'waypoints' */
+    /* Preleva le coordinate da 'places' e le salva in 'waypoints' */
     var waypoints = places.map((place) => {
-        return place[0]; // Coordinates are the first element in each place array
+        return place[0];
     });
 
     /* Preleva titoli */
@@ -459,8 +485,8 @@ function layPackage() {
         // Impostazioni per evitare 'dragging' dei waypoints e 'lines' (percorsi in rosso)
         draggableWaypoints: false,
         addWaypoints: false,
-        // Effettiva creazione (_i e _n sono contatori necessari alla funzione)
-        createMarker: function(_i, waypoint, _n) {
+        // Effettiva creazione (_i è un contatore necessario alla funzione)
+        createMarker: function(_i, waypoint) {
             var icon = _i === 0 ? markerIconDark :
                        _i === waypoints.length - 1 ? markerIconDark :
                        markerIcon;
@@ -472,35 +498,36 @@ function layPackage() {
         }
     }).addTo(map);
 
+    /* Update flag */
     isPackageLaid = true;
 }
 function removeLaidPackage() {
+    // Se non c'è un itinerario piazzato o non stiamo analizzando un itinerario, esci...
     if (!isPackageLaid || !currentPackageRouting) {
         return;
     }
-
+    // ...altrimenti, rimuovi il pacchetto piazzato a 'currentPackageRouting'
     map.removeControl(currentPackageRouting);
 
+    // Resetta i valori
     isPackageLaid = false;
-    currentPackageRouting = null;
+    currentPackageRouting = undefined;
 }
 
 
 //! Accessibilità menu
 function accessibilityMenu() {
     let id = 'accessibilityMenu';
+    
+    /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
-
-    if (menu.classList.contains('activeMenu')) {
-        handleMenuButtonPress(id);
-        return;
-    }
-    checkOpenMenuFlag();
+    let shouldThisMenuClose = handleMenuButtonPress(menu);
+    if (shouldThisMenuClose == 'yes') { return; }
 
     /* Title */
-    menu.querySelector('div').textContent = information.menuNames[9];
+    menu.querySelector('div').textContent = informations.menuNames[9];
 
-    /* Turn on class */
+    /* Attiva il menu */
     menu.classList.toggle('activeMenu');
 
     /* Update flag */
@@ -511,37 +538,35 @@ function accessibilityMenu() {
 //! Settings menu
 function settingsMenu() {
     let id = 'settingsMenu';
+    
+    /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
+    let shouldThisMenuClose = handleMenuButtonPress(menu);
+    if (shouldThisMenuClose == 'yes') { return; }
 
-    if (menu.classList.contains('activeMenu')) {
-        handleMenuButtonPress(id);
-        return;
-    }
-    checkOpenMenuFlag();
+    /* Titolo */
+    menu.querySelector('div:first-child').textContent = informations.menuNames[10];
 
-    /* Title */
-    menu.querySelector('div:first-child').textContent = information.menuNames[10];
-
-    /* Legend */
-    document.getElementById('legendTitle').textContent = information.menuNames[11];
+    /* Legenda */
+    document.getElementById('legendTitle').textContent = informations.menuNames[11];
 
     let legendContentTexts = document.getElementsByClassName('legendContentText');
     for (let i = 0; i < legendContentTexts.length; i++) {
         let legendContentText = legendContentTexts[i];
-        legendContentText.textContent = information.menuNames[i + 12];
+        legendContentText.textContent = informations.menuNames[i + 12];
     }
 
-    /* Language Switch */
+    /* Sezione 'cambia lingua' */
     let languageSwitch = document.getElementById('languageSwitch');
-    languageSwitch.querySelector('span').textContent = information.menuNames[15];
+    languageSwitch.querySelector('span').textContent = informations.menuNames[15];
 
-    /* Select languages options */
+    /* Opzioni per il select (lista delle lingue da 'languagesList') */
     let select = languageSwitch.querySelector('select');
 
     for (let language of languagesList) {
         let isOptionPresent = false;
     
-        // Check if the option is already present
+        // Controlla se l'opzione c'è già
         for (let option of select.options) {
             if (option.value === language || option.text === language) {
                 isOptionPresent = true;
@@ -549,7 +574,7 @@ function settingsMenu() {
             }
         }
     
-        // If the option is not present, add it
+        // Se non c'è aggiungila
         if (!isOptionPresent) {
             let option = document.createElement('option');
             option.value = language;
@@ -558,10 +583,10 @@ function settingsMenu() {
         }
     }
 
-    /* Turn on class */
+    /* Attiva il menu */
     menu.classList.toggle('activeMenu');
 
-    /* Call necessary functions */
+    /* Controlla cambiamento lingua */
     languageChangeListener();
 
     /* Update flag */
@@ -569,19 +594,20 @@ function settingsMenu() {
 }
 
 //* Funzioni */
-/* Sente quando viene cambiata la lingua e la cambia effettivamente */
+/* Sente quando viene cambiata la lingua e chiama 'handleLanguageChange' per cambiarla */
 function languageChangeListener() {
-    // Remove previous event listener if it exists
+    // Rimuove il listener precedente (altrimenti rifarà il fetch esponenzialmente)
     document.querySelector('#languageSwitch select').removeEventListener('change', handleLanguageChange);
 
-    // Add new event listener
+    // Aggiungine uno nuovo
     document.querySelector('#languageSwitch select').addEventListener('change', handleLanguageChange);
 }
 /* Gestisce il cambiamento della lingua */
 function handleLanguageChange(event) {
-    var selectedOption = event.target.value;
+    var selectedOption = event.target.value;    // Il valore di cosa ('target') ha triggerato l'evento
+    
+    // Setta 'currentLanguage' e 'currentLanguageID'
     currentLanguage = selectedOption;
-
     switch (selectedOption) {
         case "🇬🇧 - English":
             currentLanguageID = 'en';
@@ -608,12 +634,14 @@ function handleLanguageChange(event) {
             break;
     }
 
-    
+    // Chiudi tutto per aggiornare la lingua
     singleMarkerMenuRemoveAll();
     removeLaidPackage();
     
+    // Prendi le nuove informazioni (dato che ora abbiamo aggiornato 'currentLanguage' e 'currentLanguageID')
     fetchInfos(currentLanguage);
 
+    // Resetta il menu delle impostazioni
     resetSettingsMenu();
 }
 
@@ -629,21 +657,19 @@ function resetSettingsMenu() {
 //! Chi siamo? menu
 function chiSiamoMenu() {
     let id = 'chiSiamoMenu';
-    let menu = document.getElementById(id);
-
-    if (menu.classList.contains('activeMenu')) {
-        handleMenuButtonPress(id);
-        return;
-    }
-    checkOpenMenuFlag();
     
-    /* Title */
-    menu.querySelector('div').textContent = information.menuNames[16];
+    /* Funzioni necessarie gestione menu */
+    let menu = document.getElementById(id);
+    let shouldThisMenuClose = handleMenuButtonPress(menu);
+    if (shouldThisMenuClose == 'yes') { return; }
+    
+    /* Titolo */
+    menu.querySelector('div').textContent = informations.menuNames[16];
 
-    /* Presentation */
-    menu.querySelector('span').innerHTML = information.menuNames[17];
+    /* La nostra bellissima presentazione */
+    menu.querySelector('span').innerHTML = informations.menuNames[17];
 
-    /* Turn on class */
+    /* Attiva il menu */
     menu.classList.toggle('activeMenu');
 
     /* Update flag */
