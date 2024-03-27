@@ -99,7 +99,29 @@
     <!-- Accessibility -->
     <div id="accessibilityMenu">
         <div></div>
-        <img src="../img/work-in-progress.png">
+        <div id="accessibilityMenuContent">
+            <div class="accessibilityMenuContentsContainer">
+                <span>Testo in grassetto</span>
+                <label class="accessibilityMenuSwitch">
+                    <input type="checkbox" id="boldSlider">
+                    <span class="accessibilityMenuSlider"></span>
+                </label>
+            </div>
+            <div class="accessibilityMenuContentsContainer">
+                <span>Contrasto colori</span>
+                <label class="accessibilityMenuSwitch">
+                    <input type="checkbox" id="contrastSlider">
+                    <span class="accessibilityMenuSlider"></span>
+                </label>
+            </div>
+            <div class="accessibilityMenuContentsContainer">
+                <span>Text-to-speech</span>
+                <label class="accessibilityMenuSwitch">
+                    <input type="checkbox" id="textToSpeechSlider">
+                    <span class="accessibilityMenuSlider"></span>
+                </label>
+            </div>
+        </div>
     </div>
 
     <!-- Settings -->
@@ -147,5 +169,6 @@
     <span onclick="addSingleMarkerMenu()" id="addMarker-btn" class="material-icons">add_location</span>
 
     <script src="../JS/map.js"></script> <!-- Script per la mappa -->
+    <script src="../JS/home-accessibility.js"></script>
 </body>
 </html>

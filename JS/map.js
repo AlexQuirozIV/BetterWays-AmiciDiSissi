@@ -173,6 +173,8 @@ document.body.onload = () => {
     initializeMap();
     coordinatesOnClick();
     map.on('click', () => { closeOpenMenus(); });
+    markerFromConsole([45.346958, 9.47382]);
+    markerFromConsole([45.277182, 9.52927]);
 };
 
 /* Genera 'div' con 'img' in base al valore inserito sono 'piene' o no (necessaria per 'bindPopupInfos') */

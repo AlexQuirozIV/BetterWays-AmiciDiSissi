@@ -1,15 +1,11 @@
-Suggerimenti:
-- riguardare i requisiti fondamentali;
+Cose da chiedere
+1. descrizione dei luoghi
+2. livello di accesibilità
+3. funzioni di accesibilità
+4. eventuali tappe da aggiungere
 
-- aggiungere una home (?);
-
-- finire i "work in progress";
-
-- convalidare il raggiungimento delle tappe;
-
-- evidenziare il completamento del percorso;
-
-- aggiungere le lingue nelle impostazioni;
-
-- le informazioni per ogni tappa devono essere recuperate nel
-  contesto «server» (es: coordinate, descrizione, stato, ...).
+cose da fare:
+1. allargare la mappa
+2. cambiare eventuali foto 
+3. aggiungere la via francingena 
+4. mettiamo in evidenza l'accesibilità nel nostro team
