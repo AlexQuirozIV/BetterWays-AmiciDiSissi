@@ -9,32 +9,44 @@ const contrastSlider = document.getElementById('contrastSlider');
 const textToSpeechSlider = document.getElementById('textToSpeechSlider');
 
 //! Funzione per mettere il grassetto
-const originalFontWeights = [];
+const originalFontSizes = [];
 
 function boldTextAction() {
     document.querySelectorAll('*').forEach(element => {
-        originalFontWeights.push({
+        originalFontSizes.push({
             element: element,
-            originalFontWeight: element.style.fontWeight
+            originalFontSize: element.style.fontSize
         });
-        element.style.fontWeight = 'bold';
+        element.style.fontSize = `calc(${window.getComputedStyle(element).fontSize} + 6%)`;
     });
 }
 function revertBoldTextAction() {
-    originalFontWeights.forEach(fontWeight => {
-        fontWeight.element.style.fontWeight = fontWeight.originalFontWeight;
+    originalFontSizes.forEach(fontSize => {
+        fontSize.element.style.fontSize = fontSize.originalFontSize;
     });
-    originalFontWeights.length = 0;
+    originalFontSizes.length = 0;
 }
 
 
 //! Funzione per mettere il contrasto colori
+const originalFilters = [];
+
 function contrastAction() {
-    console.log('Contrast action triggered');
+    document.querySelectorAll('*').forEach(element => {
+        originalFilters.push({
+            element: element,
+            originalFilter: element.style.filter
+        });
+        element.style.filter = 'contrast(103%)';
+    });
 }
 function revertContrastAction() {
-    console.log('Reverting contrast action');
+    originalFilters.forEach(filter => {
+        filter.element.style.filter = filter.originalFilter;
+    });
+    originalFilters.length = 0;
 }
+
 
 //! Funzione per mettere il text-to-speech
 function textToSpeechAction() {

@@ -526,8 +526,15 @@ function accessibilityMenu() {
     let shouldThisMenuClose = handleMenuButtonPress(menu);
     if (shouldThisMenuClose == 'yes') { return; }
 
-    /* Title */
+    /* Titolo */
     menu.querySelector('div').textContent = informations.menuNames[9];
+
+    /* Opzioni */
+    let option = document.getElementsByClassName('accessibility_text');
+
+    option[0].textContent = informations.menuNames[18];
+    option[1].textContent = informations.menuNames[19];
+    option[2].textContent = informations.menuNames[20];
 
     /* Attiva il menu */
     menu.classList.toggle('activeMenu');

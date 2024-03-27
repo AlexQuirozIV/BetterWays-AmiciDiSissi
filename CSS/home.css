@@ -210,6 +210,10 @@ a.leaflet-popup-close-button:hover {
     text-overflow: ellipsis;
 }
 
+#addSingleMarkerMenu select option:nth-child(even), #packagesMenu select option:nth-child(even) {
+    background-color: whitesmoke;
+}
+
 #addSingleMarkerMenu button, #packagesMenu button {
     background-color: rgba(37, 37, 37, 0.5);
     border: 1px var(--highlight-color) solid;
@@ -363,7 +367,7 @@ a.leaflet-popup-close-button:hover {
     padding-left: 0px;
     padding-right: 0px;
     display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
 }
 
@@ -373,8 +377,6 @@ a.leaflet-popup-close-button:hover {
     background-color: var(--base-color);
     border-radius: 50%;
     padding: 15px;
-    margin-left: 20px;
-    margin-right: 30px;
 }
 
 #navbarHeader h1 {
@@ -464,6 +466,21 @@ a.leaflet-popup-close-button:hover {
 }
 
 /* Pulsanti menu accessibilità */
+.accessibility_text {
+    text-align: left;
+    color: white;
+    font-size: 80%;
+    font-weight: bold;
+    padding-right: 15px;
+    -webkit-text-stroke-width: 0px;
+}
+
+.accessibilityMenuContentsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .accessibilityMenuSwitch {
     position: relative;
     display: inline-block;
@@ -513,3 +530,4 @@ input:checked + .accessibilityMenuSlider:before {
     -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
+
