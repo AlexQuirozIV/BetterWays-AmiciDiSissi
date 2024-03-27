@@ -12,7 +12,7 @@ const textToSpeechSlider = document.getElementById('textToSpeechSlider');
 const originalFontSizes = [];
 
 function boldTextAction() {
-    document.querySelectorAll('*').forEach(element => {
+    document.querySelectorAll('*:not(html):not(#betterWays_titolo)').forEach(element => {
         originalFontSizes.push({
             element: element,
             originalFontSize: element.style.fontSize

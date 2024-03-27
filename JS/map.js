@@ -44,7 +44,7 @@ const languagesList = [ // Lista lingue supportate
 //! Variabili globali e flags
 var openedMenuId;                       // Contiene l'id del menu aperto in quel momento
 var availablePlace = [];                // Flag se il marker esiste già o no (prevenire spam)
-var singleMarkers = [];                 // Contiene i singoli markers creati
+var singleMarkers = {};                 // Contiene i singoli markers creati
 var isPackageLaid = false;              // C'è un pacchetto iniziato?
 var currentPackageRouting;              // Quale pacchetto è "piazzato"?
 var informations;                       // Contiene le informazioni presi dai JSON
@@ -56,7 +56,7 @@ var currentLanguageID = 'it';           // ID della lingua selezionata (per le i
 async function fetchInfos(currentLanguage) {
     // Resetta tutto...
     availablePlace = [];
-    singleMarkers = [];
+    singleMarkers = {};
     currentPackageRouting = undefined;
     informations = undefined;
 
@@ -259,7 +259,7 @@ function addSingleMarkerMenu() {
     let optionsNames = Object.values(informations.placesNames).map(array => array[1]);
     for (let i = 0; i < optionsNames.length; i++) {
         let option = document.createElement('option');
-        option.value = availablePlace[i];
+        option.value = Object.keys(informations.placesNames)[i];
         option.text = optionsNames[i];
         select.appendChild(option);
     }
@@ -366,6 +366,7 @@ function singleMarkerMenuRemoveAll() {
     for (const marker in singleMarkers) {
         map.removeLayer(singleMarkers[marker]);
     }
+    singleMarkers = {};
     // Svuota e riempi 'availablePlace' con i posti (resettati)
     availablePlace = [];
     Object.keys(informations.placesNames).forEach(place => {

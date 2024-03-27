@@ -466,10 +466,14 @@ a.leaflet-popup-close-button:hover {
 }
 
 /* Pulsanti menu accessibilità */
+#accessibilityMenuContent {
+    padding-top: 10px;
+}
+
 .accessibility_text {
     text-align: left;
     color: white;
-    font-size: 80%;
+    font-size: 60%;
     font-weight: bold;
     padding-right: 15px;
     -webkit-text-stroke-width: 0px;
@@ -484,8 +488,8 @@ a.leaflet-popup-close-button:hover {
 .accessibilityMenuSwitch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 45px;
+    height: 25px;
 }
 
 .accessibilityMenuSwitch input { 
@@ -503,21 +507,21 @@ a.leaflet-popup-close-button:hover {
     bottom: 0;
     border-radius: 34px;
     background-color: var(--base-color);
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: 0.25s;
+    transition: 0.25s;
 }
 
 .accessibilityMenuSlider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 16px;
+    width: 16px;
     left: 4px;
-    bottom: 4px;
-    background-color:#3f3f3f;
+    top: 4.5px;
+    background-color: #3f3f3f;
     border-radius: 50%;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: 0.25s;
+    transition: 0.25s;
 }
 
 /* Pulsanti menu accessibilità accesi */
@@ -526,8 +530,7 @@ input:checked + .accessibilityMenuSlider {
 }
 
 input:checked + .accessibilityMenuSlider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
 }
-
