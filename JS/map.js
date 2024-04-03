@@ -173,8 +173,6 @@ document.body.onload = () => {
     initializeMap();
     coordinatesOnClick();
     map.on('click', () => { closeOpenMenus(); });
-    markerFromConsole([45.375506, 9.37052]);
-    markerFromConsole([45.155433, 9.62299]);
 };
 
 /* Genera 'div' con 'img' in base al valore inserito sono 'piene' o no (necessaria per 'bindPopupInfos') */
@@ -484,6 +482,9 @@ function layPackage() {
     currentPackageRouting = L.Routing.control({
         // Per ogni singolo 'waypoint'
         waypoints: waypoints,
+        lineOptions: {
+            styles: [{color: "green"}]
+        },
         language: currentLanguageID,
         // Impostazioni per evitare 'dragging' dei waypoints e 'lines' (percorsi in rosso)
         draggableWaypoints: false,
