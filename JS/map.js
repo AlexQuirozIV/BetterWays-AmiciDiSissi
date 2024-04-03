@@ -135,13 +135,13 @@ startWebsite();
 /* Inizializza 'onLoad' */
 function initializeMap() {
     const bounds = [
-        [45.346958, 9.47382],
-        [45.277182, 9.52927]
+        [45.375506, 9.37052],
+        [45.155433, 9.62299]
     ];
 
     // Funzioni necessarie (+ min e max zoom)
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        minZoom: 14,
+        minZoom: 12,
         maxZoom: 19
     }).addTo(map);
 
@@ -173,8 +173,8 @@ document.body.onload = () => {
     initializeMap();
     coordinatesOnClick();
     map.on('click', () => { closeOpenMenus(); });
-    markerFromConsole([45.346958, 9.47382]);
-    markerFromConsole([45.277182, 9.52927]);
+    markerFromConsole([45.375506, 9.37052]);
+    markerFromConsole([45.155433, 9.62299]);
 };
 
 /* Genera 'div' con 'img' in base al valore inserito sono 'piene' o no (necessaria per 'bindPopupInfos') */
