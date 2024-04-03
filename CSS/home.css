@@ -83,6 +83,18 @@
     width: 35px;
 }
 
+.popupCompletedButton {
+    margin-bottom: 12px;
+    display: inline-block;
+    margin-left: 50% !important;
+    transform: translateX(-50%);
+    font-size: 120% !important;
+}
+
+.popupCompletedButton:active {
+    transform: translate(-50%, 5%) !important;
+}
+
 /* Barra scroll popup (e a quanto pare anche del sito) */
 ::-webkit-scrollbar {
     width: 12px;
@@ -214,7 +226,7 @@ a.leaflet-popup-close-button:hover {
     background-color: whitesmoke;
 }
 
-#addSingleMarkerMenu button, #packagesMenu button {
+#addSingleMarkerMenu button, #packagesMenu button, .popupCompletedButton {
     background-color: rgba(37, 37, 37, 0.5);
     border: 1px var(--highlight-color) solid;
     border-radius: 50px;
@@ -236,13 +248,13 @@ a.leaflet-popup-close-button:hover {
     transition: 0.15s ease-in-out;
 }
 
-#addSingleMarkerMenu button:hover, #packagesMenu button:hover {
+#addSingleMarkerMenu button:hover, #packagesMenu button:hover, .popupCompletedButton:hover {
     background-color: rgba(54, 54, 54, 0.5);
     border: 1px #f8c55f solid;
     box-shadow: 0px 0px 10px 1px rgba(249, 191, 77, 0.7);
 }
 
-#addSingleMarkerMenu button:active, #packagesMenu button:active {
+#addSingleMarkerMenu button:active, #packagesMenu button:active, .popupCompletedButton:active {
     background-color: rgba(60, 60, 60, 0.5);
     border: 1px var(--base-color) solid;
     box-shadow: 0px 0px 10px 1px rgba(116, 116, 116, 0.7);
@@ -533,4 +545,9 @@ input:checked + .accessibilityMenuSlider:before {
     -webkit-transform: translateX(20px);
     -ms-transform: translateX(20px);
     transform: translateX(20px);
+}
+
+/* Nascondi widget */
+.completedSegmentMenuWidget {
+    scale: 0;
 }

@@ -42,14 +42,17 @@ const languagesList = [ // Lista lingue supportate
 
 
 //! Variabili globali e flags
+var __isPackageLaid__ = false;          // C'è un pacchetto iniziato?
+var __wasProgressMade__ = false;        // È stato confermato del progresso in un itinerario?
+var informations;                       // Contiene le informazioni presi dai JSON
 var openedMenuId;                       // Contiene l'id del menu aperto in quel momento
 var availablePlace = [];                // Flag se il marker esiste già o no (prevenire spam)
 var singleMarkers = {};                 // Contiene i singoli markers creati
-var isPackageLaid = false;              // C'è un pacchetto iniziato?
-var currentPackageRouting;              // Quale pacchetto è "piazzato"?
-var informations;                       // Contiene le informazioni presi dai JSON
 var currentLanguage = languagesList[0]; // Lingua selezionata (default Italiano)
 var currentLanguageID = 'it';           // ID della lingua selezionata (per le indicazioni di Leaflet)
+var waypoints;                          // Contiene i waypoints per l'itinerario corrente
+var currentPackageRouting;              // Quale pacchetto è "piazzato"?
+var completedItinerarySegment;          // Contiene la parte di itinerario percorsa
 
 //! Fetch e inizializzazione informazioni
 /* Prendi informazioni dai JSON... */
@@ -462,7 +465,7 @@ function layPackage() {
     });
 
     /* Preleva le coordinate da 'places' e le salva in 'waypoints' */
-    var waypoints = places.map((place) => {
+    waypoints = places.map((place) => {
         return place[0];
     });
 
@@ -483,7 +486,7 @@ function layPackage() {
         // Per ogni singolo 'waypoint'
         waypoints: waypoints,
         lineOptions: {
-            styles: [{color: "green"}]
+            styles: [{color: 'red', opacity: 0.8}]
         },
         language: currentLanguageID,
         // Impostazioni per evitare 'dragging' dei waypoints e 'lines' (percorsi in rosso)
@@ -498,24 +501,67 @@ function layPackage() {
             return L.marker(waypoint.latLng, {
                 draggable: false,
                 icon: icon
-            }).bindPopup(bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i])); // Aggiungi pop-ups
+            }).bindPopup(
+                bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i]) + 
+                '<button class="popupCompletedButton" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' + informations.menuNames[21] + '</button>'
+            ); // Aggiungi pop-ups
         }
     }).addTo(map);
 
     /* Update flag */
-    isPackageLaid = true;
+    __isPackageLaid__ = true;
 }
 function removeLaidPackage() {
     // Se non c'è un itinerario piazzato o non stiamo analizzando un itinerario, esci...
-    if (!isPackageLaid || !currentPackageRouting) {
+    if (!__isPackageLaid__ || !currentPackageRouting) {
         return;
     }
     // ...altrimenti, rimuovi il pacchetto piazzato a 'currentPackageRouting'
     map.removeControl(currentPackageRouting);
+    if (__wasProgressMade__) {
+        map.removeControl(completedItinerarySegment);
+    }
 
     // Resetta i valori
-    isPackageLaid = false;
+    __isPackageLaid__ = false;
     currentPackageRouting = undefined;
+}
+/* Gestisce il completamento di un segmento */
+// TODO: Colore markers (sarà un'impresa molto ardua (non ce la farò)) + la linea in sé glitcha un po' con quella di base...
+function recreateCompletedRoute(index) {
+    // Esce se il pirla tenta dice di aver completato zero tappe
+    if (index == 1) {
+        return;
+    }
+
+    // Se c'era già piazzato un segmento precedente, cancellalo
+    if (__wasProgressMade__) {
+        map.removeControl(completedItinerarySegment);
+    }
+
+    let color;
+    // Piazza oro se viene completata tutta, altrimenti verde
+    if (index == waypoints.length) {
+        color = 'gold';
+    } else {
+        color = 'green';
+    }
+
+    completedItinerarySegment = L.Routing.control({
+        waypoints: waypoints.slice(0, index),
+        routeWhileDragging: false,
+        draggableWaypoints: false,
+        addWaypoints: false,
+        show: false,
+        containerClassName: 'completedSegmentMenuWidget',
+        lineOptions: {
+            styles: [{color: color, opacity: 1, weight: 5}]
+        },
+        createMarker: function() { return null; }
+    }).addTo(map);
+
+    // Update flag
+    __wasProgressMade__ = true;
 }
 
 
