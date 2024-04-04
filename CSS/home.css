@@ -101,11 +101,13 @@
 }
 
 ::-webkit-scrollbar-track {     /* Sfondo barra */
-    background: #4d4d4d;
+    background: #999999 !important;
+    border-radius: 50px !important;
 }
 
 ::-webkit-scrollbar-thumb {     /* Cursore barra */
-    background: #747474;
+    background: #696969 !important;
+    border-radius: 50px !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -550,4 +552,74 @@ input:checked + .accessibilityMenuSlider:before {
 /* Nascondi widget */
 .completedSegmentMenuWidget {
     scale: 0;
+}
+
+.itineraryMenuWidget {
+    border-radius: 25px !important;
+    background: rgba(37, 37, 37, 0.8) !important;
+    box-shadow: 3px 5px 0px 2px rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(4px) !important;
+    border: 1px solid rgba(37, 37, 37, 0.5) !important;
+    color: white;
+    font-size: 120%;
+}
+
+.leaflet-routing-alt h2, h3 {
+    font-size: 110% !important;
+}
+
+.leaflet-routing-alt tr:hover {
+    background-color: rgba(37, 37, 37, 0.8) !important;
+}
+
+.leaflet-routing-alt {
+    margin: 10px !important;
+    margin-right: 12px !important;
+    margin-bottom: 16px !important;
+    padding: 8px !important;
+    padding-right: 6px !important;
+}
+
+/* Tooltip numerazione markers */
+.packagesMarkersCustomTooltips, .packagesMarkersCustomTooltipsCompleted {
+    background-color: #ff4a4a !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 220%;
+    line-height: 100%;
+    font-weight: bold;
+    padding: 3px !important;
+    font-family: "Bebas Neue" , sans-serif;
+}
+
+.packagesMarkersCustomTooltips::before, .packagesMarkersCustomTooltipsCompleted::before {
+    scale: 0 !important;
+}
+
+.packagesMarkersCustomTooltipsCompleted {
+    background-color: #EFAE45 !important;
+}
+
+.leaflet-control-zoom {
+    border: none !important;
+}
+
+.leaflet-control-zoom a {
+    background-color: #444444 !important;
+    color: var(--highlight-color) !important;
+    border: 1px solid var(--base-color) !important;
+    transition: 0.2s;
+}
+
+.leaflet-control-zoom a:first-child {
+    border-radius: 10px 10px 1px 1px !important;
+}
+
+.leaflet-control-zoom a:last-child {
+    border-radius: 1px 1px 10px 10px !important;
+}
+
+.leaflet-control-zoom a:hover {
+    scale: 1.05;
 }

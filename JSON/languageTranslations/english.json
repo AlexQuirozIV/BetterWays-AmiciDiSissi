@@ -21,7 +21,9 @@
             "Ingrandisci il testo",
             "Contrasto colori",
             "Text-to-speech",
-        "Completed!"
+        "Completed!",
+        "Start",
+        "Reached up"
     ],
 
     "placesNames": {
@@ -47,7 +49,7 @@
             "../img/tappe-popup/Lodi_Duomo_facciata.jpg"
         ],
         "Faustina-Sporting-Club": [
-            [45.300695861177324, 9.506869003676572],
+            [45.30054479572416, 9.50729370117188],
             "Faustina Sporting Club",
             5,
             "",

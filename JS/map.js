@@ -21,9 +21,9 @@ function createMarkerIcon(url) {
 
 
 //! Costanti globali
-const markerIconDark = createMarkerIcon('../img/marker-icone/markerIcona-dark.png');
 const markerIcon = createMarkerIcon('../img/marker-icone/markerIcona.png');
-const menus = [         // ID di ogni singolo menu esistente  //TODO: Aggiungere altri menu se mai verranno creati
+const markerIconGold = createMarkerIcon('../img/marker-icone/markerIcona-gold.png');
+const menus = [         // ID di ogni singolo menu esistente
     "addSingleMarkerMenu",
     "packagesMenu",
     "chiSiamoMenu",
@@ -451,8 +451,8 @@ function packagesMenu() {
 }
 
 //* Funzioni */
-/* Metti / togli itinerario piazzato */
-function layPackage() {
+/* Metti / togli itinerario piazzato. __isFinal__ controlla se de'evessere oro o no */
+function layPackage(__isFinal__) {
     removeLaidPackage();
 
     const selectedPackage = document.querySelector('#packagesMenu select').value;
@@ -482,29 +482,49 @@ function layPackage() {
     var imageLinks = places.map((imageLink) => { return imageLink[4]; });
 
     /* Aggiungi alla mappa */
+    var pathColor = __isFinal__? '#D98E31' : 'red';     // Colore percorso
     currentPackageRouting = L.Routing.control({
         // Per ogni singolo 'waypoint'
         waypoints: waypoints,
         lineOptions: {
-            styles: [{color: 'red', opacity: 0.8}]
+            styles: [{color: pathColor, opacity: 0.8, weight: 4}]
         },
         language: currentLanguageID,
         // Impostazioni per evitare 'dragging' dei waypoints e 'lines' (percorsi in rosso)
         draggableWaypoints: false,
         addWaypoints: false,
+        // Classe del Widget (a destra)
+        containerClassName: 'itineraryMenuWidget',
         // Effettiva creazione (_i è un contatore necessario alla funzione)
         createMarker: function(_i, waypoint) {
-            var icon = _i === 0 ? markerIconDark :
-                       _i === waypoints.length - 1 ? markerIconDark :
-                       markerIcon;
+            var icon = __isFinal__? markerIconGold : markerIcon;    // Icona (normale o oro)
 
-            return L.marker(waypoint.latLng, {
+            // Base marker...
+            var marker = L.marker(waypoint.latLng, {
                 draggable: false,
                 icon: icon
-            }).bindPopup(
+            });
+
+            // ...con Tooltip...
+            marker.bindTooltip(`${_i + 1}`, {
+                permanent: true,
+                direction: 'top',
+                className: __isFinal__? 'packagesMarkersCustomTooltipsCompleted' : 'packagesMarkersCustomTooltips',
+                offset: [-11, -16]
+            }).openTooltip();
+            
+            // ...e Pop-up
+            marker.bindPopup(
+                // Info + bottone extra con testo dinamico
                 bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i]) + 
-                '<button class="popupCompletedButton" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' + informations.menuNames[21] + '</button>'
-            ); // Aggiungi pop-ups
+                '<button class="popupCompletedButton" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' + 
+                    (_i == 0 ? informations.menuNames[22] :
+                    _i == waypoints.length - 1 ? informations.menuNames[21] :
+                    informations.menuNames[23]) + 
+                '</button>'
+            );
+
+            return marker;
         }
     }).addTo(map);
 
@@ -516,7 +536,7 @@ function removeLaidPackage() {
     if (!__isPackageLaid__ || !currentPackageRouting) {
         return;
     }
-    // ...altrimenti, rimuovi il pacchetto piazzato a 'currentPackageRouting'
+    // ...altrimenti, rimuovi il pacchetto piazzato a 'currentPackageRouting' e, se "__wasProgressMade__", allora rimuovi anche quello
     map.removeControl(currentPackageRouting);
     if (__wasProgressMade__) {
         map.removeControl(completedItinerarySegment);
@@ -524,13 +544,15 @@ function removeLaidPackage() {
 
     // Resetta i valori
     __isPackageLaid__ = false;
+    __wasProgressMade__ = false;
     currentPackageRouting = undefined;
 }
-/* Gestisce il completamento di un segmento */
-// TODO: Colore markers (sarà un'impresa molto ardua (non ce la farò)) + la linea in sé glitcha un po' con quella di base...
+/* Gestisce il completamento di un segmento (dato l'indice del marker) */
+// TODO: Colore markers (sarà un'impresa molto ardua (non ce la farò))
 function recreateCompletedRoute(index) {
-    // Esce se il pirla tenta dice di aver completato zero tappe
+    // Resetta il percorso ed esce se il pirla tenta di completare zero tappe (index == 1)
     if (index == 1) {
+        layPackage(false);
         return;
     }
 
@@ -539,26 +561,25 @@ function recreateCompletedRoute(index) {
         map.removeControl(completedItinerarySegment);
     }
 
-    let color;
     // Piazza oro se viene completata tutta, altrimenti verde
     if (index == waypoints.length) {
-        color = 'gold';
+        layPackage(true);
+        return;
     } else {
-        color = 'green';
+        layPackage(false);
+        completedItinerarySegment = L.Routing.control({
+            waypoints: waypoints.slice(0, index),   // I waypoint vanno dal primo (0) all'index
+            routeWhileDragging: false,
+            draggableWaypoints: false,
+            addWaypoints: false,
+            show: false,    // Niente Widget
+            containerClassName: 'completedSegmentMenuWidget',
+            lineOptions: {
+                styles: [{color: 'green', opacity: 1, weight: 5}]
+            },
+            createMarker: function() { return null; }       // Niente markers
+        }).addTo(map);
     }
-
-    completedItinerarySegment = L.Routing.control({
-        waypoints: waypoints.slice(0, index),
-        routeWhileDragging: false,
-        draggableWaypoints: false,
-        addWaypoints: false,
-        show: false,
-        containerClassName: 'completedSegmentMenuWidget',
-        lineOptions: {
-            styles: [{color: color, opacity: 1, weight: 5}]
-        },
-        createMarker: function() { return null; }
-    }).addTo(map);
 
     // Update flag
     __wasProgressMade__ = true;
