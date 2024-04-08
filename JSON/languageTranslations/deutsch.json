@@ -204,6 +204,10 @@
             "Stadion-Dossenina",
             "Faustina-Sporting-Club",
             "Sporteinrichtung-Palacastellotti"
+        ],
+        "Piazze": [
+            "Broletto-Platz",
+            "Marktplatz"
         ]
     }
 }
