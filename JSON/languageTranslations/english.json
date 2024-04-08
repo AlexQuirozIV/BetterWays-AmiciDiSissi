@@ -138,6 +138,41 @@
             3,
             "",
             "../img/tappe-popup/torrione.jpg"
+        ],
+        "Broletto-Square": [
+            [45.31452738912999, 9.50285367329064],
+            "Broletto Square",
+            3,
+            "",
+            ""
+        ],
+        "Market-Square": [
+            [45.315046320365575, 9.504111225140116],
+            "Market Square",
+            4,
+            "",
+            ""
+        ],
+        "Tourist-Office": [
+            [45.31457313558977, 9.502831126442807],
+            "Tourist Office",
+            5,
+            "",
+            ""
+        ],
+        "Church-of-Magdalene": [
+            [45.31835179420975, 9.504352611647226],
+            "Church of Magdalene",
+            4,
+            "",
+            ""
+        ],
+        "Laudense-Library" : [
+            [45.316260560309566, 9.504173325140222],
+            "Laudense Library",
+            4,
+            "",
+            ""
         ]
     },
 

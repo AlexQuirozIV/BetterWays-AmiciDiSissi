@@ -138,6 +138,41 @@
             3,
             "",
             "../img/tappe-popup/torrione.jpg"
+        ],
+        "Broletto-Platz": [
+            [45.31452738912999, 9.50285367329064],
+            "Broletto Platz",
+            3,
+            "",
+            ""
+        ],
+        "Marktplatz": [
+            [45.315046320365575, 9.504111225140116],
+            "Marktplatz",
+            4,
+            "",
+            ""
+        ],
+        "Touristenbüro": [
+            [45.31457313558977, 9.502831126442807],
+            "Touristenbüro",
+            5,
+            "",
+            ""
+        ],
+        "Kirche-der-Magdalena": [
+            [45.31835179420975, 9.504352611647226],
+            "Kirche der Magdalena",
+            4,
+            "",
+            ""
+        ],
+        "Laudense-Bibliothek": [
+            [45.316260560309566, 9.504173325140222],
+            "Laudense Bibliothek",
+            4,
+            "",
+            ""
         ]
     },
 
