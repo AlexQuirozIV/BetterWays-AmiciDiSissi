@@ -7,5 +7,4 @@ Cose da chiedere
 cose da fare:
 1. allargare la mappa
 2. cambiare eventuali foto 
-3. aggiungere la via francingena 
-4. mettiamo in evidenza l'accesibilità nel nostro team
+3. aggiungere la via francingena
