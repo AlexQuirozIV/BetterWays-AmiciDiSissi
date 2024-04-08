@@ -149,6 +149,41 @@
             3,
             "",
             "../img/tappe-popup/torrione.jpg"
+        ],
+        "Place-Broletto": [
+            [45.31452738912999, 9.50285367329064],
+            "Place Broletto",
+            3,
+            "",
+            ""
+        ],
+        "Place-du-Marché": [
+            [45.315046320365575, 9.504111225140116],
+            "Place du Marché",
+            4,
+            "",
+            ""
+        ],
+        "Office-de-tourisme": [
+            [45.31457313558977, 9.502831126442807],
+            "Office de tourisme",
+            5,
+            "",
+            ""
+        ],
+        "Église-de-la-Madeleine": [
+            [45.31835179420975, 9.504352611647226],
+            "Église de la Madeleine",
+            4,
+            "",
+            ""
+        ],
+        "Bibliothèque-Laudense": [
+            [45.316260560309566, 9.504173325140222],
+            "Bibliothèque Laudense",
+            4,
+            "",
+            ""
         ]
     },
 
@@ -180,6 +215,9 @@
             "Stade-Dossenina",
             "Club-Sportif-Faustina",
             "Palais-Palacastellotti"
-        ]
+        ],
+        "Places": [
+            "Place-Broletto",
+            "Place-du-Marché"]
     }
 }

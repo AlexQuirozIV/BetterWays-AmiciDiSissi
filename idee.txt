@@ -8,3 +8,5 @@ cose da fare:
 1. allargare la mappa
 2. cambiare eventuali foto 
 3. aggiungere la via francingena
+4. aggiunge la funzione per il black and white
+5. fare il text-to-speech
