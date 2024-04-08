@@ -1,29 +1,40 @@
 {
     "menuNames": [
-        "Marqueur Unique",
-            "Ajouter",
-            "Supprimer",
-            "Ajouter tous",
-            "Supprimer tous",
         "Compte",
+    
         "Itinéraires",
             "Commencer",
             "Supprimer",
+    
+            "Commencer",
+            "Atteint",
+            "Terminé!",
+    
         "Accessibilité",
+            "Agrandir le texte",
+            "Contraste des couleurs",
+            "Noir et blanc",
+            "Texte à la parole",
+    
         "Paramètres",
             "Légende",
             " = Étape non atteinte",
             " = Étape atteinte",
             " = Parcours terminé",
             "Langue",
+    
         "Notre Équipe",
-            "Bienvenue dans le monde de <i>Better Ways</i> ! Nous sommes cinq étudiants de la classe 4ID de l'institut IIS A. Volta de Lodi.<br>Nous nous appelons: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti et Linda Tessadori.<br>Notre site, <i>Better Ways</i>, est axé sur le tourisme à Lodi, pour découvrir les merveilles que cette petite ville a à offrir. De plus, nous nous engageons à garantir que notre site soit conçu et développé selon des normes d'<i>accessibilité</i>, afin d'offrir une expérience inclusive à tous les visiteurs.",
-            "Ingrandisci il testo",
-            "Contrasto colori",
-            "Text-to-speech",
-        "Complété!",
-        "Commence",
-        "Atteindre"
+            "Bienvenue dans le monde de <i>Better Ways</i>! Nous sommes cinq étudiants de la classe 4ID de l'institut IIS A. Volta di Lodi.<br>Nous nous appelons : Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti et Linda Tessadori.<br>Notre site, <i>Better Ways</i>, est axé sur le tourisme à Lodi, pour découvrir les merveilles que cette petite ville a à offrir. De plus, nous nous engageons à ce que notre site soit conçu et développé selon des normes d'<i>accessibilité</i>, afin d'offrir une expérience inclusive à tous les visiteurs.",
+    
+        "Accueil",
+    
+        "Centrer la carte",
+    
+        "Marqueur Unique",
+            "Ajouter",
+            "Supprimer",
+            "Ajouter tous",
+            "Supprimer tous"
     ],
 
     "placesNames": {

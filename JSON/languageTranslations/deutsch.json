@@ -1,29 +1,40 @@
 {
     "menuNames": [
-        "Einzelmarker",
-            "Hinzufügen",
-            "Entfernen",
-            "Alle hinzufügen",
-            "Alle entfernen",
         "Konto",
-        "Reiserouten",
-            "Start",
+        
+        "Routen",
+            "Starten",
             "Entfernen",
+            
+            "Starten",
+            "Erreicht",
+            "Abgeschlossen!",
+        
         "Barrierefreiheit",
+            "Text vergrößern",
+            "Farbkontrast",
+            "Schwarz & Weiß",
+            "Text-zu-Sprache",
+        
         "Einstellungen",
             "Legende",
             " = Ziel nicht erreicht",
             " = Ziel erreicht",
             " = Route abgeschlossen",
             "Sprache",
+        
         "Unser Team",
-            "Willkommen in der Welt von <i>Better Ways</i>! Wir sind fünf Schüler der Klasse 4ID des IIS A. Volta in Lodi.<br>Unsere Namen sind: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti und Linda Tessadori.<br>Unsere Website, <i>Better Ways</i>, konzentriert sich auf den Tourismus in Lodi, um die Wunder dieser kleinen Stadt zu entdecken. In addition, wir bemühen uns sicherzustellen, dass unsere Website gemäß den <i>Barrierefreiheitsstandards</i> gestaltet und entwickelt wird, um allen Besuchern ein inklusives Erlebnis zu bieten.",
-            "Ingrandisci il testo",
-            "Contrasto colori",
-            "Text-to-speech",
-        "Vollendet!",
-        "Es beginnt",
-        "Erreicht"
+            "Willkommen in der Welt von <i>Better Ways</i>! Wir sind fünf Schüler der Klasse 4ID des IIS A. Volta in Lodi.<br>Unsere Namen sind: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti und Linda Tessadori.<br>Unsere Website, <i>Better Ways</i>, konzentriert sich auf den Tourismus in Lodi, um die Schönheiten dieser kleinen Stadt zu entdecken. Darüber hinaus setzen wir uns dafür ein, dass unsere Website nach den Standards der <i>Barrierefreiheit</i> gestaltet und entwickelt wird, um allen Besuchern ein inklusives Erlebnis zu bieten.",
+        
+        "Startseite",
+        
+        "Karte zentrieren",
+        
+        "Einzelner Marker",
+            "Hinzufügen",
+            "Entfernen",
+            "Alle hinzufügen",
+            "Alle entfernen"
     ],
 
     "placesNames": {
