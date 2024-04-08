@@ -5,6 +5,7 @@
 "use strict";
 
 const boldSlider = document.getElementById('boldSlider');
+const blackAndWhiteSlider = document.getElementById('blackAndWhiteSlider');
 const contrastSlider = document.getElementById('contrastSlider');
 const textToSpeechSlider = document.getElementById('textToSpeechSlider');
 
@@ -29,11 +30,11 @@ function revertBoldTextAction() {
 
 
 //! Funzione per mettere il contrasto colori
-const originalFilters = [];
+const originalFilters_Contrast = [];
 
 function contrastAction() {
     document.querySelectorAll('*').forEach(element => {
-        originalFilters.push({
+        originalFilters_Contrast.push({
             element: element,
             originalFilter: element.style.filter
         });
@@ -41,14 +42,34 @@ function contrastAction() {
     });
 }
 function revertContrastAction() {
-    originalFilters.forEach(filter => {
+    originalFilters_Contrast.forEach(filter => {
         filter.element.style.filter = filter.originalFilter;
     });
-    originalFilters.length = 0;
+    originalFilters_Contrast.length = 0;
 }
 
 
-//! Funzione per mettere il text-to-speech
+//! Funzione per mettere il bianco e nero
+const originalFilters_BlackAndWhite = [];
+
+function blackAndWhiteAction() {
+    document.querySelectorAll('*').forEach(element => {
+        originalFilters_BlackAndWhite.push({
+            element: element,
+            originalFilter: element.style.filter
+        });
+        element.style.filter = 'grayscale(100%)';
+    });
+}
+function revertBlackAndWhiteAction() {
+    originalFilters_BlackAndWhite.forEach(filter => {
+        filter.element.style.filter = filter.originalFilter;
+    });
+    originalFilters_BlackAndWhite.length = 0;
+}
+
+
+//TODO Funzione per mettere il text-to-speech
 function textToSpeechAction() {
     console.log('Text-to-speech action triggered');
 }
@@ -72,6 +93,15 @@ contrastSlider.addEventListener('change', function() {
         contrastAction();
     } else {
         revertContrastAction();
+    }
+});
+
+//* Funzione per sentire il toggle di 'blackAndWhiteSlider'
+blackAndWhiteSlider.addEventListener('change', function() {
+    if (this.checked) {
+        blackAndWhiteAction();
+    } else {
+        revertBlackAndWhiteAction();
     }
 });
 

@@ -1,29 +1,39 @@
 {
     "menuNames": [
-        "Espaço de Marcação",
-            "Adicionar",
-            "Remover",
-            "Adicionar Todos",
-            "Remover Todos",
         "Conta",
         "Rotas",
             "Começar",
             "Remover",
+            
+            "Começar",
+            "Alcançado",
+            "Concluído!",
+        
         "Acessibilidade",
+            "Aumentar texto",
+            "Contraste de cores",
+            "Preto e branco",
+            "Texto para fala",
+        
         "Configurações",
             "Legenda",
             " = Etapa não alcançada",
             " = Etapa alcançada",
-            " = Rota completada",
+            " = Rota concluída",
             "Língua",
-        "Nossa Equipe",
-            "Bem-vindo ao mundo de <i>Better Ways</i>! Somos cinco estudantes da turma 4ID da escola IIS A. Volta de Lodi.<br>Nosso nome é: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti e Linda Tessadori.<br>Nosso site, <i>Better Ways</i>, é focado no turismo de Lodi, para descobrir as maravilhas que esta pequena cidade tem para oferecer. Além disso, comprometemo-nos a garantir que nosso site seja projetado e desenvolvido com padrões de <i>acessibilidade</i>, a fim de oferecer uma experiência inclusiva a todos os visitantes.",
-            "Ingrandisci il testo",
-            "Contrasto colori",
-            "Text-to-speech",
-        "Concluído!",
-        "Começa",
-        "Alcançado"
+        
+        "Nosso Time",
+            "Bem-vindos ao mundo da <i>Better Ways</i>! Somos cinco alunos da turma 4ID do Instituto IIS A. Volta, em Lodi.<br>Nos chamamos: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti e Linda Tessadori.<br>Nosso site, <i>Better Ways</i>, é focado no turismo em Lodi, para descobrir as maravilhas que essa pequena cidade tem a oferecer. Além disso, nos esforçamos para garantir que nosso site seja projetado e desenvolvido com padrões de <i>acessibilidade</i>, a fim de oferecer uma experiência inclusiva a todos os visitantes.",
+        
+        "Página Inicial",
+        
+        "Centralizar mapa",
+        
+        "Marcador Único",
+            "Adicionar",
+            "Remover",
+            "Adicionar todos",
+            "Remover todos"
     ],
 
     "placesNames": {

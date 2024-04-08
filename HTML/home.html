@@ -41,36 +41,36 @@
 
     <div id="navbarWrapper">    <!--  raggruppa tutti gli elementi della barra di navigazione -->
         <div id="navbarHeader"> <!-- intestazione della barra di navigazione -->
-            <span onclick="accountMenu()" class="material-symbols-outlined">person</span>
+            <abbr onclick="accountMenu()" class="isButton navButtonIcon material-symbols-outlined">person</abbr>
         </div>
         <div id="navbarContent">
             <hr class="navbarSeparator">    <!-- linea di separazione dei bottoni -->
             <div class="navButton">
-                <span onclick="packagesMenu()" class="navButtonIcon material-symbols-outlined">location_on</span>
+                <abbr onclick="packagesMenu()" class="isButton navButtonIcon material-symbols-outlined">location_on</abbr>
             </div>
 
             <hr class="navbarSeparator">
 
             <div class="navButton">
-                <span onclick="accessibilityMenu()" class="navButtonIcon material-symbols-outlined">accessibility_new</span>
+                <abbr onclick="accessibilityMenu()" class="isButton navButtonIcon material-symbols-outlined">accessibility_new</abbr>
             </div>
 
             <hr class="navbarSeparator">
 
             <div class="navButton">
-                <span onclick="settingsMenu()" class="navButtonIcon material-symbols-outlined">settings</span>
+                <abbr onclick="settingsMenu()" class="isButton navButtonIcon material-symbols-outlined">settings</abbr>
             </div>
 
             <hr class="navbarSeparator">
 
             <div class="navButton">
-                <span onclick="chiSiamoMenu()" class="navButtonIcon material-symbols-outlined">groups</span>
+                <abbr onclick="chiSiamoMenu()" class="isButton navButtonIcon material-symbols-outlined">groups</abbr>
             </div>
             
             <hr class="navbarSeparator">
 
             <div class="navButton">
-                <a href="main.html"><span class="navButtonIcon material-symbols-outlined">home</span></a>
+                <a href="main.html"><span class="isButton navButtonIcon material-symbols-outlined">home</span></a>
             </div>
             
             <hr class="navbarSeparator">
@@ -101,21 +101,28 @@
         <div></div>
         <div id="accessibilityMenuContent">
             <div class="accessibilityMenuContentsContainer">
-                <span class="accessibility_text">Ingrandisci il testo</span>
+                <span class="accessibility_text"></span>
                 <label class="accessibilityMenuSwitch">
                     <input type="checkbox" id="boldSlider">
                     <span class="accessibilityMenuSlider"></span>
                 </label>
             </div>
             <div class="accessibilityMenuContentsContainer">
-                <span class="accessibility_text">Contrasto colori</span>
+                <span class="accessibility_text"></span>
                 <label class="accessibilityMenuSwitch">
                     <input type="checkbox" id="contrastSlider">
                     <span class="accessibilityMenuSlider"></span>
                 </label>
             </div>
             <div class="accessibilityMenuContentsContainer">
-                <span class="accessibility_text">Text-to-speech</span>
+                <span class="accessibility_text"></span>
+                <label class="accessibilityMenuSwitch">
+                    <input type="checkbox" id="blackAndWhiteSlider">
+                    <span class="accessibilityMenuSlider"></span>
+                </label>
+            </div>
+            <div class="accessibilityMenuContentsContainer">
+                <span class="accessibility_text"></span>
                 <label class="accessibilityMenuSwitch">
                     <input type="checkbox" id="textToSpeechSlider">
                     <span class="accessibilityMenuSlider"></span>
@@ -165,8 +172,11 @@
         </div>
     </div>
 
+    <!-- Ri-centra mappa (mi sono rotto di rimettere lo zoom ogni volta) -->
+    <span onclick="recenterMap()" id="recenterMap-btn" class="isButton material-symbols-outlined">recenter</span>
+
     <!-- addSingleMarkerMenu button -->
-    <span onclick="addSingleMarkerMenu()" id="addMarker-btn" class="material-icons">add_location</span>
+    <span onclick="addSingleMarkerMenu()" id="addMarker-btn" class="isButton material-symbols-outlined">add_location</span>
 
     <script src="../JS/map.js"></script> <!-- Script per la mappa -->
     <script src="../JS/home-accessibility.js"></script>

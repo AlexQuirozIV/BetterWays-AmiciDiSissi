@@ -5,6 +5,10 @@
     --base-color: #747474;
 }
 
+abbr {
+    text-decoration: none !important;
+}
+
 * {
     font-family: 'Comfortaa', Arial;
 }
@@ -166,8 +170,33 @@ a.leaflet-popup-close-button:hover {
     cursor: pointer;
 }
 
+
 #addMarker-btn:hover {
     scale: 1.15;
+}
+
+#recenterMap-btn {
+    width: 60px;
+    height: 60px;
+    background-color: #444444;
+    color: var(--highlight-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 50%;
+    font-size: 30px;
+    line-height: 0%;
+    position: fixed;
+    bottom: 2rem;
+    left: 1.3rem;
+    transition: 0.2s ease-in-out;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+#recenterMap-btn:hover {
+    scale: 1.1;
 }
 
 /* Menu aggiunta markers */
@@ -224,7 +253,7 @@ a.leaflet-popup-close-button:hover {
     text-overflow: ellipsis;
 }
 
-#addSingleMarkerMenu select option:nth-child(even), #packagesMenu select option:nth-child(even) {
+#addSingleMarkerMenu select option:nth-child(even), #packagesMenu select option:nth-child(even), #languageSwitch select option:nth-child(even) {
     background-color: whitesmoke;
 }
 
