@@ -7,17 +7,17 @@
 //! Coordinate per centrare la mappa
 const centerCoordinates = [45.309062, 9.501200];
 //! Costante che contiene LA MAPPA
-const map = L.map('map', {zoomControl: false}).setView(centerCoordinates, 14);
+const map = L.map('map', { zoomControl: false }).setView(centerCoordinates, 14);
 
 
 //! Icona markers
 function createMarkerIcon(url) {
     return L.icon({
         iconUrl: url,
-    
-        iconSize:     [48, 48],     // Grandezza icona
-        iconAnchor:   [35, 60],     // Punto dell'icona che indicherà il punto preciso sulla mappa
-        popupAnchor:  [-10, -60]    // Punto da dove il popup si apre
+
+        iconSize: [48, 48],     // Grandezza icona
+        iconAnchor: [35, 60],     // Punto dell'icona che indicherà il punto preciso sulla mappa
+        popupAnchor: [-10, -60]    // Punto da dove il popup si apre
     });
 }
 
@@ -73,42 +73,42 @@ async function fetchInfos(currentLanguage) {
             availablePlaceLanguageRefill();     // Refilla 'availablePlace'
 
             break;
-        
+
         case "🇬🇧 - English":
             var response = await fetch('../JSON/languageTranslations/english.json');
             informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
-        
+
         case "🇪🇸 - Español":
             var response = await fetch('../JSON/languageTranslations/espanol.json');
             informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
-        
+
         case "🇩🇪 - Deutsch":
             var response = await fetch('../JSON/languageTranslations/deutsch.json');
             informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
-        
+
         case "🇫🇷 - Français":
             var response = await fetch('../JSON/languageTranslations/francais.json');
             informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
-        
+
         case "🇵🇹 - Português":
             var response = await fetch('../JSON/languageTranslations/portugues.json');
             informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
-                        
+
         default:
             var response = await fetch('../JSON/languageTranslations/italiano.json');
             informations = await response.json();
@@ -129,7 +129,7 @@ async function fetchInfos(currentLanguage) {
 
     // Notifica di quale è stato fetchato
     console.log('Information fetched successfully for\n',
-                (currentLanguage == undefined) ? "🇮🇹 - Italiano" : currentLanguage);
+        (currentLanguage == undefined) ? "🇮🇹 - Italiano" : currentLanguage);
 }
 /* Mette tooltips ai pulsanti */
 function setButtonTooltips() {
@@ -217,8 +217,8 @@ function rate(fullStarsNumber) {
     for (let i = 0; i < (5 - fullStarsNumber); i++) {
         rating += '<img src="../img/popup-rating-stars/emptyStar.png" class="popupStars">';
     }
-    rating = '<div class="popupRating">' + rating + '</div>'
-    
+    rating = '<div class="popupRating">' + rating + '</div>';
+
     return rating;
 }
 /* Genera le 'info' necessarie da aggiungere a ciascun popup tramite '.bindPopup(info)' */
@@ -265,7 +265,7 @@ function handleMenuButtonPress(menu) {
 function addSingleMarkerMenu() {
     let id = 'addSingleMarkerMenu';
 
-    
+
     /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
     let shouldThisMenuClose = handleMenuButtonPress(menu);
@@ -300,7 +300,7 @@ function addSingleMarkerMenu() {
     }
 
     /* Pulsanti */
-    let buttons = menu.querySelectorAll('div button')
+    let buttons = menu.querySelectorAll('div button');
 
     // Testo e funzione per ciascuno
     buttons[0].textContent = informations.menuNames[23];
@@ -331,7 +331,7 @@ function newSingleMarker([latitude, longitude], info) {
     }
 
     // Crea marker...
-    let marker = L.marker([latitude, longitude], {icon: markerIcon}).addTo(map).bindPopup(info);
+    let marker = L.marker([latitude, longitude], { icon: markerIcon }).addTo(map).bindPopup(info);
 
     // ... e in output per salvarlo in 'markers' nella funzione 'addSingleMarkerMenu'...
     return marker;
@@ -339,14 +339,16 @@ function newSingleMarker([latitude, longitude], info) {
 /* Metti / togli marker singolo piazzato */
 function singleMarkerMenuPlace() {
     var selectedPlace = document.querySelector('#addSingleMarkerMenu select').value;
-    
+
     // Crea il nuovo marker se non già piazzato e lo salva dentro 'markers'
     if (availablePlace.includes(selectedPlace)) {
         // Genera le informazioni da aggiungere al popup con le informazioni da 'informations'
-        var bindingInfos = bindPopupInfos(informations.placesNames[selectedPlace][1],
-                                          informations.placesNames[selectedPlace][2],
-                                          informations.placesNames[selectedPlace][3],
-                                          informations.placesNames[selectedPlace][4]);
+        var bindingInfos = bindPopupInfos(
+            informations.placesNames[selectedPlace][1],
+            informations.placesNames[selectedPlace][2],
+            informations.placesNames[selectedPlace][3],
+            informations.placesNames[selectedPlace][4]
+        );
 
         // Piazza il menu e salvalo in 'singleMarkers'
         singleMarkers[selectedPlace] = newSingleMarker(informations.placesNames[selectedPlace][0], bindingInfos);
@@ -356,7 +358,7 @@ function singleMarkerMenuPlace() {
 }
 function singleMarkerMenuRemove() {
     var selectedPlace = document.querySelector('#addSingleMarkerMenu select').value;
-    
+
     // Se il marker non è piazzato, lo toglie
     if (!(availablePlace.includes(selectedPlace))) {
         map.removeLayer(singleMarkers[selectedPlace]);
@@ -381,10 +383,12 @@ function singleMarkerMenuAddAll() {
         }
 
         // Genera le informazioni da aggiungere al popup con le informazioni da 'informations'
-        var bindingInfos = bindPopupInfos(informations.placesNames[marker][1],
-                                          informations.placesNames[marker][2],
-                                          informations.placesNames[marker][3],
-                                          informations.placesNames[marker][4]);
+        var bindingInfos = bindPopupInfos(
+            informations.placesNames[marker][1],
+            informations.placesNames[marker][2],
+            informations.placesNames[marker][3],
+            informations.placesNames[marker][4]
+        );
 
         // Piazza il menu e salvalo in 'singleMarkers'
         singleMarkers[marker] = newSingleMarker(informations.placesNames[marker][0], bindingInfos);
@@ -409,7 +413,7 @@ function singleMarkerMenuRemoveAll() {
 //! Account menu
 function accountMenu() {
     let id = 'accountMenu';
-    
+
     /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
     let shouldThisMenuClose = handleMenuButtonPress(menu);
@@ -429,7 +433,7 @@ function accountMenu() {
 //! Pacchetti
 function packagesMenu() {
     let id = 'packagesMenu';
-    
+
     /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
     let shouldThisMenuClose = handleMenuButtonPress(menu);
@@ -457,14 +461,14 @@ function packagesMenu() {
         option.text = optionsNames[i];
         select.appendChild(option);
     }
-    
+
     // Ripristina l'index per l'apertura
     if (selectedIndex >= 0 && selectedIndex < select.options.length) {
-            select.selectedIndex = selectedIndex;
+        select.selectedIndex = selectedIndex;
     }
 
     /* Pulsanti */
-    let buttons = menu.querySelectorAll('div button')
+    let buttons = menu.querySelectorAll('div button');
 
     // Testo e funzione per ciascuno
     buttons[0].textContent = informations.menuNames[2];
@@ -512,12 +516,12 @@ function layPackage(__isFinal__) {
     var imageLinks = places.map((imageLink) => { return imageLink[4]; });
 
     /* Aggiungi alla mappa */
-    var pathColor = __isFinal__? '#D98E31' : 'red';     // Colore percorso
+    var pathColor = __isFinal__ ? '#D98E31' : 'red';     // Colore percorso
     currentPackageRouting = L.Routing.control({
         // Per ogni singolo 'waypoint'
         waypoints: waypoints,
         lineOptions: {
-            styles: [{color: pathColor, opacity: 0.8, weight: 4}]
+            styles: [{ color: pathColor, opacity: 0.8, weight: 4 }]
         },
         language: currentLanguageID,
         // Impostazioni per evitare 'dragging' dei waypoints e 'lines' (percorsi in rosso)
@@ -526,8 +530,8 @@ function layPackage(__isFinal__) {
         // Classe del Widget (a destra)
         containerClassName: 'itineraryMenuWidget',
         // Effettiva creazione (_i è un contatore necessario alla funzione)
-        createMarker: function(_i, waypoint) {
-            var icon = __isFinal__? markerIconGold : markerIcon;    // Icona (normale o oro)
+        createMarker: function (_i, waypoint) {
+            var icon = __isFinal__ ? markerIconGold : markerIcon;    // Icona (normale o oro)
 
             // Base marker...
             var marker = L.marker(waypoint.latLng, {
@@ -539,18 +543,18 @@ function layPackage(__isFinal__) {
             marker.bindTooltip(`${_i + 1}`, {
                 permanent: true,
                 direction: 'top',
-                className: __isFinal__? 'packagesMarkersCustomTooltipsCompleted' : 'packagesMarkersCustomTooltips',
+                className: __isFinal__ ? 'packagesMarkersCustomTooltipsCompleted' : 'packagesMarkersCustomTooltips',
                 offset: [-11, -16]
             }).openTooltip();
-            
+
             // ...e Pop-up
             marker.bindPopup(
                 // Info + bottone extra con testo dinamico
-                bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i]) + 
-                '<button class="popupCompletedButton" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' + 
-                    (_i == 0 ? informations.menuNames[4] :
+                bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i]) +
+                '<button class="popupCompletedButton" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
+                (_i == 0 ? informations.menuNames[4] :
                     _i == waypoints.length - 1 ? informations.menuNames[6] :
-                    informations.menuNames[5]) + 
+                        informations.menuNames[5]) +
                 '</button>'
             );
 
@@ -605,9 +609,9 @@ function recreateCompletedRoute(index) {
             show: false,    // Niente Widget
             containerClassName: 'completedSegmentMenuWidget',
             lineOptions: {
-                styles: [{color: 'green', opacity: 1, weight: 5}]
+                styles: [{ color: 'green', opacity: 1, weight: 5 }]
             },
-            createMarker: function() { return null; }       // Niente markers
+            createMarker: function () { return null; }       // Niente markers
         }).addTo(map);
     }
 
@@ -619,7 +623,7 @@ function recreateCompletedRoute(index) {
 //! Accessibilità menu
 function accessibilityMenu() {
     let id = 'accessibilityMenu';
-    
+
     /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
     let shouldThisMenuClose = handleMenuButtonPress(menu);
@@ -647,7 +651,7 @@ function accessibilityMenu() {
 //! Settings menu
 function settingsMenu() {
     let id = 'settingsMenu';
-    
+
     /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
     let shouldThisMenuClose = handleMenuButtonPress(menu);
@@ -674,7 +678,7 @@ function settingsMenu() {
 
     for (let language of languagesList) {
         let isOptionPresent = false;
-    
+
         // Controlla se l'opzione c'è già
         for (let option of select.options) {
             if (option.value === language || option.text === language) {
@@ -682,7 +686,7 @@ function settingsMenu() {
                 break;
             }
         }
-    
+
         // Se non c'è aggiungila
         if (!isOptionPresent) {
             let option = document.createElement('option');
@@ -714,14 +718,14 @@ function languageChangeListener() {
 /* Gestisce il cambiamento della lingua */
 function handleLanguageChange(event) {
     var selectedOption = event.target.value;    // Il valore di cosa ('target') ha triggerato l'evento
-    
+
     // Setta 'currentLanguage' e 'currentLanguageID'
     currentLanguage = selectedOption;
     switch (selectedOption) {
         case "🇬🇧 - English":
             currentLanguageID = 'en';
             break;
-        
+
         case "🇪🇸 - Español":
             currentLanguageID = 'es';
             break;
@@ -729,7 +733,7 @@ function handleLanguageChange(event) {
         case "🇩🇪 - Deutsch":
             currentLanguageID = 'de';
             break;
-        
+
         case "🇫🇷 - Français":
             currentLanguageID = 'fr';
             break;
@@ -746,7 +750,7 @@ function handleLanguageChange(event) {
     // Chiudi tutto per aggiornare la lingua
     singleMarkerMenuRemoveAll();
     removeLaidPackage();
-    
+
     // Prendi le nuove informazioni (dato che ora abbiamo aggiornato 'currentLanguage' e 'currentLanguageID')
     fetchInfos(currentLanguage);
 
@@ -766,12 +770,12 @@ function resetSettingsMenu() {
 //! Chi siamo? menu
 function chiSiamoMenu() {
     let id = 'chiSiamoMenu';
-    
+
     /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
     let shouldThisMenuClose = handleMenuButtonPress(menu);
     if (shouldThisMenuClose == 'yes') { return; }
-    
+
     /* Titolo */
     menu.querySelector('div').textContent = informations.menuNames[18];
 
