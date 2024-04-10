@@ -176,11 +176,18 @@
             "Chiesa della Maddalena",
             4,
             "",
-            ""
+            "../img/pippo/Chiesa_della_Maddalena.jpeg"
         ],
         "Biblioteca-Laudense": [
             [45.316260560309566, 9.504173325140222],
             "Biblioteca Laudense",
+            4,
+            "",
+            ""
+        ],
+        "Piazza-Castello": [
+            [45.3126698, 9.4997774],
+            "Piazza Castello",
             4,
             "",
             ""
@@ -220,7 +227,8 @@
         ],
         "Piazze": [
             "Piazza-Broletto",
-            "Piazza-Mercato"
+            "Piazza-Mercato",
+            "Piazza-Castello"
         ]
     }
 }
