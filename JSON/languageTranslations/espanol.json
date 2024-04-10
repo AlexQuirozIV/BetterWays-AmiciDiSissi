@@ -184,6 +184,13 @@
             4,
             "",
             ""
+        ],
+        "Plaza-del-Castillo": [
+            [45.3126698, 9.4997774],
+            "Plaza-del-Castillo",
+            4,
+            "",
+            ""
         ]
     },
 
@@ -220,6 +227,7 @@
         ],
         "Piazze": [
             "Plaza-Broletto",
-            "Plaza-del-Mercado"]
+            "Plaza-del-Mercado",
+            "Plaza-del-Castillo"]
     }
 }
