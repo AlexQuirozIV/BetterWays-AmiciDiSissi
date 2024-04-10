@@ -28,44 +28,39 @@ function revertBoldTextAction() {
     originalFontSizes.length = 0;
 }
 
+//! Filtri
+const originalFilters = [];
 
-//! Funzione per mettere il contrasto colori
-const originalFilters_Contrast = [];
+// Salva i valori originali
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('*').forEach(element => {
+        originalFilters.push({
+            element: element,
+            originalFilter: element.style.filter
+        });
+    });
+});
 
+//* Funzione per mettere il contrasto colori
 function contrastAction() {
-    document.querySelectorAll('*').forEach(element => {
-        originalFilters_Contrast.push({
-            element: element,
-            originalFilter: element.style.filter
-        });
-        element.style.filter = 'contrast(103%)';
+    originalFilters.forEach(filter => {
+        filter.element.style.filter = 'contrast(103%)';
     });
 }
-function revertContrastAction() {
-    originalFilters_Contrast.forEach(filter => {
-        filter.element.style.filter = filter.originalFilter;
-    });
-    originalFilters_Contrast.length = 0;
-}
 
 
-//! Funzione per mettere il bianco e nero
-const originalFilters_BlackAndWhite = [];
-
+//* Funzione per mettere il bianco e nero
 function blackAndWhiteAction() {
-    document.querySelectorAll('*').forEach(element => {
-        originalFilters_BlackAndWhite.push({
-            element: element,
-            originalFilter: element.style.filter
-        });
-        element.style.filter = 'grayscale(100%)';
+    originalFilters.forEach(filter => {
+        filter.element.style.filter = 'grayscale(100%)';
     });
 }
-function revertBlackAndWhiteAction() {
-    originalFilters_BlackAndWhite.forEach(filter => {
+
+//* Resettare a default filtri
+function revertFilters() {
+    originalFilters.forEach(filter => {
         filter.element.style.filter = filter.originalFilter;
     });
-    originalFilters_BlackAndWhite.length = 0;
 }
 
 
@@ -90,18 +85,20 @@ boldSlider.addEventListener('change', function() {
 //* Funzione per sentire il toggle di 'contrastSlider'
 contrastSlider.addEventListener('change', function() {
     if (this.checked) {
+        blackAndWhiteSlider.checked = false;
         contrastAction();
     } else {
-        revertContrastAction();
+        revertFilters();
     }
 });
 
 //* Funzione per sentire il toggle di 'blackAndWhiteSlider'
 blackAndWhiteSlider.addEventListener('change', function() {
     if (this.checked) {
+        contrastSlider.checked = false;
         blackAndWhiteAction();
     } else {
-        revertBlackAndWhiteAction();
+        revertFilters();
     }
 });
 

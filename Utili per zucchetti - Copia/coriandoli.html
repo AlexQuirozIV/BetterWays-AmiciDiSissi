@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coriandoli Animati con Colori Predefiniti</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      opacity: 0.9;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: fall 2s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  const confettiColors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6']; // Aggiungi/rimuovi colori secondo necessità
+  let colorIndex = 0;
+
+  function createConfetti() {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = `${Math.random() * window.innerWidth}px`;
+    confetti.style.backgroundColor = getNextColor();
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+      document.body.removeChild(confetti);
+    }, 2000); // Tempo di vita del coriandolo
+  }
+
+  function getNextColor() {
+    const color = confettiColors[colorIndex];
+    colorIndex = (colorIndex + 1) % confettiColors.length;
+    return color;
+  }
+
+  function startConfetti() {
+    setInterval(createConfetti, 100); // Intervallo di tempo tra la creazione di coriandoli
+  }
+
+  // Chiamare la funzione startConfetti nei momenti desiderati
+  // Ad esempio: al click di un bottone
+  document.addEventListener('DOMContentLoaded', startConfetti);
+</script>
+
+</body>
+</html>
