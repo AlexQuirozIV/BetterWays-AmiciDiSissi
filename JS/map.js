@@ -229,9 +229,9 @@ function bindPopupInfos(title, rating, description, imageLink) {
     if (rating === undefined || rating < 0) { rating = 4; }
 
     imageLink = '<img src="' + imageLink + '" alt="' + title + '" style="color: white" class="popupImage">';
-    title = '<p class="popupTitle">' + title + '</p>';
+    title = '<p class="popupTitle textToSpeak">' + title + '</p>';
     rating = rate(rating);
-    description = '<p class="popupDescription">' + description + '</p>';
+    description = '<p class="popupDescription textToSpeak">' + description + '</p>';
 
     let info = title + rating + description + imageLink;
     return info;
@@ -348,6 +348,14 @@ function singleMarkerMenuPlace() {
             informations.placesNames[selectedPlace][2],
             informations.placesNames[selectedPlace][3],
             informations.placesNames[selectedPlace][4]
+        );
+
+        console.log();
+
+        JSPBridge.call('betterwayss.Server', 'convert',
+            informations.placesNames[selectedPlace][0][0] + ' , ' +
+            informations.placesNames[selectedPlace][0][1] + ' , ' +
+            informations.placesNames[selectedPlace][1]
         );
 
         // Piazza il menu e salvalo in 'singleMarkers'
@@ -551,7 +559,7 @@ function layPackage(__isFinal__) {
             marker.bindPopup(
                 // Info + bottone extra con testo dinamico
                 bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i]) +
-                '<button class="popupCompletedButton" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
+                '<button class="popupCompletedButton textToSpeak" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
                 (_i == 0 ? informations.menuNames[4] :
                     _i == waypoints.length - 1 ? informations.menuNames[6] :
                         informations.menuNames[5]) +
@@ -633,12 +641,12 @@ function accessibilityMenu() {
     menu.querySelector('div').textContent = informations.menuNames[7];
 
     /* Opzioni */
-    let option = document.getElementsByClassName('accessibility_text');
+    let options = document.getElementsByClassName('accessibility_text');
 
-    option[0].textContent = informations.menuNames[8];
-    option[1].textContent = informations.menuNames[9];
-    option[2].textContent = informations.menuNames[10];
-    option[3].textContent = informations.menuNames[11];
+    options[0].textContent = informations.menuNames[8];
+    options[1].textContent = informations.menuNames[9];
+    options[2].textContent = informations.menuNames[10];
+    options[3].textContent = informations.menuNames[11];
 
     /* Attiva il menu */
     menu.classList.toggle('activeMenu');

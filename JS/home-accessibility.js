@@ -63,16 +63,85 @@ function revertFilters() {
     });
 }
 
+//! Funzione per mettere il TTS
+// Flag to track if speech synthesis has been initiated for the current hover event
+var __isSpeechInitiated__ = false;
 
-//TODO Funzione per mettere il text-to-speech
-function textToSpeechAction() {
-    console.log('Text-to-speech action triggered');
+//* Aggiunge il text-to-speech
+function addTextToSpeechListeners() {
+    var textElements = document.querySelectorAll('.textToSpeak');
+    textElements.forEach(function(element) {
+        element.addEventListener('mouseover', function() {
+            if (textToSpeechSlider.checked && !__isSpeechInitiated__) {
+                convertToSpeech(element.textContent.trim());
+                __isSpeechInitiated__ = true;
+            }
+        });
+        element.addEventListener('mouseout', function() {
+            stopSpeech();
+            __isSpeechInitiated__ = false;
+        });
+    });
 }
-function revertTextToSpeechAction() {
-    console.log('Reverting text-to-speech action');
+// Setup...
+addTextToSpeechListeners();
+
+//* 'MutationObserver' controlla se qualche elemento cambia e lo abilita per la lettura
+var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        if (mutation.type === 'childList') {
+            // Filtra per trovare elementi con testo visibile
+            var addedNodes = Array.from(mutation.addedNodes).filter(node => {
+                return node.nodeType === 1 && hasVisibleText(node);
+            });
+
+            // Aggiunge 'textToSpeak' agli elementi con testo visibile E classe 'leaflet-routing-alt'
+            addedNodes.forEach(function(node) {
+                if (node.classList.contains('leaflet-routing-alt')) {
+                    addClassToElementAndChildren(node, 'textToSpeak');
+                }
+            });
+
+            // Reinizializza listeners
+            addTextToSpeechListeners();
+        }
+    });
+});
+//* Funzioni Widget itinerari
+// Trovare la classe...
+function addClassToElementAndChildren(element, className) {
+    if (element.classList) {
+        element.classList.add(className);
+    }
+    var childElements = element.children;
+    for (var i = 0; i < childElements.length; i++) {
+        addClassToElementAndChildren(childElements[i], className);
+    }
+}
+// ...controllare se ha il testo
+function hasVisibleText(element) {
+    return element.textContent.trim() !== '';
+}
+
+//* Conversione in TTS
+function convertToSpeech(text) {
+    if ('speechSynthesis' in window) {
+        var message = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(message);
+    } else {
+        alert("Spiacente, il tuo browser non supporta la sintesi vocale.");
+    }
+}
+
+//* Per fermarlo...
+function stopSpeech() {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+    }
 }
 
 
+//! Listeners per i toggles
 //* Funzione per sentire il toggle di 'boldSlider'
 boldSlider.addEventListener('change', function() {
     if (this.checked) {
@@ -104,9 +173,12 @@ blackAndWhiteSlider.addEventListener('change', function() {
 
 //* Funzione per sentire il toggle di 'textToSpeechSlider'
 textToSpeechSlider.addEventListener('change', function() {
-    if (this.checked) {
-        textToSpeechAction();
-    } else {
-        revertTextToSpeechAction();
+    if (!textToSpeechSlider.checked) {
+        stopSpeech();
     }
+});
+// Osserva per qualunque cambiamento...
+observer.observe(document.body, {
+    childList: true,
+    subtree: true
 });

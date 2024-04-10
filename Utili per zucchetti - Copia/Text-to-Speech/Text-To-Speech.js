@@ -1,10 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var textToSpeak = document.getElementById('textToSpeak').textContent.trim();
-    var element = document.getElementById('textToSpeak');
-    element.addEventListener('mouseover', function() {
-        convertToSpeech(textToSpeak);
+    var textElements = document.querySelectorAll('.textToSpeak');
+    var toggleSwitch = document.getElementById('toggleSwitch');
+    
+    toggleSwitch.addEventListener('change', function() {
+        if (!toggleSwitch.checked) {
+            stopSpeech();
+        }
     });
-    element.addEventListener('mouseout', stopSpeech);
+
+    textElements.forEach(function(element) {
+        element.addEventListener('mouseover', function() {
+            if (toggleSwitch.checked) {
+                convertToSpeech(element.textContent.trim());
+            }
+        });
+        element.addEventListener('mouseout', stopSpeech);
+    });
 });
 
 function convertToSpeech(text) {
