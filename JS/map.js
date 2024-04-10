@@ -41,6 +41,14 @@ const languagesList = [ // Lista lingue supportate
     "🇩🇪 - Deutsch",
     "🇵🇹 - Português"
 ];
+const languagesListID = [
+    'it',
+    'en',
+    'fr',
+    'es',
+    'de',
+    'pt-BR'
+];
 
 
 //! Variabili globali e flags
@@ -50,59 +58,61 @@ var informations;                       // Contiene le informazioni presi dai JS
 var openedMenuId;                       // Contiene l'id del menu aperto in quel momento
 var availablePlace = [];                // Flag se il marker esiste già o no (prevenire spam)
 var singleMarkers = {};                 // Contiene i singoli markers creati
-var currentLanguage = languagesList[0]; // Lingua selezionata (default Italiano)
-var currentLanguageID = 'it';           // ID della lingua selezionata (per le indicazioni di Leaflet)
 var waypoints;                          // Contiene i waypoints per l'itinerario corrente
 var currentPackageRouting;              // Quale pacchetto è "piazzato"?
 var completedItinerarySegment;          // Contiene la parte di itinerario percorsa
 
 //! Fetch e inizializzazione informazioni
 /* Prendi informazioni dai JSON... */
-async function fetchInfos(currentLanguage) {
+async function fetchInfos(languageToFetch) {
     // Resetta tutto...
     availablePlace = [];
     singleMarkers = {};
     currentPackageRouting = undefined;
     informations = undefined;
 
-    // Prendi dal JSON giusto...
-    switch (currentLanguage) {
-        case "🇮🇹 - Italiano":
+    // Prendi dal JSON giusto..
+    if (localStorage.length != 0 && languageToFetch === undefined) {
+        languageToFetch = localStorage.getItem('currentLanguageID');
+    }
+
+    switch (languageToFetch) {
+        case 'it':
             var response = await fetch('../JSON/languageTranslations/italiano.json');
             informations = await response.json();
             availablePlaceLanguageRefill();     // Refilla 'availablePlace'
 
             break;
 
-        case "🇬🇧 - English":
+        case 'en':
             var response = await fetch('../JSON/languageTranslations/english.json');
             informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
 
-        case "🇪🇸 - Español":
+        case 'es':
             var response = await fetch('../JSON/languageTranslations/espanol.json');
             informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
 
-        case "🇩🇪 - Deutsch":
+        case 'de':
             var response = await fetch('../JSON/languageTranslations/deutsch.json');
             informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
 
-        case "🇫🇷 - Français":
+        case 'fr':
             var response = await fetch('../JSON/languageTranslations/francais.json');
             informations = await response.json();
             availablePlaceLanguageRefill();
 
             break;
 
-        case "🇵🇹 - Português":
+        case 'pt-BR':
             var response = await fetch('../JSON/languageTranslations/portugues.json');
             informations = await response.json();
             availablePlaceLanguageRefill();
@@ -117,6 +127,8 @@ async function fetchInfos(currentLanguage) {
             break;
     }
 
+    localStorage.setItem('currentLanguageID', (languageToFetch === undefined ? 'it' : languageToFetch));
+
     // Funzione per refillare 'availablePlace'
     function availablePlaceLanguageRefill() {
         Object.keys(informations.placesNames).forEach(place => {
@@ -128,8 +140,10 @@ async function fetchInfos(currentLanguage) {
     setButtonTooltips();
 
     // Notifica di quale è stato fetchato
-    console.log('Information fetched successfully for\n',
-        (currentLanguage == undefined) ? "🇮🇹 - Italiano" : currentLanguage);
+    console.log(
+        'Information fetched successfully for\n',
+        (languageToFetch == undefined) ? 'it' : languageToFetch
+    );
 }
 /* Mette tooltips ai pulsanti */
 function setButtonTooltips() {
@@ -531,7 +545,7 @@ function layPackage(__isFinal__) {
         lineOptions: {
             styles: [{ color: pathColor, opacity: 0.8, weight: 4 }]
         },
-        language: currentLanguageID,
+        language: localStorage.getItem('currentLanguageID'),
         // Impostazioni per evitare 'dragging' dei waypoints e 'lines' (percorsi in rosso)
         draggableWaypoints: false,
         addWaypoints: false,
@@ -684,12 +698,11 @@ function settingsMenu() {
     /* Opzioni per il select (lista delle lingue da 'languagesList') */
     let select = languageSwitch.querySelector('select');
 
-    for (let language of languagesList) {
+    for (let i = 0; i < languagesList.length; i++) {
         let isOptionPresent = false;
 
-        // Controlla se l'opzione c'è già
         for (let option of select.options) {
-            if (option.value === language || option.text === language) {
+            if (option.value === languagesList[i] || option.text === languagesList[i]) {
                 isOptionPresent = true;
                 break;
             }
@@ -698,11 +711,16 @@ function settingsMenu() {
         // Se non c'è aggiungila
         if (!isOptionPresent) {
             let option = document.createElement('option');
-            option.value = language;
-            option.text = language;
+            option.value = languagesListID[i];
+            option.text = languagesList[i];
             select.appendChild(option);
         }
     }
+    // Trova l'elemento 'option' con il 'value' uguale a 'localStorage.getItem('currentLanguageID')'
+    // e lo mette come selezionato
+    Array.from(select.options).find(
+        option => option.value === localStorage.getItem('currentLanguageID')
+    ).selected = true;
 
     /* Attiva il menu */
     menu.classList.toggle('activeMenu');
@@ -725,42 +743,12 @@ function languageChangeListener() {
 }
 /* Gestisce il cambiamento della lingua */
 function handleLanguageChange(event) {
-    var selectedOption = event.target.value;    // Il valore di cosa ('target') ha triggerato l'evento
-
-    // Setta 'currentLanguage' e 'currentLanguageID'
-    currentLanguage = selectedOption;
-    switch (selectedOption) {
-        case "🇬🇧 - English":
-            currentLanguageID = 'en';
-            break;
-
-        case "🇪🇸 - Español":
-            currentLanguageID = 'es';
-            break;
-
-        case "🇩🇪 - Deutsch":
-            currentLanguageID = 'de';
-            break;
-
-        case "🇫🇷 - Français":
-            currentLanguageID = 'fr';
-            break;
-
-        case "🇵🇹 - Português":
-            currentLanguageID = 'pt-BR';
-            break;
-
-        default:
-            currentLanguageID = 'it';
-            break;
-    }
-
     // Chiudi tutto per aggiornare la lingua
     singleMarkerMenuRemoveAll();
     removeLaidPackage();
 
     // Prendi le nuove informazioni (dato che ora abbiamo aggiornato 'currentLanguage' e 'currentLanguageID')
-    fetchInfos(currentLanguage);
+    fetchInfos(event.target.value);
 
     // Resetta il menu delle impostazioni
     resetSettingsMenu();

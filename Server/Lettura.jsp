@@ -34,7 +34,7 @@
                 ],
                 "IIS-A-Volta": [
                    [45.303372, 9.498577],
-                    'IIS A. Volta',
+                    'IIS A.Volta',
                     ,
                     '',
                     'IIS-A-Volta.jpg'

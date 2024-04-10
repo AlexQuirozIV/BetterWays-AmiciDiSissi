@@ -66,3 +66,38 @@ function automaticSlide() {
         slideRight(+1);
     }, 4000);
 }
+
+
+//! Testo 'mappa'
+document.body.onload = () => {
+    let language = localStorage.getItem('currentLanguageID');
+    let mappa = document.querySelector('#mappaLink span');
+
+    switch (language) {
+        case 'en':
+            mappa.innerHTML = 'Map';
+            break;
+        
+        case 'es':
+            mappa.innerHTML = 'Mapa';
+            break;
+        
+        case 'de':
+            mappa.innerHTML = 'Karte';
+            break;
+
+        
+        case 'fr':
+            mappa.innerHTML = 'Carte';
+            break;
+
+        
+        case 'pt-BR':
+            mappa.innerHTML = 'Mapa';
+            break;
+
+        default:
+            mappa.innerHTML = 'Mappa';
+            break;
+    }
+};

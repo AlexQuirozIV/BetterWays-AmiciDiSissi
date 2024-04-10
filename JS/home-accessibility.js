@@ -64,6 +64,7 @@ function revertFilters() {
 }
 
 //! Funzione per mettere il TTS
+
 // Flag to track if speech synthesis has been initiated for the current hover event
 var __isSpeechInitiated__ = false;
 
@@ -126,11 +127,19 @@ function hasVisibleText(element) {
 //* Conversione in TTS
 function convertToSpeech(text) {
     if ('speechSynthesis' in window) {
-        var message = new SpeechSynthesisUtterance(text);
-        window.speechSynthesis.speak(message);
+        // Dividi in paragrafi (ogni '. ')
+        var paragraphs = text.split('. ');
+
+        // Leggi ogni paragrafo
+        paragraphs.forEach(function(paragraph) {
+            var message = new SpeechSynthesisUtterance(paragraph);
+            message.lang = localStorage.getItem('currentLanguageID');
+            window.speechSynthesis.speak(message);
+        });
     } else {
         alert("Spiacente, il tuo browser non supporta la sintesi vocale.");
     }
+    console.log(text)
 }
 
 //* Per fermarlo...
