@@ -14,7 +14,7 @@ abbr {
 }
 
 #betterWays_titolo {
-    background-image: url(/img/titleHeader.jpg);
+    background-image: url(../img/titleHeader.jpg);
     text-align: center;
     color: #F9BF4D;
     font-family: "Bebas Neue" , sans-serif;
@@ -400,7 +400,7 @@ a.leaflet-popup-close-button:hover {
 
 #navbarHeader {
     position: relative;
-    background-image: url(/img/titleHeader.jpg);
+    background-image: url(../img/titleHeader.jpg);
     text-align: center;
     width: inherit;
     color: var(--highlight-color);
