@@ -184,6 +184,13 @@
             4,
             "",
             ""
+        ],
+        "Piazza-Castello": [
+            [45.3126698, 9.4997774],
+            "Piazza Castello",
+            4,
+            "",
+            ""
         ]
 
     },
@@ -220,7 +227,8 @@
         ],
         "Piazze": [
             "Piazza-Broletto",
-            "Piazza-Mercato"
+            "Piazza-Mercato",
+            "Piazza-Castello"
         ]
     }
 }
