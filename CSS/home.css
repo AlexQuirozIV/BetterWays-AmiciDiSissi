@@ -429,12 +429,13 @@ a.leaflet-popup-close-button:hover {
 #navbarContent {
     position: relative;
     width: var(--navbar-width);
-    height: fit-content;
+    height: 0px;
     display: flex;
         flex-direction: column;
         justify-content: space-evenly;
     background-color: #444444;
-    overflow-x: hidden;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
 }
 
 .navButton {

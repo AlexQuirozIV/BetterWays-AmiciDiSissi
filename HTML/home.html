@@ -42,10 +42,17 @@
 
     <div id="navbarWrapper">    <!--  raggruppa tutti gli elementi della barra di navigazione -->
         <div id="navbarHeader"> <!-- intestazione della barra di navigazione -->
-            <abbr onclick="accountMenu()" class="isButton navButtonIcon material-symbols-outlined">person</abbr>
+            <abbr onclick="toggleExpandedNavbar()" class="isButton navButtonIcon material-symbols-outlined">menu</abbr>
         </div>
         <div id="navbarContent">
             <hr class="navbarSeparator">    <!-- linea di separazione dei bottoni -->
+
+            <div class="navButton">
+                <abbr onclick="accountMenu()" class="isButton navButtonIcon material-symbols-outlined">person</abbr>
+            </div>
+
+            <hr class="navbarSeparator">
+
             <div class="navButton">
                 <abbr onclick="packagesMenu()" class="isButton navButtonIcon material-symbols-outlined">location_on</abbr>
             </div>

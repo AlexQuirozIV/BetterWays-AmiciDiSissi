@@ -52,6 +52,7 @@ const languagesListID = [
 
 
 //! Variabili globali e flags
+var __shouldNavbarExpand__ = true;
 var __isPackageLaid__ = false;          // C'è un pacchetto iniziato?
 var __wasProgressMade__ = false;        // È stato confermato del progresso in un itinerario?
 var informations;                       // Contiene le informazioni presi dai JSON
@@ -142,7 +143,8 @@ async function fetchInfos(languageToFetch) {
     // Notifica di quale è stato fetchato
     console.log(
         'Information fetched successfully for\n',
-        (languageToFetch == undefined) ? 'it' : languageToFetch
+        (languageToFetch == undefined) ? 'it' : languageToFetch,
+        localStorage
     );
 }
 /* Mette tooltips ai pulsanti */
@@ -151,14 +153,15 @@ function setButtonTooltips() {
     let buttons = document.getElementsByClassName('isButton');
 
     let titles = [
-        informations.menuNames[0],  // Account
-        informations.menuNames[1],  // Itinerari
-        informations.menuNames[7],  // Accessibilità
-        informations.menuNames[12], // Impostazioni
-        informations.menuNames[18], // Il Nostro Team
-        informations.menuNames[20], // Pagina principale
-        informations.menuNames[21], // Centra mappa
-        informations.menuNames[22]  // Marker singolo
+        informations.menuNames[0],  // Espandi / chiudi
+        informations.menuNames[1],  // Account
+        informations.menuNames[2],  // Itinerari
+        informations.menuNames[8],  // Accessibilità
+        informations.menuNames[13], // Impostazioni
+        informations.menuNames[19], // Il Nostro Team
+        informations.menuNames[21], // Pagina principale
+        informations.menuNames[22], // Centra mappa
+        informations.menuNames[23]  // Marker singolo
     ];
 
     for (let i = 0; i < buttons.length; i++) {
@@ -273,6 +276,17 @@ function handleMenuButtonPress(menu) {
         closeOpenMenus();
     }
 }
+function toggleExpandedNavbar() {
+    let navbarContent = document.getElementById('navbarContent');
+
+    if (__shouldNavbarExpand__) {
+        navbarContent.style.height = navbarContent.scrollHeight + 'px';
+        __shouldNavbarExpand__ = false;
+    } else {
+        navbarContent.style.height = '0px';
+        __shouldNavbarExpand__ = true;
+    }
+}
 
 
 //! Marker singoli
@@ -317,16 +331,16 @@ function addSingleMarkerMenu() {
     let buttons = menu.querySelectorAll('div button');
 
     // Testo e funzione per ciascuno
-    buttons[0].textContent = informations.menuNames[23];
+    buttons[0].textContent = informations.menuNames[24];
     buttons[0].setAttribute('onclick', 'singleMarkerMenuPlace()');
 
-    buttons[1].textContent = informations.menuNames[24];
+    buttons[1].textContent = informations.menuNames[25];
     buttons[1].setAttribute('onclick', 'singleMarkerMenuRemove()');
 
-    buttons[2].textContent = informations.menuNames[25];
+    buttons[2].textContent = informations.menuNames[26];
     buttons[2].setAttribute('onclick', 'singleMarkerMenuAddAll()');
 
-    buttons[3].textContent = informations.menuNames[26];
+    buttons[3].textContent = informations.menuNames[27];
     buttons[3].setAttribute('onclick', 'singleMarkerMenuRemoveAll()');
 
     /* Attiva il menu */
@@ -442,7 +456,7 @@ function accountMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    menu.querySelector('div').textContent = informations.menuNames[0];
+    menu.querySelector('div').textContent = informations.menuNames[1];
 
     /* Attiva il menu */
     menu.classList.toggle('activeMenu');
@@ -462,7 +476,7 @@ function packagesMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    menu.querySelector('span').textContent = informations.menuNames[1];
+    menu.querySelector('span').textContent = informations.menuNames[2];
 
     /* Opzioni per il select */
     let select = menu.querySelector('select');
@@ -493,10 +507,10 @@ function packagesMenu() {
     let buttons = menu.querySelectorAll('div button');
 
     // Testo e funzione per ciascuno
-    buttons[0].textContent = informations.menuNames[2];
+    buttons[0].textContent = informations.menuNames[3];
     buttons[0].setAttribute('onclick', 'layPackage()');
 
-    buttons[1].textContent = informations.menuNames[3];
+    buttons[1].textContent = informations.menuNames[4];
     buttons[1].setAttribute('onclick', 'removeLaidPackage()');
 
     /* Attiva il menu */
@@ -574,9 +588,9 @@ function layPackage(__isFinal__) {
                 // Info + bottone extra con testo dinamico
                 bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i]) +
                 '<button class="popupCompletedButton textToSpeak" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
-                (_i == 0 ? informations.menuNames[4] :
-                    _i == waypoints.length - 1 ? informations.menuNames[6] :
-                        informations.menuNames[5]) +
+                (_i == 0 ? informations.menuNames[5] :
+                    _i == waypoints.length - 1 ? informations.menuNames[7] :
+                        informations.menuNames[6]) +
                 '</button>'
             );
 
@@ -652,15 +666,15 @@ function accessibilityMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    menu.querySelector('div').textContent = informations.menuNames[7];
+    menu.querySelector('div').textContent = informations.menuNames[8];
 
     /* Opzioni */
     let options = document.getElementsByClassName('accessibility_text');
 
-    options[0].textContent = informations.menuNames[8];
-    options[1].textContent = informations.menuNames[9];
-    options[2].textContent = informations.menuNames[10];
-    options[3].textContent = informations.menuNames[11];
+    options[0].textContent = informations.menuNames[9];
+    options[1].textContent = informations.menuNames[10];
+    options[2].textContent = informations.menuNames[11];
+    options[3].textContent = informations.menuNames[12];
 
     /* Attiva il menu */
     menu.classList.toggle('activeMenu');
@@ -680,20 +694,20 @@ function settingsMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    menu.querySelector('div:first-child').textContent = informations.menuNames[12];
+    menu.querySelector('div:first-child').textContent = informations.menuNames[13];
 
     /* Legenda */
-    document.getElementById('legendTitle').textContent = informations.menuNames[13];
+    document.getElementById('legendTitle').textContent = informations.menuNames[14];
 
     let legendContentTexts = document.getElementsByClassName('legendContentText');
     for (let i = 0; i < legendContentTexts.length; i++) {
         let legendContentText = legendContentTexts[i];
-        legendContentText.textContent = informations.menuNames[i + 14];
+        legendContentText.textContent = informations.menuNames[i + 15];
     }
 
     /* Sezione 'cambia lingua' */
     let languageSwitch = document.getElementById('languageSwitch');
-    languageSwitch.querySelector('span').textContent = informations.menuNames[17];
+    languageSwitch.querySelector('span').textContent = informations.menuNames[18];
 
     /* Opzioni per il select (lista delle lingue da 'languagesList') */
     let select = languageSwitch.querySelector('select');
@@ -773,10 +787,10 @@ function chiSiamoMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    menu.querySelector('div').textContent = informations.menuNames[18];
+    menu.querySelector('div').textContent = informations.menuNames[19];
 
     /* La nostra bellissima presentazione */
-    menu.querySelector('span').innerHTML = informations.menuNames[19];
+    menu.querySelector('span').innerHTML = informations.menuNames[20];
 
     /* Attiva il menu */
     menu.classList.toggle('activeMenu');

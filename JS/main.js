@@ -100,4 +100,6 @@ document.body.onload = () => {
             mappa.innerHTML = 'Mappa';
             break;
     }
+
+    console.log(localStorage);
 };
