@@ -241,7 +241,7 @@ function rate(fullStarsNumber) {
 /* Genera le 'info' necessarie da aggiungere a ciascun popup tramite '.bindPopup(info)' */
 function bindPopupInfos(title, rating, description, imageLink) {
     if (title === undefined || title == '') { title = 'Titolo inesistente'; }
-    if (imageLink === undefined || imageLink == '') { imageLink = 'Torre-Zucchetti.jpg'; }
+    if (imageLink === undefined || imageLink == '') { imageLink = '../img/tappe-popup/Torre-Zucchetti.jpg'; }
     if (description === undefined || description == '') { description = 'Descrizione di "' + title + '" inesistente'; }
     if (rating === undefined || rating < 0) { rating = 4; }
 
@@ -301,7 +301,7 @@ function addSingleMarkerMenu() {
 
 
     /* Titolo */
-    menu.querySelector('span').textContent = informations.menuNames[22];
+    menu.querySelector('span').textContent = informations.menuNames[23];
 
     /* Opzioni per il select */
     let select = menu.querySelector('select');
@@ -378,13 +378,14 @@ function singleMarkerMenuPlace() {
             informations.placesNames[selectedPlace][4]
         );
 
-        console.log();
+        //TODO
+        /* console.log();
 
         JSPBridge.call('betterwayss.Server', 'convert',
             informations.placesNames[selectedPlace][0][0] + ' , ' +
             informations.placesNames[selectedPlace][0][1] + ' , ' +
             informations.placesNames[selectedPlace][1]
-        );
+        ); */
 
         // Piazza il menu e salvalo in 'singleMarkers'
         singleMarkers[selectedPlace] = newSingleMarker(informations.placesNames[selectedPlace][0], bindingInfos);
