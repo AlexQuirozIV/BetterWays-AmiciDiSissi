@@ -427,6 +427,15 @@ function singleMarkerMenuAddAll() {
             informations.placesNames[marker][4]
         );
 
+        //TODO
+        /* console.log();
+
+        JSPBridge.call('betterwayss.Server', 'convert',
+            informations.placesNames[marker][0][0] + ' , ' +
+            informations.placesNames[marker][0][1] + ' , ' +
+            informations.placesNames[marker][1]
+        ); */
+
         // Piazza il menu e salvalo in 'singleMarkers'
         singleMarkers[marker] = newSingleMarker(informations.placesNames[marker][0], bindingInfos);
         // Svuota lo spazio da 'availablePlace'
