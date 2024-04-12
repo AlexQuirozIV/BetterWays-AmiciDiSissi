@@ -222,7 +222,11 @@ document.body.onload = () => {
     console.log('Initializing map...');
     initializeMap();
     coordinatesOnClick();
-    map.on('click', () => { closeOpenMenus(); });
+    map.on('click', () => {
+        closeOpenMenus();
+        __shouldNavbarExpand__ = false;
+        toggleExpandedNavbar();
+    });
 };
 
 /* Genera 'div' con 'img' in base al valore inserito sono 'piene' o no (necessaria per 'bindPopupInfos') */
@@ -607,9 +611,26 @@ function layPackage(__isFinal__) {
             return marker;
         }
     }).addTo(map);
-
+    
     /* Update flag */
     __isPackageLaid__ = true;
+
+
+    /* Pop-up "Complimenti hai completato il percorso!" */
+    if (!__isFinal__) {
+        return;
+    }
+    
+    var completedItineraryPopup = document.getElementById("completedItineraryPopup");
+    completedItineraryPopup.innerHTML = informations.menuNames[28];
+    
+    completedItineraryPopup.classList.toggle('isCompletedItineraryPopupShown');
+    setTimeout(() => {
+        completedItineraryPopup.classList.toggle('isCompletedItineraryPopupShown');
+    }, 2000);
+
+    /* Coriandoli */
+    letThemRain();
 }
 function removeLaidPackage() {
     // Se non c'è un itinerario piazzato o non stiamo analizzando un itinerario, esci...

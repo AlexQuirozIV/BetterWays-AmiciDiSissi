@@ -35,7 +35,9 @@
             "Agregar",
             "Eliminar",
             "Agregar Todos",
-            "Eliminar Todos"
+            "Eliminar Todos",
+
+        "¡Itinerario completado!"
     ],
 
     "placesNames": {

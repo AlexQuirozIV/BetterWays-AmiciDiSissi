@@ -35,7 +35,9 @@
             "Add",
             "Remove",
             "Add all",
-            "Remove all"
+            "Remove all",
+
+        "Itinerary completed!"
     ],
 
     "placesNames": {

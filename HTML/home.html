@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- Icone -->
     <link rel="stylesheet" type="text/css" href="../CSS/home.css"> <!-- Stile -->
+    <link rel="stylesheet" type="text/css" href="../CSS/confetti.css"> <!-- Coriandoli! -->
     <link rel="icon" type="image/x-icon" href="../img/icona.jpg"> <!-- Logo del sito -->
 
     <!-- Icone bottoni -->
@@ -39,6 +40,8 @@
     <h1 id="betterWays_titolo" class="textToSpeak">BETTER WAYS</h1>    
     
     <div id="map"></div> <!-- Contiene la mappa -->
+
+    <div id="confetti-container"></div>
 
     <div id="navbarWrapper">    <!--  raggruppa tutti gli elementi della barra di navigazione -->
         <div id="navbarHeader"> <!-- intestazione della barra di navigazione -->
@@ -200,7 +203,11 @@
     <!-- addSingleMarkerMenu button -->
     <span onclick="addSingleMarkerMenu()" id="addMarker-btn" class="isButton material-symbols-outlined">add_location</span>
 
+    <!-- Pop-up itinerario completato -->
+    <div id="completedItineraryPopup">Completato!!!</div>
+
     <script src="../JS/map.js"></script> <!-- Script per la mappa -->
     <script src="../JS/home-accessibility.js"></script>
+    <script src="../JS/confetti.js"></script>
 </body>
 </html>

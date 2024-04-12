@@ -3,6 +3,7 @@
     --navbar-height: calc(100%vw);
     --highlight-color: #F9BF4D;
     --base-color: #747474;
+    --dark-base-color: #444444;
 }
 
 abbr {
@@ -154,7 +155,7 @@ a.leaflet-popup-close-button:hover {
 #addMarker-btn {
     width: 70px;
     height: 70px;
-    background-color: #444444;
+    background-color: var(--dark-base-color);
     color: var(--highlight-color);
     display: flex;
     align-items: center;
@@ -178,7 +179,7 @@ a.leaflet-popup-close-button:hover {
 #recenterMap-btn {
     width: 60px;
     height: 60px;
-    background-color: #444444;
+    background-color: var(--dark-base-color);
     color: var(--highlight-color);
     display: flex;
     align-items: center;
@@ -383,7 +384,7 @@ a.leaflet-popup-close-button:hover {
 
 /* Navbar */
 #navbarWrapper {
-    background-color: #444444;
+    background-color: var(--dark-base-color);
     position: absolute;
     height: var(--navbar-height);
     width: var(--navbar-width);
@@ -433,7 +434,7 @@ a.leaflet-popup-close-button:hover {
     display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-    background-color: #444444;
+    background-color: var(--dark-base-color);
     overflow: hidden;
     transition: 0.4s ease-in-out;
 }
@@ -636,7 +637,7 @@ input:checked + .accessibilityMenuSlider:before {
 }
 
 .leaflet-control-zoom a {
-    background-color: #444444 !important;
+    background-color: var(--dark-base-color) !important;
     color: var(--highlight-color) !important;
     border: 1px solid var(--base-color) !important;
     transition: 0.2s;
@@ -652,4 +653,24 @@ input:checked + .accessibilityMenuSlider:before {
 
 .leaflet-control-zoom a:hover {
     scale: 1.05;
+}
+
+/* Popup itinerario completato */
+#completedItineraryPopup {
+    position: fixed;
+    bottom: -20rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 1em;
+    background-color: var(--dark-base-color);
+    color: var(--highlight-color);
+    font-weight: bold;
+    font-size: 130%;
+    border-radius: 200px;
+    transition: 0.4s ease-out;
+}
+
+.isCompletedItineraryPopupShown {
+    bottom: 2rem !important;
 }

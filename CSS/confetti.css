@@ -1,0 +1,38 @@
+.confetti {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 2000;
+}
+
+/* Cerchio */
+.circle {
+    border-radius: 50%;
+}
+
+/* Quadrato */
+.square {
+    border-radius: 10%;
+    scale: 95%;
+}
+
+/* Triangolo */
+.triangle {
+    width: 1px;
+    height: 1px;
+    border-left: 7.5px solid transparent;
+    border-right: 7.5px solid transparent;
+    border-bottom: 15px solid transparent;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(calc(100vh - 10px)) rotate(360deg);
+    }
+}
