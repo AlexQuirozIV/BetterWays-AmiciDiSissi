@@ -8,13 +8,16 @@
 const confettiContainer = document.getElementById('confetti-container');
 
 // Durata animazione
-const animationDuration = 7;//[sec]
+const animationDuration = 5;//[sec]
 
 // Velocità di creazione coriandoli (più il tempo è basso, più coriandoli cadranno)
-const confettiSpawnRate = 50;//[ms]
+const confettiSpawnRate = 25;//[ms]
+
+// Velocità massima di un coriandolo (più alto è, più veloce potrà essere)
+const velocity = 3;
 
 // Fattore di "lentezza" (più è alto, più lentamente si mouveranno i coriandoli)
-const slownessFactor = 2;
+const slownessFactor = 1;
 
 // Lista colori!
 const confettiColors = [
@@ -22,14 +25,27 @@ const confettiColors = [
     '#3498db',
     '#2ecc71',
     '#f39c12',
-    '#9b59b6'
+    '#9b59b6',
+    '#1abc9c',
+    '#e67e22',
+    '#34495e',
+    '#d35400',
+    '#16a085',
+    '#27ae60',
+    '#2980b9',
+    '#f1c40f',
+    '#8e44ad',
+    '#c0392b'
 ];
 
-// Forme coriandoli!
+// Forme coriandoli! (nome classi nel CSS)
 const confettiShapes = [
     'circle',
     'square',
-    'triangle'
+    'triangle',
+    'pentagon',
+    'hexagon',
+    'star'
 ];
 
 // Funzione per creare il coriandolo
@@ -57,7 +73,7 @@ function createConfetti() {
     confettiContainer.appendChild(confetti);
 
     // Generazione della velocità
-    const speed = Math.random() * 5 + slownessFactor;
+    const speed = Math.random() * velocity + slownessFactor;
 
     // Calcolo della distanza che il coriandolo compierà prima di essere eliminato
     // (Letteralmente 'grandezza-della-pagina' + 'grandezza-del-coriandolo' * 10)

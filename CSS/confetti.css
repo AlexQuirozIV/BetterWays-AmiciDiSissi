@@ -1,7 +1,7 @@
 .confetti {
     position: fixed;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     opacity: 0.9;
     pointer-events: none;
     z-index: 2000;
@@ -20,12 +20,22 @@
 
 /* Triangolo */
 .triangle {
-    width: 1px;
-    height: 1px;
-    border-left: 7.5px solid transparent;
-    border-right: 7.5px solid transparent;
-    border-bottom: 15px solid transparent;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    clip-path: polygon(50% 10%, 0% 100%, 100% 100%);
+}
+
+/* Pentagono */
+.pentagon {
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+/* Esagono */
+.hexagon {
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+}
+
+/* Stella */
+.star {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 
 @keyframes fall {
