@@ -537,6 +537,11 @@ function packagesMenu() {
 //* Funzioni */
 /* Metti / togli itinerario piazzato. __isFinal__ controlla se de'evessere oro o no */
 function layPackage(__isFinal__) {
+    /* Chiudi menu e barra laterale */
+    __shouldNavbarExpand__ = false;
+    toggleExpandedNavbar();
+
+    /* Rimuove pacchetto già piazzato */
     removeLaidPackage();
 
     const selectedPackage = document.querySelector('#packagesMenu select').value;
@@ -578,7 +583,8 @@ function layPackage(__isFinal__) {
         draggableWaypoints: false,
         addWaypoints: false,
         // Classe del Widget (a destra)
-        containerClassName: 'itineraryMenuWidget',
+        show: !__isFinal__,
+        containerClassName: !__isFinal__ ? 'itineraryMenuWidget' : 'itineraryMenuWidgetHidden',
         // Effettiva creazione (_i è un contatore necessario alla funzione)
         createMarker: function (_i, waypoint) {
             var icon = __isFinal__ ? markerIconGold : markerIcon;    // Icona (normale o oro)
@@ -620,9 +626,16 @@ function layPackage(__isFinal__) {
     if (!__isFinal__) {
         return;
     }
-    
+
+
+    var completedItineraryPopupContainer = document.getElementById("completedItineraryPopupContainer");
     var completedItineraryPopup = document.getElementById("completedItineraryPopup");
     completedItineraryPopup.innerHTML = informations.menuNames[28];
+
+    completedItineraryPopupContainer.classList.toggle('isCompletedItineraryPopupShown');
+    setTimeout(() => {
+        completedItineraryPopupContainer.classList.toggle('isCompletedItineraryPopupShown');
+    }, 2300);
     
     completedItineraryPopup.classList.toggle('isCompletedItineraryPopupShown');
     setTimeout(() => {

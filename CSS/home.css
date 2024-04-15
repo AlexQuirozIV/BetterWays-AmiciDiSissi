@@ -595,6 +595,10 @@ input:checked + .accessibilityMenuSlider:before {
     font-size: 120%;
 }
 
+.itineraryMenuWidgetHidden {
+    scale: 0 !important;
+}
+
 .leaflet-routing-alt h2, h3 {
     font-size: 110% !important;
 }
@@ -657,20 +661,29 @@ input:checked + .accessibilityMenuSlider:before {
 
 /* Popup itinerario completato */
 #completedItineraryPopup {
-    position: fixed;
-    bottom: -20rem;
-    left: 50%;
-    transform: translateX(-50%);
     z-index: 1000;
     padding: 1em;
     background-color: var(--dark-base-color);
     color: var(--highlight-color);
-    font-weight: bold;
-    font-size: 130%;
+    font-weight: bolder;
+    font-size: 150%;
     border-radius: 200px;
-    transition: 0.4s ease-out;
+    transition: 0.3s ease-out;
+    scale: 0;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 3px red;
+    opacity: 95%;
+}
+
+#completedItineraryPopupContainer {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    z-index: 1000;
+    scale: 0;
 }
 
 .isCompletedItineraryPopupShown {
-    bottom: 2rem !important;
+    scale: 1 !important;
 }

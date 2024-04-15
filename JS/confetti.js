@@ -11,7 +11,7 @@ const confettiContainer = document.getElementById('confetti-container');
 const animationDuration = 5;//[sec]
 
 // Velocità di creazione coriandoli (più il tempo è basso, più coriandoli cadranno)
-const confettiSpawnRate = 25;//[ms]
+const confettiSpawnRate = 50;//[ms]
 
 // Velocità massima di un coriandolo (più alto è, più veloce potrà essere)
 const velocity = 3;

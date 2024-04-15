@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="../img/icona.jpg"> <!-- Logo del sito -->
 
     <!-- Icone bottoni -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
 
     <!-- Leaflet CSS file -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -45,43 +45,43 @@
 
     <div id="navbarWrapper">    <!--  raggruppa tutti gli elementi della barra di navigazione -->
         <div id="navbarHeader"> <!-- intestazione della barra di navigazione -->
-            <abbr onclick="toggleExpandedNavbar()" class="isButton navButtonIcon material-symbols-outlined">menu</abbr>
+            <abbr onclick="toggleExpandedNavbar()" class="isButton navButtonIcon material-symbols-rounded">menu</abbr>
         </div>
         <div id="navbarContent">
             <hr class="navbarSeparator">    <!-- linea di separazione dei bottoni -->
 
             <div class="navButton">
-                <abbr onclick="accountMenu()" class="isButton navButtonIcon material-symbols-outlined">person</abbr>
+                <abbr onclick="accountMenu()" class="isButton navButtonIcon material-symbols-rounded">person</abbr>
             </div>
 
             <hr class="navbarSeparator">
 
             <div class="navButton">
-                <abbr onclick="packagesMenu()" class="isButton navButtonIcon material-symbols-outlined">location_on</abbr>
+                <abbr onclick="packagesMenu()" class="isButton navButtonIcon material-symbols-rounded">location_on</abbr>
             </div>
 
             <hr class="navbarSeparator">
 
             <div class="navButton">
-                <abbr onclick="accessibilityMenu()" class="isButton navButtonIcon material-symbols-outlined">accessibility_new</abbr>
+                <abbr onclick="accessibilityMenu()" class="isButton navButtonIcon material-symbols-rounded">accessibility_new</abbr>
             </div>
 
             <hr class="navbarSeparator">
 
             <div class="navButton">
-                <abbr onclick="settingsMenu()" class="isButton navButtonIcon material-symbols-outlined">settings</abbr>
+                <abbr onclick="settingsMenu()" class="isButton navButtonIcon material-symbols-rounded">settings</abbr>
             </div>
 
             <hr class="navbarSeparator">
 
             <div class="navButton">
-                <abbr onclick="chiSiamoMenu()" class="isButton navButtonIcon material-symbols-outlined">groups</abbr>
+                <abbr onclick="chiSiamoMenu()" class="isButton navButtonIcon material-symbols-rounded">groups</abbr>
             </div>
             
             <hr class="navbarSeparator">
 
             <div class="navButton">
-                <a href="main.html"><span class="isButton navButtonIcon material-symbols-outlined">home</span></a>
+                <a href="main.html"><span class="isButton navButtonIcon material-symbols-rounded">home</span></a>
             </div>
             
             <hr class="navbarSeparator">
@@ -92,7 +92,11 @@
     <!-- Account -->
     <div id="accountMenu">
         <div class="textToSpeak"></div>
-        <img src="../img/work-in-progress.png">
+        <span class="material-symbols-rounded">account_circle</span>
+        <div id="accountMenuButtonsContainer">
+            <button class="accountMenuButtons">Accedi</button>
+            <button class="accountMenuButtons">Registrati</button>
+        </div>
     </div>
 
     <!-- Packages -->
@@ -156,15 +160,15 @@
             <div id="legendTitle" class="textToSpeak"></div>
             <div id="legendContent">
                 <div>
-                    <span class="material-symbols-outlined legendContentIcon">location_on</span>
+                    <span class="material-symbols-rounded legendContentIcon">location_on</span>
                     <span class="legendContentText textToSpeak"></span>
                 </div>
                 <div>
-                    <span class="material-symbols-outlined legendContentIcon">location_on</span>
+                    <span class="material-symbols-rounded legendContentIcon">location_on</span>
                     <span class="legendContentText textToSpeak"></span>
                 </div>
                 <div>
-                    <span class="material-symbols-outlined legendContentIcon">location_on</span>
+                    <span class="material-symbols-rounded legendContentIcon">location_on</span>
                     <span class="legendContentText textToSpeak"></span>
                 </div>
             </div>
@@ -198,13 +202,15 @@
     </div>
 
     <!-- Ri-centra mappa (mi sono rotto di rimettere lo zoom ogni volta) -->
-    <span onclick="recenterMap()" id="recenterMap-btn" class="isButton material-symbols-outlined">recenter</span>
+    <span onclick="recenterMap()" id="recenterMap-btn" class="isButton material-symbols-rounded">recenter</span>
 
     <!-- addSingleMarkerMenu button -->
-    <span onclick="addSingleMarkerMenu()" id="addMarker-btn" class="isButton material-symbols-outlined">add_location</span>
+    <span onclick="addSingleMarkerMenu()" id="addMarker-btn" class="isButton material-symbols-rounded">add_location</span>
 
     <!-- Pop-up itinerario completato -->
-    <div id="completedItineraryPopup">Completato!!!</div>
+    <div id="completedItineraryPopupContainer">
+        <div id="completedItineraryPopup"></div>
+    </div>
 
     <script src="../JS/map.js"></script> <!-- Script per la mappa -->
     <script src="../JS/home-accessibility.js"></script>
