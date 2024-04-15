@@ -1,7 +1,10 @@
 {
     "menuNames": [
         "Navigationsleiste",
+
         "Konto",
+            "Anmelden",
+            "Registrieren",
         
         "Routen",
             "Starten",

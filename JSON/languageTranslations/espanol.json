@@ -1,7 +1,10 @@
 {
     "menuNames": [
         "Barra de navegación",
+
         "Cuenta",
+            "Iniciar sesión",
+            "Registrarse",
 
         "Itinerarios",
             "Empezar",

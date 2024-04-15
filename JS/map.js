@@ -25,6 +25,7 @@ function createMarkerIcon(url) {
 //! Costanti globali
 const markerIcon = createMarkerIcon('../img/marker-icone/markerIcona.png');
 const markerIconGold = createMarkerIcon('../img/marker-icone/markerIcona-gold.png');
+const markerIconGreen = createMarkerIcon('../img/marker-icone/markerIcona-green.png');
 const menus = [         // ID di ogni singolo menu esistente
     "addSingleMarkerMenu",
     "packagesMenu",
@@ -52,9 +53,10 @@ const languagesListID = [
 
 
 //! Variabili globali e flags
-var __shouldNavbarExpand__ = true;
+var __shouldNavbarExpand__ = true;      // La barra laterale dovrebbe espandersi al prossimo click?
 var __isPackageLaid__ = false;          // C'è un pacchetto iniziato?
 var __wasProgressMade__ = false;        // È stato confermato del progresso in un itinerario?
+var __howMuchProgressWasMade__ = 0;     // Indice di waypoints raggiunti
 var informations;                       // Contiene le informazioni presi dai JSON
 var openedMenuId;                       // Contiene l'id del menu aperto in quel momento
 var availablePlace = [];                // Flag se il marker esiste già o no (prevenire spam)
@@ -155,13 +157,14 @@ function setButtonTooltips() {
     let titles = [
         informations.menuNames[0],  // Espandi / chiudi
         informations.menuNames[1],  // Account
-        informations.menuNames[2],  // Itinerari
-        informations.menuNames[8],  // Accessibilità
-        informations.menuNames[13], // Impostazioni
-        informations.menuNames[19], // Il Nostro Team
-        informations.menuNames[21], // Pagina principale
-        informations.menuNames[22], // Centra mappa
-        informations.menuNames[23]  // Marker singolo
+        informations.menuNames[4],  // Itinerari
+        informations.menuNames[10], // Accessibilità
+        informations.menuNames[15], // Impostazioni
+        informations.menuNames[21], // Il Nostro Team
+        informations.menuNames[23], // Pagina principale
+        informations.menuNames[1],  // Account x2
+        informations.menuNames[24], // Centra mappa
+        informations.menuNames[25]  // Marker singolo
     ];
 
     for (let i = 0; i < buttons.length; i++) {
@@ -305,7 +308,7 @@ function addSingleMarkerMenu() {
 
 
     /* Titolo */
-    menu.querySelector('span').textContent = informations.menuNames[23];
+    menu.querySelector('span').textContent = informations.menuNames[25];
 
     /* Opzioni per il select */
     let select = menu.querySelector('select');
@@ -335,16 +338,16 @@ function addSingleMarkerMenu() {
     let buttons = menu.querySelectorAll('div button');
 
     // Testo e funzione per ciascuno
-    buttons[0].textContent = informations.menuNames[24];
+    buttons[0].textContent = informations.menuNames[26];
     buttons[0].setAttribute('onclick', 'singleMarkerMenuPlace()');
 
-    buttons[1].textContent = informations.menuNames[25];
+    buttons[1].textContent = informations.menuNames[27];
     buttons[1].setAttribute('onclick', 'singleMarkerMenuRemove()');
 
-    buttons[2].textContent = informations.menuNames[26];
+    buttons[2].textContent = informations.menuNames[28];
     buttons[2].setAttribute('onclick', 'singleMarkerMenuAddAll()');
 
-    buttons[3].textContent = informations.menuNames[27];
+    buttons[3].textContent = informations.menuNames[29];
     buttons[3].setAttribute('onclick', 'singleMarkerMenuRemoveAll()');
 
     /* Attiva il menu */
@@ -472,6 +475,12 @@ function accountMenu() {
     /* Titolo */
     menu.querySelector('div').textContent = informations.menuNames[1];
 
+    /* Nomi pulsanti */
+    let buttons = document.getElementsByClassName('accountMenuButtons');
+
+    buttons[0].textContent = informations.menuNames[2];
+    buttons[1].textContent = informations.menuNames[3];
+
     /* Attiva il menu */
     menu.classList.toggle('activeMenu');
 
@@ -490,7 +499,7 @@ function packagesMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    menu.querySelector('span').textContent = informations.menuNames[2];
+    menu.querySelector('span').textContent = informations.menuNames[4];
 
     /* Opzioni per il select */
     let select = menu.querySelector('select');
@@ -521,10 +530,10 @@ function packagesMenu() {
     let buttons = menu.querySelectorAll('div button');
 
     // Testo e funzione per ciascuno
-    buttons[0].textContent = informations.menuNames[3];
+    buttons[0].textContent = informations.menuNames[5];
     buttons[0].setAttribute('onclick', 'layPackage()');
 
-    buttons[1].textContent = informations.menuNames[4];
+    buttons[1].textContent = informations.menuNames[6];
     buttons[1].setAttribute('onclick', 'removeLaidPackage()');
 
     /* Attiva il menu */
@@ -536,7 +545,7 @@ function packagesMenu() {
 
 //* Funzioni */
 /* Metti / togli itinerario piazzato. __isFinal__ controlla se de'evessere oro o no */
-function layPackage(__isFinal__) {
+function layPackage(__isFinal__, __shouldDrawProgess__) {
     /* Chiudi menu e barra laterale */
     __shouldNavbarExpand__ = false;
     toggleExpandedNavbar();
@@ -545,11 +554,13 @@ function layPackage(__isFinal__) {
     removeLaidPackage();
 
     const selectedPackage = document.querySelector('#packagesMenu select').value;
-    /* Prendi il 'pacchetto' da 'informations.itineraryNames' in base al parametro mandato */
-    var packagePlacesList = informations.itineraryNames[selectedPackage];
 
+    /* Contiene la lista dei luoghi (tappe) (ID) nel pacchetto */
+    var listOfPlacesInThePackage = informations.itineraryNames[selectedPackage];
+
+    /* Continene le informazioni per ciascun luogo (tappa) */
     var places = [];
-    packagePlacesList.forEach(element => {
+    listOfPlacesInThePackage.forEach(element => {
         places.push(informations.placesNames[element]);
     });
 
@@ -587,19 +598,45 @@ function layPackage(__isFinal__) {
         containerClassName: !__isFinal__ ? 'itineraryMenuWidget' : 'itineraryMenuWidgetHidden',
         // Effettiva creazione (_i è un contatore necessario alla funzione)
         createMarker: function (_i, waypoint) {
-            var icon = __isFinal__ ? markerIconGold : markerIcon;    // Icona (normale o oro)
+            function getIcon() {
+                let icon;
+
+                if (__isFinal__) {
+                    icon = markerIconGold;
+                } else if (__shouldDrawProgess__ && __howMuchProgressWasMade__ > 0) {
+                    icon = markerIconGreen;
+                } else {
+                    icon = markerIcon;
+                }
+
+                return icon;
+            }
+
+            function getTooltipClass() {
+                let tooltipClass;
+
+                if (__isFinal__) {
+                    tooltipClass = 'packagesMarkersCustomTooltipsGold';
+                } else if (__shouldDrawProgess__ && __howMuchProgressWasMade__ > 0) {
+                    tooltipClass = 'packagesMarkersCustomTooltipsGreen';
+                } else {
+                    tooltipClass = 'packagesMarkersCustomTooltips';
+                }
+
+                return tooltipClass;
+            }
 
             // Base marker...
             var marker = L.marker(waypoint.latLng, {
                 draggable: false,
-                icon: icon
+                icon: getIcon()
             });
 
             // ...con Tooltip...
             marker.bindTooltip(`${_i + 1}`, {
                 permanent: true,
                 direction: 'top',
-                className: __isFinal__ ? 'packagesMarkersCustomTooltipsCompleted' : 'packagesMarkersCustomTooltips',
+                className: getTooltipClass(),
                 offset: [-11, -16]
             }).openTooltip();
 
@@ -608,11 +645,13 @@ function layPackage(__isFinal__) {
                 // Info + bottone extra con testo dinamico
                 bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i]) +
                 '<button class="popupCompletedButton textToSpeak" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
-                (_i == 0 ? informations.menuNames[5] :
-                    _i == waypoints.length - 1 ? informations.menuNames[7] :
-                        informations.menuNames[6]) +
+                (_i == 0 ? informations.menuNames[7] :
+                    _i == waypoints.length - 1 ? informations.menuNames[9] :
+                        informations.menuNames[8]) +
                 '</button>'
             );
+
+            __howMuchProgressWasMade__--;
 
             return marker;
         }
@@ -630,7 +669,7 @@ function layPackage(__isFinal__) {
 
     var completedItineraryPopupContainer = document.getElementById("completedItineraryPopupContainer");
     var completedItineraryPopup = document.getElementById("completedItineraryPopup");
-    completedItineraryPopup.innerHTML = informations.menuNames[28];
+    completedItineraryPopup.innerHTML = informations.menuNames[30];
 
     completedItineraryPopupContainer.classList.toggle('isCompletedItineraryPopupShown');
     setTimeout(() => {
@@ -662,11 +701,10 @@ function removeLaidPackage() {
     currentPackageRouting = undefined;
 }
 /* Gestisce il completamento di un segmento (dato l'indice del marker) */
-// TODO: Colore markers (sarà un'impresa molto ardua (non ce la farò))
 function recreateCompletedRoute(index) {
     // Resetta il percorso ed esce se il pirla tenta di completare zero tappe (index == 1)
     if (index == 1) {
-        layPackage(false);
+        layPackage(false, false);
         return;
     }
 
@@ -677,10 +715,11 @@ function recreateCompletedRoute(index) {
 
     // Piazza oro se viene completata tutta, altrimenti verde
     if (index == waypoints.length) {
-        layPackage(true);
+        layPackage(true, false);
         return;
     } else {
-        layPackage(false);
+        __howMuchProgressWasMade__ = index;
+        layPackage(false, true);
         completedItinerarySegment = L.Routing.control({
             waypoints: waypoints.slice(0, index),   // I waypoint vanno dal primo (0) all'index
             routeWhileDragging: false,
@@ -710,15 +749,15 @@ function accessibilityMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    menu.querySelector('div').textContent = informations.menuNames[8];
+    menu.querySelector('div').textContent = informations.menuNames[10];
 
     /* Opzioni */
     let options = document.getElementsByClassName('accessibility_text');
 
-    options[0].textContent = informations.menuNames[9];
-    options[1].textContent = informations.menuNames[10];
-    options[2].textContent = informations.menuNames[11];
-    options[3].textContent = informations.menuNames[12];
+    options[0].textContent = informations.menuNames[11];
+    options[1].textContent = informations.menuNames[12];
+    options[2].textContent = informations.menuNames[13];
+    options[3].textContent = informations.menuNames[14];
 
     /* Attiva il menu */
     menu.classList.toggle('activeMenu');
@@ -738,20 +777,20 @@ function settingsMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    menu.querySelector('div:first-child').textContent = informations.menuNames[13];
+    menu.querySelector('div:first-child').textContent = informations.menuNames[15];
 
     /* Legenda */
-    document.getElementById('legendTitle').textContent = informations.menuNames[14];
+    document.getElementById('legendTitle').textContent = informations.menuNames[16];
 
     let legendContentTexts = document.getElementsByClassName('legendContentText');
     for (let i = 0; i < legendContentTexts.length; i++) {
         let legendContentText = legendContentTexts[i];
-        legendContentText.textContent = informations.menuNames[i + 15];
+        legendContentText.textContent = informations.menuNames[i + 17];
     }
 
     /* Sezione 'cambia lingua' */
     let languageSwitch = document.getElementById('languageSwitch');
-    languageSwitch.querySelector('span').textContent = informations.menuNames[18];
+    languageSwitch.querySelector('span').textContent = informations.menuNames[20];
 
     /* Opzioni per il select (lista delle lingue da 'languagesList') */
     let select = languageSwitch.querySelector('select');
@@ -831,10 +870,10 @@ function chiSiamoMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    menu.querySelector('div').textContent = informations.menuNames[19];
+    menu.querySelector('div').textContent = informations.menuNames[21];
 
     /* La nostra bellissima presentazione */
-    menu.querySelector('span').innerHTML = informations.menuNames[20];
+    menu.querySelector('span').innerHTML = informations.menuNames[22];
 
     /* Attiva il menu */
     menu.classList.toggle('activeMenu');

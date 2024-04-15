@@ -176,6 +176,10 @@ a.leaflet-popup-close-button:hover {
     scale: 1.15;
 }
 
+#addMarker-btn:active {
+    transform: translateY(7%);
+}
+
 #recenterMap-btn {
     width: 60px;
     height: 60px;
@@ -198,6 +202,10 @@ a.leaflet-popup-close-button:hover {
 
 #recenterMap-btn:hover {
     scale: 1.1;
+}
+
+#recenterMap-btn:active {
+    transform: translateY(7%);
 }
 
 /* Menu aggiunta markers */
@@ -258,7 +266,7 @@ a.leaflet-popup-close-button:hover {
     background-color: whitesmoke;
 }
 
-#addSingleMarkerMenu button, #packagesMenu button, .popupCompletedButton {
+#addSingleMarkerMenu button, #packagesMenu button, .accountMenuButtons, .popupCompletedButton {
     background-color: rgba(37, 37, 37, 0.5);
     border: 1px var(--highlight-color) solid;
     border-radius: 50px;
@@ -280,13 +288,13 @@ a.leaflet-popup-close-button:hover {
     transition: 0.15s ease-in-out;
 }
 
-#addSingleMarkerMenu button:hover, #packagesMenu button:hover, .popupCompletedButton:hover {
+#addSingleMarkerMenu button:hover, #packagesMenu button:hover, .accountMenuButtons:hover, .popupCompletedButton:hover {
     background-color: rgba(54, 54, 54, 0.5);
     border: 1px #f8c55f solid;
     box-shadow: 0px 0px 10px 1px rgba(249, 191, 77, 0.7);
 }
 
-#addSingleMarkerMenu button:active, #packagesMenu button:active, .popupCompletedButton:active {
+#addSingleMarkerMenu button:active, #packagesMenu button:active, .accountMenuButtons:active, .popupCompletedButton:active {
     background-color: rgba(60, 60, 60, 0.5);
     border: 1px var(--base-color) solid;
     box-shadow: 0px 0px 10px 1px rgba(116, 116, 116, 0.7);
@@ -312,7 +320,7 @@ a.leaflet-popup-close-button:hover {
 #chiSiamoMenu div,
 #accessibilityMenu div,
 #settingsMenu > div:first-child,
-#accountMenu div,
+#accountMenuTitle,
 #addSingleMarkerMenu span,
 #packagesMenu span {
     color: #F9BF4D;
@@ -467,6 +475,17 @@ a.leaflet-popup-close-button:hover {
     border-radius: 50%;
     padding: 15px;
     cursor: pointer;
+    transition: 0.2s;
+}
+
+.navButtonIcon:hover {
+    background-color: #6d6d6d;
+}
+
+.navButtonIcon:active {
+    transform: translateY(7%);
+    box-shadow: inset 0px 2px 1px 2px rgba(0, 0, 0, 0.1);
+    background-color: #696969;
 }
 
 .navbarSeparator {
@@ -616,7 +635,7 @@ input:checked + .accessibilityMenuSlider:before {
 }
 
 /* Tooltip numerazione markers */
-.packagesMarkersCustomTooltips, .packagesMarkersCustomTooltipsCompleted {
+.packagesMarkersCustomTooltips, .packagesMarkersCustomTooltipsGold, .packagesMarkersCustomTooltipsGreen {
     background-color: #ff4a4a !important;
     box-shadow: none !important;
     border: none !important;
@@ -628,12 +647,16 @@ input:checked + .accessibilityMenuSlider:before {
     font-family: "Bebas Neue" , sans-serif;
 }
 
-.packagesMarkersCustomTooltips::before, .packagesMarkersCustomTooltipsCompleted::before {
+.packagesMarkersCustomTooltips::before, .packagesMarkersCustomTooltipsGold::before, .packagesMarkersCustomTooltipsGreen::before {
     scale: 0 !important;
 }
 
-.packagesMarkersCustomTooltipsCompleted {
+.packagesMarkersCustomTooltipsGold {
     background-color: #EFAE45 !important;
+}
+
+.packagesMarkersCustomTooltipsGreen {
+    background-color: #23CB00 !important;
 }
 
 .leaflet-control-zoom {
@@ -682,8 +705,15 @@ input:checked + .accessibilityMenuSlider:before {
     transform: translate(-50%, 50%);
     z-index: 1000;
     scale: 0;
+    border-radius: 200px;
 }
 
 .isCompletedItineraryPopupShown {
     scale: 1 !important;
+}
+
+/* Pulsanti menu account */
+#accountMenuButtonsContainer {
+    margin-top: 10px;
+    display: flex;
 }

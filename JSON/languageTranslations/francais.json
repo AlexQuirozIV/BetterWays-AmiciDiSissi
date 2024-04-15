@@ -1,7 +1,10 @@
 {
     "menuNames": [
         "Barre de navigation",
+
         "Compte",
+            "Connectez-vous",
+            "Inscrivez-vous",
     
         "Itinéraires",
             "Commencer",

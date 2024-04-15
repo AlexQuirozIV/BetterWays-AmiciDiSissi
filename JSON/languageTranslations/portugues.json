@@ -1,7 +1,11 @@
 {
     "menuNames": [
         "Barra de navegação",
+
         "Conta",
+            "Acessar",
+            "Registrar-se",
+
         "Rotas",
             "Começar",
             "Remover",

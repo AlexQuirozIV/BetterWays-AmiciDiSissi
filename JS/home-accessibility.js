@@ -134,6 +134,7 @@ function convertToSpeech(text) {
         paragraphs.forEach(function(paragraph) {
             var message = new SpeechSynthesisUtterance(paragraph);
             message.lang = localStorage.getItem('currentLanguageID');
+            message.rate = 0.9;
             window.speechSynthesis.speak(message);
         });
     } else {

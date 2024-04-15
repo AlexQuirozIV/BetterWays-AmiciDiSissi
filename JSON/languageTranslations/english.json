@@ -1,7 +1,10 @@
 {
     "menuNames": [
         "Navigation bar",
+        
         "Account",
+            "Log in",
+            "Sign up",
 
         "Itinerary",
             "Start",

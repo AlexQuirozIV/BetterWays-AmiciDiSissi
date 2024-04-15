@@ -10,6 +10,9 @@ const confettiContainer = document.getElementById('confetti-container');
 // Durata animazione
 const animationDuration = 5;//[sec]
 
+// Numero massimo di coriandoli che ci possono essere alla volta
+const maxConfettiCount = 100;
+
 // Velocità di creazione coriandoli (più il tempo è basso, più coriandoli cadranno)
 const confettiSpawnRate = 50;//[ms]
 
@@ -49,7 +52,14 @@ const confettiShapes = [
 ];
 
 // Funzione per creare il coriandolo
+let confettiCount = 0;
+
 function createConfetti() {
+    if (confettiCount >= maxConfettiCount) { return; }
+
+    // Numero di coriandoli, incrementa alla creazione
+    confettiCount++;
+
     // Creazione del coriandolo
     const confetti = document.createElement('div');
 
@@ -105,6 +115,9 @@ function createConfetti() {
         } else {
             // ...altrimenti, elimina il coriandolo
             confettiContainer.removeChild(confetti);
+
+            // Numero di coriandoli, decrementa alla creazione
+            confettiCount--;
         }
     }
 
