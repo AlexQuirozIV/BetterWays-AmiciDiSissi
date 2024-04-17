@@ -63,21 +63,21 @@
             [45.314214319510235, 9.503150096251492],
             "Duomo de Lodi",
             1,
-            "",
+            "Le Duomo de Lodi est l'un des plus grands de Lombardie et est également le monument le plus ancien de Lodi. <br>L'accès par la porte de droite est possible pour tous, ce qui n'est pas le cas pour la porte de gauche. La porte d'entrée mesure 1,24 mètre. Il est accessible depuis la Via Cavour, présentant une marche pour l'accès à la salle dont la mesure est de 10 cm, le cloître est entièrement accessible et sa porte mesure 1 mètre. Les marches vers le sanctuaire sont au nombre de 19 et mesurent 15 cm. En ce qui concerne la crypte de San Bassiano, il y a 13 marches mesurant 15 cm.",
             "../img/tappe-popup/Lodi_Duomo_facciata.jpg"
         ],
         "Club-Sportif-Faustina": [
             [45.30054479572416, 9.50729370117188],
             "Club Sportif Faustina",
             5,
-            "",
+            "Installation sportive inaugurée en 2013.",
             "../img/tappe-popup/faustina.jpg"
         ],
         "Monument-à-la-Résistance": [
             [45.31043780366223, 9.501946341831502],
             "Monument à la Résistance",
-            0,
-            "",
+            5,
+            "Monument en cuivre situé sur la place des Médailles d'Or, dédié à la résistance partisane, inauguré en 1967. Une phase de restauration a également été entreprise, achevée en 2015.",
             "../img/tappe-popup/monumento_alla_Resistenza.jpg"
         ],
         "Musée-de-l'Impression": [
@@ -112,28 +112,28 @@
             [45.314040272551736, 9.498271300674975],
             "Parc Adda Sud",
             2,
-            "",
+            "Le parc, de type fluvial et agricole, est situé le long du bas cours de l'Adda et comprend deux provinces: Lodi et Crémone. <br>Le parc, dont l'objectif est de protéger la nature et l'environnement, est connu pour promouvoir l'éducation environnementale des jeunes.",
             "../img/tappe-popup/Parco_adda_sud.jpg"
         ],
         "Parc-de-l'Île-Carolina": [
             [45.315097006869266, 9.498896680791935],
             "Parc de l'Île Carolina",
             2,
-            "",
+            "Le parc de type public a été réalisé vers le milieu du XXe siècle. <br>Il est situé à quelques mètres de la tour dans le centre historique, le parc est accessible par une entrée, tandis que l'autre n'est pas accessible.",
             "../img/tappe-popup/isola_carolina.jpg"
         ],
         "Parc-de-la-Villa-Braila": [
             [45.30376301489828, 9.508691843847435],
             "Parc de la Villa Braila",
             0,
-            "",
+            "Parc situé à environ dix minutes du centre, le parc est très étendu et présente une immense zone verte. <br>À l'intérieur de ce parc, on trouve également une bibliothèque municipale et un bâtiment historique conçu en 1901 qui donne son nom au parc.",
             "../img/tappe-popup/villa_Braila.jpg"
         ],
         "Stade-Dossenina": [
             [45.30739132224016, 9.495022000717784],
             "Stade Dossenina",
             3,
-            "",
+            "Il a été inauguré vers 1920, l'accès des piétons est facilité par la piste piétonne devant lui. <br>Il y a deux portes d'entrée, la principale mesure 4,30 mètres, tandis que la porte d'accès au public mesure 1,20 mètre.",
             "../img/tappe-popup/Stadio_Dossenina.jpg"
         ],
         "Théâtre-Alle-Vigne": [
@@ -147,28 +147,28 @@
             [45.31465971960593, 9.502055674244136],
             "Temple Civique de l'Incoronata",
             2,
-            "",
+            "Principal monument artistique de la ville de Lodi, il a été construit comme Temple Civique. <br>Il présente deux marches pour accéder, mesurant respectivement 11 cm et 9 cm. La structure est équipée pour permettre l'accès à tous, il est en effet possible d'installer une rampe, si nécessaire. Toute la structure interne est accessible. La porte d'accès au musée mesure 1 mètre, mais pour accéder au musée, il faut monter des marches donc il n'est pas accessible à tous. Les couloirs ont une largeur d'environ 1 mètre.",
             "../img/tappe-popup/TempioIncoronata.jpg"
         ],
         "Torréone-de-Lodi": [
             [45.3126397552172, 9.498001343678204],
             "Torréone de Lodi",
             3,
-            "",
+            "Tour de forme cylindrique, voulue par Francesco Sforza en 1456, elle est l'un des principaux symboles de Lodi. On ne peut pas la visiter à l'intérieur, mais on peut la voir uniquement de l'extérieur. Pour l'observer, on peut se positionner sur la piste cyclable à proximité, composée de pavés.",
             "../img/tappe-popup/torrione.jpg"
         ],
         "Place-Broletto": [
             [45.31452738912999, 9.50285367329064],
             "Place Broletto",
             3,
-            "",
+            "Située à proximité de la cathédrale, c'est un complexe architectural abritant l'administration municipale de Lodi, entièrement accessible au public et important à mentionner car le bureau du tourisme s'y trouve, important pour quiconque souhaite obtenir des informations supplémentaires sur la ville de Lodi.",
             ""
         ],
         "Place-du-Marché": [
             [45.315046320365575, 9.504111225140116],
             "Place du Marché",
             4,
-            "",
+            "Place dédiée au marché, accessible au public car elle ne présente aucune barrière architecturale.",
             ""
         ],
         "Office-de-tourisme": [
@@ -182,7 +182,7 @@
             [45.31835179420975, 9.504352611647226],
             "Église de la Madeleine",
             4,
-            "",
+            "L'église a été construite vers la première moitié du XVIIIe siècle et est connue pour être un exemple parfait du style baroque. À l'intérieur, il y a une seule nef. En ce qui concerne l'extérieur, il y a une marche pour l'accès dont la mesure est d'environ 13 cm et la porte d'entrée mesure 90 cm. Il est également important de mentionner qu'elle est visible depuis la rue qui lui fait face.",
             ""
         ],
         "Bibliothèque-Laudense": [
