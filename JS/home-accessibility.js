@@ -140,7 +140,6 @@ function convertToSpeech(text) {
     } else {
         alert("Spiacente, il tuo browser non supporta la sintesi vocale.");
     }
-    console.log(text)
 }
 
 //* Per fermarlo...
