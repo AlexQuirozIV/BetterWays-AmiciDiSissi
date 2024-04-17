@@ -63,21 +63,21 @@
             [45.314214319510235, 9.503150096251492],
             "Duomo di Lodi",
             4,
-            "",
+            "Il Duomo di Lodi rappresenta una delle più grandi della Lombardia ed inoltre è il monumento più antico di Lodi. <br>L’accesso mediante la porta di destra è possibile per chiunque, ciò non si puo dire per la porta di sinistra. La porta d’ ingresso misura 1,24 m. Da via Cavour è accessibile, presenta un gradino per l’accesso alla saletta la cui misura  è di 10  cm, il chiostro è completamente accessibile e la sua porta misura 1 m. I gradini per l’altare sono in totale 19 e misurano 15 cm. <br>Per quanto riguarda la cripta di San Bassiano sono presenti 13 gradini che misurano 15 cm.",
             "../img/tappe-popup/Lodi_Duomo_facciata.jpg"
         ],
         "Faustina-Sporting-Club": [
             [45.30054479572416, 9.50729370117188],
             "Faustina Sporting Club",
             5,
-            "",
+            "Impianto sportivo che venne inaugurato nel 2013.",
             "../img/tappe-popup/faustina.jpg"
         ],
         "Monumento-alla-Resistenza": [
             [45.31043780366223, 9.501946341831502],
             "Monumento alla Resistenza",
             5,
-            "",
+            "Monumento in rame posto in piazzale delle Medaglie d'Oro, è dedicato alla resistenza partigiana e venne inaugurato nel 1967. <br>Venne inoltre iniziata una fase di restaurazione che si concluse nel 2015.",
             "../img/tappe-popup/monumento_alla_Resistenza.jpg"
         ],
         "Museo-della-Stampa": [
@@ -91,49 +91,49 @@
             [45.30701338770822, 9.50199549913424],
             "Museo dello Strumento Musicale & della Musica",
             4,
-            "",
+            "Il museo dello Strumento Musica e della Musica presenta un esposizione di oltre 500 strumenti musicali.",
             "../img/tappe-popup/museo_dello_strumento_musicale_e_della_musica.jpg"
         ],
         "Museo-di-Paolo-Gorini": [
             [45.3138348117735, 9.508056454515657],
             "Museo di Paolo Gorini",
             5,
-            "",
+            "La collezione anatomica di Paolo Gorini venne inaugurata nel 1981. <br>È  composta di una raccolta di circa 166 preparazioni anatomiche ed è posta in quella che oggi è la sede dell’ASL. Lo scopo di questo museo è quello di far conoscere a più persone possibili i preparati anatomici dell'omonimo scienziato.",
             "../img/tappe-popup/museo-paolo-gorini-lodi.jpg"
         ],
         "Palazzetto-Palacastellotti": [
             [45.297359483089814, 9.510770296119013],
             "Palazzetto Palacastellotti",
             4,
-            "",
+            "Il palazzetto dello sport, noto per ospitare gli incontri di hockey su pista dell'Amatori Lodi e delle altre formazioni lodigiane in questo sport.",
             "../img/tappe-popup/palacastellotti.jpg"
         ],
         "Parco-Adda-Sud": [
             [45.314040272551736, 9.498271300674975],
             "Parco Adda Sud",
             4,
-            "",
+            "Il parco di tipo fluviale e agricolo è posto lungo il basso corso dell’Adda e comprende due province: Lodi e Cremona. <br>Il parco il cui obiettivo è quello di tutelare la natura e l’ambiente è conosciuto per promuovere l’educazione ambientale verso i più giovani.",
             "../img/tappe-popup/Parco_adda_sud.jpg"
         ],
         "Parco-Isola-Carolina": [
             [45.315097006869266, 9.498896680791935],
             "Parco dell'Isola Carolina",
             4,
-            "",
+            "Il parco di tipo pubblico venne realizzato intorno alla metà del Novecento. <br>È situato a pochi metri dal torrione nel centro storico, il parco è accessibile da un ingresso, mentre l’altro non è accessibile.",
             "../img/tappe-popup/isola_carolina.jpg"
         ],
         "Parco-Villa-Braila": [
             [45.30376301489828, 9.508691843847435],
             "Parco Villa Braila",
             5,
-            "",
+            "Il parco è situato a circa una decina di minuti dal centro, è molto vasto e presenta un’immensa area verde all’interno di questo parco. Inoltre troviamo una biblioteca comunale e una storica costruzione progettata nel 1901 che da il nome al parco.",
             "../img/tappe-popup/villa_Braila.jpg"
         ],
         "Stadio-Dossenina": [
             [45.30739132224016, 9.495022000717784],
             "Stadio Dossenina",
             5,
-            "",
+            "Venne inaugurato attorno al 1920, l’accesso ai pedoni è facilitato dalla pista pedonale posta davanti ad esso. <br>Sono presenti due porte per l’ingresso, quella principale misura 4,30 m, mentre la porta per l’accesso al pubblico misura 1,20 m.",
             "../img/tappe-popup/Stadio_Dossenina.jpg"
         ],
         "Teatro-Alle-Vigne": [
@@ -147,42 +147,42 @@
             [45.31465971960593, 9.502055674244136],
             "Tempio Civico dell'Incoronata",
             5,
-            "",
+            "Principale monumento artistico della città di Lodi venne edificato come Tempio Civico. <br>Presenta due gradini per accedere, che misurano rispettivamente 11 cm e 9 cm. La struttura è attrezzata per permettere l’accesso a chiunque, si ha infatti la possibilità di inserire uno scivolo, se esso viene richiesto. Tutta la struttura interna è accessibile. La Porta per accedere al museo è di 1 m, per accedere al museo bisogna attraversare dei gradini dunque non risulta accessibile per tutti. I corridoi hanno dimensione di 1 m circa.",
             "../img/tappe-popup/TempioIncoronata.jpg"
         ],
         "Torrione-di-Lodi": [
             [45.3126397552172, 9.498001343678204],
             "Torrione di Lodi",
             4,
-            "",
+            "Torre di forma cilindrica, fu voluta da Francesci Sforza nel 1456 e rappresenta uno dei simboli principali di Lodi. <br>Non si può visitare all'interno, ma è visionabile unicamente da fuori. Per poterla osservare ci si può posizionare sulla pista ciclabile presente vicino ad esso, composta da sanpietrini.",
             "../img/tappe-popup/torrione.jpg"
         ],
         "Piazza-Broletto": [
             [45.31452738912999, 9.50285367329064],
             "Piazza Broletto",
             3,
-            "",
+            "Situata in prossimità della cattedrale, è un complesso architettonico dove ha sede l’amministrazione comunale di Lodi, è completamente  accessibile al pubblico ed è importante da menzionare poiché in essa è situato l’ufficio turistico, importante per chiunque voglia avere ulteriori informazioni sulla città di Lodi.",
             ""
         ],
         "Piazza-Mercato": [
             [45.315046320365575, 9.504111225140116],
             "Piazza Mercato",
             4,
-            "",
+            "Piazza adibita al mercato è accessibile al pubblico poiché non presenta alcuna barriera architettonica.",
             ""
         ],
         "Ufficio-turistico": [
             [45.31457313558977, 9.502831126442807],
             "Ufficio turistico",
             5,
-            "",
+            "Punto di informazione per i turisti.",
             ""
         ],
         "Chiesa-della-Maddalena": [
             [45.31835179420975, 9.504352611647226],
             "Chiesa della Maddalena",
             4,
-            "",
+            "La chiesa venne costruita attorno alla prima metà del Settecento ed è nota per essere un pieno esempio  dello stile del barocco. <br>Internamente è presente una navata unica. Per quanto riguarda la parte esterna è presente un gradino per l’accesso la cui misura è di circa 13 cm e la porta d’accesso ha una dimensione di  90 cm.Inoltre è importante dire che è visibile anche dalla via che la fronteggia.",
             ""
         ],
         "Biblioteca-Laudense": [
