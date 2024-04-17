@@ -161,10 +161,10 @@ function setButtonTooltips() {
         informations.menuNames[10], // Accessibilità
         informations.menuNames[15], // Impostazioni
         informations.menuNames[21], // Il Nostro Team
-        informations.menuNames[23], // Pagina principale
+        informations.menuNames[24], // Pagina principale
         informations.menuNames[1],  // Account x2
-        informations.menuNames[24], // Centra mappa
-        informations.menuNames[25]  // Marker singolo
+        informations.menuNames[25], // Centra mappa
+        informations.menuNames[26]  // Marker singolo
     ];
 
     for (let i = 0; i < buttons.length; i++) {
@@ -308,7 +308,7 @@ function addSingleMarkerMenu() {
 
 
     /* Titolo */
-    menu.querySelector('span').textContent = informations.menuNames[25];
+    menu.querySelector('span').textContent = informations.menuNames[26];
 
     /* Opzioni per il select */
     let select = menu.querySelector('select');
@@ -338,16 +338,16 @@ function addSingleMarkerMenu() {
     let buttons = menu.querySelectorAll('div button');
 
     // Testo e funzione per ciascuno
-    buttons[0].textContent = informations.menuNames[26];
+    buttons[0].textContent = informations.menuNames[27];
     buttons[0].setAttribute('onclick', 'singleMarkerMenuPlace()');
 
-    buttons[1].textContent = informations.menuNames[27];
+    buttons[1].textContent = informations.menuNames[28];
     buttons[1].setAttribute('onclick', 'singleMarkerMenuRemove()');
 
-    buttons[2].textContent = informations.menuNames[28];
+    buttons[2].textContent = informations.menuNames[29];
     buttons[2].setAttribute('onclick', 'singleMarkerMenuAddAll()');
 
-    buttons[3].textContent = informations.menuNames[29];
+    buttons[3].textContent = informations.menuNames[30];
     buttons[3].setAttribute('onclick', 'singleMarkerMenuRemoveAll()');
 
     /* Attiva il menu */
@@ -673,7 +673,7 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
 
     var completedItineraryPopupContainer = document.getElementById("completedItineraryPopupContainer");
     var completedItineraryPopup = document.getElementById("completedItineraryPopup");
-    completedItineraryPopup.innerHTML = informations.menuNames[30];
+    completedItineraryPopup.innerHTML = informations.menuNames[31];
 
     completedItineraryPopupContainer.classList.toggle('isCompletedItineraryPopupShown');
     setTimeout(() => {
@@ -878,6 +878,9 @@ function chiSiamoMenu() {
 
     /* La nostra bellissima presentazione */
     menu.querySelector('span').innerHTML = informations.menuNames[22];
+
+    /* Feedback */
+    document.querySelector('#feedbackSection div').textContent = informations.menuNames[23];
 
     /* Attiva il menu */
     menu.classList.toggle('activeMenu');

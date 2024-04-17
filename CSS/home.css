@@ -301,7 +301,7 @@ a.leaflet-popup-close-button:hover {
     transform: translateY(7%);
 }
 
-#addSingleMarkerMenu div, #packagesMenu div, #chiSiamoMenu div {
+#addSingleMarkerMenu div, #packagesMenu div, #chiSiamoMenuTitle {
     margin-top: 10px;
     display: flex;
     justify-content: space-evenly;
@@ -314,10 +314,10 @@ a.leaflet-popup-close-button:hover {
 #chiSiamoMenu {
     color: white;
     text-align: left;
-    width: 50ch;
+    width: 60ch;
 }
 
-#chiSiamoMenu div,
+#chiSiamoMenuTitle,
 #accessibilityMenu div,
 #settingsMenu > div:first-child,
 #accountMenuTitle,
@@ -720,4 +720,32 @@ input:checked + .accessibilityMenuSlider:before {
 #accountMenuButtonsContainer {
     margin-top: 10px;
     display: flex;
+}
+
+/* Sezione feedback */
+#feedbackSection {
+    margin-top: 40px;
+}
+
+#feedbackSection div {
+    font-size: 120%;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+#feedbackSection a {
+    color: var(--highlight-color);
+    font-style: italic;
+    text-decoration: none;
+    font-size: 110%;
+    font-weight: bold;
+    transition: 0.1s;
+}
+
+#feedbackSection a:hover {
+    color: #ffce6d;
+}
+
+#feedbackSection a:active {
+    color: #f7e2b9;
 }
