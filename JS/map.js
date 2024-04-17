@@ -366,7 +366,11 @@ function newSingleMarker([latitude, longitude], info) {
     }
 
     // Crea marker...
-    let marker = L.marker([latitude, longitude], { icon: markerIcon }).addTo(map).bindPopup(info);
+    let marker = L.marker([latitude, longitude], { icon: markerIcon });
+
+    marker.bindPopup(info);
+    marker.on('click', closeOpenMenus);
+    marker.addTo(map);
 
     // ... e in output per salvarlo in 'markers' nella funzione 'addSingleMarkerMenu'...
     return marker;
@@ -630,7 +634,7 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
             var marker = L.marker(waypoint.latLng, {
                 draggable: false,
                 icon: getIcon()
-            });
+            }).on('click', closeOpenMenus);
 
             // ...con Tooltip...
             marker.bindTooltip(`${_i + 1}`, {
