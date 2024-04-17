@@ -41,16 +41,6 @@ const confettiColors = [
     '#c0392b'
 ];
 
-// Forme coriandoli! (nome classi nel CSS)
-const confettiShapes = [
-    'circle',
-    'square',
-    'triangle',
-    'pentagon',
-    'hexagon',
-    'star'
-];
-
 // Funzione per creare il coriandolo
 let confettiCount = 0;
 
@@ -64,8 +54,7 @@ function createConfetti() {
     const confetti = document.createElement('div');
 
     // Viene scelta una forma a caso
-    const randomShape = confettiShapes[Math.floor(Math.random() * confettiShapes.length)];
-    confetti.className = `confetti ${randomShape}`;
+    confetti.className = 'confetti';
 
     // Una posizione a random sullo schermo (distanza da sinistra)
     confetti.style.left = `${Math.random() * window.innerWidth}px`;

@@ -2,40 +2,10 @@
     position: fixed;
     width: 20px;
     height: 20px;
+    border-radius: 50%;
     opacity: 0.9;
     pointer-events: none;
     z-index: 2000;
-}
-
-/* Cerchio */
-.circle {
-    border-radius: 50%;
-}
-
-/* Quadrato */
-.square {
-    border-radius: 10%;
-    scale: 95%;
-}
-
-/* Triangolo */
-.triangle {
-    clip-path: polygon(50% 10%, 0% 100%, 100% 100%);
-}
-
-/* Pentagono */
-.pentagon {
-    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-}
-
-/* Esagono */
-.hexagon {
-    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
-}
-
-/* Stella */
-.star {
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 
 @keyframes fall {

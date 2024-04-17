@@ -343,6 +343,10 @@ a.leaflet-popup-close-button:hover {
     width: 15rem;
 }
 
+#accountMenu abbr {
+    font-size: 250% !important;
+}
+
 #legendTitle, #languageSwitch > span {
     text-align: left;
     color: white;
