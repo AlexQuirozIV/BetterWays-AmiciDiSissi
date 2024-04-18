@@ -48,21 +48,21 @@
         "Schloss-Visconteo": [
             [45.312376641034014, 9.498816848941937],
             "Schloss Visconteo",
-            3,
+            4,
             "",
             "../img/tappe-popup/Castello_Visconteo.jpg"
         ],
         "Kirche-San-Francesco": [
             [45.314617754968054, 9.507929720552477],
             "Kirche San Francesco",
-            1,
+            4,
             "",
             "../img/tappe-popup/chiesa_san_francesco.jpeg"
         ],
         "Dom-von-Lodi": [
             [45.314214319510235, 9.503150096251492],
             "Dom von Lodi",
-            1,
+            4,
             "Der Dom von Lodi ist einer der größten in der Lombardei und gleichzeitig das älteste Denkmal von Lodi. <br>Der Zugang durch die rechte Tür ist für alle möglich, das Gleiche gilt nicht für die linke Tür. Die Eingangstür misst 1,24 Meter. Über die Via Cavour ist er zugänglich, mit einer Stufe von 10 cm, um Zugang zum Saal zu erhalten. Der Kreuzgang ist vollständig zugänglich und seine Tür misst 1 Meter. Die Stufen zum Altar sind insgesamt 19 und messen 15 cm. Was die Krypta von San Bassiano betrifft, so gibt es 13 Stufen mit einer Höhe von 15 cm.",
             "../img/tappe-popup/Lodi_Duomo_facciata.jpg"
         ],
@@ -76,7 +76,7 @@
         "Denkmal-für-den-Widerstand": [
             [45.31043780366223, 9.501946341831502],
             "Denkmal für den Widerstand",
-            0,
+            5,
             "Das Kupferdenkmal auf dem Platz der Goldenen Medaillen ist der partisantischen Resistenz gewidmet und wurde 1967 eingeweiht. <br>Es wurde auch eine Restaurierungsphase begonnen, die 2015 abgeschlossen wurde.",
             "../img/tappe-popup/monumento_alla_Resistenza.jpg"
         ],
@@ -90,63 +90,63 @@
         "Museum-für-Musikinstrumente-&-Musik": [
             [45.30701338770822, 9.50199549913424],
             "Museum für Musikinstrumente & Musik",
-            3,
+            5,
             "Das Museum präsentiert eine Ausstellung mit über 500 Musikinstrumenten.",
             "../img/tappe-popup/museo_dello_strumento_musicale_e_della_musica.jpg"
         ],
         "Museum-von-Paolo-Gorini": [
             [45.3138348117735, 9.508056454515657],
             "Museum von Paolo Gorini",
-            5,
+            4,
             "Die anatomische Sammlung von Paolo Gorini wurde 1981 eröffnet. <br>Sie besteht aus einer Sammlung von etwa 166 anatomischen Präparaten und befindet sich in dem, was heute der Sitz der ASL ist. Das Ziel dieses Museums ist es, die anatomischen Präparate des gleichnamigen Wissenschaftlers einer möglichst breiten Öffentlichkeit bekannt zu machen.",
             "../img/tappe-popup/museo-paolo-gorini-lodi.jpg"
         ],
         "Sporteinrichtung-Palacastellotti": [
             [45.297359483089814, 9.510770296119013],
             "Sporteinrichtung Palacastellotti",
-            1,
+            4,
             "Sportarena, bekannt für die Austragung von Rollhockey-Spielen des Amatori Lodi und anderer Lodigianer Teams in diesem Sport.",
             "../img/tappe-popup/palacastellotti.jpg"
         ],
         "Park-Adda-Süd": [
             [45.314040272551736, 9.498271300674975],
             "Park Adda Süd",
-            2,
+            4,
             "Der Fluss- und Agrarpark erstreckt sich entlang des Unterlaufs des Adda und umfasst zwei Provinzen: Lodi und Cremona. <br>Der Park, dessen Ziel es ist, die Natur und die Umwelt zu schützen, ist bekannt für die Förderung der Umwelterziehung für Jugendliche.",
             "../img/tappe-popup/Parco_adda_sud.jpg"
         ],
         "Park-der-Isola-Carolina": [
             [45.315097006869266, 9.498896680791935],
             "Park der Isola Carolina",
-            2,
+            5,
             "Der öffentliche Park wurde um die Mitte des 20. <br>Jahrhunderts angelegt. Er befindet sich nur wenige Meter vom Turm im historischen Zentrum entfernt und ist von einem Eingang aus zugänglich, während der andere nicht zugänglich ist.",
             "../img/tappe-popup/isola_carolina.jpg"
         ],
         "Park-Villa-Braila": [
             [45.30376301489828, 9.508691843847435],
             "Park Villa Braila",
-            0,
+            5,
             "Park, der etwa zehn Minuten vom Zentrum entfernt liegt, der Park ist sehr weitläufig und verfügt über eine riesige Grünfläche. <br>Im Inneren des Parks befindet sich auch eine städtische Bibliothek und ein historisches Gebäude, das 1901 entworfen wurde und dem Park seinen Namen gibt.",
             "../img/tappe-popup/villa_Braila.jpg"
         ],
         "Stadion-Dossenina": [
             [45.30739132224016, 9.495022000717784],
             "Stadion Dossenina",
-            3,
+            5,
             "Es wurde um 1920 eröffnet, der Zugang für Fußgänger wird durch den Gehweg vor ihm erleichtert. <br>Es gibt zwei Türen für den Eingang, die Haupttür ist 4,30 Meter breit, während die Tür für den Zugang der Öffentlichkeit 1,20 Meter misst.",
             "../img/tappe-popup/Stadio_Dossenina.jpg"
         ],
         "Theater-Alle-Vigne": [
             [45.31506910520015, 9.506154729318768],
             "Theater Alle Vigne",
-            3,
+            5,
             "",
             "../img/tappe-popup/Teatro-alle-Vigne.jpg"
         ],
         "Bürgerlicher-Tempel-der-Incoronata": [
             [45.31465971960593, 9.502055674244136],
             "Bürgerlicher Tempel der Incoronata",
-            2,
+            4,
             "Das wichtigste Kunstwerk der Stadt Lodi wurde als Bürgerlicher Tempel erbaut. <br>Es gibt zwei Stufen zum Eingang, die jeweils 11 cm und 9 cm messen. Die Struktur ist so ausgelegt, dass der Zugang für alle ermöglicht wird, es besteht die Möglichkeit, eine Rampe einzubauen, wenn sie benötigt wird. Die gesamte innere Struktur ist zugänglich. Die Tür zum Museumszugang ist 1 Meter breit, aber um das Museum zu betreten, müssen Stufen überwunden werden, daher ist es nicht für alle zugänglich. Die Flure sind etwa 1 Meter breit.",
             "../img/tappe-popup/TempioIncoronata.jpg"
         ],
@@ -160,21 +160,21 @@
         "Broletto-Platz": [
             [45.31452738912999, 9.50285367329064],
             "Broletto Platz",
-            3,
+            4,
             "In der Nähe der Kathedrale gelegen, ist es ein architektonischer Komplex, in dem sich die Stadtverwaltung von Lodi befindet. <br>Es ist vollständig für die Öffentlichkeit zugänglich und erwähnenswert, da sich dort das Tourismusbüro befindet, wichtig für alle, die weitere Informationen über die Stadt Lodi wünschen.",
             ""
         ],
         "Marktplatz": [
             [45.315046320365575, 9.504111225140116],
             "Marktplatz",
-            4,
+            5,
             "Der als Markt genutzte Platz ist für die Öffentlichkeit zugänglich, da er keine architektonischen Barrieren aufweist.",
             ""
         ],
         "Touristenbüro": [
             [45.31457313558977, 9.502831126442807],
             "Touristenbüro",
-            5,
+            4,
             "",
             ""
         ],

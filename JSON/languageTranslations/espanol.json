@@ -48,14 +48,14 @@
         "Castillo-Visconteo": [
             [45.312376641034014, 9.498816848941937],
             "Castillo Visconteo",
-            3,
+            4,
             "",
             "../img/tappe-popup/Castello_Visconteo.jpg"
         ],
         "Iglesia-de-San-Francisco": [
             [45.314617754968054, 9.507929720552477],
             "Iglesia de San Francisco",
-            1,
+            4,
             "",
             "../img/tappe-popup/chiesa_san_francesco.jpeg"
         ],
@@ -90,7 +90,7 @@
         "Museo-del-Instrumento-Musical-y-de-la-Música": [
             [45.30701338770822, 9.50199549913424],
             "Museo del Instrumento Musical y de la Música",
-            3,
+            4,
             "El museo presenta una exposición de más de 500 instrumentos musicales.",
             "../img/tappe-popup/museo_dello_strumento_musicale_e_della_musica.jpg"
         ],
@@ -104,56 +104,56 @@
         "Palazzetto-Palacastellotti": [
             [45.297359483089814, 9.510770296119013],
             "Palazzetto Palacastellotti",
-            1,
+            4,
             "Pabellón deportivo conocido por albergar los partidos de hockey sobre patines del Amatori Lodi y otros equipos lodigianos en este deporte.",
             "../img/tappe-popup/palacastellotti.jpg"
         ],
         "Parque-Adda-Sud": [
             [45.314040272551736, 9.498271300674975],
             "Parque Adda Sud",
-            2,
+            4,
             "El parque de tipo fluvial y agrícola está ubicado a lo largo del curso bajo del Adda e incluye dos provincias: Lodi y Cremona. <br>El parque, cuyo objetivo es proteger la naturaleza y el medio ambiente, es conocido por promover la educación ambiental entre los jóvenes.",
             "../img/tappe-popup/Parco_adda_sud.jpg"
         ],
         "Parque-Isla-Carolina": [
             [45.315097006869266, 9.498896680791935],
             "Parque Isla Carolina",
-            2,
+            5,
             "El parque de tipo público fue construido alrededor de mediados del siglo XX. <br>Está situado a pocos metros del torreón en el centro histórico, el parque es accesible desde una entrada, mientras que la otra no lo es.",
             "../img/tappe-popup/isola_carolina.jpg"
         ],
         "Parque-Villa-Braila": [
             [45.30376301489828, 9.508691843847435],
             "Parque Villa Braila",
-            0,
+            5,
             "Parque ubicado a unos diez minutos del centro, el parque es muy extenso y cuenta con una inmensa área verde. Dentro del parque también se encuentra una biblioteca municipal y una histórica construcción diseñada en 1901 que da nombre al parque.",
             "../img/tappe-popup/villa_Braila.jpg"
         ],
         "Estadio-Dossenina": [
             [45.30739132224016, 9.495022000717784],
             "Estadio Dossenina",
-            3,
+            5,
             "Fue inaugurado alrededor de 1920, el acceso peatonal está facilitado por la acera colocada frente a él. <br>Hay dos puertas de entrada, la principal mide 4,30 m, mientras que la puerta de acceso al público mide 1,20 m.",
             "../img/tappe-popup/Stadio_Dossenina.jpg"
         ],
         "Teatro-Alle-Vigne": [
             [45.31506910520015, 9.506154729318768],
             "Teatro Alle Vigne",
-            3,
+            5,
             "",
             "../img/tappe-popup/Teatro-alle-Vigne.jpg"
         ],
         "Templo-Cívico-Incoronada": [
             [45.31465971960593, 9.502055674244136],
             "Templo Cívico Incoronada",
-            2,
+            5,
             "El principal monumento artístico de la ciudad de Lodi fue construido como Templo Cívico. <br>Tiene dos escalones para acceder, que miden respectivamente 11 cm y 9 cm. La estructura está equipada para permitir el acceso a cualquier persona, de hecho, existe la posibilidad de instalar un tobogán, si es necesario. Toda la estructura interna es accesible. La puerta para acceder al museo mide 1 m, pero para acceder al museo hay que subir escalones, por lo que no es accesible para todos. Los pasillos tienen un ancho de aproximadamente 1 m.",
             "../img/tappe-popup/TempioIncoronata.jpg"
         ],
         "Torrione-de-Lodi": [
             [45.3126397552172, 9.498001343678204],
             "Torrione de Lodi",
-            3,
+            4,
             "Una torre de forma cilíndrica, ordenada por Francesci Sforza en 1456 y representa uno de los principales símbolos de Lodi. <br>No se puede visitar por dentro, pero se puede ver desde afuera. Para poder observarlo, uno puede ubicarse en el carril bici cercano, compuesto por adoquines.",
             "../img/tappe-popup/torrione.jpg"
         ],

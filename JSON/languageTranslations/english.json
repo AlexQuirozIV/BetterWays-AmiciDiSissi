@@ -48,14 +48,14 @@
         "Visconti-Castle": [
             [45.312376641034014, 9.498816848941937],
             "Visconti Castle",
-            3,
+            4,
             "",
             "../img/tappe-popup/Castello_Visconteo.jpg"
         ],
         "San-Francesco-Church": [
             [45.314617754968054, 9.507929720552477],
             "San Francesco Church",
-            1,
+            4,
             "",
             "../img/tappe-popup/chiesa_san_francesco.jpeg"
         ],
@@ -76,7 +76,7 @@
         "Monumento-alla-Resistenza": [
             [45.31043780366223, 9.501946341831502],
             "Monumento alla Resistenza",
-            0,
+            5,
             "Copper monument located in the Medaglie d'Oro square, dedicated to the partisan resistance, was inaugurated in 1967. <br>Furthermore, a restoration phase was initiated, which was concluded in 2015.",
             "../img/tappe-popup/monumento_alla_Resistenza.jpg"
         ],
@@ -90,7 +90,7 @@
         "Museum-of-Musical-Instruments-&-Music": [
             [45.30701338770822, 9.50199549913424],
             "Museum of Musical Instruments & Music",
-            3,
+            4,
             "The museum features an exhibition of over 500 musical instruments.",
             "../img/tappe-popup/museo_dello_strumento_musicale_e_della_musica.jpg"
         ],
@@ -104,56 +104,56 @@
         "Palacastellotti-Sport-Facility": [
             [45.297359483089814, 9.510770296119013],
             "Palacastellotti Sport Facility",
-            1,
+            4,
             "Sports arena known for hosting roller hockey matches of Amatori Lodi and other Lodigian formations in this sport.",
             "../img/tappe-popup/palacastellotti.jpg"
         ],
         "Adda-Sud-Park": [
             [45.314040272551736, 9.498271300674975],
             "Adda Sud Park",
-            2,
+            4,
             "The park, of a river and agricultural type, is located along the lower course of the Adda and includes two provinces: Lodi and Cremona. <br>The park, whose objective is to protect nature and the environment, is known for promoting environmental education among young people.",
             "../img/tappe-popup/Parco_adda_sud.jpg"
         ],
         "Isola-Carolina-Park": [
             [45.315097006869266, 9.498896680791935],
             "Isola Carolina Park",
-            2,
+            4,
             "The public park was built around the mid-twentieth century. <br>It is located a few meters from the turret in the historic center, the park is accessible from one entrance, while the other is not accessible.",
             "../img/tappe-popup/isola_carolina.jpg"
         ],
         "Villa-Braila-Park": [
             [45.30376301489828, 9.508691843847435],
             "Villa Braila Park",
-            0,
+            5,
             "Park located about ten minutes from the center, the park is very large and has a huge green area. Inside the park there is also a municipal library and a historic building designed in 1901 that gives its name to the park.",
             "../img/tappe-popup/villa_Braila.jpg"
         ],
         "Dossenina-Stadium": [
             [45.30739132224016, 9.495022000717784],
             "Dossenina Stadium",
-            3,
+            5,
             "It was inaugurated around 1920, pedestrian access is facilitated by the pedestrian track in front of it. <br>There are two entrance gates, the main one measuring 4.30 m, while the gate for public access measures 1.20 m.",
             "../img/tappe-popup/Stadio_Dossenina.jpg"
         ],
         "Alle-Vigne-Theater": [
             [45.31506910520015, 9.506154729318768],
             "Alle Vigne Theater",
-            3,
+            5,
             "",
             "../img/tappe-popup/Teatro-alle-Vigne.jpg"
         ],
         "Civic-Temple-of-the-Incoronata": [
             [45.31465971960593, 9.502055674244136],
             "Civic Temple of the Incoronata",
-            2,
+            5,
             "The main artistic monument of the city of Lodi was built as a Civic Temple. <br>It has two steps to access, measuring respectively 11 cm and 9 cm. The structure is equipped to allow access to anyone, in fact, there is the possibility of installing a slide, if requested. The entire internal structure is accessible. The door to access the museum is 1 m, but to access the museum you have to go through steps so it is not accessible to everyone. The corridors are about 1 m wide.",
             "../img/tappe-popup/TempioIncoronata.jpg"
         ],
         "Lodi-Rook": [
             [45.3126397552172, 9.498001343678204],
             "Lodi Rook",
-            3,
+            4,
             "A cylindrical tower, ordered by Francesco Sforza in 1456, represents one of the main symbols of Lodi. <br>It cannot be visited inside, but it can only be viewed from the outside. To observe it, you can position yourself on the bike path nearby, made up of cobblestones.",
             "../img/tappe-popup/torrione.jpg"
         ],
@@ -167,7 +167,7 @@
         "Market-Square": [
             [45.315046320365575, 9.504111225140116],
             "Market Square",
-            5,
+            4,
             "Market square is accessible to the public as it does not present any architectural barriers.",
             ""
         ],
@@ -181,7 +181,7 @@
         "Church-of-Magdalene": [
             [45.31835179420975, 9.504352611647226],
             "Church of Magdalene",
-            4,
+            5,
             "The church was built around the first half of the eighteenth century and is known for being a full example of the Baroque style. <br>Internally there is a single nave. As for the external part, there is a step for access measuring approximately 13 cm and the entrance door measures 90 cm. It is also important to say that it is visible from the street facing it.",
             ""
         ],

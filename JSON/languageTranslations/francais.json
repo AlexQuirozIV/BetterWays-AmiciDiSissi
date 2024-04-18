@@ -48,21 +48,21 @@
         "Château-Visconti": [
             [45.312376641034014, 9.498816848941937],
             "Château Visconti",
-            3,
+            4,
             "",
             "../img/tappe-popup/Castello_Visconteo.jpg"
         ],
         "Église-Saint-François": [
             [45.314617754968054, 9.507929720552477],
             "Église Saint François",
-            1,
+            4,
             "",
             "../img/tappe-popup/chiesa_san_francesco.jpeg"
         ],
         "Duomo-de-Lodi": [
             [45.314214319510235, 9.503150096251492],
             "Duomo de Lodi",
-            1,
+            4,
             "Le Duomo de Lodi est l'un des plus grands de Lombardie et est également le monument le plus ancien de Lodi. <br>L'accès par la porte de droite est possible pour tous, ce qui n'est pas le cas pour la porte de gauche. La porte d'entrée mesure 1,24 mètre. Il est accessible depuis la Via Cavour, présentant une marche pour l'accès à la salle dont la mesure est de 10 cm, le cloître est entièrement accessible et sa porte mesure 1 mètre. Les marches vers le sanctuaire sont au nombre de 19 et mesurent 15 cm. En ce qui concerne la crypte de San Bassiano, il y a 13 marches mesurant 15 cm.",
             "../img/tappe-popup/Lodi_Duomo_facciata.jpg"
         ],
@@ -90,7 +90,7 @@
         "Musée-de-l'Instrument-Musical-et-de-la-Musique": [
             [45.30701338770822, 9.50199549913424],
             "Musée de l'Instrument Musical et de la Musique",
-            3,
+            4,
             "",
             "../img/tappe-popup/museo_dello_strumento_musicale_e_della_musica.jpg"
         ],
@@ -104,56 +104,56 @@
         "Palais-Palacastellotti": [
             [45.297359483089814, 9.510770296119013],
             "Palais Palacastellotti",
-            5,
+            4,
             "Salle de sport connue pour accueillir les matchs de hockey sur piste de l'Amatori Lodi et d'autres équipes lodigianes dans ce sport.",
             "../img/tappe-popup/palacastellotti.jpg"
         ],
         "Parc-Adda-Sud": [
             [45.314040272551736, 9.498271300674975],
             "Parc Adda Sud",
-            2,
+            4,
             "Le parc, de type fluvial et agricole, est situé le long du bas cours de l'Adda et comprend deux provinces: Lodi et Crémone. <br>Le parc, dont l'objectif est de protéger la nature et l'environnement, est connu pour promouvoir l'éducation environnementale des jeunes.",
             "../img/tappe-popup/Parco_adda_sud.jpg"
         ],
         "Parc-de-l'Île-Carolina": [
             [45.315097006869266, 9.498896680791935],
             "Parc de l'Île Carolina",
-            2,
+            4,
             "Le parc de type public a été réalisé vers le milieu du XXe siècle. <br>Il est situé à quelques mètres de la tour dans le centre historique, le parc est accessible par une entrée, tandis que l'autre n'est pas accessible.",
             "../img/tappe-popup/isola_carolina.jpg"
         ],
         "Parc-de-la-Villa-Braila": [
             [45.30376301489828, 9.508691843847435],
             "Parc de la Villa Braila",
-            0,
+            5,
             "Parc situé à environ dix minutes du centre, le parc est très étendu et présente une immense zone verte. <br>À l'intérieur de ce parc, on trouve également une bibliothèque municipale et un bâtiment historique conçu en 1901 qui donne son nom au parc.",
             "../img/tappe-popup/villa_Braila.jpg"
         ],
         "Stade-Dossenina": [
             [45.30739132224016, 9.495022000717784],
             "Stade Dossenina",
-            3,
+            5,
             "Il a été inauguré vers 1920, l'accès des piétons est facilité par la piste piétonne devant lui. <br>Il y a deux portes d'entrée, la principale mesure 4,30 mètres, tandis que la porte d'accès au public mesure 1,20 mètre.",
             "../img/tappe-popup/Stadio_Dossenina.jpg"
         ],
         "Théâtre-Alle-Vigne": [
             [45.31506910520015, 9.506154729318768],
             "Théâtre Alle Vigne",
-            3,
+            5,
             "",
             "../img/tappe-popup/Teatro-alle-Vigne.jpg"
         ],
         "Temple-Civique-de-l'Incoronata": [
             [45.31465971960593, 9.502055674244136],
             "Temple Civique de l'Incoronata",
-            2,
+            5,
             "Principal monument artistique de la ville de Lodi, il a été construit comme Temple Civique. <br>Il présente deux marches pour accéder, mesurant respectivement 11 cm et 9 cm. La structure est équipée pour permettre l'accès à tous, il est en effet possible d'installer une rampe, si nécessaire. Toute la structure interne est accessible. La porte d'accès au musée mesure 1 mètre, mais pour accéder au musée, il faut monter des marches donc il n'est pas accessible à tous. Les couloirs ont une largeur d'environ 1 mètre.",
             "../img/tappe-popup/TempioIncoronata.jpg"
         ],
         "Torréone-de-Lodi": [
             [45.3126397552172, 9.498001343678204],
             "Torréone de Lodi",
-            3,
+            4,
             "Tour de forme cylindrique, voulue par Francesco Sforza en 1456, elle est l'un des principaux symboles de Lodi. On ne peut pas la visiter à l'intérieur, mais on peut la voir uniquement de l'extérieur. Pour l'observer, on peut se positionner sur la piste cyclable à proximité, composée de pavés.",
             "../img/tappe-popup/torrione.jpg"
         ],
