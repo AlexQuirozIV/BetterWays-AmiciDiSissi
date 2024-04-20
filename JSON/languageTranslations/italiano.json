@@ -49,14 +49,14 @@
             [45.312376641034014, 9.498816848941937],
             "Castello Visconteo",
             4,
-            "",
+            "Il Castello Visconteo è stata una fortificazione difensiva della città di Lodi, è sede dalla locale Questura.",
             "../img/tappe-popup/Castello_Visconteo.jpg"
         ],
         "Chiesa-di-San-Francesco": [
             [45.314617754968054, 9.507929720552477],
             "Chiesa di San Francesco",
             4,
-            "",
+            "La chiesa di San Francesco, risalente alla fine del Duecento, è l'edificio sacro più originale della città di Lodi. ",
             "../img/tappe-popup/chiesa_san_francesco.jpeg"
         ],
         "Duomo-di-Lodi": [
@@ -84,7 +84,7 @@
             [45.31796325796598, 9.502647436164928],
             "Museo della Stampa",
             4,
-            "",
+            "Il Museo della stampa e stampa d'arte è un museo civico del comune di Lodi inaugurato nel giugno 2008 e dedicato ad Andrea Schiavi, che ha raccolto numerosissime macchine di vario genere.",
             "../img/tappe-popup/lodi_museo_della_stampa.jpg"
         ],
         "Museo-dello-Strumento-Musicale-&-della-Musica": [
@@ -140,7 +140,7 @@
             [45.31506910520015, 9.506154729318768],
             "Teatro Alle Vigne",
             5,
-            "",
+            "Il teatro alle Vigne è il principale teatro della città di Lodi. <br>Originariamente si trattava di una chiesa, canonica dell'ordine degli Umiliati, ma nel 1570 passò ai padri barnabiti che lo convertirono in istituto superiore di teologia, morale e filosofia.",
             "../img/tappe-popup/Teatro-alle-Vigne.jpg"
         ],
         "Tempio-Civico-Incoronata": [
@@ -189,14 +189,14 @@
             [45.316260560309566, 9.504173325140222],
             "Biblioteca Laudense",
             4,
-            "",
+            "La Biblioteca comunale Laudense è la più antica biblioteca di Lodi, aperta al pubblico dal 1792. <br>Si trova nel centro della città, poco distante da piazza della Vittoria, ed è adiacente alla coeva chiesa di San Filippo Neri, con cui condivide lo stile barocco lombardo della facciata.",
             ""
         ],
         "Piazza-Castello": [
             [45.3126698, 9.4997774],
             "Piazza Castello",
             4,
-            "",
+            "Sorge sull'antico complesso castellano, costruito da Bernabò Visconti nel 1370, su una precedente fortificazione.",
             ""
         ]
 

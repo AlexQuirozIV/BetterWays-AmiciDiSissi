@@ -49,14 +49,14 @@
             [45.312376641034014, 9.498816848941937],
             "Schloss Visconteo",
             4,
-            "",
+            "Die Burg Visconteo war eine defensive Befestigungsanlage der Stadt Lodi und beherbergt die örtliche Polizeidirektion.",
             "../img/tappe-popup/Castello_Visconteo.jpg"
         ],
         "Kirche-San-Francesco": [
             [45.314617754968054, 9.507929720552477],
             "Kirche San Francesco",
             4,
-            "",
+            "Die Kirche San Francesco, die aus dem späten 13. Jahrhundert stammt, ist das originellste Sakralgebäude der Stadt Lodi.",
             "../img/tappe-popup/chiesa_san_francesco.jpeg"
         ],
         "Dom-von-Lodi": [
@@ -84,7 +84,7 @@
             [45.31796325796598, 9.502647436164928],
             "Museum der Druckkunst",
             4,
-            "",
+            "Das Museum für Druck und Kunsthandwerk ist ein städtisches Museum der Gemeinde Lodi, das im Juni 2008 eröffnet wurde und Andrea Schiavi gewidmet ist, der zahlreiche Maschinen verschiedener Art gesammelt hat.",
             "../img/tappe-popup/lodi_museo_della_stampa.jpg"
         ],
         "Museum-für-Musikinstrumente-&-Musik": [
@@ -140,7 +140,7 @@
             [45.31506910520015, 9.506154729318768],
             "Theater Alle Vigne",
             5,
-            "",
+            "Das Theater an den Weinbergen ist das wichtigste Theater der Stadt Lodi. <br>Ursprünglich war es eine Kirche, die dem Orden der Demütigen gehörte, aber im Jahr 1570 ging sie an die Barnabiten über, die sie in eine höhere Schule für Theologie, Moral und Philosophie umwandelten.",
             "../img/tappe-popup/Teatro-alle-Vigne.jpg"
         ],
         "Bürgerlicher-Tempel-der-Incoronata": [
@@ -189,7 +189,14 @@
             [45.316260560309566, 9.504173325140222],
             "Laudense Bibliothek",
             4,
-            "",
+            "Die Stadtbibliothek Laudense ist die älteste Bibliothek in Lodi und seit 1792 für die Öffentlichkeit zugänglich. <br>Sie befindet sich im Stadtzentrum, unweit vom Siegesplatz entfernt, und grenzt an die zeitgenössische Kirche San Filippo Neri, mit der sie den lombardischen barocken Stil der Fassade teilt.",
+            ""
+        ],
+        "Schlossplatz": [
+            [45.3126698, 9.4997774],
+            "Schlossplatz",
+            4,
+            "Erhebt sich über dem alten Schlosskomplex, der 1370 von Bernabò Visconti auf einer früheren Befestigung erbaut wurde.",
             ""
         ]
     },
@@ -226,7 +233,8 @@
         ],
         "Piazze": [
             "Broletto-Platz",
-            "Marktplatz"
+            "Marktplatz",
+            "Schlossplatz"
         ]
     }
 }

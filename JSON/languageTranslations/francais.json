@@ -49,14 +49,14 @@
             [45.312376641034014, 9.498816848941937],
             "Château Visconti",
             4,
-            "",
+            "Le château Visconti était une fortification défensive de la ville de Lodi, et il abrite le siège de la Police locale.",
             "../img/tappe-popup/Castello_Visconteo.jpg"
         ],
         "Église-Saint-François": [
             [45.314617754968054, 9.507929720552477],
             "Église Saint François",
             4,
-            "",
+            "L'église de San Francesco, datant de la fin du XIIIe siècle, est le bâtiment sacré le plus original de la ville de Lodi.",
             "../img/tappe-popup/chiesa_san_francesco.jpeg"
         ],
         "Duomo-de-Lodi": [
@@ -84,7 +84,7 @@
             [45.31796325796598, 9.502647436164928],
             "Musée de l'Impression",
             4,
-            "",
+            "Le Musée de l'imprimerie et de l'art de l'impression est un musée municipal de la commune de Lodi, inauguré en juin 2008 et dédié à Andrea Schiavi, qui a rassemblé de nombreuses machines de différents types.",
             "../img/tappe-popup/lodi_museo_della_stampa.jpg"
         ],
         "Musée-de-l'Instrument-Musical-et-de-la-Musique": [
@@ -140,7 +140,7 @@
             [45.31506910520015, 9.506154729318768],
             "Théâtre Alle Vigne",
             5,
-            "",
+            "Le théâtre aux Vignes est le principal théâtre de la ville de Lodi. <br>À l'origine, c'était une église, appartenant à l'ordre des Humiliés, mais en 1570, elle est passée aux pères barnabites qui l'ont transformée en institut supérieur de théologie, de morale et de philosophie.",
             "../img/tappe-popup/Teatro-alle-Vigne.jpg"
         ],
         "Temple-Civique-de-l'Incoronata": [
@@ -189,14 +189,14 @@
             [45.316260560309566, 9.504173325140222],
             "Bibliothèque Laudense",
             4,
-            "",
+            "La Bibliothèque municipale Laudense est la plus ancienne bibliothèque de Lodi, ouverte au public depuis 1792. <br>Elle est située dans le centre-ville, non loin de la place de la Victoire, et est adjacente à l'église contemporaine de San Filippo Neri, avec laquelle elle partage le style baroque lombard de la façade.",
             ""
         ],
         "Place-du-Château": [
             [45.3126698, 9.4997774],
             "Place du Château",
             4,
-            "",
+            "Se dresse au-dessus de l'ancien complexe de château, construit par Bernabò Visconti en 1370 sur une fortification précédente.",
             ""
         ]
     },

@@ -48,21 +48,21 @@
         "Castelo-Visconteo": [
             [45.312376641034014, 9.498816848941937],
             "Castelo Visconteo",
-            3,
-            "",
+            4,
+            "O Castelo Visconteo era uma fortificação defensiva da cidade de Lodi e abriga a sede da Polícia local.",
             "../img/tappe-popup/Castello_Visconteo.jpg"
         ],
         "Igreja-de-São-Francisco": [
             [45.314617754968054, 9.507929720552477],
             "Igreja de São Francisco",
-            1,
-            "",
+            4,
+            "A igreja de San Francesco, que remonta ao final do século XIII, é o edifício sagrado mais original da cidade de Lodi.",
             "../img/tappe-popup/chiesa_san_francesco.jpeg"
         ],
         "Duomo-de-Lodi": [
             [45.314214319510235, 9.503150096251492],
             "Duomo de Lodi",
-            1,
+            4,
             "",
             "../img/tappe-popup/Lodi_Duomo_facciata.jpg"
         ],
@@ -76,7 +76,7 @@
         "Monumento-à-Resistência": [
             [45.31043780366223, 9.501946341831502],
             "Monumento à Resistência",
-            0,
+            5,
             "",
             "../img/tappe-popup/monumento_alla_Resistenza.jpg"
         ],
@@ -90,8 +90,8 @@
         "Museu-do-Instrumento-Musical-&-da-Música": [
             [45.30701338770822, 9.50199549913424],
             "Museu do Instrumento Musical & da Música",
-            3,
-            "",
+            4,
+            "O Museu da Impressão e da Impressão de Arte é um museu cívico do município de Lodi, inaugurado em junho de 2008 e dedicado a Andrea Schiavi, que reuniu numerosas máquinas de vários tipos.",
             "../img/tappe-popup/museo_dello_strumento_musicale_e_della_musica.jpg"
         ],
         "Museu-de-Paolo-Gorini": [
@@ -104,56 +104,63 @@
         "Palazzetto-Palacastellotti": [
             [45.297359483089814, 9.510770296119013],
             "Palazzetto Palacastellotti",
-            1,
+            5,
             "",
             "../img/tappe-popup/palacastellotti.jpg"
         ],
         "Parque-Adda-Sul": [
             [45.314040272551736, 9.498271300674975],
             "Parque Adda Sul",
-            2,
+            4,
             "",
             "../img/tappe-popup/Parco_adda_sud.jpg"
         ],
         "Parque-Ilha-Carolina": [
             [45.315097006869266, 9.498896680791935],
             "Parque Ilha Carolina",
-            2,
+            4,
             "",
             "../img/tappe-popup/isola_carolina.jpg"
         ],
         "Parque-Villa-Braila": [
             [45.30376301489828, 9.508691843847435],
             "Parque Villa Braila",
-            0,
+            5,
             "",
             "../img/tappe-popup/villa_Braila.jpg"
         ],
         "Estádio-Dossenina": [
             [45.30739132224016, 9.495022000717784],
             "Estádio Dossenina",
-            3,
+            5,
             "",
             "../img/tappe-popup/Stadio_Dossenina.jpg"
         ],
         "Teatro-Alle-Vigne": [
             [45.31506910520015, 9.506154729318768],
             "Teatro Alle Vigne",
-            3,
-            "",
+            5,
+            "O Teatro das Vinhas é o principal teatro da cidade de Lodi. <br>Originalmente, era uma igreja pertencente à ordem dos Humilhados, mas em 1570 passou para os padres barnabitas, que o converteram em um instituto superior de teologia, moral e filosofia.",
             "../img/tappe-popup/Teatro-alle-Vigne.jpg"
         ],
         "Templo-Cívico-Incoronata": [
             [45.31465971960593, 9.502055674244136],
             "Templo Cívico Incoronata",
-            2,
+            5,
             "",
             "../img/tappe-popup/TempioIncoronata.jpg"
+        ],
+        "Biblioteca-Laudense": [
+            [45.316260560309566, 9.504173325140222],
+            "Biblioteca Laudense",
+            4,
+            "",
+            ""
         ],
         "Torrão-de-Lodi": [
             [45.3126397552172, 9.498001343678204],
             "Torrão de Lodi",
-            3,
+            4,
             "",
             "../img/tappe-popup/torrione.jpg"
         ]

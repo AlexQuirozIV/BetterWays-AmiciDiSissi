@@ -49,14 +49,14 @@
             [45.312376641034014, 9.498816848941937],
             "Castillo Visconteo",
             4,
-            "",
+            "El Castillo Visconteo fue una fortificación defensiva de la ciudad de Lodi y alberga la Jefatura de Policía local.",
             "../img/tappe-popup/Castello_Visconteo.jpg"
         ],
         "Iglesia-de-San-Francisco": [
             [45.314617754968054, 9.507929720552477],
             "Iglesia de San Francisco",
             4,
-            "",
+            "La iglesia de San Francisco, que data de finales del siglo XIII, es el edificio sagrado más original de la ciudad de Lodi.",
             "../img/tappe-popup/chiesa_san_francesco.jpeg"
         ],
         "Catedral-de-Lodi": [
@@ -84,7 +84,7 @@
             [45.31796325796598, 9.502647436164928],
             "Museo de la Imprenta",
             4,
-            "",
+            "El Museo de la Imprenta y la Impresión de Arte es un museo cívico del municipio de Lodi, inaugurado en junio de 2008 y dedicado a Andrea Schiavi, quien recopiló numerosas máquinas de diversos tipos.",
             "../img/tappe-popup/lodi_museo_della_stampa.jpg"
         ],
         "Museo-del-Instrumento-Musical-y-de-la-Música": [
@@ -140,7 +140,7 @@
             [45.31506910520015, 9.506154729318768],
             "Teatro Alle Vigne",
             5,
-            "",
+            "El Teatro de las Viñas es el principal teatro de la ciudad de Lodi. <br>Originalmente era una iglesia, perteneciente a la orden de los Humiliados, pero en 1570 pasó a los padres barnabitas que lo convirtieron en un instituto superior de teología, moral y filosofía.",
             "../img/tappe-popup/Teatro-alle-Vigne.jpg"
         ],
         "Templo-Cívico-Incoronada": [
@@ -189,14 +189,14 @@
             [45.316260560309566, 9.504173325140222],
             "Biblioteca Laudense",
             4,
-            "",
+            "La Biblioteca Municipal Laudense es la biblioteca más antigua de Lodi, abierta al público desde 1792. <br>Se encuentra en el centro de la ciudad, no muy lejos de la plaza de la Victoria, y está adyacente a la iglesia contemporánea de San Filippo Neri, con la que comparte el estilo barroco lombardo de la fachada.",
             ""
         ],
         "Plaza-del-Castillo": [
             [45.3126698, 9.4997774],
             "Plaza-del-Castillo",
             4,
-            "",
+            "Se alza sobre el antiguo complejo del castillo, construido por Bernabò Visconti en 1370 sobre una fortificación anterior.",
             ""
         ]
     },
