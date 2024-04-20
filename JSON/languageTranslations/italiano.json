@@ -162,42 +162,42 @@
             "Piazza Broletto",
             3,
             "Situata in prossimità della cattedrale, è un complesso architettonico dove ha sede l’amministrazione comunale di Lodi, è completamente  accessibile al pubblico ed è importante da menzionare poiché in essa è situato l’ufficio turistico, importante per chiunque voglia avere ulteriori informazioni sulla città di Lodi.",
-            ""
+            "../img/tappe-popup/Piazza_Broletto.jpeg"
         ],
         "Piazza-Mercato": [
             [45.315046320365575, 9.504111225140116],
             "Piazza Mercato",
             4,
             "Piazza adibita al mercato è accessibile al pubblico poiché non presenta alcuna barriera architettonica.",
-            ""
+            "../img/tappe-popup/Piazza_Mercato.jpg"
         ],
         "Ufficio-turistico": [
             [45.31457313558977, 9.502831126442807],
             "Ufficio turistico",
             5,
             "Punto di informazione per i turisti.",
-            ""
+            "../img/tappe-popup/Piazza_Mercato.jpg"
         ],
         "Chiesa-della-Maddalena": [
             [45.31835179420975, 9.504352611647226],
             "Chiesa della Maddalena",
             4,
             "La chiesa venne costruita attorno alla prima metà del Settecento ed è nota per essere un pieno esempio  dello stile del barocco. <br>Internamente è presente una navata unica. Per quanto riguarda la parte esterna è presente un gradino per l’accesso la cui misura è di circa 13 cm e la porta d’accesso ha una dimensione di  90 cm.Inoltre è importante dire che è visibile anche dalla via che la fronteggia.",
-            ""
+            "../img/tappe-popup/Chiesa_della_Maddalena.jpeg"
         ],
         "Biblioteca-Laudense": [
             [45.316260560309566, 9.504173325140222],
             "Biblioteca Laudense",
             4,
             "La Biblioteca comunale Laudense è la più antica biblioteca di Lodi, aperta al pubblico dal 1792. <br>Si trova nel centro della città, poco distante da piazza della Vittoria, ed è adiacente alla coeva chiesa di San Filippo Neri, con cui condivide lo stile barocco lombardo della facciata.",
-            ""
+            "../img/tappe-popup/Biblioteca-Laudense.png"
         ],
         "Piazza-Castello": [
             [45.3126698, 9.4997774],
             "Piazza Castello",
             4,
             "Sorge sull'antico complesso castellano, costruito da Bernabò Visconti nel 1370, su una precedente fortificazione.",
-            ""
+            "../img/tappe-popup/Piazza_Castello.jpeg"
         ]
 
     },

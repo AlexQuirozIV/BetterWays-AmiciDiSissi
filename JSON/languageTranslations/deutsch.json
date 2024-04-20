@@ -57,7 +57,7 @@
             "Kirche San Francesco",
             4,
             "Die Kirche San Francesco, die aus dem späten 13. Jahrhundert stammt, ist das originellste Sakralgebäude der Stadt Lodi.",
-            "../img/tappe-popup/chiesa_san_francesco.jpeg"
+            "../img/tappe-popup/Chiesa_San_Francesco.jpeg"
         ],
         "Dom-von-Lodi": [
             [45.314214319510235, 9.503150096251492],
@@ -71,63 +71,63 @@
             "Faustina Sporting Club",
             5,
             "Sportanlage, die 2013 eröffnet wurde.",
-            "../img/tappe-popup/faustina.jpg"
+            "../img/tappe-popup/Faustina.jpg"
         ],
         "Denkmal-für-den-Widerstand": [
             [45.31043780366223, 9.501946341831502],
             "Denkmal für den Widerstand",
             5,
             "Das Kupferdenkmal auf dem Platz der Goldenen Medaillen ist der partisantischen Resistenz gewidmet und wurde 1967 eingeweiht. <br>Es wurde auch eine Restaurierungsphase begonnen, die 2015 abgeschlossen wurde.",
-            "../img/tappe-popup/monumento_alla_Resistenza.jpg"
+            "../img/tappe-popup/Monumento_alla_Resistenza.jpg"
         ],
         "Museum-der-Druckkunst": [
             [45.31796325796598, 9.502647436164928],
             "Museum der Druckkunst",
             4,
             "Das Museum für Druck und Kunsthandwerk ist ein städtisches Museum der Gemeinde Lodi, das im Juni 2008 eröffnet wurde und Andrea Schiavi gewidmet ist, der zahlreiche Maschinen verschiedener Art gesammelt hat.",
-            "../img/tappe-popup/lodi_museo_della_stampa.jpg"
+            "../img/tappe-popup/Lodi_Museo_della_Stampa.jpg"
         ],
         "Museum-für-Musikinstrumente-&-Musik": [
             [45.30701338770822, 9.50199549913424],
             "Museum für Musikinstrumente & Musik",
             5,
             "Das Museum präsentiert eine Ausstellung mit über 500 Musikinstrumenten.",
-            "../img/tappe-popup/museo_dello_strumento_musicale_e_della_musica.jpg"
+            "../img/tappe-popup/Museo_dello_Strumento_Musicale_e_della_Musica.jpg"
         ],
         "Museum-von-Paolo-Gorini": [
             [45.3138348117735, 9.508056454515657],
             "Museum von Paolo Gorini",
             4,
             "Die anatomische Sammlung von Paolo Gorini wurde 1981 eröffnet. <br>Sie besteht aus einer Sammlung von etwa 166 anatomischen Präparaten und befindet sich in dem, was heute der Sitz der ASL ist. Das Ziel dieses Museums ist es, die anatomischen Präparate des gleichnamigen Wissenschaftlers einer möglichst breiten Öffentlichkeit bekannt zu machen.",
-            "../img/tappe-popup/museo-paolo-gorini-lodi.jpg"
+            "../img/tappe-popup/Museo_Paolo_Gorini.jpg"
         ],
         "Sporteinrichtung-Palacastellotti": [
             [45.297359483089814, 9.510770296119013],
             "Sporteinrichtung Palacastellotti",
             4,
             "Sportarena, bekannt für die Austragung von Rollhockey-Spielen des Amatori Lodi und anderer Lodigianer Teams in diesem Sport.",
-            "../img/tappe-popup/palacastellotti.jpg"
+            "../img/tappe-popup/Palacastellotti.jpg"
         ],
         "Park-Adda-Süd": [
             [45.314040272551736, 9.498271300674975],
             "Park Adda Süd",
             4,
             "Der Fluss- und Agrarpark erstreckt sich entlang des Unterlaufs des Adda und umfasst zwei Provinzen: Lodi und Cremona. <br>Der Park, dessen Ziel es ist, die Natur und die Umwelt zu schützen, ist bekannt für die Förderung der Umwelterziehung für Jugendliche.",
-            "../img/tappe-popup/Parco_adda_sud.jpg"
+            "../img/tappe-popup/Parco_Adda_Sud.jpg"
         ],
         "Park-der-Isola-Carolina": [
             [45.315097006869266, 9.498896680791935],
             "Park der Isola Carolina",
             5,
             "Der öffentliche Park wurde um die Mitte des 20. <br>Jahrhunderts angelegt. Er befindet sich nur wenige Meter vom Turm im historischen Zentrum entfernt und ist von einem Eingang aus zugänglich, während der andere nicht zugänglich ist.",
-            "../img/tappe-popup/isola_carolina.jpg"
+            "../img/tappe-popup/Isola_Carolina.jpg"
         ],
         "Park-Villa-Braila": [
             [45.30376301489828, 9.508691843847435],
             "Park Villa Braila",
             5,
             "Park, der etwa zehn Minuten vom Zentrum entfernt liegt, der Park ist sehr weitläufig und verfügt über eine riesige Grünfläche. <br>Im Inneren des Parks befindet sich auch eine städtische Bibliothek und ein historisches Gebäude, das 1901 entworfen wurde und dem Park seinen Namen gibt.",
-            "../img/tappe-popup/villa_Braila.jpg"
+            "../img/tappe-popup/Villa_Braila.jpg"
         ],
         "Stadion-Dossenina": [
             [45.30739132224016, 9.495022000717784],
@@ -141,63 +141,63 @@
             "Theater Alle Vigne",
             5,
             "Das Theater an den Weinbergen ist das wichtigste Theater der Stadt Lodi. <br>Ursprünglich war es eine Kirche, die dem Orden der Demütigen gehörte, aber im Jahr 1570 ging sie an die Barnabiten über, die sie in eine höhere Schule für Theologie, Moral und Philosophie umwandelten.",
-            "../img/tappe-popup/Teatro-alle-Vigne.jpg"
+            "../img/tappe-popup/Teatro_alle_Vigne.jpg"
         ],
         "Bürgerlicher-Tempel-der-Incoronata": [
             [45.31465971960593, 9.502055674244136],
             "Bürgerlicher Tempel der Incoronata",
             4,
             "Das wichtigste Kunstwerk der Stadt Lodi wurde als Bürgerlicher Tempel erbaut. <br>Es gibt zwei Stufen zum Eingang, die jeweils 11 cm und 9 cm messen. Die Struktur ist so ausgelegt, dass der Zugang für alle ermöglicht wird, es besteht die Möglichkeit, eine Rampe einzubauen, wenn sie benötigt wird. Die gesamte innere Struktur ist zugänglich. Die Tür zum Museumszugang ist 1 Meter breit, aber um das Museum zu betreten, müssen Stufen überwunden werden, daher ist es nicht für alle zugänglich. Die Flure sind etwa 1 Meter breit.",
-            "../img/tappe-popup/TempioIncoronata.jpg"
+            "../img/tappe-popup/Tempio_Incoronata.jpg"
         ],
         "Lodi-Turm": [
             [45.3126397552172, 9.498001343678204],
             "Lodi-Turm",
             3,
             "Ein zylindrischer Turm, der 1456 von Francesco Sforza erbaut wurde und eines der Hauptsymbole von Lodi darstellt. <br>Man kann ihn nicht von innen besichtigen, aber man kann ihn nur von außen betrachten. Um ihn zu sehen, kann man sich auf den nahegelegenen Radweg stellen, der aus Kopfsteinpflaster besteht.",
-            "../img/tappe-popup/torrione.jpg"
+            "../img/tappe-popup/Torrione.jpg"
         ],
         "Broletto-Platz": [
             [45.31452738912999, 9.50285367329064],
             "Broletto Platz",
             4,
             "In der Nähe der Kathedrale gelegen, ist es ein architektonischer Komplex, in dem sich die Stadtverwaltung von Lodi befindet. <br>Es ist vollständig für die Öffentlichkeit zugänglich und erwähnenswert, da sich dort das Tourismusbüro befindet, wichtig für alle, die weitere Informationen über die Stadt Lodi wünschen.",
-            ""
+            "../img/tappe-popup/Piazza_Broletto.jpeg"
         ],
         "Marktplatz": [
             [45.315046320365575, 9.504111225140116],
             "Marktplatz",
             5,
             "Der als Markt genutzte Platz ist für die Öffentlichkeit zugänglich, da er keine architektonischen Barrieren aufweist.",
-            ""
+            "../img/tappe-popup/Piazza_Mercato.jpg"
         ],
         "Touristenbüro": [
             [45.31457313558977, 9.502831126442807],
             "Touristenbüro",
             4,
-            "",
-            ""
+            "Informationspunkt für Touristen.",
+            "../img/tappe-popup/Piazza_Mercato.jpg"
         ],
         "Kirche-der-Magdalena": [
             [45.31835179420975, 9.504352611647226],
             "Kirche der Magdalena",
             4,
             "Die Kirche wurde um die erste Hälfte des 18. <br>Jahrhunderts erbaut und ist ein vollständiges Beispiel des Barockstils. Im Inneren gibt es ein einziges Kirchenschiff. Was den äußeren Teil betrifft, so gibt es eine Stufe zum Zugang mit einer Höhe von etwa 13 cm und die Eingangstür ist 90 cm breit. Es ist auch erwähnenswert, dass sie von der Straße aus sichtbar ist.",
-            ""
+            "../img/tappe-popup/Chiesa_della_Maddalena.jpeg"
         ],
         "Laudense-Bibliothek": [
             [45.316260560309566, 9.504173325140222],
             "Laudense Bibliothek",
             4,
             "Die Stadtbibliothek Laudense ist die älteste Bibliothek in Lodi und seit 1792 für die Öffentlichkeit zugänglich. <br>Sie befindet sich im Stadtzentrum, unweit vom Siegesplatz entfernt, und grenzt an die zeitgenössische Kirche San Filippo Neri, mit der sie den lombardischen barocken Stil der Fassade teilt.",
-            ""
+            "../img/tappe-popup/Biblioteca-Laudense.png"
         ],
         "Schlossplatz": [
             [45.3126698, 9.4997774],
             "Schlossplatz",
             4,
             "Erhebt sich über dem alten Schlosskomplex, der 1370 von Bernabò Visconti auf einer früheren Befestigung erbaut wurde.",
-            ""
+            "../img/tappe-popup/Piazza_Castello.jpeg"
         ]
     },
 
