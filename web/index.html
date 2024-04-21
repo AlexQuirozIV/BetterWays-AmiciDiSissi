@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="CSS/main.css"> <!-- Stile main-->
+    <link rel="icon" type="image/x-icon" href="img/icona.jpg"> <!-- Logo del sito -->
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+
+    <!-- Font importati -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <title>Home Better Ways</title>
+</head>
+<body style="margin: 0">
+    <h1 id="betterWaysTitolo">BETTER WAYS</h1>
+    
+    <div id="content">
+        <div id="slidingImages1"> <!-- Immagini a scorrimento - a sinistra -->
+
+            <button onclick="slideLeft(-1)"><span class="material-symbols-outlined">chevron_left</span></button>
+            <button onclick="slideLeft(+1)"><span class="material-symbols-outlined">chevron_right</span></button>
+        </div>
+        
+        <div id="map">
+            <img src="img/Mappa.png" alt="Immagine Mappa">   <!-- Immagine mappa centrale -->
+            <div id="mapOverlay">
+                <a href="home.jsp">
+                    <div id="mappaLink"><span>Mappa</span></div>
+                </a>
+            </div>
+        </div>
+
+        <div id="slidingImages2"> <!-- Immagini a scorrimento - a destra -->
+
+            <button onclick="slideRight(-1)"><span class="material-symbols-outlined">chevron_left</span></button>
+            <button onclick="slideRight(+1)"><span class="material-symbols-outlined">chevron_right</span></button>
+        </div>
+    </div>
+    
+    <script src="JS/main.js"></script>
+</body>
+</html>

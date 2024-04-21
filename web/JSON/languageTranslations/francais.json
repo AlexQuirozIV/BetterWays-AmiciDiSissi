@@ -1,0 +1,240 @@
+{
+    "menuNames": [
+        "Barre de navigation",
+
+        "Compte",
+            "Connectez-vous",
+            "Inscrivez-vous",
+    
+        "Itinéraires",
+            "Commencer",
+            "Supprimer",
+    
+            "Commencer",
+            "Atteint",
+            "Terminé!",
+    
+        "Accessibilité",
+            "Agrandir le texte",
+            "Contraste des couleurs",
+            "Noir et blanc",
+            "Texte à la parole",
+    
+        "Paramètres",
+            "Légende",
+            " = Étape non atteinte",
+            " = Étape atteinte",
+            " = Parcours terminé",
+            "Langue",
+    
+        "Notre Équipe",
+            "Bienvenue dans le monde de <i>Better Ways</i>! Nous sommes cinq étudiants de la classe 4ID de l'institut IIS A.Volta di Lodi. <br>Nous nous appelons : Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti et Linda Tessadori. <br>Notre site, <i>Better Ways</i>, est axé sur le tourisme à Lodi, pour découvrir les merveilles que cette petite ville a à offrir. <br>De plus, nous nous engageons à ce que notre site soit conçu et développé selon des normes d'<i>accessibilité</i>, afin d'offrir une expérience inclusive à tous les visiteurs.",
+            "Vous pouvez nous contacter ou envoyer un retour par e-mail",
+
+        "Accueil",
+    
+        "Centrer la carte",
+    
+        "Marqueur Unique",
+            "Ajouter",
+            "Supprimer",
+            "Ajouter tous",
+            "Supprimer tous",
+
+        "Itinéraire terminé!"
+    ],
+
+    "placesNames": {
+        "Château-Visconti": [
+            [45.312376641034014, 9.498816848941937],
+            "Château Visconti",
+            4,
+            "Le château Visconti était une fortification défensive de la ville de Lodi, et il abrite le siège de la Police locale.",
+            "img/tappe-popup/Castello_Visconteo.jpg"
+        ],
+        "Église-Saint-François": [
+            [45.314617754968054, 9.507929720552477],
+            "Église Saint François",
+            4,
+            "L'église de San Francesco, datant de la fin du XIIIe siècle, est le bâtiment sacré le plus original de la ville de Lodi.",
+            "img/tappe-popup/Chiesa_San_Francesco.jpeg"
+        ],
+        "Duomo-de-Lodi": [
+            [45.314214319510235, 9.503150096251492],
+            "Duomo de Lodi",
+            4,
+            "Le Duomo de Lodi est l'un des plus grands de Lombardie et est également le monument le plus ancien de Lodi. <br>L'accès par la porte de droite est possible pour tous, ce qui n'est pas le cas pour la porte de gauche. La porte d'entrée mesure 1,24 mètre. Il est accessible depuis la Via Cavour, présentant une marche pour l'accès à la salle dont la mesure est de 10 cm, le cloître est entièrement accessible et sa porte mesure 1 mètre. Les marches vers le sanctuaire sont au nombre de 19 et mesurent 15 cm. En ce qui concerne la crypte de San Bassiano, il y a 13 marches mesurant 15 cm.",
+            "img/tappe-popup/Lodi_Duomo_facciata.jpg"
+        ],
+        "Club-Sportif-Faustina": [
+            [45.30054479572416, 9.50729370117188],
+            "Club Sportif Faustina",
+            5,
+            "Installation sportive inaugurée en 2013.",
+            "img/tappe-popup/Faustina.jpg"
+        ],
+        "Monument-à-la-Résistance": [
+            [45.31043780366223, 9.501946341831502],
+            "Monument à la Résistance",
+            5,
+            "Monument en cuivre situé sur la place des Médailles d'Or, dédié à la résistance partisane, inauguré en 1967. Une phase de restauration a également été entreprise, achevée en 2015.",
+            "img/tappe-popup/Monumento_alla_Resistenza.jpg"
+        ],
+        "Musée-de-l'Impression": [
+            [45.31796325796598, 9.502647436164928],
+            "Musée de l'Impression",
+            4,
+            "Le Musée de l'imprimerie et de l'art de l'impression est un musée municipal de la commune de Lodi, inauguré en juin 2008 et dédié à Andrea Schiavi, qui a rassemblé de nombreuses machines de différents types.",
+            "img/tappe-popup/Lodi_Museo_della_Stampa.jpg"
+        ],
+        "Musée-de-l'Instrument-Musical-et-de-la-Musique": [
+            [45.30701338770822, 9.50199549913424],
+            "Musée de l'Instrument Musical et de la Musique",
+            4,
+            "",
+            "img/tappe-popup/Museo_dello_Strumento_Musicale_e_della_Musica.jpg"
+        ],
+        "Musée-de-Paolo-Gorini": [
+            [45.3138348117735, 9.508056454515657],
+            "Musée de Paolo Gorini",
+            5,
+            "La collection anatomique de Paolo Gorini a été inaugurée en 1981. <br>Elle se compose d'une collection d'environ 166 préparations anatomiques et est située dans ce qui est aujourd'hui le siège de l'ASL. Le but de ce musée est de faire connaître les préparations anatomiques du même scientifique au plus grand nombre de personnes possible.",
+            "img/tappe-popup/Museo_Paolo_Gorini.jpg"
+        ],
+        "Palais-Palacastellotti": [
+            [45.297359483089814, 9.510770296119013],
+            "Palais Palacastellotti",
+            4,
+            "Salle de sport connue pour accueillir les matchs de hockey sur piste de l'Amatori Lodi et d'autres équipes lodigianes dans ce sport.",
+            "img/tappe-popup/Palacastellotti.jpg"
+        ],
+        "Parc-Adda-Sud": [
+            [45.314040272551736, 9.498271300674975],
+            "Parc Adda Sud",
+            4,
+            "Le parc, de type fluvial et agricole, est situé le long du bas cours de l'Adda et comprend deux provinces: Lodi et Crémone. <br>Le parc, dont l'objectif est de protéger la nature et l'environnement, est connu pour promouvoir l'éducation environnementale des jeunes.",
+            "img/tappe-popup/Parco_Adda_Sud.jpg"
+        ],
+        "Parc-de-l'Île-Carolina": [
+            [45.315097006869266, 9.498896680791935],
+            "Parc de l'Île Carolina",
+            4,
+            "Le parc de type public a été réalisé vers le milieu du XXe siècle. <br>Il est situé à quelques mètres de la tour dans le centre historique, le parc est accessible par une entrée, tandis que l'autre n'est pas accessible.",
+            "img/tappe-popup/Isola_Carolina.jpg"
+        ],
+        "Parc-de-la-Villa-Braila": [
+            [45.30376301489828, 9.508691843847435],
+            "Parc de la Villa Braila",
+            5,
+            "Parc situé à environ dix minutes du centre, le parc est très étendu et présente une immense zone verte. <br>À l'intérieur de ce parc, on trouve également une bibliothèque municipale et un bâtiment historique conçu en 1901 qui donne son nom au parc.",
+            "img/tappe-popup/Villa_Braila.jpg"
+        ],
+        "Stade-Dossenina": [
+            [45.30739132224016, 9.495022000717784],
+            "Stade Dossenina",
+            5,
+            "Il a été inauguré vers 1920, l'accès des piétons est facilité par la piste piétonne devant lui. <br>Il y a deux portes d'entrée, la principale mesure 4,30 mètres, tandis que la porte d'accès au public mesure 1,20 mètre.",
+            "img/tappe-popup/Stadio_Dossenina.jpg"
+        ],
+        "Théâtre-Alle-Vigne": [
+            [45.31506910520015, 9.506154729318768],
+            "Théâtre Alle Vigne",
+            5,
+            "Le théâtre aux Vignes est le principal théâtre de la ville de Lodi. <br>À l'origine, c'était une église, appartenant à l'ordre des Humiliés, mais en 1570, elle est passée aux pères barnabites qui l'ont transformée en institut supérieur de théologie, de morale et de philosophie.",
+            "img/tappe-popup/Teatro_alle_Vigne.jpg"
+        ],
+        "Temple-Civique-de-l'Incoronata": [
+            [45.31465971960593, 9.502055674244136],
+            "Temple Civique de l'Incoronata",
+            5,
+            "Principal monument artistique de la ville de Lodi, il a été construit comme Temple Civique. <br>Il présente deux marches pour accéder, mesurant respectivement 11 cm et 9 cm. La structure est équipée pour permettre l'accès à tous, il est en effet possible d'installer une rampe, si nécessaire. Toute la structure interne est accessible. La porte d'accès au musée mesure 1 mètre, mais pour accéder au musée, il faut monter des marches donc il n'est pas accessible à tous. Les couloirs ont une largeur d'environ 1 mètre.",
+            "img/tappe-popup/Tempio_Incoronata.jpg"
+        ],
+        "Torréone-de-Lodi": [
+            [45.3126397552172, 9.498001343678204],
+            "Torréone de Lodi",
+            4,
+            "Tour de forme cylindrique, voulue par Francesco Sforza en 1456, elle est l'un des principaux symboles de Lodi. On ne peut pas la visiter à l'intérieur, mais on peut la voir uniquement de l'extérieur. Pour l'observer, on peut se positionner sur la piste cyclable à proximité, composée de pavés.",
+            "img/tappe-popup/Torrione.jpg"
+        ],
+        "Place-Broletto": [
+            [45.31452738912999, 9.50285367329064],
+            "Place Broletto",
+            3,
+            "Située à proximité de la cathédrale, c'est un complexe architectural abritant l'administration municipale de Lodi, entièrement accessible au public et important à mentionner car le bureau du tourisme s'y trouve, important pour quiconque souhaite obtenir des informations supplémentaires sur la ville de Lodi.",
+            "img/tappe-popup/Piazza_Broletto.jpeg"
+        ],
+        "Place-du-Marché": [
+            [45.315046320365575, 9.504111225140116],
+            "Place du Marché",
+            4,
+            "Place dédiée au marché, accessible au public car elle ne présente aucune barrière architecturale.",
+            "img/tappe-popup/Piazza_Mercato.jpg"
+        ],
+        "Office-de-tourisme": [
+            [45.31457313558977, 9.502831126442807],
+            "Office de tourisme",
+            5,
+            "Point d'information pour les touristes.",
+            "img/tappe-popup/Piazza_Mercato.jpg"
+        ],
+        "Église-de-la-Madeleine": [
+            [45.31835179420975, 9.504352611647226],
+            "Église de la Madeleine",
+            4,
+            "L'église a été construite vers la première moitié du XVIIIe siècle et est connue pour être un exemple parfait du style baroque. À l'intérieur, il y a une seule nef. En ce qui concerne l'extérieur, il y a une marche pour l'accès dont la mesure est d'environ 13 cm et la porte d'entrée mesure 90 cm. Il est également important de mentionner qu'elle est visible depuis la rue qui lui fait face.",
+            "img/tappe-popup/Chiesa_della_Maddalena.jpeg"
+        ],
+        "Bibliothèque-Laudense": [
+            [45.316260560309566, 9.504173325140222],
+            "Bibliothèque Laudense",
+            4,
+            "La Bibliothèque municipale Laudense est la plus ancienne bibliothèque de Lodi, ouverte au public depuis 1792. <br>Elle est située dans le centre-ville, non loin de la place de la Victoire, et est adjacente à l'église contemporaine de San Filippo Neri, avec laquelle elle partage le style baroque lombard de la façade.",
+            "img/tappe-popup/Biblioteca_Laudense.png"
+        ],
+        "Place-du-Château": [
+            [45.3126698, 9.4997774],
+            "Place du Château",
+            4,
+            "Se dresse au-dessus de l'ancien complexe de château, construit par Bernabò Visconti en 1370 sur une fortification précédente.",
+            "img/tappe-popup/Piazza_Castello.jpeg"
+        ]
+    },
+
+    "itineraryNames": {
+        "Châteaux": [
+            "Château-Visconti",
+            "Torréone-de-Lodi"
+        ],
+        "Lieux Religieux": [
+            "Duomo-de-Lodi",
+            "Temple-Civique-de-l'Incoronata",
+            "Église-Saint-François",
+            "Église-de-la-Madeleine"
+        ],
+        "Monuments Honorifiques": [
+            "Monument-à-la-Résistance"
+        ],
+        "Musées et Théâtres": [
+            "Musée-de-l'Impression",
+            "Musée-de-Paolo-Gorini",
+            "Théâtre-Alle-Vigne",
+            "Musée-de-l'Instrument-Musical-et-de-la-Musique",
+            "Bibliothèque-Laudense"
+        ],
+        "Parcs": [
+            "Parc-Adda-Sud",
+            "Parc-de-l'Île-Carolina",
+            "Parc-de-la-Villa-Braila"
+        ],
+        "Installations Sportives": [
+            "Stade-Dossenina",
+            "Club-Sportif-Faustina",
+            "Palais-Palacastellotti"
+        ],
+        "Places": [
+            "Place-Broletto",
+            "Place-du-Marché",
+            "Place-du-Château"]
+    }
+}
