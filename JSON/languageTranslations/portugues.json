@@ -185,12 +185,12 @@
             "A igreja foi construída por volta da primeira metade do século XVIII e é conhecida por ser um exemplo pleno do estilo barroco. Internamente, há uma única nave. Quanto à parte externa, há um degrau para acesso, com cerca de 13 cm de altura, e a porta de entrada tem uma largura de 90 cm. Além disso, é importante mencionar que ela também é visível da rua em frente.",
             "../img/tappe-popup/Chiesa_della_Maddalena.jpeg"
         ],
-        "Biblioteca-Laudense": [
+        "Biblioteca_Laudense": [
             [45.316260560309566, 9.504173325140222],
             "Biblioteca Laudense",
             4,
             "A Biblioteca Municipal Laudense é a biblioteca mais antiga de Lodi, aberta ao público desde 1792. Localiza-se no centro da cidade, não muito longe da Praça da Vitória, e está adjacente à contemporânea Igreja de San Filippo Neri, com a qual compartilha o estilo barroco lombardo da fachada.",
-            "../img/tappe-popup/Biblioteca-Laudense.png"
+            "../img/tappe-popup/Biblioteca_Laudense.png"
         ],
         "Piazza-Castello": [
             [45.3126698, 9.4997774],
@@ -221,7 +221,7 @@
             "Museu-de-Paolo-Gorini",
             "Teatro-Alle-Vigne",
             "Museu-do-Instrumento-Musical-&-da-Música",
-            "Biblioteca-Laudense"
+            "Biblioteca_Laudense"
         ],
         "Parques": [
             "Parque-Adda-Sul",
