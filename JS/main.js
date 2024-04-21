@@ -7,16 +7,29 @@
 // Indici
 var currentImageIndexLeft = 1;
 var currentImageIndexRight = 1;
+// Variabili globali per le immagini
+var images = [];
+var informaitons = [];
 
+// Inizializzazione
+async function loadSlidingImages() {
+    // Fetch del JSON
+    fetch('../JSON/languageTranslations/italiano.json')
+        .then(response => response.json())  // Trasforma risposta da JSON a JS
+        .then(data => {
+            images = Object.values(data.placesNames).map(place => place[4]);
 
+            applyImages();
+            changeMapText();
+            automaticSlide();
+            showImageLeft(currentImageIndexLeft);
+            showImageRight(currentImageIndexRight);
+        })
+    .catch(error => console.error('Error fetching JSON:', error));
+}
 document.body.onload = () => {
-    changeMapText();
     loadSlidingImages();
-    automaticSlide();
-    showImageLeft(currentImageIndexLeft);
-    showImageRight(currentImageIndexRight);
-};
-
+}
 
 /* Immagini a sinistra */
 function slideLeft(direction) {
@@ -63,7 +76,7 @@ function showImageRight(index) {
     images[currentImageIndexRight - 1].style.display = 'block';
 }
 
-// Loop ogni 5 secondi
+// Loop ogni 4 secondi
 function automaticSlide() {
     setInterval(function() {
         slideLeft(+1);
@@ -108,37 +121,26 @@ function changeMapText() {
     console.log(localStorage);
 }
 
-//
-var images = [];
-var informaitons = [];
+// Aggiungi all'HTML
+function applyImages() {
+    let slidingImages1 = document.getElementById('slidingImages1');
+    let slidingImages2 = document.getElementById('slidingImages2');
 
-function loadSlidingImages() {
-    // Fetch del JSON
-    fetch('../JSON/languageTranslations/italiano.json')
-        .then(response => response.json())
-        .then(data => {
-            images = Object.values(data.placesNames).map(place => place[4]);
+    for (let i = 0; i < (images.length / 2); i++) {
+        let image = document.createElement('img');
 
-            let slidingImages1 = document.getElementById('slidingImages1');
-            let slidingImages2 = document.getElementById('slidingImages2');
+        image.classList.add('slidingImageLeft');
+        image.setAttribute('src', images[i]);
 
-            for (let i = 0; i < (images.length / 2); i++) {
-                let image = document.createElement('img');
+        slidingImages1.appendChild(image);
+    }
 
-                image.classList.add('slidingImageLeft');
-                image.setAttribute('src', images[i]);
+    for (let i = (images.length / 2); i < images.length; i++) {
+        let image = document.createElement('img');
 
-                slidingImages1.appendChild(image);
-            }
+        image.classList.add('slidingImageRight');
+        image.setAttribute('src', images[i]);
 
-            for (let i = (images.length / 2); i < images.length; i++) {
-                let image = document.createElement('img');
-
-                image.classList.add('slidingImageRight');
-                image.setAttribute('src', images[i]);
-
-                slidingImages2.appendChild(image);
-            }
-        })
-    .catch(error => console.error('Error fetching JSON:', error));
+        slidingImages2.appendChild(image);
+    }
 }
