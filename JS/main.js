@@ -8,10 +8,14 @@
 var currentImageIndexLeft = 1;
 var currentImageIndexRight = 1;
 
-// Inizializza...
-automaticSlide();
-showImageLeft(currentImageIndexLeft);
-showImageRight(currentImageIndexRight);
+
+document.body.onload = () => {
+    changeMapText();
+    loadSlidingImages();
+    automaticSlide();
+    showImageLeft(currentImageIndexLeft);
+    showImageRight(currentImageIndexRight);
+};
 
 
 /* Immagini a sinistra */
@@ -68,8 +72,8 @@ function automaticSlide() {
 }
 
 
-//! Testo 'mappa'
-document.body.onload = () => {
+// Testo 'mappa'
+function changeMapText() {
     let language = localStorage.getItem('currentLanguageID');
     let mappa = document.querySelector('#mappaLink span');
 
@@ -102,4 +106,39 @@ document.body.onload = () => {
     }
 
     console.log(localStorage);
-};
+}
+
+//
+var images = [];
+var informaitons = [];
+
+function loadSlidingImages() {
+    // Fetch del JSON
+    fetch('../JSON/languageTranslations/italiano.json')
+        .then(response => response.json())
+        .then(data => {
+            images = Object.values(data.placesNames).map(place => place[4]);
+
+            let slidingImages1 = document.getElementById('slidingImages1');
+            let slidingImages2 = document.getElementById('slidingImages2');
+
+            for (let i = 0; i < (images.length / 2); i++) {
+                let image = document.createElement('img');
+
+                image.classList.add('slidingImageLeft');
+                image.setAttribute('src', images[i]);
+
+                slidingImages1.appendChild(image);
+            }
+
+            for (let i = (images.length / 2); i < images.length; i++) {
+                let image = document.createElement('img');
+
+                image.classList.add('slidingImageRight');
+                image.setAttribute('src', images[i]);
+
+                slidingImages2.appendChild(image);
+            }
+        })
+    .catch(error => console.error('Error fetching JSON:', error));
+}
