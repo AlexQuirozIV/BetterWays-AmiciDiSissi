@@ -52,7 +52,7 @@ function contrastAction() {
 //* Funzione per mettere il bianco e nero
 function blackAndWhiteAction() {
     originalFilters.forEach(filter => {
-        filter.element.style.filter = 'grayscale(100%)';
+        filter.element.style.filter = 'grayscale(100%) contrast(103%)';
     });
 }
 

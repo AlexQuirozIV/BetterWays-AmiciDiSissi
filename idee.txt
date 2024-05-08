@@ -1,8 +1,18 @@
-Cose da chiedere
-1. descrizione dei luoghi
-3. funzioni di accesibilità
+Cose da fare:
+- tutorial + help 
+- distanza per riodinare
+- filtri accessibilità
+- renderlo responsive
+- aggiungere la via francigena
+- aggiungere tappe (es. luoghi di culto)
+- notizie
+- social
+- più opzioni per l'ingrandimento del testo
+- più contrasto bianco e nero
 
-cose da fare:
-2. cambiare eventuali foto 
-3. aggiungere la via francingena
-5. fare il text-to-speech
+Credenziali Social:
+    Instagram:
+        Username: BetterWays_Lodi
+        Password: WasteByer.48$
+        
+    

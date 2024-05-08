@@ -184,7 +184,7 @@ startWebsite();
 function initializeMap() {
     const bounds = [
         [45.375506, 9.37052],
-        [45.155433, 9.62299]
+        [45.088259, 9.66326]
     ];
 
     // Funzioni necessarie (+ min e max zoom)
@@ -208,16 +208,33 @@ function recenterMap() {
 }
 
 //* Per debugging */
+var temporanea = [];
 function coordinatesOnClick() {
     // Click e output coordinate in console
     map.on('click', (e) => {
         console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
+        temporanea.push([e.latlng.lat.toFixed(6), e.latlng.lng.toFixed(6)]);
     });
 }
 function markerFromConsole([latitude, longitude]) {
     let coords = [latitude, longitude];
     let output = "[" + coords[0] + ", " + coords[1] + "]";
     L.marker(coords).addTo(map).bindPopup(output);
+}
+function routeFromConsole(object) {
+    L.Routing.control({
+        waypoints: object.map(coord => L.latLng(coord[0], coord[1])),
+        routeWhileDragging: false,
+        draggableWaypoints: false,
+        addWaypoints: false
+    }).addTo(map);
+}
+function polylineFromConsole(object) {
+    // Create polyline
+    var polyline = L.polyline(object, {color: 'red'}).addTo(map);
+
+    // Fit the map to the polyline
+    map.fitBounds(polyline.getBounds());
 }
 
 /* Avvia mappa a caricamento pagina */
@@ -389,15 +406,6 @@ function singleMarkerMenuPlace() {
             informations.placesNames[selectedPlace][4]
         );
 
-        //TODO
-        /* console.log();
-
-        JSPBridge.call('betterwayss.Server', 'convert',
-            informations.placesNames[selectedPlace][0][0] + ' , ' +
-            informations.placesNames[selectedPlace][0][1] + ' , ' +
-            informations.placesNames[selectedPlace][1]
-        ); */
-
         // Piazza il menu e salvalo in 'singleMarkers'
         singleMarkers[selectedPlace] = newSingleMarker(informations.placesNames[selectedPlace][0], bindingInfos);
         // Svuota lo spazio da 'availablePlace'
@@ -437,15 +445,6 @@ function singleMarkerMenuAddAll() {
             informations.placesNames[marker][3],
             informations.placesNames[marker][4]
         );
-
-        //TODO
-        /* console.log();
-
-        JSPBridge.call('betterwayss.Server', 'convert',
-            informations.placesNames[marker][0][0] + ' , ' +
-            informations.placesNames[marker][0][1] + ' , ' +
-            informations.placesNames[marker][1]
-        ); */
 
         // Piazza il menu e salvalo in 'singleMarkers'
         singleMarkers[marker] = newSingleMarker(informations.placesNames[marker][0], bindingInfos);
