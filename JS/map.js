@@ -208,33 +208,16 @@ function recenterMap() {
 }
 
 //* Per debugging */
-var temporanea = [];
 function coordinatesOnClick() {
     // Click e output coordinate in console
     map.on('click', (e) => {
         console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
-        temporanea.push([e.latlng.lat.toFixed(6), e.latlng.lng.toFixed(6)]);
     });
 }
 function markerFromConsole([latitude, longitude]) {
     let coords = [latitude, longitude];
     let output = "[" + coords[0] + ", " + coords[1] + "]";
     L.marker(coords).addTo(map).bindPopup(output);
-}
-function routeFromConsole(object) {
-    L.Routing.control({
-        waypoints: object.map(coord => L.latLng(coord[0], coord[1])),
-        routeWhileDragging: false,
-        draggableWaypoints: false,
-        addWaypoints: false
-    }).addTo(map);
-}
-function polylineFromConsole(object) {
-    // Create polyline
-    var polyline = L.polyline(object, {color: 'red'}).addTo(map);
-
-    // Fit the map to the polyline
-    map.fitBounds(polyline.getBounds());
 }
 
 /* Avvia mappa a caricamento pagina */

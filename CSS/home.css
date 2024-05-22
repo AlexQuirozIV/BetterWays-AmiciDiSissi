@@ -266,7 +266,7 @@ a.leaflet-popup-close-button:hover {
     background-color: whitesmoke;
 }
 
-#addSingleMarkerMenu button, #packagesMenu button, .accountMenuButtons, .popupCompletedButton {
+#addSingleMarkerMenu button, #packagesMenu button, #accessibilityMenu button, .accountMenuButtons, .popupCompletedButton {
     background-color: rgba(37, 37, 37, 0.5);
     border: 1px var(--highlight-color) solid;
     border-radius: 50px;
@@ -288,13 +288,13 @@ a.leaflet-popup-close-button:hover {
     transition: 0.15s ease-in-out;
 }
 
-#addSingleMarkerMenu button:hover, #packagesMenu button:hover, .accountMenuButtons:hover, .popupCompletedButton:hover {
+#addSingleMarkerMenu button:hover, #packagesMenu button:hover, #accessibilityMenu button:hover, .accountMenuButtons:hover, .popupCompletedButton:hover {
     background-color: rgba(54, 54, 54, 0.5);
     border: 1px #f8c55f solid;
     box-shadow: 0px 0px 10px 1px rgba(249, 191, 77, 0.7);
 }
 
-#addSingleMarkerMenu button:active, #packagesMenu button:active, .accountMenuButtons:active, .popupCompletedButton:active {
+#addSingleMarkerMenu button:active, #packagesMenu button:active, #accessibilityMenu button:active, .accountMenuButtons:active, .popupCompletedButton:active {
     background-color: rgba(60, 60, 60, 0.5);
     border: 1px var(--base-color) solid;
     box-shadow: 0px 0px 10px 1px rgba(116, 116, 116, 0.7);
@@ -538,13 +538,24 @@ a.leaflet-popup-close-button:hover {
     padding-top: 10px;
 }
 
-.accessibility_text {
+.accessibility_text, #resetButton, #sliderValue {
     text-align: left;
     color: white;
-    font-size: 60%;
+    font-size: 60% !important;
     font-weight: bold;
     padding-right: 15px;
     -webkit-text-stroke-width: 0px;
+}
+
+#resetButton {
+    font-weight: normal !important;
+    padding: 10px !important;
+    line-height: 100% !important;
+    margin-right: 0 !important;
+}
+
+#sliderValue {
+    padding-right: 0;
 }
 
 .accessibilityMenuContentsContainer {

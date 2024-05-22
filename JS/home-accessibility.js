@@ -10,23 +10,30 @@ const contrastSlider = document.getElementById('contrastSlider');
 const textToSpeechSlider = document.getElementById('textToSpeechSlider');
 
 //! Funzione per mettere il grassetto
-const originalFontSizes = [];
+const originalFontSizes = new Map();
 
-function boldTextAction() {
+function adjustFontSize(percentage) {
+    document.querySelectorAll('.textToSpeak:not(#betterWays_titolo)').forEach(element => {
+        if (!originalFontSizes.has(element)) {
+            originalFontSizes.set(element, window.getComputedStyle(element).fontSize);
+        }
+        const originalFontSize = originalFontSizes.get(element);
+        const newFontSize = parseFloat(originalFontSize) * (percentage / 100);
+        element.style.fontSize = `${newFontSize}px`;
+    });
+}
+
+function resetFontSize() {
     document.querySelectorAll('*:not(html):not(#betterWays_titolo)').forEach(element => {
-        originalFontSizes.push({
-            element: element,
-            originalFontSize: element.style.fontSize
-        });
-        element.style.fontSize = `calc(${window.getComputedStyle(element).fontSize} + 6%)`;
+        if (originalFontSizes.has(element)) {
+            element.style.fontSize = originalFontSizes.get(element);
+        }
     });
+    originalFontSizes.clear();
+    slider.value = 100;
+    sliderValue.textContent = "100%";
 }
-function revertBoldTextAction() {
-    originalFontSizes.forEach(fontSize => {
-        fontSize.element.style.fontSize = fontSize.originalFontSize;
-    });
-    originalFontSizes.length = 0;
-}
+
 
 //! Filtri
 const originalFilters = [];
@@ -152,12 +159,20 @@ function stopSpeech() {
 
 //! Listeners per i toggles
 //* Funzione per sentire il toggle di 'boldSlider'
-boldSlider.addEventListener('change', function() {
-    if (this.checked) {
-        boldTextAction();
-    } else {
-        revertBoldTextAction();
-    }
+const slider = document.getElementById('fontSlider');
+const sliderValue = document.getElementById('sliderValue');
+const resetButton = document.getElementById('resetButton');
+
+slider.addEventListener('input', (event) => {
+    sliderValue.textContent = `${event.target.value}%`;
+});
+
+slider.addEventListener('change', (event) => {
+    adjustFontSize(event.target.value);
+});
+
+resetButton.addEventListener('click', () => {
+    resetFontSize();
 });
 
 //* Funzione per sentire il toggle di 'contrastSlider'

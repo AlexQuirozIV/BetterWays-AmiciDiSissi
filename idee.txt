@@ -2,13 +2,12 @@ Cose da fare:
 - tutorial + help 
 - distanza per riodinare
 - filtri accessibilità
-- renderlo responsive
+- renderlo responsive (nuh uh)
 - aggiungere la via francigena
 - aggiungere tappe (es. luoghi di culto)
 - notizie
 - social
 - più opzioni per l'ingrandimento del testo
-- più contrasto bianco e nero
 
 Credenziali Social:
     Instagram:
@@ -17,4 +16,3 @@ Credenziali Social:
     Gmail:
         Email: betterways.feedback@gmail.com
         Password: Alexisgay420
-    

@@ -117,10 +117,9 @@
             <!-- testo in grassetto -->
             <div class="accessibilityMenuContentsContainer"> 
                 <span class="accessibility_text textToSpeak"></span>
-                <label class="accessibilityMenuSwitch">
-                    <input type="checkbox" id="boldSlider">
-                    <span class="accessibilityMenuSlider"></span>
-                </label>
+                <input type="range" id="fontSlider" min="50" max="150" value="100">
+                <span id="sliderValue">100%</span>
+                <button id="resetButton" class="material-symbols-rounded">restart_alt</button>
             </div>
 
             <!-- contrasto colori -->
