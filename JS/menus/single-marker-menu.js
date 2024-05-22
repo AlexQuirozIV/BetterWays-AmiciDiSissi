@@ -33,7 +33,7 @@ function addSingleMarkerMenu() {
         name: value[1]
     }));
 
-    // Ordina le opzioni alfabeticamente
+    // ... ordina le opzioni alfabeticamente...
     optionsData.sort((a, b) => a.name.localeCompare(b.name));
 
     // ... e riempi il select con le "nuove" opzioni ordinate

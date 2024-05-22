@@ -7,7 +7,7 @@
 //! Variabili globali e flags
 const centerCoordinates = [45.309062, 9.501200];
 const map = L.map('map', { zoomControl: false }).setView(centerCoordinates, 14);
-const menus = [                         // ID di ogni singolo menu esistente
+const menus = [                     // ID di ogni singolo menu esistente
     "addSingleMarkerMenu",
     "packagesMenu",
     "chiSiamoMenu",
@@ -16,12 +16,12 @@ const menus = [                         // ID di ogni singolo menu esistente
     "accountMenu"
 ];
 
-var __shouldNavbarExpand__ = true;      // La barra laterale dovrebbe espandersi al prossimo click?
-var informations;                       // Contiene le informazioni presi dai JSON
-var openedMenuId;                       // Contiene l'id del menu aperto in quel momento
-var availablePlace = [];                // Flag se il marker esiste già o no (prevenire spam)
-var singleMarkers = {};                 // Contiene i singoli markers creati
-var currentPackageRouting;              // Quale pacchetto è "piazzato"?
+var availablePlace = [];            // Flag se il marker esiste già o no (prevenire spam)
+var singleMarkers = {};             // Contiene i singoli markers creati
+var __shouldNavbarExpand__ = true;  // La barra laterale dovrebbe espandersi al prossimo click?
+var informations;                   // Contiene le informazioni presi dai JSON
+var openedMenuId;                   // Contiene l'id del menu aperto in quel momento
+var currentPackageRouting;          // Quale pacchetto è "piazzato"?
 
 
 //! Fetch e inizializzazione informazioni
@@ -102,11 +102,7 @@ async function fetchInfos(languageToFetch) {
     setButtonTooltips();
 
     // Notifica di quale è stato fetchato
-    console.log(
-        'Information fetched successfully for\n',
-        (languageToFetch == undefined) ? 'it' : languageToFetch,
-        localStorage
-    );
+    console.log('Successfully fetched [', localStorage.getItem('currentLanguageID'), ']');
 }
 /* Mette tooltips ai pulsanti */
 function setButtonTooltips() {

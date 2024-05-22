@@ -556,6 +556,7 @@ a.leaflet-popup-close-button:hover {
 
 #sliderValue {
     padding-right: 0;
+    width: 3em;
 }
 
 .accessibilityMenuContentsContainer {
@@ -569,6 +570,7 @@ a.leaflet-popup-close-button:hover {
     display: inline-block;
     width: 45px;
     height: 25px;
+    margin-right: 13rem;
 }
 
 .accessibilityMenuSwitch input { 
@@ -759,4 +761,36 @@ input:checked + .accessibilityMenuSlider:before {
 
 #feedbackSection a:active {
     color: #f7e2b9;
+}
+
+/* Accessibility slider */
+#fontSlider {
+    --spazio: 3px;
+    --spessore-linea: 5px;
+    --grandezza-cursore: 15px;
+
+    margin-right: 15px;
+    -webkit-appearance :none;
+    -moz-appearance :none;
+    appearance :none;
+    background: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.1s;
+}
+
+#fontSlider:active,
+#fontSlider:focus-visible{
+  --riempimento: var(--grandezza-cursore)
+}
+
+#fontSlider[type="range" i]::-webkit-slider-thumb{
+    height: var(--grandezza-cursore);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    box-shadow: 0 0 0 var(--riempimento,var(--spessore-linea)) inset var(--highlight-color);
+    border-image: linear-gradient(90deg,var(--highlight-color) 50%,#ababab 0) 0 1/calc(50% - var(--spessore-linea)/2) 100vw/0 calc(100vw + var(--spazio));
+    -webkit-appearance: none;
+    appearance: none;
+    transition: .3s;
 }

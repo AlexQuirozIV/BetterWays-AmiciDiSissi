@@ -5,11 +5,11 @@
 "use strict";
 
 //* Variabili inerenti */
-var __isPackageLaid__ = false;
-var __wasProgressMade__ = false;
-var __howMuchProgressWasMade__ = 0;
-var waypoints;
-var completedItinerarySegment;
+var __isPackageLaid__ = false;      // C'è un pacchetto piazzato?
+var __wasProgressMade__ = false;    // C'è percorso verde (progresso) sulla mappa?
+var __howMuchProgressWasMade__ = 0; // Quanto progresso (index del waypoint)?
+var waypoints;                      // Collezione Waypoints
+var completedItinerarySegment;      // Contiene il 'L.route' della sezione completata
 
 
 function packagesMenu() {
@@ -37,7 +37,7 @@ function packagesMenu() {
         }
     }
 
-    // Ottieni e ordina alfabeticamente i nomi delle opzioni
+    // ... ottieni e ordina alfabeticamente i nomi delle opzioni...
     let optionsNames = Object.keys(informations.itineraryNames).sort((a, b) => a.localeCompare(b));
 
     // ... e riempi il select con le "nuove" opzioni ordinate
@@ -101,6 +101,9 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
     waypoints = places.map((place) => {
         return place[0];
     });
+    // Ordina le coordinate in base alla DISTANZA
+    // (non conteggia il persorso migliore) (how the fuck would I do that)
+    waypoints = orderCoordinates(waypoints);
 
 
     /* Preleva titoli */
@@ -128,50 +131,47 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
             styles: [{ color: pathColor, opacity: 0.8, weight: 4 }]
         },
         language: localStorage.getItem('currentLanguageID'),
+
         // Impostazioni per evitare 'dragging' dei waypoints e 'lines' (percorsi in rosso)
         draggableWaypoints: false,
         addWaypoints: false,
+
         // Classe del Widget (a destra)
-        show: !__isFinal__,
+        show: !__isFinal__, // Se NON è percorso dorato, allora mostra la strada
         containerClassName: !__isFinal__ ? 'itineraryMenuWidget' : 'itineraryMenuWidgetHidden',
+
         // Effettiva creazione (_i è un contatore necessario alla funzione)
         createMarker: function (_i, waypoint) {
+            // Generazione icona in base al completamento
             function getIcon() {
-                let icon;
-
                 if (__isFinal__) {
-                    icon = markerIconGold;
+                    return markerIconGold;
                 } else if (__shouldDrawProgess__ && __howMuchProgressWasMade__ > 0) {
-                    icon = markerIconGreen;
+                    return markerIconGreen;
                 } else {
-                    icon = markerIcon;
+                    return markerIcon;
                 }
-
-                return icon;
             }
 
+            // Genera colore del 'div' con il numero
             function getTooltipClass() {
-                let tooltipClass;
-
                 if (__isFinal__) {
-                    tooltipClass = 'packagesMarkersCustomTooltipsGold';
+                    return 'packagesMarkersCustomTooltipsGold';
                 } else if (__shouldDrawProgess__ && __howMuchProgressWasMade__ > 0) {
-                    tooltipClass = 'packagesMarkersCustomTooltipsGreen';
+                    return 'packagesMarkersCustomTooltipsGreen';
                 } else {
-                    tooltipClass = 'packagesMarkersCustomTooltips';
+                    return 'packagesMarkersCustomTooltips';
                 }
-
-                return tooltipClass;
             }
 
-            // Base marker...
+            // Marker base...
             var marker = L.marker(waypoint.latLng, {
                 draggable: false,
                 icon: getIcon()
             }).on('click', closeOpenMenus);
 
             // ...con Tooltip...
-            marker.bindTooltip(`${_i + 1}`, {
+            marker.bindTooltip(`${_i + 1}`, {   // `${_i + 1}` è l'indice di quale pop-up è
                 permanent: true,
                 direction: 'top',
                 className: getTooltipClass(),
@@ -182,11 +182,13 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
             marker.bindPopup(
                 // Info + bottone extra con testo dinamico
                 bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i]) +
-                '<button class="popupCompletedButton textToSpeak" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
-                (_i == 0 ? informations.menuNames[7] :
-                    _i == waypoints.length - 1 ? informations.menuNames[9] :
-                        informations.menuNames[8]) +
-                '</button>'
+                    '<button class="popupCompletedButton textToSpeak" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
+                    (
+                        _i == 0 ? informations.menuNames[7] :
+                        _i == waypoints.length - 1 ? informations.menuNames[9] :
+                        informations.menuNames[8]
+                    ) +
+                    '</button>'
             );
 
             __howMuchProgressWasMade__--;
@@ -201,10 +203,48 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
 
 
     /* Pop-up "Complimenti hai completato il percorso!" */
-    if (!__isFinal__) {
-        return;
+    if (__isFinal__) { compleatedItineraryCelebration(); }
+}
+
+/* Riordinare le coordinate date... le coordinate */
+function orderCoordinates(coords) {
+    if (coords.length <= 1) {
+        return coords;
     }
 
+    const firstCoord = coords[0];
+    const otherCoords = coords.slice(1);
+
+    otherCoords.sort((a, b) => {
+        const distanceA = calculateDistance(firstCoord, a);
+        const distanceB = calculateDistance(firstCoord, b);
+        return distanceA - distanceB;
+    });
+
+    return [firstCoord, ...otherCoords];
+}
+
+/* Calcola la distanza fra due coordinate usando la scienza B)  (formula di Haversine) */
+function calculateDistance(coord1, coord2) {
+    const [lat1, lon1] = coord1;
+    const [lat2, lon2] = coord2;
+
+    const R = 6371; // Raggio della Terra in chilometri (science motherfuckers)
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // Distanza in chilometri
+
+    return distance;
+}
+
+/* BRAVISSIMO/A!!! */
+function compleatedItineraryCelebration() {
+    /* Controllo classi per animazione pop-up */
     var completedItineraryPopupContainer = document.getElementById("completedItineraryPopupContainer");
     var completedItineraryPopup = document.getElementById("completedItineraryPopup");
     completedItineraryPopup.innerHTML = informations.menuNames[31];
@@ -223,6 +263,7 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
     letThemRain();
 }
 
+/* Rimuove il pacchetto piazzato */
 function removeLaidPackage() {
     // Se non c'è un itinerario piazzato o non stiamo analizzando un itinerario, esci...
     if (!__isPackageLaid__ || !currentPackageRouting) {
@@ -242,7 +283,7 @@ function removeLaidPackage() {
 
 /* Gestisce il completamento di un segmento (dato l'indice del marker) */
 function recreateCompletedRoute(index) {
-    // Resetta il percorso ed esce se il pirla tenta di completare zero tappe (index == 1)
+    // Resetta il percorso ed esce se il pirla (l'utente) tenta di completare zero tappe (index == 1)
     if (index == 1) {
         layPackage(false, false);
         return;
@@ -270,7 +311,7 @@ function recreateCompletedRoute(index) {
             lineOptions: {
                 styles: [{ color: 'green', opacity: 1, weight: 5 }]
             },
-            createMarker: function () { return null; }       // Niente markers
+            createMarker: () => { return null; }       // Niente markers
         }).addTo(map);
     }
 

@@ -1,5 +1,5 @@
 /**
- * Coriandoiliii
+ * Coriandoliii
  */
 
 "use strict";
@@ -65,9 +65,6 @@ function createConfetti() {
     // Viene scelto un colore a caso da 'confettiColors' generando un indice a caso da prelevare dall'array
     confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
 
-    // Imposta una rotazione casuale
-    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-
     // Lo appende nella pagina
     confettiContainer.appendChild(confetti);
 
@@ -75,8 +72,8 @@ function createConfetti() {
     const speed = Math.random() * velocity + slownessFactor;
 
     // Calcolo della distanza che il coriandolo compierà prima di essere eliminato
-    // (Letteralmente 'grandezza-della-pagina' + 'grandezza-del-coriandolo' * 10)
-    const maxDistance = window.innerHeight + (confetti.offsetHeight * 10);
+    // (Letteralmente 'grandezza-della-pagina' + 'grandezza-del-coriandolo')
+    const maxDistance = window.innerHeight + confetti.offsetHeight;
 
     // Tempo di inizio animazione
     let startTime = null;
@@ -91,11 +88,8 @@ function createConfetti() {
         // Calcola lo spostamento in base al progresso e alla velocità del coriandolo
         const newPosition = Math.min(progress / speed, maxDistance);
 
-        // Calcola la rotazione in base al tempo e alla velocità di rotazione
-        const rotation = (currentTime / (speed * 300)) * 360;
-
         // Applica la trasformazione con rotazione e posizione
-        confetti.style.transform = `translateY(${newPosition}px) rotate(${rotation}deg)`;
+        confetti.style.transform = `translateY(${newPosition}px)`;
 
         // Se il coriandolo non è più in vista, eliminalo
         if (newPosition < maxDistance) {
