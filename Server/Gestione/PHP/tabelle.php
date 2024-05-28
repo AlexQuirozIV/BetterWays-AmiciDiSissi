@@ -4,30 +4,6 @@
         <title>Gestione Luoghi e Utenti</title>
     </head>
     <body>
-<!--
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <a class="navbar-brand" href="mainPage.php">GestioneLuoghi</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="mainPage.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="tabelle.php">Tabelle</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="inserimenti.php">Inserimenti</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="viste.php">Visualizzazioni</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="query.php">Interrogazioni</a>
-                    </li>
-                </ul>
-            </div>          
-        </nav>
--->
         <?php
         session_start();
         $conn = pg_connect("host=lab.matthew5pl.net port=5432 dbname=test_bw user=postgres password=dbprova");
