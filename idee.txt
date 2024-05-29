@@ -1,9 +1,8 @@
 Cose da fare:
-- tutorial + help 
-- distanza per riodinare
+- tutorial + help
 - filtri accessibilità
 - renderlo responsive (nuh uh)
-- aggiungere la via francigena
+- aggiungere la via francigena (si, ma la faccio che rimane sempre lì che non fa niente)
 - aggiungere tappe (es. luoghi di culto)
 - notizie
 

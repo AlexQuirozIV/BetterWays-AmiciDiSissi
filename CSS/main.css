@@ -177,8 +177,15 @@ body {
 #slidingImages2 button:hover {
     cursor: pointer;
 }
-
-
+/* Seconda parte della home */
+hr {
+    border: 5px solid #F9BF4D;
+    width: 100rem;
+}
+h1 {
+    color: #F9BF4D;
+    text-align: center;
+}
 /* "Responsive" */
 
 @media only screen and (max-height: 600px), (max-width: 1700px) {
