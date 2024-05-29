@@ -28,23 +28,3 @@ INSERT INTO locations (name, latitude, longitude) VALUES
 ('Chiesa-della-Maddalena', 45.31835179420975, 9.504352611647226),
 ('Biblioteca-Laudense', 45.316260560309566, 9.504173325140222),
 ('Piazza-Castello', 45.3126698, 9.4997774);
-
-CREATE TABLE User (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-    nome Varchar(255) NOT NULL,
-    cognome Varchar(255) NOT NULL,
-    email Varchar(255) NOT NULL,
-    password Varchar(255) NOT NULL,
-);
-
-INSERT INTO User (nome, cognome, email, password) VALUES
-('Mario', 'Rossi', 'mario.rossi@example.com', 'password123'),
-('Luca', 'Bianchi', 'luca.bianchi@example.com', 'password456'),
-('Giulia', 'Verdi', 'giulia.verdi@example.com', 'password789'),
-('Francesca', 'Neri', 'francesca.neri@example.com', 'password321'),
-('Marco', 'Gialli', 'marco.gialli@example.com', 'password654'),
-('Anna', 'Blu', 'anna.blu@example.com', 'password987'),
-('Paolo', 'Grigi', 'paolo.grigi@example.com', 'password741'),
-('Elena', 'Marroni', 'elena.marroni@example.com', 'password852'),
-('Davide', 'Rosa', 'davide.rosa@example.com', 'password963'),
-('Chiara', 'Azzurri', 'chiara.azzurri@example.com', 'password159');
