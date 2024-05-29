@@ -107,7 +107,7 @@ async function fetchInfos(languageToFetch) {
 /* Mette tooltips ai pulsanti */
 function setButtonTooltips() {
     // Prende dall'HTML per classe
-    let buttons = document.getElementsByClassName('isButton');
+    let buttons = document.getElementsByClassName('function-button');
 
     let titles = [
         informations.menuNames[0],  // Espandi / chiudi
@@ -178,14 +178,14 @@ document.body.onload = () => {
 /* Chiudi tutti menu aperti */
 function closeOpenMenus() {
     menus.forEach(menu => {
-        document.getElementById(menu).classList.remove('activeMenu');
+        document.getElementById(menu).classList.remove('menu--active');
     });
     openedMenuId = undefined;   // Svuota flag
 }
 /* Chiusura / apertura menu a click del rispettivo pulsante */
 function handleMenuButtonPress(menu) {
     // Se attivo, allora chiudilo
-    if (menu.classList.contains('activeMenu')) {
+    if (menu.classList.contains('menu--active')) {
         closeOpenMenus();
         return 'yes';   // Restituisce 'yes' (si, fai 'return') al menu che l'ha invocato (altrimenti lo apre comunque)
     }
@@ -196,7 +196,7 @@ function handleMenuButtonPress(menu) {
     }
 }
 function toggleExpandedNavbar() {
-    let navbarContent = document.getElementById('navbarContent');
+    let navbarContent = document.getElementById('navbar--content');
 
     if (__shouldNavbarExpand__) {
         navbarContent.style.height = navbarContent.scrollHeight + 'px';
@@ -210,12 +210,12 @@ function toggleExpandedNavbar() {
 function rate(fullStarsNumber) {
     let rating = '';
     for (let i = 0; i < fullStarsNumber; i++) {
-        rating += '<img src="../img/popup-rating-stars/fullStar.png" class="popupStars">';
+        rating += '<img src="../img/popup-rating-stars/fullStar.png" class="popup--stars">';
     }
     for (let i = 0; i < (5 - fullStarsNumber); i++) {
-        rating += '<img src="../img/popup-rating-stars/emptyStar.png" class="popupStars">';
+        rating += '<img src="../img/popup-rating-stars/emptyStar.png" class="popup--stars">';
     }
-    rating = '<div class="popupRating">' + rating + '</div>';
+    rating = '<div class="popup--rating">' + rating + '</div>';
 
     return rating;
 }
@@ -226,10 +226,10 @@ function bindPopupInfos(title, rating, description, imageLink) {
     if (description === undefined || description == '') { description = 'Descrizione di "' + title + '" inesistente'; }
     if (rating === undefined || rating < 0) { rating = 4; }
 
-    imageLink = '<img src="' + imageLink + '" alt="' + title + '" style="color: white" class="popupImage">';
-    title = '<p class="popupTitle textToSpeak">' + title + '</p>';
+    imageLink = '<img src="' + imageLink + '" alt="' + title + '" style="color: white" class="popup--image">';
+    title = '<p class="popup--title text-to-speak">' + title + '</p>';
     rating = rate(rating);
-    description = '<p class="popupDescription textToSpeak">' + description + '</p>';
+    description = '<p class="popup--description text-to-speak">' + description + '</p>';
 
     let info = title + rating + description + imageLink;
     return info;

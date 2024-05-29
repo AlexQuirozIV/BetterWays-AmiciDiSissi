@@ -5,7 +5,7 @@
 "use strict";
 
 function chiSiamoMenu() {
-    let id = 'chiSiamoMenu';
+    let id = 'chi-siamo-menu';
 
     /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
@@ -22,7 +22,7 @@ function chiSiamoMenu() {
     document.querySelector('#feedbackSection div').textContent = informations.menuNames[23];
 
     /* Attiva il menu */
-    menu.classList.toggle('activeMenu');
+    menu.classList.toggle('menu--active');
 
     /* Update flag */
     openedMenuId = id;

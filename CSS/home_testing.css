@@ -1,0 +1,735 @@
+:root {
+    --highlight-color: #F9BF4D;
+    --base-color: #747474;
+    --dark-base-color: #444444;
+    --standard-border-radius: 1rem;
+}
+
+/** Il font migliore impostato a TUTTO (Arial come backup) */
+* {
+    font-family: 'Comfortaa', Arial;
+}
+
+/** Serve per il testo "on-hover" dei pulsanti */
+abbr {
+    text-decoration: none;
+}
+
+/*! Scrollbar */
+/* Barra (main body) */
+::-webkit-scrollbar {
+    width: 0.65rem;
+}
+
+/* Sfondo barra */
+::-webkit-scrollbar-track {
+    background: #999999;
+}
+
+/* Cursore barra */
+::-webkit-scrollbar-thumb {
+    background: #696969;
+    border-radius: var(--standard-border-radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #757575;
+}
+
+/*! "Main Content" contiene "Titolo" e "Mappa" */
+#main-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+    #title {
+        background-image: url(../img/titleHeader.jpg);
+        text-align: center;
+        color: var(--highlight-color);
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 3.2rem;
+        margin: 0;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        width: 100%;
+        -webkit-text-stroke-color: #f1a918;
+        -webkit-text-stroke-width: 0.06px;
+        letter-spacing: 5px;
+        text-shadow: 2px 2px 5px red;
+    }
+
+    #map {
+        flex: 1;
+        width: 100%;
+    }
+
+/*! POP-UPS */
+/** Formattazione pop-ups */
+.popup--title {
+    margin: 0 !important;   /* "!important" per bypassare quelli di Leaflet */
+    padding-top: 1.5rem;
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.popup--rating {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+    .popup--stars {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+.popup--description {
+    color: white;
+    text-align: left;
+    margin: 0 !important;   /* "!important" per bypassare quelli di Leaflet */
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow: auto;
+    overflow-wrap: break-word;
+    max-height: 9rem;
+    background-color: var(--dark-base-color);
+    border-radius: var(--standard-border-radius);
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.popup--image {
+    width: 9rem;
+    height: 9rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: var(--standard-border-radius);
+    object-fit: cover;
+}
+/* TODO: ADD "popup-completed-button", ecc. */
+
+
+/* TODO: FIX WHOLE SECTION */
+/** Stile pop-up (riconfigurazione di quelli di Leaflet) */
+/* "!important" per sovrascrivere quelli di Leaflet */
+a.leaflet-popup-close-button {
+    color: white !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    background-color: #7c7c7c !important;
+    border-radius: 50% !important;
+    vertical-align: baseline;
+    text-align: center;
+    transition: 0.2s;
+}
+
+a.leaflet-popup-close-button:hover {
+    color: #e6e6e6 !important;
+    background-color: #797979 !important;
+    scale: 110%;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 40px 20px 40px 40px !important;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background-color: #333333 !important;
+}
+
+.leaflet-popup-content {
+    margin: 13px 20px 13px 20px !important;
+    color: white;
+    padding-right: 10px;
+}
+
+
+/*! ACTION-BUTTONS */
+/** Utili (a questa sezione) */
+.action-button {
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--dark-base-color);
+    color: var(--highlight-color);
+    display: flex !important;       /* "!important" per conflitti con "material-symbols-rounded" */
+        align-items: center;
+        justify-content: center;
+    text-decoration: none;
+    border-radius: 50%;
+    font-size: 2rem !important;     /* "!important" per conflitti con "material-symbols-rounded" */
+    position: fixed;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+
+    z-index: 1000;      /* Per mostrarlo sopra la mappa (Leaflet...) */
+}
+    .action-button:hover {
+        transform: translateY(-3%);
+    }
+
+    .action-button:active {
+        transform: translateY(7%);
+    }
+
+
+/** Pulsante aggiunta marker singoli */
+#single-marker-menu--action-button {
+    bottom: 2rem;
+    right: 2rem;
+}
+
+
+/** Pulsante per centrare la mappa */
+#recenter-map--action-button {
+    bottom: 2rem;
+    left: 2rem;
+}
+
+
+/*! NAVBAR */
+#navbar {
+    background-color: var(--dark-base-color);
+
+    position: fixed;
+    top: 7rem;
+    left: 2rem;
+
+    display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-start;
+    
+    border-radius: calc(var(--standard-border-radius) * 1.5);
+
+    z-index: 1000;      /* Per mostrarlo sopra la mappa (Leaflet...) */
+}
+
+#navbar--header {
+    padding: 1rem;
+    border-radius: calc(var(--standard-border-radius) * 1.5);
+
+    background-image: url(../img/titleHeader.jpg);
+    color: var(--highlight-color);
+}
+
+#navbar--content {
+    /* height: 0px; */
+    /* overflow-y: hidden; */
+    height: fit-content;
+
+    padding: 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    display: flex;
+        flex-direction: column;
+
+    border-radius: calc(var(--standard-border-radius) * 1.5);
+
+    background-color: var(--dark-base-color);
+    transition: 0.4s ease-in-out;
+}
+
+.navbar--button-icon {
+    font-size: 1rem;
+    background-color: var(--base-color);
+    color: var(--highlight-color);
+    border-radius: 50%;
+    padding: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+    .navbar--button-icon:hover {
+        background-color: #6d6d6d;
+    }
+
+    .navbar--button-icon:active {
+        transform: translateY(7%);
+        box-shadow: inset 0px 2px 1px 2px rgba(0, 0, 0, 0.1);
+        background-color: #696969;
+    }
+
+.navbar-content--separator {
+    border-color: #222222;
+    border-radius: 999px;
+    border-style: solid;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+
+/*! MENÙ */
+/** Base */
+.menu {
+    top: 7rem;
+    left: 9rem;
+    width: fit-content;
+    height: fit-content;
+    position: fixed;
+
+    padding: 2rem;
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+
+    box-sizing: border-box;
+    border-radius: calc(var(--standard-border-radius) * 2);
+    text-align: center;
+
+    background: rgba(37, 37, 37, 0.83);
+    box-shadow: 3px 5px 0px 2px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(37, 37, 37, 0.5);
+
+    scale: 0;
+    transition: all 0.2s;
+    
+    z-index: 1000;      /* Per mostrarlo sopra la mappa (Leaflet...) */
+}
+    /* Attivazione menù tramite JS */
+    .menu--active {
+        scale: 1 !important;
+    }
+
+
+/** Titoli Menù */
+.menu--titles {
+    display: block;
+    color: var(--highlight-color);
+    text-align: center;
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    -webkit-text-stroke-color: #F1A918;
+    -webkit-text-stroke-width: 1px;
+}
+
+
+/** Dropdowns Menù */
+.menu--dropdowns {
+    width: 100%;
+    height: 2rem;
+    text-align: center;
+    border-radius: 999px;
+    border: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-overflow: ellipsis;
+}
+
+
+/** Pulsanti (function buttons) di alcuni menù */
+.function-buttons-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+    .function-buttons-section--buttons {
+        background-color: rgba(37, 37, 37, 0.5);
+        border: 1px var(--highlight-color) solid;
+        border-radius: 999px;
+
+        text-align: center;
+        line-height: 1.2;
+        color: white;
+        font-size: 0.8rem;
+        font-weight: bold;
+
+        padding: 0.6rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+
+        cursor: pointer;
+        transition: 0.15s ease-in-out;
+    }
+        .function-buttons-section--buttons:hover {
+            background-color: rgba(54, 54, 54, 0.5);
+            border: 1px #f8c55f solid;
+            box-shadow: 0px 0px 10px 1px rgba(249, 191, 77, 0.7);
+        }
+
+        .function-buttons-section--buttons:active {
+            background-color: rgba(60, 60, 60, 0.5);
+            border: 1px var(--base-color) solid;
+            box-shadow: 0px 0px 10px 1px rgba(116, 116, 116, 0.7);
+            transform: translateY(7%);
+        }
+
+
+/** Menù Account */
+/* Uhm... */
+
+
+/** Menù Pacchetti */
+/* Uhm... */
+
+
+/** Menù Notizie */
+/* Uhm... */
+
+
+/** Menù Accessibilità */
+/* Contenuto (titolo escluso) */
+#accessibility-menu--content {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+}
+
+/* Ogni "sezione" con testo-pulsante */
+.accessibility-menu--option-boxes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+    .accessibility-menu--option-boxes--nametags {
+        color: white;
+        font-size: 1.1rem;
+    }
+
+/* Range slider per la prima box (codice formattato, non modificare questa sotto-sezione!) */
+#accessibility-menu--slider {
+    --spazio: 3px;
+    --spessore-linea: 5px;
+    --grandezza-cursore: 15px;
+
+    margin-left: 1rem;
+    margin-right: 1rem;
+    -webkit-appearance :none;
+    -moz-appearance :none;
+    appearance :none;
+    background: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.1s;
+}
+    #accessibility-menu--slider:active,
+    #accessibility-menu--slider:focus-visible{
+    --riempimento: var(--grandezza-cursore)
+    }
+
+    #accessibility-menu--slider[type="range" i]::-webkit-slider-thumb{
+        height: var(--grandezza-cursore);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        box-shadow: 0 0 0 var(--riempimento,var(--spessore-linea)) inset var(--highlight-color);
+        border-image: linear-gradient(90deg,var(--highlight-color) 50%,#ababab 0) 0 1/calc(50% - var(--spessore-linea)/2) 100vw/0 calc(100vw + var(--spazio));
+        -webkit-appearance: none;
+        appearance: none;
+        transition: 0.3s;
+    }
+
+#accessibility-menu--slider--value {
+    color: white;
+    margin-right: 1rem;
+}
+
+#accessibility-menu--slider--reset-button {     /* Eredita da "function-buttons-section--buttons" */
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
+
+/* I vari switch (codice formattato, non modificare questa sotto-sezione!) */
+.accessibility-menu--switches {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+}
+
+.accessibility-menu--switches--inputs { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+    .accessibility-menu--switches--inputs:checked + .accessibility-menu--switch--buttons-graphic {
+        background-color: #f1a918;
+    }
+
+    .accessibility-menu--switches--inputs:checked + .accessibility-menu--switch--buttons-graphic:before {
+        -webkit-transform: translateX(20px);
+        -ms-transform: translateX(20px);
+        transform: translateX(20px);
+    }
+
+.accessibility-menu--switch--buttons-graphic {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 34px;
+    background-color: var(--base-color);
+    -webkit-transition: 0.25s;
+    transition: 0.25s;
+}
+    .accessibility-menu--switch--buttons-graphic:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 4px;
+        top: 4.5px;
+        background-color: #3f3f3f;
+        border-radius: 50%;
+        -webkit-transition: 0.25s;
+        transition: 0.25s;
+    }
+
+
+/** Menù Impostazioni */
+#settings-menu--legend--content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#settings-menu--legend {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+    #settings-menu--legend--header {
+        color: white;
+        margin-bottom: 0.75rem;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .legend--content--sections {
+        display: flex;
+        align-items: center;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+    }
+        .legend--content--sections--nametags {
+            font-weight: bold;
+            margin-left: 1rem;
+        }
+
+        .legend--content--sections:nth-child(1) {
+            color: #FF0000;
+        }
+        
+        .legend--content--sections:nth-child(2) {
+            color: #00FF00;
+        }
+        
+        .legend--content--sections:nth-child(3) {
+            color: var(--highlight-color);
+        }
+
+#settings-menu--language-selection--header {
+    color: white;
+    margin-bottom: 0.75rem;
+    text-align: left;
+    font-weight: bold;
+}
+
+
+/** Menù Chi Siamo? */
+/* Uhm... */
+
+
+/** Menù Marker Singolo */
+/* Uhm... */
+
+
+
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+
+#addSingleMarkerMenu {
+    bottom: 7rem;
+    right: 2rem;
+}
+
+#addSingleMarkerMenu {
+    width: min-content;
+}
+
+#addSingleMarkerMenu select option:nth-child(even), #packagesMenu select option:nth-child(even), #languageSwitch select option:nth-child(even) {
+    background-color: whitesmoke;
+}
+
+#addSingleMarkerMenu div, #packagesMenu div, #chiSiamoMenuTitle {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#packagesMenu div {
+    margin-top: 15px;
+}
+
+#chiSiamoMenu {
+    color: white;
+    text-align: left;
+    width: 60ch;
+}
+
+#chiSiamoMenu span {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+#accountMenu abbr {
+    font-size: 250% !important;
+}
+
+.leaflet-control-zoom {
+    top: 0.4rem !important;
+}
+
+/* Nascondi widget */
+.completedSegmentMenuWidget {
+    scale: 0;
+}
+
+.itineraryMenuWidget {
+    border-radius: 25px !important;
+    background: rgba(37, 37, 37, 0.8) !important;
+    box-shadow: 3px 5px 0px 2px rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(4px) !important;
+    border: 1px solid rgba(37, 37, 37, 0.5) !important;
+    color: white;
+    font-size: 120%;
+}
+
+.itineraryMenuWidgetHidden {
+    scale: 0 !important;
+}
+
+.leaflet-routing-alt h2, h3 {
+    font-size: 110% !important;
+}
+
+.leaflet-routing-alt tr:hover {
+    background-color: rgba(37, 37, 37, 0.8) !important;
+}
+
+.leaflet-routing-alt {
+    margin: 10px !important;
+    margin-right: 12px !important;
+    margin-bottom: 16px !important;
+    padding: 8px !important;
+    padding-right: 6px !important;
+}
+
+/* Tooltip numerazione markers */
+.packagesMarkersCustomTooltips, .packagesMarkersCustomTooltipsGold, .packagesMarkersCustomTooltipsGreen {
+    background-color: #ff4a4a !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 220%;
+    line-height: 100%;
+    font-weight: bold;
+    padding: 3px !important;
+    font-family: "Bebas Neue" , sans-serif;
+}
+
+.packagesMarkersCustomTooltips::before, .packagesMarkersCustomTooltipsGold::before, .packagesMarkersCustomTooltipsGreen::before {
+    scale: 0 !important;
+}
+
+.packagesMarkersCustomTooltipsGold {
+    background-color: #EFAE45 !important;
+}
+
+.packagesMarkersCustomTooltipsGreen {
+    background-color: #23CB00 !important;
+}
+
+.leaflet-control-zoom {
+    border: none !important;
+}
+
+.leaflet-control-zoom a {
+    background-color: var(--dark-base-color) !important;
+    color: var(--highlight-color) !important;
+    border: 1px solid var(--base-color) !important;
+    transition: 0.2s;
+}
+
+.leaflet-control-zoom a:first-child {
+    border-radius: 10px 10px 1px 1px !important;
+}
+
+.leaflet-control-zoom a:last-child {
+    border-radius: 1px 1px 10px 10px !important;
+}
+
+.leaflet-control-zoom a:hover {
+    scale: 1.05;
+}
+
+/* Popup itinerario completato */
+#completedItineraryPopup {
+    z-index: 1000;
+    padding: 1em;
+    background-color: var(--dark-base-color);
+    color: var(--highlight-color);
+    font-weight: bolder;
+    font-size: 150%;
+    border-radius: 200px;
+    transition: 0.3s ease-out;
+    scale: 0;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 3px red;
+    opacity: 95%;
+}
+
+#completedItineraryPopupContainer {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    z-index: 1000;
+    scale: 0;
+    border-radius: 200px;
+}
+
+.isCompletedItineraryPopupShown {
+    scale: 1 !important;
+}
+
+/* Sezione feedback */
+#feedbackSection {
+    margin-top: 40px;
+}
+
+#feedbackSection div {
+    font-size: 120%;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+#feedbackSection a {
+    color: var(--highlight-color);
+    font-style: italic;
+    text-decoration: none;
+    font-size: 110%;
+    font-weight: bold;
+    transition: 0.1s;
+}
+
+#feedbackSection a:hover {
+    color: #ffce6d;
+}
+
+#feedbackSection a:active {
+    color: #f7e2b9;
+}

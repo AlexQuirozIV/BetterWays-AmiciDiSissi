@@ -5,7 +5,7 @@
 "use strict";
 
 function accessibilityMenu() {
-    let id = 'accessibilityMenu';
+    let id = 'accessibility-menu';
 
 
     /* Funzioni necessarie gestione menu */
@@ -19,7 +19,7 @@ function accessibilityMenu() {
 
 
     /* Opzioni */
-    let options = document.getElementsByClassName('accessibility_text');
+    let options = document.getElementsByClassName('accessibility-menu--option-boxes--nametags');
 
     options[0].textContent = informations.menuNames[11];
     options[1].textContent = informations.menuNames[12];
@@ -28,7 +28,7 @@ function accessibilityMenu() {
 
     
     /* Attiva il menu */
-    menu.classList.toggle('activeMenu');
+    menu.classList.toggle('menu--active');
 
     // Update flag
     openedMenuId = id;

@@ -5,7 +5,7 @@
 "use strict";
 
 function accountMenu() {
-    let id = 'accountMenu';
+    let id = 'account-menu';
 
     
     /* Funzioni necessarie gestione menu */
@@ -26,7 +26,7 @@ function accountMenu() {
 
     
     /* Attiva il menu */
-    menu.classList.toggle('activeMenu');
+    menu.classList.toggle('menu--active');
 
     // Update flag
     openedMenuId = id;

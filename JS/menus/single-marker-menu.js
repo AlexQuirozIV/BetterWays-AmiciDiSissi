@@ -4,7 +4,7 @@
 "use strict";
 
 function addSingleMarkerMenu() {
-    let id = 'addSingleMarkerMenu';
+    let id = 'single-marker-menu';
 
     /* Funzioni necessarie gestione menu */
     let menu = document.getElementById(id);
@@ -68,7 +68,7 @@ function addSingleMarkerMenu() {
 
 
     /* Attiva il menu */
-    menu.classList.toggle('activeMenu');
+    menu.classList.toggle('menu--active');
 
     // Update flag
     openedMenuId = id;

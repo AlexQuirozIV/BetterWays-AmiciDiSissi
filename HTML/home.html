@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- Icone -->
-    <link rel="stylesheet" type="text/css" href="../CSS/home.css"> <!-- Stile -->
+
+    <!--TODO: Replace "home_testing.css" with "home.css" -->
+    <link rel="stylesheet" type="text/css" href="../CSS/home_testing.css"> <!-- Stile -->
     <link rel="stylesheet" type="text/css" href="../CSS/confetti.css"> <!-- Coriandoli! -->
     <link rel="icon" type="image/x-icon" href="../img/icona.jpg"> <!-- Logo del sito -->
 
@@ -36,182 +38,192 @@
     <title>Better Ways</title> 
 </head>
 <body style="margin: 0">
-    <h1 id="betterWays_titolo" class="textToSpeak">BETTER WAYS</h1>    
+    <div id="main-content">
+        <h1 id="title" class="text-to-speak">BETTER WAYS</h1>    
     
-    <div id="map"></div> <!-- Contiene la mappa -->
+        <div id="map"></div> <!-- Contiene la mappa -->
+    </div>
 
     <div id="confetti-container"></div>
 
-    <div id="navbarWrapper">    <!--  raggruppa tutti gli elementi della barra di navigazione -->
-        <div id="navbarHeader"> <!-- intestazione della barra di navigazione -->
-            <abbr onclick="toggleExpandedNavbar()" class="isButton navButtonIcon material-symbols-rounded">menu</abbr>
+    <div id="navbar">    <!--  raggruppa tutti gli elementi della barra di navigazione -->
+        <div id="navbar--header"> <!-- intestazione della barra di navigazione -->
+            <abbr onclick="toggleExpandedNavbar()" class="function-button navbar--button-icon material-symbols-rounded">menu</abbr>
         </div>
-        <div id="navbarContent">
-            <hr class="navbarSeparator">    <!-- linea di separazione dei bottoni -->
+        <div id="navbar--content">
+            <hr class="navbar-content--separator">    <!-- linea di separazione dei bottoni -->
 
-            <div class="navButton">
-                <abbr onclick="accountMenu()" class="isButton navButtonIcon material-symbols-rounded">person</abbr>
-            </div>
+            <abbr onclick="accountMenu()" class="function-button navbar--button-icon material-symbols-rounded">person</abbr>
 
-            <hr class="navbarSeparator">
+            <hr class="navbar-content--separator">
 
-            <div class="navButton">
-                <abbr onclick="packagesMenu()" class="isButton navButtonIcon material-symbols-rounded">location_on</abbr>
-            </div>
+            <abbr onclick="packagesMenu()" class="function-button navbar--button-icon material-symbols-rounded">location_on</abbr>
 
-            <hr class="navbarSeparator">
+            <hr class="navbar-content--separator">
 
-            <div class="navButton">
-                <abbr onclick="accessibilityMenu()" class="isButton navButtonIcon material-symbols-rounded">accessibility_new</abbr>
-            </div>
+            <abbr onclick="" class="function-button navbar--button-icon material-symbols-rounded">news</abbr>
 
-            <hr class="navbarSeparator">
+            <hr class="navbar-content--separator">
 
-            <div class="navButton">
-                <abbr onclick="settingsMenu()" class="isButton navButtonIcon material-symbols-rounded">settings</abbr>
-            </div>
+            <abbr onclick="accessibilityMenu()" class="function-button navbar--button-icon material-symbols-rounded">accessibility_new</abbr>
 
-            <hr class="navbarSeparator">
+            <hr class="navbar-content--separator">
 
-            <div class="navButton">
-                <abbr onclick="chiSiamoMenu()" class="isButton navButtonIcon material-symbols-rounded">groups</abbr>
-            </div>
-            
-            <hr class="navbarSeparator">
+            <abbr onclick="settingsMenu()" class="function-button navbar--button-icon material-symbols-rounded">settings</abbr>
 
-            <div class="navButton">
-                <a href="main.html"><span class="isButton navButtonIcon material-symbols-rounded">home</span></a>
-            </div>
-            
-            <hr class="navbarSeparator">
+            <hr class="navbar-content--separator">
+
+            <abbr onclick="chiSiamoMenu()" class="function-button navbar--button-icon material-symbols-rounded">groups</abbr>
+
+            <hr class="navbar-content--separator">
+
+            <a href="main.html"><span class="function-button navbar--button-icon material-symbols-rounded">home</span></a>
+
+            <hr class="navbar-content--separator">
 
         </div>
     </div>
 
     <!-- Account -->
-    <div id="accountMenu">
-        <div id="accountMenuTitle" class="textToSpeak"></div>
-        <abbr class="material-symbols-rounded navButtonIcon isButton">account_circle</abbr>
-        <div id="accountMenuButtonsContainer">
-            <button class="accountMenuButtons textToSpeak"></button>
-            <button class="accountMenuButtons textToSpeak"></button>
+    <div id="account-menu" class="menu">
+        <div class="menu--titles text-to-speak"></div>
+        <abbr class="material-symbols-rounded navbar--button-icon function-button">account_circle</abbr>
+        <!-- Button sections -->
+        <div class="function-buttons-section">
+            <button class="function-buttons-section--buttons text-to-speak"></button>
+            <button class="function-buttons-section--buttons text-to-speak"></button>
         </div>
     </div>
 
     <!-- Packages -->
-    <div id="packagesMenu">
-        <span class="textToSpeak"></span>
-        <select>
-            <!-- Options -->
+    <div id="packages-menu" class="menu">
+        <span class="menu--titles text-to-speak"></span>
+        <select class="menu--dropdowns">
+           <!-- Options -->
         </select>
-        <div>
-            <button class="textToSpeak"></button>
-            <button class="textToSpeak"></button>
+        <!-- Button sections -->
+        <div class="function-buttons-section">
+            <button class="function-buttons-section--buttons text-to-speak"></button>
+            <button class="function-buttons-section--buttons text-to-speak"></button>
         </div>
     </div>
 
+    <!-- News -->
+    <div id="packages-menu" class="menu">
+        <span class="menu--titles text-to-speak"></span>
+        
+    </div>
+
     <!-- Accessibility -->
-    <div id="accessibilityMenu">
-        <div class="textToSpeak"></div>
-        <div id="accessibilityMenuContent">
-            <!-- testo in grassetto -->
-            <div class="accessibilityMenuContentsContainer"> 
-                <span class="accessibility_text textToSpeak"></span>
-                <input type="range" id="fontSlider" min="50" max="150" value="100">
-                <span id="sliderValue">100%</span>
-                <button id="resetButton" class="material-symbols-rounded">restart_alt</button>
+    <div id="accessibility-menu" class="menu">
+        <div class="menu--titles text-to-speak"></div>
+        <div id="accessibility-menu--content">
+            <!-- Testo in grassetto -->
+            <div class="accessibility-menu--option-boxes"> 
+                <span class="accessibility-menu--option-boxes--nametags text-to-speak"></span>
+                <input type="range" id="accessibility-menu--slider" min="50" max="150" value="100">
+                <span id="accessibility-menu--slider--value">100%</span>
+                <button id="accessibility-menu--slider--reset-button" class="function-buttons-section--buttons material-symbols-rounded">restart_alt</button>
             </div>
 
-            <!-- contrasto colori -->
-            <div class="accessibilityMenuContentsContainer">
-                <span class="accessibility_text textToSpeak"></span>
-                <label class="accessibilityMenuSwitch">
-                    <input type="checkbox" id="contrastSlider">
-                    <span class="accessibilityMenuSlider"></span>
+            <!-- Contrasto colori -->
+            <div class="accessibility-menu--option-boxes">
+                <span class="accessibility-menu--option-boxes--nametags text-to-speak"></span>
+                <label class="accessibility-menu--switches">
+                    <input type="checkbox" id="accessibility-menu--switches--contrast" class="accessibility-menu--switches--inputs">
+                    <span class="accessibility-menu--switch--buttons-graphic"></span>
                 </label>
             </div>
 
-            <!-- bianco e nero -->
-            <div class="accessibilityMenuContentsContainer">
-                <span class="accessibility_text textToSpeak"></span>
-                <label class="accessibilityMenuSwitch">
-                    <input type="checkbox" id="blackAndWhiteSlider">
-                    <span class="accessibilityMenuSlider"></span>
+            <!-- Bianco & nero -->
+            <div class="accessibility-menu--option-boxes">
+                <span class="accessibility-menu--option-boxes--nametags text-to-speak"></span>
+                <label class="accessibility-menu--switches">
+                    <input type="checkbox" id="accessibility-menu--switches--black-and-white" class="accessibility-menu--switches--inputs">
+                    <span class="accessibility-menu--switch--buttons-graphic"></span>
                 </label>
             </div>
             
-            <!-- text-to-speech -->
-            <div class="accessibilityMenuContentsContainer">
-                <span class="accessibility_text textToSpeak"></span>
-                <label class="accessibilityMenuSwitch">
-                    <input type="checkbox" id="textToSpeechSlider">
-                    <span class="accessibilityMenuSlider"></span>
+            <!-- Text-to-speech -->
+            <div class="accessibility-menu--option-boxes">
+                <span class="accessibility-menu--option-boxes--nametags text-to-speak"></span>
+                <label class="accessibility-menu--switches">
+                    <input type="checkbox" id="accessibility-menu--switches--text-to-speech" class="accessibility-menu--switches--inputs">
+                    <span class="accessibility-menu--switch--buttons-graphic"></span>
                 </label>
             </div>
         </div>
     </div>
 
     <!-- Settings -->
-    <div id="settingsMenu">
-        <div class="textToSpeak"></div>
-        <div id="legend">
-            <div id="legendTitle" class="textToSpeak"></div>
-            <div id="legendContent">
-                <div>
-                    <span class="material-symbols-rounded legendContentIcon">location_on</span>
-                    <span class="legendContentText textToSpeak"></span>
+    <div id="settings-menu" class="menu">
+        <div class="menu--titles text-to-speak">DUMMY TEXT</div>
+        <div id="settings-menu--legend">
+            <div id="settings-menu--legend--header" class="text-to-speak">DUMMY TEXT</div>
+            <div id="settings-menu--legend--content">
+                <div class="legend--content--sections">
+                    <span class="legend--content--sections--icons     material-symbols-rounded">location_on</span>
+                    <span class="legend--content--sections--nametags  text-to-speak">DUMMY TEXT</span>
                 </div>
-                <div>
-                    <span class="material-symbols-rounded legendContentIcon">location_on</span>
-                    <span class="legendContentText textToSpeak"></span>
+                <div class="legend--content--sections">
+                    <span class="legend--content--sections--icons     material-symbols-rounded">location_on</span>
+                    <span class="legend--content--sections--nametags  text-to-speak">DUMMY TEXT</span>
                 </div>
-                <div>
-                    <span class="material-symbols-rounded legendContentIcon">location_on</span>
-                    <span class="legendContentText textToSpeak"></span>
+                <div class="legend--content--sections">
+                    <span class="legend--content--sections--icons     material-symbols-rounded">location_on</span>
+                    <span class="legend--content--sections--nametags  text-to-speak">DUMMY TEXT</span>
                 </div>
             </div>
         </div>
-        <div id="languageSwitch">
-            <span class="textToSpeak"></span>
-            <select>
+        <div id="settings-menu--language-selection">
+            <div id="settings-menu--language-selection--header" class="text-to-speak">DUMMY TEXT</div>
+            <select class="menu--dropdowns">
                 <!-- Options -->
+                <option value="DUMMY TEXT">DUMMY TEXT</option>
+                <option value="DUMMY TEXT">DUMMY TEXT</option>
+                <option value="DUMMY TEXT">DUMMY TEXT</option>
             </select>
         </div>
     </div>
 
     <!-- Chi Siamo? -->
-    <div id="chiSiamoMenu">
-        <div id="chiSiamoMenuTitle" class="textToSpeak"></div>
-        <span class="textToSpeak"></span>
-        <div id="feedbackSection">
-            <div class="textToSpeak"></div>
-            <a class="textToSpeak" href="mailto:BetterWays.feedback@gmail.com">BetterWays.feedback@gmail.com</a>
+    <div id="chi-siamo-menu" class="menu">
+        <div id="chi-siamo-menu--title" class="text-to-speak"></div>
+        <span id="chi-siamo-menu--presentation" class="text-to-speak"></span>
+        <div id="chi-siamo-menu--feedback-section">
+            <div id="chi-siamo-menu--feedback-section--header" class="text-to-speak"></div>
+            <a id="chi-siamo-menu--instagram" class="text-to-speak" href="https://www.instagram.com/betterways_lodi/">
+                BetterWays_lodi
+            </a>
+            <a id="chi-siamo-menu--feedback-section--email" class="text-to-speak" href="mailto:BetterWays.feedback@gmail.com">
+                BetterWays.feedback@gmail.com
+            </a>
         </div>
     </div>
 
     <!-- Single Marker -->
-    <div id="addSingleMarkerMenu">
-        <span class="textToSpeak"></span>
-        <select>
+    <div id="single-marker-menu" class="menu">
+        <span id="single-marker-menu--title" class="text-to-speak"></span>
+        <select class="menu--dropdowns">
             <!-- Options -->
         </select>
-        <div>
-            <button class="textToSpeak"></button>
-            <button class="textToSpeak"></button>
-            <button class="textToSpeak"></button>
-            <button class="textToSpeak"></button>
+        <div class="function-buttons-section">
+            <button class="function-buttons-section--buttons text-to-speak"></button>
+            <button class="function-buttons-section--buttons text-to-speak"></button>
+            <button class="function-buttons-section--buttons text-to-speak"></button>
+            <button class="function-buttons-section--buttons text-to-speak"></button>
         </div>
     </div>
 
     <!-- Ri-centra mappa -->
-    <span onclick="recenterMap()" id="recenterMap-btn" class="isButton material-symbols-rounded">recenter</span>
+    <span onclick="recenterMap()" id="recenter-map--action-button" class="action-button material-symbols-rounded">recenter</span>
 
-    <!-- addSingleMarkerMenu button -->
-    <span onclick="addSingleMarkerMenu()" id="addMarker-btn" class="isButton material-symbols-rounded">add_location</span>
+    <!-- Pulsante aggiunta marker singoli -->
+    <span onclick="addSingleMarkerMenu()" id="single-marker-menu--action-button" class="action-button material-symbols-rounded">add_location</span>
 
     <!-- Pop-up itinerario completato -->
-    <div id="completedItineraryPopupContainer">
-        <div id="completedItineraryPopup" class="textToSpeak"></div>
+    <div id="completed-itinerary">
+        <div id="completed-itinerary--popup" class="text-to-speak"></div>
     </div>
 
 

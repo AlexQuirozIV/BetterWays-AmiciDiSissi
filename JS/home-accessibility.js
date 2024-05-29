@@ -4,16 +4,15 @@
 
 "use strict";
 
-const boldSlider = document.getElementById('boldSlider');
-const blackAndWhiteSlider = document.getElementById('blackAndWhiteSlider');
-const contrastSlider = document.getElementById('contrastSlider');
-const textToSpeechSlider = document.getElementById('textToSpeechSlider');
+const contrastSlider = document.getElementById('accessibility-menu--switches--contrast');
+const blackAndWhiteSlider = document.getElementById('accessibility-menu--switches--black-and-white');
+const textToSpeechSlider = document.getElementById('accessibility-menu--switches--text-to-speech');
 
 //! Funzione per mettere il grassetto
 const originalFontSizes = new Map();
 
 function adjustFontSize(percentage) {
-    document.querySelectorAll('.textToSpeak:not(#betterWays_titolo)').forEach(element => {
+    document.querySelectorAll('.text-to-speak:not(#title)').forEach(element => {
         if (!originalFontSizes.has(element)) {
             originalFontSizes.set(element, window.getComputedStyle(element).fontSize);
         }
@@ -24,7 +23,7 @@ function adjustFontSize(percentage) {
 }
 
 function resetFontSize() {
-    document.querySelectorAll('*:not(html):not(#betterWays_titolo)').forEach(element => {
+    document.querySelectorAll('*:not(html):not(#title)').forEach(element => {
         if (originalFontSizes.has(element)) {
             element.style.fontSize = originalFontSizes.get(element);
         }
@@ -77,7 +76,7 @@ var __isSpeechInitiated__ = false;
 
 //* Aggiunge il text-to-speech
 function addTextToSpeechListeners() {
-    var textElements = document.querySelectorAll('.textToSpeak');
+    var textElements = document.querySelectorAll('.text-to-speak');
     textElements.forEach(function(element) {
         element.addEventListener('mouseover', function() {
             if (textToSpeechSlider.checked && !__isSpeechInitiated__) {
@@ -103,10 +102,10 @@ var observer = new MutationObserver(function(mutations) {
                 return node.nodeType === 1 && hasVisibleText(node);
             });
 
-            // Aggiunge 'textToSpeak' agli elementi con testo visibile E classe 'leaflet-routing-alt'
+            // Aggiunge 'text-to-speak' agli elementi con testo visibile E classe 'leaflet-routing-alt'
             addedNodes.forEach(function(node) {
                 if (node.classList.contains('leaflet-routing-alt')) {
-                    addClassToElementAndChildren(node, 'textToSpeak');
+                    addClassToElementAndChildren(node, 'text-to-speak');
                 }
             });
 
@@ -159,9 +158,9 @@ function stopSpeech() {
 
 //! Listeners per i toggles
 //* Funzione per sentire il toggle di 'boldSlider'
-const slider = document.getElementById('fontSlider');
-const sliderValue = document.getElementById('sliderValue');
-const resetButton = document.getElementById('resetButton');
+const slider = document.getElementById('accessibility-menu--slider');
+const sliderValue = document.getElementById('accessibility-menu--slider--value');
+const resetButton = document.getElementById('accessibility-menu--slider--reset-button');
 
 slider.addEventListener('input', (event) => {
     sliderValue.textContent = `${event.target.value}%`;

@@ -13,7 +13,7 @@ var completedItinerarySegment;      // Contiene il 'L.route' della sezione compl
 
 
 function packagesMenu() {
-    let id = 'packagesMenu';
+    let id = 'packages-menu';
 
 
     /* Funzioni necessarie gestione menu */
@@ -66,7 +66,7 @@ function packagesMenu() {
 
 
     /* Attiva il menu */
-    menu.classList.toggle('activeMenu');
+    menu.classList.toggle('menu--active');
 
     // Update flag
     openedMenuId = id;
@@ -182,7 +182,7 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
             marker.bindPopup(
                 // Info + bottone extra con testo dinamico
                 bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i]) +
-                    '<button class="popupCompletedButton textToSpeak" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
+                    '<button class="popup--completed-button text-to-speak" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
                     (
                         _i == 0 ? informations.menuNames[7] :
                         _i == waypoints.length - 1 ? informations.menuNames[9] :
@@ -245,8 +245,8 @@ function calculateDistance(coord1, coord2) {
 /* BRAVISSIMO/A!!! */
 function compleatedItineraryCelebration() {
     /* Controllo classi per animazione pop-up */
-    var completedItineraryPopupContainer = document.getElementById("completedItineraryPopupContainer");
-    var completedItineraryPopup = document.getElementById("completedItineraryPopup");
+    var completedItineraryPopupContainer = document.getElementById("completed-itinerary");
+    var completedItineraryPopup = document.getElementById("completed-itinerary--popup");
     completedItineraryPopup.innerHTML = informations.menuNames[31];
 
     completedItineraryPopupContainer.classList.toggle('isCompletedItineraryPopupShown');

@@ -24,7 +24,7 @@ const languagesListID = [
 
 
 function settingsMenu() {
-    let id = 'settingsMenu';
+    let id = 'settings-menu';
 
 
     /* Funzioni necessarie gestione menu */
@@ -38,16 +38,16 @@ function settingsMenu() {
 
 
     /* Legenda */
-    document.getElementById('legendTitle').textContent = informations.menuNames[16];
+    document.getElementById('settings-menu--legend--header').textContent = informations.menuNames[16];
 
-    let legendContentTexts = document.getElementsByClassName('legendContentText');
+    let legendContentTexts = document.getElementsByClassName('legend--content--sections--nametags');
     for (let i = 0; i < legendContentTexts.length; i++) {
         let legendContentText = legendContentTexts[i];
         legendContentText.textContent = informations.menuNames[i + 17];
     }
 
     // Sezione 'cambia lingua'
-    let languageSwitch = document.getElementById('languageSwitch');
+    let languageSwitch = document.getElementById('settings-menu--language-selection');
     languageSwitch.querySelector('span').textContent = informations.menuNames[20];
 
     /* Opzioni per il select (lista delle lingue da 'languagesList') */
@@ -80,7 +80,7 @@ function settingsMenu() {
 
 
     /* Attiva il menu */
-    menu.classList.toggle('activeMenu');
+    menu.classList.toggle('menu--active');
 
     // Controlla cambiamento lingua
     languageChangeListener();
