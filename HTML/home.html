@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- Icone -->
 
-    <!--TODO: Replace "home_testing.css" with "home.css" -->
-    <link rel="stylesheet" type="text/css" href="../CSS/home_testing.css"> <!-- Stile -->
+    <link rel="stylesheet" type="text/css" href="../CSS/home.css"> <!-- Stile -->
     <link rel="stylesheet" type="text/css" href="../CSS/confetti.css"> <!-- Coriandoli! -->
     <link rel="icon" type="image/x-icon" href="../img/icona.jpg"> <!-- Logo del sito -->
 
@@ -186,13 +185,27 @@
     <!-- Chi Siamo? -->
     <div id="chi-siamo-menu" class="menu">
         <div id="chi-siamo-menu--title" class="menu--titles text-to-speak"></div>
+
         <span id="chi-siamo-menu--presentation" class="text-to-speak"></span>
+        
         <div id="chi-siamo-menu--feedback-section">
             <div id="chi-siamo-menu--feedback-section--header" class="text-to-speak"></div>
-            <a id="chi-siamo-menu--instagram" class="text-to-speak" href="https://www.instagram.com/betterways_lodi/"></a>
-            <a id="chi-siamo-menu--feedback-section--email" class="text-to-speak" href="mailto:BetterWays.feedback@gmail.com">
-                BetterWays.feedback@gmail.com
-            </a>
+            <div id="chi-siamo-menu--feedback-section--instagram" class="text-to-speak">
+                <span>
+                    <!-- "Seguici su Instagram: " -->
+                </span>
+                <a href="https://www.instagram.com/betterways_lodi/">
+                    BetterWays_lodi
+                </a>
+            </div>
+            <div id="chi-siamo-menu--feedback-section--email" class="text-to-speak">
+                <span>
+                    <!-- "E-mail: " -->
+                </span>
+                <a href="mailto:BetterWays.feedback@gmail.com">
+                    BetterWays.feedback@gmail.com
+                </a>
+            </div>
         </div>
     </div>
 
@@ -214,7 +227,9 @@
     <span onclick="recenterMap()" id="recenter-map--action-button" class="action-button material-symbols-rounded">recenter</span>
 
     <!-- Pulsante aggiunta marker singoli -->
-    <span onclick="addSingleMarkerMenu()" id="single-marker-menu--action-button" class="action-button material-symbols-rounded">add_location</span>
+    <span onclick="addSingleMarkerMenu()" id="single-marker-menu--action-button" class="action-button material-symbols-rounded">
+        add_location
+    </span>
 
     <!-- Pop-up itinerario completato -->
     <div id="completed-itinerary">

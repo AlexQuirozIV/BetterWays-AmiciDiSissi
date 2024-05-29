@@ -5,7 +5,7 @@
         "Konto",
             "Anmelden",
             "Registrieren",
-        
+
         "Routen",
             "Starten",
             "Entfernen",
@@ -13,36 +13,39 @@
             "Starten",
             "Erreicht",
             "Abgeschlossen!",
-        
+
+        "Nachrichten",
+
         "Barrierefreiheit",
             "Text vergrößern",
             "Farbkontrast",
-            "Schwarz & Weiß",
+            "Schwarz-Weiß",
             "Text-zu-Sprache",
-        
+
         "Einstellungen",
             "Legende",
-            " = Ziel nicht erreicht",
-            " = Ziel erreicht",
+            " = Nicht erreichter Schritt",
+            " = Erreichter Schritt",
             " = Route abgeschlossen",
             "Sprache",
-        
+
         "Unser Team",
-            "Willkommen in der Welt von <i>Better Ways</i>! Wir sind fünf Schüler der Klasse 4ID des IIS A.Volta in Lodi. <br>Unsere Namen sind: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti und Linda Tessadori. <br>Unsere Website, <i>Better Ways</i>, konzentriert sich auf den Tourismus in Lodi, um die Schönheiten dieser kleinen Stadt zu entdecken. <br>Darüber hinaus setzen wir uns dafür ein, dass unsere Website nach den Standards der <i>Barrierefreiheit</i> gestaltet und entwickelt wird, um allen Besuchern ein inklusives Erlebnis zu bieten.",
+            "Willkommen in der Welt von <i>Better Ways</i>! Wir sind fünf Schüler der Klasse 4ID des IIS A.Volta in Lodi. <br>Unsere Namen sind: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti und Linda Tessadori. <br>Unsere Website, <i>Better Ways</i>, konzentriert sich auf den Tourismus in Lodi, um die Wunder dieser kleinen Stadt zu entdecken. <br>Zusätzlich bemühen wir uns, sicherzustellen, dass unsere Website nach den Standards der Barrierefreiheit gestaltet und entwickelt wird, um allen Besuchern ein inklusives Erlebnis zu bieten.",
+            "Kontaktieren Sie uns!",
             "Folge uns auf Instagram: ",
-            "Sie können uns kontaktieren oder ein Feedback per E-Mail senden",
+            "E-Mail: ",
 
         "Startseite",
-        
+
         "Karte zentrieren",
-        
+
         "Einzelner Marker",
             "Hinzufügen",
             "Entfernen",
             "Alle hinzufügen",
             "Alle entfernen",
 
-        "Reiseroute abgeschlossen!"
+        "Route abgeschlossen!"
     ],
 
     "placesNames": {

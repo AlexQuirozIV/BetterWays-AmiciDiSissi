@@ -138,7 +138,7 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
 
         // Classe del Widget (a destra)
         show: !__isFinal__, // Se NON è percorso dorato, allora mostra la strada
-        containerClassName: !__isFinal__ ? 'itineraryMenuWidget' : 'itineraryMenuWidgetHidden',
+        containerClassName: !__isFinal__ ? 'widget--itinerary' : 'widget--itinerary--hidden',
 
         // Effettiva creazione (_i è un contatore necessario alla funzione)
         createMarker: function (_i, waypoint) {
@@ -156,11 +156,11 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
             // Genera colore del 'div' con il numero
             function getTooltipClass() {
                 if (__isFinal__) {
-                    return 'packagesMarkersCustomTooltipsGold';
+                    return 'custom-colored-tooltips custom-colored-tooltips--gold';
                 } else if (__shouldDrawProgess__ && __howMuchProgressWasMade__ > 0) {
-                    return 'packagesMarkersCustomTooltipsGreen';
+                    return 'custom-colored-tooltips custom-colored-tooltips--green';
                 } else {
-                    return 'packagesMarkersCustomTooltips';
+                    return 'custom-colored-tooltips';
                 }
             }
 
@@ -175,14 +175,14 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
                 permanent: true,
                 direction: 'top',
                 className: getTooltipClass(),
-                offset: [-11, -16]
+                offset: [-11, -18]
             }).openTooltip();
 
             // ...e Pop-up
             marker.bindPopup(
                 // Info + bottone extra con testo dinamico
                 bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i]) +
-                    '<button class="popup--completed-button text-to-speak" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
+                    '<button class="function-buttons-section--buttons popup--completed-button text-to-speak" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
                     (
                         _i == 0 ? informations.menuNames[7] :
                         _i == waypoints.length - 1 ? informations.menuNames[9] :
@@ -247,16 +247,16 @@ function compleatedItineraryCelebration() {
     /* Controllo classi per animazione pop-up */
     var completedItineraryPopupContainer = document.getElementById("completed-itinerary");
     var completedItineraryPopup = document.getElementById("completed-itinerary--popup");
-    completedItineraryPopup.innerHTML = informations.menuNames[31];
+    completedItineraryPopup.innerHTML = informations.menuNames[34];
 
-    completedItineraryPopupContainer.classList.toggle('isCompletedItineraryPopupShown');
+    completedItineraryPopupContainer.classList.toggle('completed-itinerary--popup--shown');
     setTimeout(() => {
-        completedItineraryPopupContainer.classList.toggle('isCompletedItineraryPopupShown');
+        completedItineraryPopupContainer.classList.toggle('completed-itinerary--popup--shown');
     }, 2300);
     
-    completedItineraryPopup.classList.toggle('isCompletedItineraryPopupShown');
+    completedItineraryPopup.classList.toggle('completed-itinerary--popup--shown');
     setTimeout(() => {
-        completedItineraryPopup.classList.toggle('isCompletedItineraryPopupShown');
+        completedItineraryPopup.classList.toggle('completed-itinerary--popup--shown');
     }, 2000);
 
     /* Coriandoli */
@@ -307,7 +307,7 @@ function recreateCompletedRoute(index) {
             draggableWaypoints: false,
             addWaypoints: false,
             show: false,    // Niente Widget
-            containerClassName: 'completedSegmentMenuWidget',
+            containerClassName: 'widget--completed-segment',
             lineOptions: {
                 styles: [{ color: 'green', opacity: 1, weight: 5 }]
             },

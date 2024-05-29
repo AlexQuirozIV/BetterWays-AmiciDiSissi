@@ -169,7 +169,7 @@ document.body.onload = () => {
         toggleExpandedNavbar();
     });
 
-    //TODO: Rimuovere questo quando non servirà più (cancellare "DEBUGGING")
+    //TODO: Rimuovere questo quando non servirà più (cancellare "DEBUGGING.js")
     coordinatesOnClick();
 };
 

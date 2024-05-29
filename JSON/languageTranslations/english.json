@@ -14,8 +14,10 @@
             "Reached up",
             "Completed!",
 
+        "News",
+
         "Accessibility",
-            "Bigger font",
+            "Font size",
             "Color contrast",
             "Black & white",
             "Text-to-speech",
@@ -29,8 +31,9 @@
 
         "Our Team",
             "Welcome to the world of <i>Better Ways</i>! We are five students from the IIS A.Volta highschool of Lodi. <br>We are: Silvia Bollani, Alessandro Marano, Alexandru Quiroz, Matteo Scaratti and Linda Tessadori. <br>Our website, <i>Better Ways</i>, focuses on the tourism in the city of Lodi, to discover the wonders this small city has to offer. <br>Furthermore, we commit to ensuring that our website is designed and developed with <i>accessibility</i> standards in mind, in order to provide an inclusive experience to all visitors.",
+            "Contact us!",
             "Follow us on Instagram: ",
-            "You can contact us or send a feedback to the mail",
+            "E-mail: ",
 
         "Home",
 

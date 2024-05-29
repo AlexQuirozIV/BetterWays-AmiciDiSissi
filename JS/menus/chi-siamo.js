@@ -18,11 +18,14 @@ function chiSiamoMenu() {
     /* La nostra bellissima presentazione */
     document.getElementById('chi-siamo-menu--presentation').innerHTML = informations.menuNames[23];
 
-    /* Instagram */
-    document.getElementById('chi-siamo-menu--instagram').textContent = informations.menuNames[24];
+    /* Header */
+    document.getElementById('chi-siamo-menu--feedback-section--header').textContent = informations.menuNames[24];
 
-    /* E-mail */
-    document.getElementById('chi-siamo-menu--feedback-section--header').textContent = informations.menuNames[25];
+    /* Instagram */
+    document.querySelector('#chi-siamo-menu--feedback-section--instagram > span').textContent = informations.menuNames[25];
+
+    /* Instagram */
+    document.querySelector('#chi-siamo-menu--feedback-section--email > span').textContent = informations.menuNames[26];
 
     /* Attiva il menu */
     menu.classList.toggle('menu--active');

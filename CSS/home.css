@@ -15,7 +15,7 @@ abbr {
     text-decoration: none;
 }
 
-/*! Scrollbar */
+/*! Scrollbar (kinda janky) */
 /* Barra (main body) */
 ::-webkit-scrollbar {
     width: 0.65rem;
@@ -29,7 +29,6 @@ abbr {
 /* Cursore barra */
 ::-webkit-scrollbar-thumb {
     background: #696969;
-    border-radius: var(--standard-border-radius);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -62,92 +61,6 @@ abbr {
         flex: 1;
         width: 100%;
     }
-
-/*! POP-UPS */
-/** Formattazione pop-ups */
-.popup--title {
-    margin: 0 !important;   /* "!important" per bypassare quelli di Leaflet */
-    padding-top: 1.5rem;
-    font-size: 1.4rem;
-    text-align: center;
-    font-weight: bold;
-    color: white;
-}
-
-.popup--rating {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-}
-    .popup--stars {
-        height: 2.5rem;
-        width: 2.5rem;
-    }
-
-.popup--description {
-    color: white;
-    text-align: left;
-    margin: 0 !important;   /* "!important" per bypassare quelli di Leaflet */
-    font-size: 1rem;
-    line-height: 1.6;
-    overflow: auto;
-    overflow-wrap: break-word;
-    max-height: 9rem;
-    background-color: var(--dark-base-color);
-    border-radius: var(--standard-border-radius);
-    padding: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-.popup--image {
-    width: 9rem;
-    height: 9rem;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
-    border-radius: var(--standard-border-radius);
-    object-fit: cover;
-}
-/* TODO: ADD "popup-completed-button", ecc. */
-
-
-/* TODO: FIX WHOLE SECTION */
-/** Stile pop-up (riconfigurazione di quelli di Leaflet) */
-/* "!important" per sovrascrivere quelli di Leaflet */
-a.leaflet-popup-close-button {
-    color: white !important;
-    top: 1rem !important;
-    right: 1rem !important;
-    background-color: #7c7c7c !important;
-    border-radius: 50% !important;
-    vertical-align: baseline;
-    text-align: center;
-    transition: 0.2s;
-}
-
-a.leaflet-popup-close-button:hover {
-    color: #e6e6e6 !important;
-    background-color: #797979 !important;
-    scale: 110%;
-}
-
-.leaflet-popup-content-wrapper {
-    border-radius: 40px 20px 40px 40px !important;
-}
-
-.leaflet-popup-content-wrapper, .leaflet-popup-tip {
-    background-color: #333333 !important;
-}
-
-.leaflet-popup-content {
-    margin: 13px 20px 13px 20px !important;
-    color: white;
-    padding-right: 10px;
-}
 
 
 /*! ACTION-BUTTONS */
@@ -199,6 +112,8 @@ a.leaflet-popup-close-button:hover {
     position: fixed;
     top: 7rem;
     left: 2rem;
+
+    overflow-y: hidden;
 
     display: flex;
         flex-direction: column;
@@ -303,6 +218,7 @@ a.leaflet-popup-close-button:hover {
     color: var(--highlight-color);
     text-align: center;
     width: 100%;
+    margin-bottom: 1rem;
     font-size: 1.3rem;
     font-weight: bold;
     -webkit-text-stroke-color: #F1A918;
@@ -322,6 +238,18 @@ a.leaflet-popup-close-button:hover {
     cursor: pointer;
     text-overflow: ellipsis;
 }
+    .menu--dropdowns > option:nth-child(even) {
+        background-color: whitesmoke;
+    }
+    /*
+        ~ Quick Note ~
+
+        La difference nell'usare ">" o meno è che ">" prende
+        soltanto i 'children' direttamente sotto l'elemento
+        'parent', mentre lasciare " " prenderà tutti gli 
+        elementi sottostanti di quel tipo, anche se "nested"
+        in altri elementi più profondamente.
+    */
 
 
 /** Pulsanti (function buttons) di alcuni menù */
@@ -329,6 +257,7 @@ a.leaflet-popup-close-button:hover {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 1rem;
 }
     .function-buttons-section--buttons {
         background-color: rgba(37, 37, 37, 0.5);
@@ -378,7 +307,6 @@ a.leaflet-popup-close-button:hover {
 /* Contenuto (titolo escluso) */
 #accessibility-menu--content {
     display: flex;
-    margin-top: 1rem;
     flex-direction: column;
 }
 
@@ -496,7 +424,6 @@ a.leaflet-popup-close-button:hover {
 }
 
 #settings-menu--legend {
-    margin-top: 1rem;
     margin-bottom: 1rem;
 }
     #settings-menu--legend--header {
@@ -514,7 +441,6 @@ a.leaflet-popup-close-button:hover {
     }
         .legend--content--sections--nametags {
             font-weight: bold;
-            margin-left: 1rem;
         }
 
         .legend--content--sections:nth-child(1) {
@@ -552,6 +478,46 @@ a.leaflet-popup-close-button:hover {
     margin-top: 2rem;
 }
 
+/* Scritta "Seguici su Instagram: " */
+#chi-siamo-menu--feedback-section--instagram {
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+#chi-siamo-menu--feedback-section--instagram > span{
+    color: white;
+}
+
+/* Link Instagram */
+#chi-siamo-menu--feedback-section--instagram > a {
+    background: linear-gradient(
+        to right,
+        #789aff,
+        #a47aff,
+        #dd5ac3,
+        #E96743,
+        #FCAD46
+    );
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bolder;
+    margin-bottom: 1rem;
+    filter: contrast(200%);
+
+    transition: 0.2s;
+}
+
+/* Scritta "E-mail: " */
+#chi-siamo-menu--feedback-section--email > span {
+    color: white;
+}
+
+/* Link E-mail */
+#chi-siamo-menu--feedback-section--email > a {
+    color: var(--highlight-color);
+    text-decoration: none;
+}
+
 
 /** Menù Marker Singolo */
 #single-marker-menu {
@@ -563,60 +529,153 @@ a.leaflet-popup-close-button:hover {
 }
 
 
-
-
-/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-
-
-#addSingleMarkerMenu {
-    bottom: 7rem;
-    right: 2rem;
+/*! POP-UPS */
+/** Formattazione pop-ups */
+.popup--title {
+    margin: 0 !important;   /* "!important" per bypassare quelli di Leaflet */
+    padding-top: 1.5rem;
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: bold;
+    color: white;
 }
 
-#addSingleMarkerMenu {
-    width: min-content;
-}
-
-#addSingleMarkerMenu select option:nth-child(even), #packagesMenu select option:nth-child(even), #languageSwitch select option:nth-child(even) {
-    background-color: whitesmoke;
-}
-
-#addSingleMarkerMenu div, #packagesMenu div, #chiSiamoMenuTitle {
-    margin-top: 10px;
+.popup--rating {
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
+    .popup--stars {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
 
-#packagesMenu div {
-    margin-top: 15px;
-}
-
-#chiSiamoMenu {
+.popup--description {
     color: white;
     text-align: left;
-    width: 60ch;
-}
-
-#chiSiamoMenu span {
-    font-size: 18px;
+    margin: 0 !important;   /* "!important" per bypassare quelli di Leaflet */
+    font-size: 1rem;
     line-height: 1.6;
+    overflow: auto;
+    overflow-wrap: break-word;
+    max-height: 9rem;
+    background-color: var(--dark-base-color);
+    border-radius: var(--standard-border-radius);
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
-#accountMenu abbr {
-    font-size: 250% !important;
+.popup--image {
+    width: 9rem;
+    height: 9rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: var(--standard-border-radius);
+    object-fit: cover;
 }
 
-.leaflet-control-zoom {
-    top: 0.4rem !important;
+.popup--completed-button {
+    width: 100%;
+    margin-bottom: 1rem;
 }
 
-/* Nascondi widget */
-.completedSegmentMenuWidget {
+
+/** Stile pop-up (riconfigurazione di quelli di Leaflet) */
+/* "!important" per sovrascrivere quelli di Leaflet */
+a.leaflet-popup-close-button {
+    color: whitesmoke !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    background-color: rgba(124, 124, 124, 0.5) !important;
+    border-radius: 50% !important;
+    border: 1px var(--highlight-color) solid !important;
+    transition: 0.4s;
+}
+
+a.leaflet-popup-close-button:hover {
+    background-color: rgba(124, 124, 124, 0.4) !important;
+    border: 1px #f8c55f solid !important;
+    box-shadow: 0px 0px 10px 1px rgba(249, 191, 77, 0.7);
+}
+
+a.leaflet-popup-close-button:active {
+    background-color: rgba(60, 60, 60, 0.5);
+    border: 1px var(--base-color) solid;
+    box-shadow: 0px 0px 10px 1px rgba(116, 116, 116, 0.7);
+    transform: translateY(7%);
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius:
+        calc(var(--standard-border-radius) * 3)
+        calc(var(--standard-border-radius) * 2)
+        calc(var(--standard-border-radius) * 3)
+        calc(var(--standard-border-radius) * 3)
+        !important;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background-color: #333333 !important;
+}
+
+.leaflet-popup-content {
+    margin: 13px 20px 13px 20px !important;
+    color: white;
+    padding-right: 10px;
+}
+
+/** "Percorso completato!" pop-up */
+#completed-itinerary {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    border-radius: calc(var(--standard-border-radius) * 1.5);
+    
+    scale: 0;
+    
+    z-index: 1000;      /* Per mostrarlo sopra la mappa (Leaflet...) */
+}
+
+#completed-itinerary--popup {
+    padding: 1rem;
+    background-color: var(--dark-base-color);
+    color: var(--highlight-color);
+    font-weight: bolder;
+    font-size: 150%;
+    border-radius: calc(var(--standard-border-radius) * 1.5);
+    transition: 0.3s ease-out;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 3px red;
+    opacity: 95%;
+    
+    scale: 0;
+    
+    z-index: 1000;      /* Per mostrarlo sopra la mappa (Leaflet...) */
+}
+
+.completed-itinerary--popup--shown {
+    scale: 1 !important;
+}
+
+
+/*! Routing, Widget & "Tooltips" */
+/** Classi custom per i widget */
+/* "!important" per sovrascrivere quelli di Leaflet */
+
+/* Widget nascosto per il percorso in verde */
+.widget--completed-segment {
     scale: 0;
 }
 
-.itineraryMenuWidget {
-    border-radius: 25px !important;
+/* Widget percorso */
+.widget--itinerary {
+    border-radius: var(--standard-border-radius) !important;
     background: rgba(37, 37, 37, 0.8) !important;
     box-shadow: 3px 5px 0px 2px rgba(0, 0, 0, 0.2) !important;
     backdrop-filter: blur(4px) !important;
@@ -624,11 +683,12 @@ a.leaflet-popup-close-button:hover {
     color: white;
     font-size: 120%;
 }
+    .widget--itinerary--hidden {
+        scale: 0 !important;
+    }
 
-.itineraryMenuWidgetHidden {
-    scale: 0 !important;
-}
 
+/** Sovrascrizione alcune parti di Leaflet (widget) */
 .leaflet-routing-alt h2, h3 {
     font-size: 110% !important;
 }
@@ -645,30 +705,35 @@ a.leaflet-popup-close-button:hover {
     padding-right: 6px !important;
 }
 
-/* Tooltip numerazione markers */
-.packagesMarkersCustomTooltips, .packagesMarkersCustomTooltipsGold, .packagesMarkersCustomTooltipsGreen {
+
+/** Colore tooltip per la numerazione dei markers degli itinerari */
+.custom-colored-tooltips {
     background-color: #ff4a4a !important;
     box-shadow: none !important;
     border: none !important;
     color: white !important;
-    font-size: 220%;
+    font-size: 1.5rem;
     line-height: 100%;
     font-weight: bold;
-    padding: 3px !important;
+    padding: 0.2rem !important;
     font-family: "Bebas Neue" , sans-serif;
 }
+    /* Per togliere un triangolino fastidioso sotto il tooltip */
+    .custom-colored-tooltips::before {
+        scale: 0 !important;
+    }
 
-.packagesMarkersCustomTooltips::before, .packagesMarkersCustomTooltipsGold::before, .packagesMarkersCustomTooltipsGreen::before {
-    scale: 0 !important;
-}
+    .custom-colored-tooltips--gold {
+        background-color: #EFAE45 !important;
+    }
 
-.packagesMarkersCustomTooltipsGold {
-    background-color: #EFAE45 !important;
-}
+    .custom-colored-tooltips--green {
+        background-color: #23CB00 !important;
+    }
 
-.packagesMarkersCustomTooltipsGreen {
-    background-color: #23CB00 !important;
-}
+
+/** Stili custom per lo 'zoom-control' di Leaflet */
+/* "!important" per sovrascrivere quelli di Leaflet */
 
 .leaflet-control-zoom {
     border: none !important;
@@ -678,75 +743,18 @@ a.leaflet-popup-close-button:hover {
     background-color: var(--dark-base-color) !important;
     color: var(--highlight-color) !important;
     border: 1px solid var(--base-color) !important;
+
     transition: 0.2s;
 }
 
 .leaflet-control-zoom a:first-child {
-    border-radius: 10px 10px 1px 1px !important;
+    border-radius: 0.5rem 0.5rem 0.2rem 0.2rem !important;
 }
 
 .leaflet-control-zoom a:last-child {
-    border-radius: 1px 1px 10px 10px !important;
+    border-radius: 0.2rem 0.2rem 0.5rem 0.5rem !important;
 }
 
 .leaflet-control-zoom a:hover {
     scale: 1.05;
-}
-
-/* Popup itinerario completato */
-#completedItineraryPopup {
-    z-index: 1000;
-    padding: 1em;
-    background-color: var(--dark-base-color);
-    color: var(--highlight-color);
-    font-weight: bolder;
-    font-size: 150%;
-    border-radius: 200px;
-    transition: 0.3s ease-out;
-    scale: 0;
-    letter-spacing: 3px;
-    text-shadow: 1px 1px 3px red;
-    opacity: 95%;
-}
-
-#completedItineraryPopupContainer {
-    position: fixed;
-    bottom: 50%;
-    left: 50%;
-    transform: translate(-50%, 50%);
-    z-index: 1000;
-    scale: 0;
-    border-radius: 200px;
-}
-
-.isCompletedItineraryPopupShown {
-    scale: 1 !important;
-}
-
-/* Sezione feedback */
-#feedbackSection {
-    margin-top: 40px;
-}
-
-#feedbackSection div {
-    font-size: 120%;
-    padding-bottom: 10px;
-    font-weight: bold;
-}
-
-#feedbackSection a {
-    color: var(--highlight-color);
-    font-style: italic;
-    text-decoration: none;
-    font-size: 110%;
-    font-weight: bold;
-    transition: 0.1s;
-}
-
-#feedbackSection a:hover {
-    color: #ffce6d;
-}
-
-#feedbackSection a:active {
-    color: #f7e2b9;
 }

@@ -12,7 +12,7 @@ function addSingleMarkerMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    menu.querySelector('span').textContent = informations.menuNames[28];
+    menu.querySelector('span').textContent = informations.menuNames[29];
 
     /* Opzioni per il select */
     let select = menu.querySelector('select');
@@ -52,16 +52,16 @@ function addSingleMarkerMenu() {
     let buttons = menu.querySelectorAll('div button');
 
     // Testo e funzione per ciascuno
-    buttons[0].textContent = informations.menuNames[29];
+    buttons[0].textContent = informations.menuNames[30];
     buttons[0].setAttribute('onclick', 'singleMarkerMenuPlace()');
 
-    buttons[1].textContent = informations.menuNames[30];
+    buttons[1].textContent = informations.menuNames[31];
     buttons[1].setAttribute('onclick', 'singleMarkerMenuRemove()');
 
-    buttons[2].textContent = informations.menuNames[31];
+    buttons[2].textContent = informations.menuNames[32];
     buttons[2].setAttribute('onclick', 'singleMarkerMenuAddAll()');
 
-    buttons[3].textContent = informations.menuNames[32];
+    buttons[3].textContent = informations.menuNames[33];
     buttons[3].setAttribute('onclick', 'singleMarkerMenuRemoveAll()');
 
 
