@@ -8,12 +8,13 @@
 const centerCoordinates = [45.309062, 9.501200];
 const map = L.map('map', { zoomControl: false }).setView(centerCoordinates, 14);
 const menus = [                     // ID di ogni singolo menu esistente
-    "addSingleMarkerMenu",
-    "packagesMenu",
-    "chiSiamoMenu",
-    "accessibilityMenu",
-    "settingsMenu",
-    "accountMenu"
+    'account-menu',
+    'packages-menu',
+    'news-menu',
+    'accessibility-menu',
+    'settings-menu',
+    'chi-siamo-menu',
+    'single-marker-menu'
 ];
 
 var availablePlace = [];            // Flag se il marker esiste già o no (prevenire spam)
@@ -113,13 +114,12 @@ function setButtonTooltips() {
         informations.menuNames[0],  // Espandi / chiudi
         informations.menuNames[1],  // Account
         informations.menuNames[4],  // Itinerari
-        informations.menuNames[10], // Accessibilità
-        informations.menuNames[15], // Impostazioni
-        informations.menuNames[21], // Il Nostro Team
-        informations.menuNames[24], // Pagina principale
-        informations.menuNames[1],  // Account x2
-        informations.menuNames[25], // Centra mappa
-        informations.menuNames[26]  // Marker singolo
+        informations.menuNames[10], // Notizie
+        informations.menuNames[11], // Accessibilità
+        informations.menuNames[16], // Impostazioni
+        informations.menuNames[22], // Il Nostro Team
+        informations.menuNames[26], // Pagina principale
+        informations.menuNames[1]   // Account x2
     ];
 
     for (let i = 0; i < buttons.length; i++) {
@@ -132,7 +132,6 @@ async function startWebsite() {
     await fetchInfos();
 }
 startWebsite();
-
 
 //! Funzioni mappa
 /* Inizializza 'onLoad' */

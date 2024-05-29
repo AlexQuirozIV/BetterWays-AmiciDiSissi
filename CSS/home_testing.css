@@ -219,13 +219,12 @@ a.leaflet-popup-close-button:hover {
 }
 
 #navbar--content {
-    /* height: 0px; */
-    /* overflow-y: hidden; */
-    height: fit-content;
+    height: 0px;            /* Cambia in <dynamic height>   con "toggleExpandedNavbar()" */
 
     padding: 1rem;
     padding-top: 0;
     padding-bottom: 0;
+    overflow: hidden;
 
     display: flex;
         flex-direction: column;
@@ -539,11 +538,29 @@ a.leaflet-popup-close-button:hover {
 
 
 /** Menù Chi Siamo? */
-/* Uhm... */
+#chi-siamo-menu {
+    width: 69ch;
+    text-align: left;   /* Sovrascritto da "#menu" */
+}
+
+#chi-siamo-menu--presentation, #chi-siamo-menu--feedback-section--header {
+    color: white;
+    line-height: 1.6;
+}
+
+#chi-siamo-menu--feedback-section--header {
+    margin-top: 2rem;
+}
 
 
 /** Menù Marker Singolo */
-/* Uhm... */
+#single-marker-menu {
+    bottom: 7rem;
+    right: 2rem;
+
+    top: auto;  /* Sovrascritto da "#menu" */
+    left: auto; /* Sovrascritto da "#menu" */
+}
 
 
 

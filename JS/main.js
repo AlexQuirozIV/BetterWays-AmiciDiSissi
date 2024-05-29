@@ -1,4 +1,4 @@
-/**
+/*
  * Animazioni main
  */
 
@@ -7,6 +7,7 @@
 // Indici
 var currentImageIndexLeft = 1;
 var currentImageIndexRight = 1;
+
 // Variabili globali per le immagini
 var images = [];
 var informaitons = [];

@@ -83,7 +83,7 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
     /* Rimuove pacchetto già piazzato */
     removeLaidPackage();
 
-    const selectedPackage = document.querySelector('#packagesMenu select').value;
+    const selectedPackage = document.querySelector('#packages-menu select').value;
 
 
     /* Contiene la lista dei luoghi (tappe) (ID) nel pacchetto */

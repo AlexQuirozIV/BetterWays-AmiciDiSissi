@@ -11,10 +11,8 @@ function addSingleMarkerMenu() {
     let shouldThisMenuClose = handleMenuButtonPress(menu);
     if (shouldThisMenuClose == 'yes') { return; }
 
-
     /* Titolo */
-    menu.querySelector('span').textContent = informations.menuNames[26];
-
+    menu.querySelector('span').textContent = informations.menuNames[28];
 
     /* Opzioni per il select */
     let select = menu.querySelector('select');
@@ -54,16 +52,16 @@ function addSingleMarkerMenu() {
     let buttons = menu.querySelectorAll('div button');
 
     // Testo e funzione per ciascuno
-    buttons[0].textContent = informations.menuNames[27];
+    buttons[0].textContent = informations.menuNames[29];
     buttons[0].setAttribute('onclick', 'singleMarkerMenuPlace()');
 
-    buttons[1].textContent = informations.menuNames[28];
+    buttons[1].textContent = informations.menuNames[30];
     buttons[1].setAttribute('onclick', 'singleMarkerMenuRemove()');
 
-    buttons[2].textContent = informations.menuNames[29];
+    buttons[2].textContent = informations.menuNames[31];
     buttons[2].setAttribute('onclick', 'singleMarkerMenuAddAll()');
 
-    buttons[3].textContent = informations.menuNames[30];
+    buttons[3].textContent = informations.menuNames[32];
     buttons[3].setAttribute('onclick', 'singleMarkerMenuRemoveAll()');
 
 
@@ -96,7 +94,7 @@ function newSingleMarker([latitude, longitude], info) {
 
 /* Metti / togli marker singolo piazzato */
 function singleMarkerMenuPlace() {
-    var selectedPlace = document.querySelector('#addSingleMarkerMenu select').value;
+    var selectedPlace = document.querySelector('#single-marker-menu select').value;
 
     // Crea il nuovo marker se non già piazzato e lo salva dentro 'markers'
     if (availablePlace.includes(selectedPlace)) {
@@ -116,7 +114,7 @@ function singleMarkerMenuPlace() {
 }
 
 function singleMarkerMenuRemove() {
-    var selectedPlace = document.querySelector('#addSingleMarkerMenu select').value;
+    var selectedPlace = document.querySelector('#single-marker-menu select').value;
 
     // Se il marker non è piazzato, lo toglie
     if (!(availablePlace.includes(selectedPlace))) {

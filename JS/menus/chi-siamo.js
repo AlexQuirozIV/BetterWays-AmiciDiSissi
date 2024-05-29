@@ -13,13 +13,16 @@ function chiSiamoMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    menu.querySelector('div').textContent = informations.menuNames[21];
+    document.getElementById('chi-siamo-menu--title').textContent = informations.menuNames[22];
 
     /* La nostra bellissima presentazione */
-    menu.querySelector('span').innerHTML = informations.menuNames[22];
+    document.getElementById('chi-siamo-menu--presentation').innerHTML = informations.menuNames[23];
 
-    /* Feedback */
-    document.querySelector('#feedbackSection div').textContent = informations.menuNames[23];
+    /* Instagram */
+    document.getElementById('chi-siamo-menu--instagram').textContent = informations.menuNames[24];
+
+    /* E-mail */
+    document.getElementById('chi-siamo-menu--feedback-section--header').textContent = informations.menuNames[25];
 
     /* Attiva il menu */
     menu.classList.toggle('menu--active');

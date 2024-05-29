@@ -34,21 +34,21 @@ function settingsMenu() {
 
 
     /* Titolo */
-    menu.querySelector('div:first-child').textContent = informations.menuNames[15];
+    document.getElementById('settings-menu--title').textContent = informations.menuNames[16];
 
 
     /* Legenda */
-    document.getElementById('settings-menu--legend--header').textContent = informations.menuNames[16];
+    document.getElementById('settings-menu--legend--header').textContent = informations.menuNames[17];
 
     let legendContentTexts = document.getElementsByClassName('legend--content--sections--nametags');
     for (let i = 0; i < legendContentTexts.length; i++) {
         let legendContentText = legendContentTexts[i];
-        legendContentText.textContent = informations.menuNames[i + 17];
+        legendContentText.textContent = informations.menuNames[i + 18];
     }
 
     // Sezione 'cambia lingua'
     let languageSwitch = document.getElementById('settings-menu--language-selection');
-    languageSwitch.querySelector('span').textContent = informations.menuNames[20];
+    document.getElementById('settings-menu--language-selection--header').textContent = informations.menuNames[21];
 
     /* Opzioni per il select (lista delle lingue da 'languagesList') */
     let select = languageSwitch.querySelector('select');
@@ -93,10 +93,10 @@ function settingsMenu() {
 /* Sente quando viene cambiata la lingua e chiama 'handleLanguageChange' per cambiarla */
 function languageChangeListener() {
     // Rimuove il listener precedente (altrimenti rifarà il fetch esponenzialmente)
-    document.querySelector('#languageSwitch select').removeEventListener('change', handleLanguageChange);
+    document.querySelector('#settings-menu--language-selection select').removeEventListener('change', handleLanguageChange);
 
     // Aggiungine uno nuovo
-    document.querySelector('#languageSwitch select').addEventListener('change', handleLanguageChange);
+    document.querySelector('#settings-menu--language-selection select').addEventListener('change', handleLanguageChange);
 }
 
 /* Gestisce il cambiamento della lingua */

@@ -13,18 +13,15 @@ function accountMenu() {
     let shouldThisMenuClose = handleMenuButtonPress(menu);
     if (shouldThisMenuClose == 'yes') { return; }
 
-    
     /* Titolo */
-    menu.querySelector('div').textContent = informations.menuNames[1];
+    document.getElementById('account-menu--title').textContent = informations.menuNames[1];
 
-    
     /* Nomi pulsanti */
-    let buttons = document.getElementsByClassName('accountMenuButtons');
+    let buttons = menu.getElementsByClassName('function-buttons-section--buttons');
 
     buttons[0].textContent = informations.menuNames[2];
     buttons[1].textContent = informations.menuNames[3];
 
-    
     /* Attiva il menu */
     menu.classList.toggle('menu--active');
 
