@@ -1,2 +1,1 @@
-https://prod.liveshare.vsengsaas.visualstudio.com/join?BC8D62381E874CA75152454FD01E89F894C4
-Ale sei basso
+https://prod.liveshare.vsengsaas.visualstudio.com/join?EB57885918F934DB522F7991B9ADDBFC6D69
