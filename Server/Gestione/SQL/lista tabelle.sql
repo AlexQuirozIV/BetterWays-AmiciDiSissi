@@ -20,14 +20,3 @@ INSERT INTO locations VALUES ('Ufficio-turistico', 45.31457313558977, 9.50283112
 INSERT INTO locations VALUES ('Chiesa-della-Maddalena', 45.31835179420975, 9.504352611647226),
 INSERT INTO locations VALUES ('Biblioteca-Laudense', 45.316260560309566, 9.504173325140222),
 INSERT INTO locations VALUES ('Piazza-Castello', 45.3126698, 9.4997774);
-
-INSERT INTO User VALUES ('Mario', 'Rossi', 'mario.rossi@example.com', 'password123'),
-INSERT INTO User VALUES ('Luca', 'Bianchi', 'luca.bianchi@example.com', 'password456'),
-INSERT INTO User VALUES ('Giulia', 'Verdi', 'giulia.verdi@example.com', 'password789'),
-INSERT INTO User VALUES ('Francesca', 'Neri', 'francesca.neri@example.com', 'password321'),
-INSERT INTO User VALUES ('Marco', 'Gialli', 'marco.gialli@example.com', 'password654'),
-INSERT INTO User VALUES ('Anna', 'Blu', 'anna.blu@example.com', 'password987'),
-INSERT INTO User VALUES ('Paolo', 'Grigi', 'paolo.grigi@example.com', 'password741'),
-INSERT INTO User VALUES ('Elena', 'Marroni', 'elena.marroni@example.com', 'password852'),
-INSERT INTO User VALUES ('Davide', 'Rosa', 'davide.rosa@example.com', 'password963'),
-INSERT INTO User VALUES ('Chiara', 'Azzurri', 'chiara.azzurri@example.com', 'password159');
