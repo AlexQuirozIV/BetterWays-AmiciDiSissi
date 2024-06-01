@@ -34,11 +34,11 @@ function settingsMenu() {
 
 
     /* Titolo */
-    document.getElementById('settings-menu--title').textContent = informations.menuNames[16];
+    document.getElementById('settings-menu--title').textContent = informations.menuNames[15];
 
 
     /* Legenda */
-    document.getElementById('settings-menu--legend--header').textContent = informations.menuNames[17];
+    document.getElementById('settings-menu--legend--header').textContent = informations.menuNames[16];
 
     let legendContentTexts = document.getElementsByClassName('legend--content--sections--nametags');
     for (let i = 0; i < legendContentTexts.length; i++) {
@@ -48,7 +48,7 @@ function settingsMenu() {
 
     // Sezione 'cambia lingua'
     let languageSwitch = document.getElementById('settings-menu--language-selection');
-    document.getElementById('settings-menu--language-selection--header').textContent = informations.menuNames[21];
+    document.getElementById('settings-menu--language-selection--header').textContent = informations.menuNames[20];
 
     /* Opzioni per il select (lista delle lingue da 'languagesList') */
     let select = languageSwitch.querySelector('select');

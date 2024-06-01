@@ -113,6 +113,11 @@ body {
 
 
 /* Sliding images */
+img {
+    aspect-ratio: 1/1;
+    width: 25rem !important;
+    object-fit: cover;
+}
 
 .slidingImageLeft, .slidingImageRight {
     display: none;
@@ -180,11 +185,24 @@ body {
 /* Seconda parte della home */
 hr {
     border: 5px solid #F9BF4D;
-    width: 100rem;
+    border-radius: 200px;
+    width: 85%;
 }
-h1 {
+
+h2 {
     color: #F9BF4D;
     text-align: center;
+}
+/*Due contenitori*/
+#event-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: left;
+    flex-wrap: wrap;
+    width:550px;
+    height: 650px;
+    background-color: #252525;
+    border-radius: 25px;
 }
 /* "Responsive" */
 

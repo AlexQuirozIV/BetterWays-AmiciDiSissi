@@ -2,18 +2,19 @@
     --highlight-color: #F9BF4D;
     --base-color: #747474;
     --dark-base-color: #444444;
-    --standard-border-radius: 1rem;
+    --standard-border-radius: 2vh;
 }
 
-/** Il font migliore impostato a TUTTO (Arial come backup) */
+/** Il font migliore impostato a TUTTO ('Nunito' come backup) */
 * {
-    font-family: 'Comfortaa', Arial;
+    font-family: 'Comfortaa', 'Nunito';
 }
 
 /** Serve per il testo "on-hover" dei pulsanti */
 abbr {
     text-decoration: none;
 }
+
 
 /*! Scrollbar (kinda janky) */
 /* Barra (main body) */
@@ -30,10 +31,10 @@ abbr {
 ::-webkit-scrollbar-thumb {
     background: #696969;
 }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #757575;
+    }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #757575;
-}
 
 /*! "Main Content" contiene "Titolo" e "Mappa" */
 #main-content {
@@ -46,10 +47,10 @@ abbr {
         text-align: center;
         color: var(--highlight-color);
         font-family: "Bebas Neue", sans-serif;
-        font-size: 3.2rem;
+        font-size: 5vh;
         margin: 0;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
         width: 100%;
         -webkit-text-stroke-color: #f1a918;
         -webkit-text-stroke-width: 0.06px;
@@ -66,8 +67,8 @@ abbr {
 /*! ACTION-BUTTONS */
 /** Utili (a questa sezione) */
 .action-button {
-    width: 4rem;
-    height: 4rem;
+    width: 6vh;
+    height: 6vh;
     background-color: var(--dark-base-color);
     color: var(--highlight-color);
     display: flex !important;       /* "!important" per conflitti con "material-symbols-rounded" */
@@ -75,7 +76,7 @@ abbr {
         justify-content: center;
     text-decoration: none;
     border-radius: 50%;
-    font-size: 2rem !important;     /* "!important" per conflitti con "material-symbols-rounded" */
+    font-size: 2.75vh !important;     /* "!important" per conflitti con "material-symbols-rounded" */
     position: fixed;
     cursor: pointer;
     transition: 0.2s ease-in-out;
@@ -91,17 +92,17 @@ abbr {
     }
 
 
-/** Pulsante aggiunta marker singoli */
-#single-marker-menu--action-button {
-    bottom: 2rem;
-    right: 2rem;
-}
-
-
 /** Pulsante per centrare la mappa */
 #recenter-map--action-button {
     bottom: 2rem;
-    left: 2rem;
+    right: 1vh;
+}
+
+
+/** Pulsante "svuota tutto dalla mappa" */
+#clear-all-from-map--action-button {
+    bottom: 2rem;
+    right: 8vh;
 }
 
 
@@ -110,8 +111,8 @@ abbr {
     background-color: var(--dark-base-color);
 
     position: fixed;
-    top: 7rem;
-    left: 2rem;
+    top: 10vh;
+    left: 1rem;
 
     overflow-y: hidden;
 
@@ -126,7 +127,7 @@ abbr {
 }
 
 #navbar--header {
-    padding: 1rem;
+    padding: 2vh;
     border-radius: calc(var(--standard-border-radius) * 1.5);
 
     background-image: url(../img/titleHeader.jpg);
@@ -136,7 +137,7 @@ abbr {
 #navbar--content {
     height: 0px;            /* Cambia in <dynamic height>   con "toggleExpandedNavbar()" */
 
-    padding: 1rem;
+    padding: 2vh;
     padding-top: 0;
     padding-bottom: 0;
     overflow: hidden;
@@ -151,11 +152,11 @@ abbr {
 }
 
 .navbar--button-icon {
-    font-size: 1rem;
+    font-size: 3vh !important;              /* "!important" per conflitti con "material-symbols-rounded" */
     background-color: var(--base-color);
     color: var(--highlight-color);
     border-radius: 50%;
-    padding: 1rem;
+    padding: 1.5vh;
     cursor: pointer;
     transition: 0.2s;
 }
@@ -173,8 +174,8 @@ abbr {
     border-color: #222222;
     border-radius: 999px;
     border-style: solid;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     width: 100%;
 }
 
@@ -182,8 +183,8 @@ abbr {
 /*! MENÙ */
 /** Base */
 .menu {
-    top: 7rem;
-    left: 9rem;
+    top: 10vh;
+    left: 8rem;
     width: fit-content;
     height: fit-content;
     position: fixed;
@@ -255,7 +256,7 @@ abbr {
 /** Pulsanti (function buttons) di alcuni menù */
 .function-buttons-section {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     margin-top: 1rem;
 }
@@ -300,7 +301,10 @@ abbr {
 
 
 /** Menù Notizie */
-/* Uhm... */
+#news-menu--work-in-progress-image {
+    height: 250px;
+    width: 250px;
+}
 
 
 /** Menù Accessibilità */
@@ -520,13 +524,7 @@ abbr {
 
 
 /** Menù Marker Singolo */
-#single-marker-menu {
-    bottom: 7rem;
-    right: 2rem;
-
-    top: auto;  /* Sovrascritto da "#menu" */
-    left: auto; /* Sovrascritto da "#menu" */
-}
+/* Uhm... */
 
 
 /*! POP-UPS */
@@ -628,6 +626,7 @@ a.leaflet-popup-close-button:active {
     color: white;
     padding-right: 10px;
 }
+
 
 /** "Percorso completato!" pop-up */
 #completed-itinerary {
@@ -734,7 +733,6 @@ a.leaflet-popup-close-button:active {
 
 /** Stili custom per lo 'zoom-control' di Leaflet */
 /* "!important" per sovrascrivere quelli di Leaflet */
-
 .leaflet-control-zoom {
     border: none !important;
 }
@@ -748,13 +746,24 @@ a.leaflet-popup-close-button:active {
 }
 
 .leaflet-control-zoom a:first-child {
-    border-radius: 0.5rem 0.5rem 0.2rem 0.2rem !important;
+    border-radius: calc(var(--standard-border-radius) * 0.5) calc(var(--standard-border-radius) * 0.5) 0.2rem 0.2rem !important;
 }
 
 .leaflet-control-zoom a:last-child {
-    border-radius: 0.2rem 0.2rem 0.5rem 0.5rem !important;
+    border-radius: 0.2rem 0.2rem calc(var(--standard-border-radius) * 0.5) calc(var(--standard-border-radius) * 0.5) !important;
 }
 
 .leaflet-control-zoom a:hover {
     scale: 1.05;
+}
+
+.leaflet-touch .leaflet-bar a {
+    width: 3.5vh !important;
+    height: 3.5vh !important;
+    line-height: 3.5vh !important;
+}
+
+.leaflet-touch .leaflet-control-zoom-in,
+ .leaflet-touch .leaflet-control-zoom-out {
+    font-size: 2.5vh !important;
 }

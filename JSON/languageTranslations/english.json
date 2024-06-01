@@ -4,7 +4,6 @@
         
         "Account",
             "Log in",
-            "Sign up",
 
         "Itinerary",
             "Start",
@@ -38,6 +37,7 @@
         "Home",
 
         "Center map",
+        "Delete all",
 
         "Single Marker",
             "Add",

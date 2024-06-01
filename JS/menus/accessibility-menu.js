@@ -15,16 +15,16 @@ function accessibilityMenu() {
 
 
     /* Titolo */
-    document.getElementById("accessibility-menu--title").textContent = informations.menuNames[11];
+    document.getElementById("accessibility-menu--title").textContent = informations.menuNames[10];
 
 
     /* Opzioni */
     let options = document.getElementsByClassName('accessibility-menu--option-boxes--nametags');
 
-    options[0].textContent = informations.menuNames[12];
-    options[1].textContent = informations.menuNames[13];
-    options[2].textContent = informations.menuNames[14];
-    options[3].textContent = informations.menuNames[15];
+    options[0].textContent = informations.menuNames[11];
+    options[1].textContent = informations.menuNames[12];
+    options[2].textContent = informations.menuNames[13];
+    options[3].textContent = informations.menuNames[14];
 
     
     /* Attiva il menu */

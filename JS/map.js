@@ -107,23 +107,36 @@ async function fetchInfos(languageToFetch) {
 }
 /* Mette tooltips ai pulsanti */
 function setButtonTooltips() {
-    // Prende dall'HTML per classe
-    let buttons = document.getElementsByClassName('function-button');
+    /* Per i pulsanti nella navbar */
+    let functionButtons = document.getElementsByClassName('function-button');
 
-    let titles = [
+    let functionButtonsTitles = [
         informations.menuNames[0],  // Espandi / chiudi
         informations.menuNames[1],  // Account
-        informations.menuNames[4],  // Itinerari
-        informations.menuNames[10], // Notizie
-        informations.menuNames[11], // Accessibilità
-        informations.menuNames[16], // Impostazioni
-        informations.menuNames[22], // Il Nostro Team
-        informations.menuNames[26], // Pagina principale
+        informations.menuNames[3],  // Itinerari
+        informations.menuNames[9],  // Notizie
+        informations.menuNames[10], // Accessibilità
+        informations.menuNames[15], // Impostazioni
+        informations.menuNames[21], // Il Nostro Team
+        informations.menuNames[25], // Pagina principale
         informations.menuNames[1]   // Account x2
     ];
 
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].title = titles[i];
+    for (let i = 0; i < functionButtons.length; i++) {
+        functionButtons[i].title = functionButtonsTitles[i];
+    }
+
+
+    /* Per i pulsanti nella navbar */
+    let actionButtons = document.getElementsByClassName('action-button');
+
+    let actionButtonsTitles = [
+        informations.menuNames[27],
+        informations.menuNames[28]
+    ];
+
+    for (let i = 0; i < actionButtons.length; i++) {
+        actionButtons[i].title = actionButtonsTitles[i];
     }
 }
 
@@ -159,6 +172,18 @@ function initializeMap() {
 function recenterMap() {
     //                     coordinate                                  zoom            durata             lineare
     map.flyTo(new L.LatLng(centerCoordinates[0], centerCoordinates[1]), 14, { duration: 0.2, easeLinearity: 1 });
+}
+/* "Svuota" mappa */
+function clearAllFromMap() {
+    removeLaidPackage();
+    singleMarkerMenuRemoveAll();
+
+    let clearAllButton = document.getElementById('clear-all-from-map--action-button');
+
+    closeOpenMenus();
+    __shouldNavbarExpand__ = false;
+    toggleExpandedNavbar();
+    clearAllButton.classList.remove('clear-all-from-map--action-button--shown');
 }
 /* Avvia mappa a caricamento pagina */
 document.body.onload = () => {

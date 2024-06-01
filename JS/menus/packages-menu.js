@@ -23,7 +23,7 @@ function packagesMenu() {
 
 
     /* Titolo */
-    menu.querySelector('span').textContent = informations.menuNames[4];
+    menu.querySelector('span').textContent = informations.menuNames[3];
 
 
     /* Opzioni per il select */
@@ -58,10 +58,10 @@ function packagesMenu() {
     let buttons = menu.querySelectorAll('div button');
 
     // Testo e funzione per ciascuno
-    buttons[0].textContent = informations.menuNames[5];
+    buttons[0].textContent = informations.menuNames[4];
     buttons[0].setAttribute('onclick', 'layPackage()');
 
-    buttons[1].textContent = informations.menuNames[6];
+    buttons[1].textContent = informations.menuNames[5];
     buttons[1].setAttribute('onclick', 'removeLaidPackage()');
 
 
@@ -184,9 +184,9 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
                 bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i]) +
                     '<button class="function-buttons-section--buttons popup--completed-button text-to-speak" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
                     (
-                        _i == 0 ? informations.menuNames[7] :
-                        _i == waypoints.length - 1 ? informations.menuNames[9] :
-                        informations.menuNames[8]
+                        _i == 0 ? informations.menuNames[6] :
+                        _i == waypoints.length - 1 ? informations.menuNames[8] :
+                        informations.menuNames[7]
                     ) +
                     '</button>'
             );

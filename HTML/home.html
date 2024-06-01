@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- Icone -->
 
     <link rel="stylesheet" type="text/css" href="../CSS/home.css"> <!-- Stile -->
     <link rel="stylesheet" type="text/css" href="../CSS/confetti.css"> <!-- Coriandoli! -->
@@ -29,10 +28,11 @@
     <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 
     <!-- Font importati -->
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 
     <title>Better Ways</title> 
 </head>
@@ -56,7 +56,11 @@
 
             <hr class="navbar-content--separator">
 
-            <abbr onclick="packagesMenu()" class="function-button navbar--button-icon material-symbols-rounded">location_on</abbr>
+            <abbr onclick="addSingleMarkerMenu()" class="function-button navbar--button-icon material-symbols-rounded">add_location_alt</abbr>
+
+            <hr class="navbar-content--separator">
+
+            <abbr onclick="packagesMenu()" class="function-button navbar--button-icon material-symbols-rounded">conversion_path</abbr>
 
             <hr class="navbar-content--separator">
 
@@ -89,8 +93,7 @@
         <abbr class="material-symbols-rounded navbar--button-icon function-button">account_circle</abbr>
         <!-- Button sections -->
         <div class="function-buttons-section">
-            <button class="function-buttons-section--buttons text-to-speak"></button>
-            <button class="function-buttons-section--buttons text-to-speak"></button>
+            <button onclick="handleGoogleAuth()" id="account-menu--function-buttons-section--login-button" class="function-buttons-section--buttons text-to-speak"></button>
         </div>
     </div>
 
@@ -110,7 +113,7 @@
     <!-- News -->
     <div id="news-menu" class="menu">
         <span id="news-menu--title" class="menu--titles text-to-speak"></span>
-        <img src="../img/work-in-progress.png" alt="Work in progress">
+        <img id="news-menu--work-in-progress-image" src="../img/work-in-progress.png" alt="Work in progress">
     </div>
 
     <!-- Accessibility -->
@@ -226,10 +229,8 @@
     <!-- Ri-centra mappa -->
     <span onclick="recenterMap()" id="recenter-map--action-button" class="action-button material-symbols-rounded">recenter</span>
 
-    <!-- Pulsante aggiunta marker singoli -->
-    <span onclick="addSingleMarkerMenu()" id="single-marker-menu--action-button" class="action-button material-symbols-rounded">
-        add_location
-    </span>
+    <!-- "Svuota tutto dalla mappa" -->
+    <span onclick="clearAllFromMap()" id="clear-all-from-map--action-button" class="action-button material-symbols-rounded">delete</span>
 
     <!-- Pop-up itinerario completato -->
     <div id="completed-itinerary">

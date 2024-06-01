@@ -4,7 +4,6 @@
 
         "Cuenta",
             "Iniciar sesión",
-            "Registrarse",
 
         "Itinerarios",
             "Empezar",
@@ -38,6 +37,7 @@
         "Inicio",
 
         "Centrar mapa",
+        "Borrar todo",
 
         "Marcador Singulo",
             "Agregar",

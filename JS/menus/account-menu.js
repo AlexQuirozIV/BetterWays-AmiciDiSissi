@@ -17,14 +17,19 @@ function accountMenu() {
     document.getElementById('account-menu--title').textContent = informations.menuNames[1];
 
     /* Nomi pulsanti */
-    let buttons = menu.getElementsByClassName('function-buttons-section--buttons');
+    let button = document.getElementById('account-menu--function-buttons-section--login-button');
 
-    buttons[0].textContent = informations.menuNames[2];
-    buttons[1].textContent = informations.menuNames[3];
+    button.textContent = informations.menuNames[2];
 
     /* Attiva il menu */
     menu.classList.toggle('menu--active');
 
     // Update flag
     openedMenuId = id;
+}
+
+/* Apri finestra accesso google */
+function handleGoogleAuth() {
+    console.log('Google Auth button clicked');
+    window.open('https://accounts.google.com/o/oauth2/auth', 'google-auth-popup', 'width=600,height=700');
 }
