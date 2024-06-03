@@ -43,7 +43,7 @@ function settingsMenu() {
     let legendContentTexts = document.getElementsByClassName('legend--content--sections--nametags');
     for (let i = 0; i < legendContentTexts.length; i++) {
         let legendContentText = legendContentTexts[i];
-        legendContentText.textContent = informations.menuNames[i + 18];
+        legendContentText.textContent = informations.menuNames[i + 17];
     }
 
     // Sezione 'cambia lingua'
