@@ -95,14 +95,14 @@ abbr {
 /** Pulsante per centrare la mappa */
 #recenter-map--action-button {
     bottom: 2rem;
-    right: 1vh;
+    right: 2rem;
 }
 
 
 /** Pulsante "svuota tutto dalla mappa" */
 #clear-all-from-map--action-button {
     bottom: 2rem;
-    right: 8vh;
+    right: 6rem;
 }
 
 
@@ -112,7 +112,7 @@ abbr {
 
     position: fixed;
     top: 10vh;
-    left: 1rem;
+    left: 2rem;
 
     overflow-y: hidden;
 
@@ -184,14 +184,14 @@ abbr {
 /** Base */
 .menu {
     top: 10vh;
-    left: 9rem;
+    left: 10rem;
     width: fit-content;
     height: fit-content;
     position: fixed;
 
-    padding: 2rem;
-    padding-top: 2.25rem;
-    padding-bottom: 2.25rem;
+    padding: 3.5vh;
+    padding-top: 3.75vh;
+    padding-bottom: 3.75vh;
 
     box-sizing: border-box;
     border-radius: calc(var(--standard-border-radius) * 2);
@@ -219,8 +219,8 @@ abbr {
     color: var(--highlight-color);
     text-align: center;
     width: 100%;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
+    margin-bottom: 2vh;
+    font-size: 2.5vh;
     font-weight: bold;
     -webkit-text-stroke-color: #F1A918;
     -webkit-text-stroke-width: 1px;
@@ -230,12 +230,12 @@ abbr {
 /** Dropdowns Menù */
 .menu--dropdowns {
     width: 100%;
-    height: 2rem;
+    height: 4vh;
     text-align: center;
     border-radius: 999px;
     border: none;
     font-weight: bold;
-    font-size: 0.85rem;
+    font-size: 1.6vh;
     cursor: pointer;
     text-overflow: ellipsis;
 }
@@ -245,7 +245,7 @@ abbr {
     /*
         ~ Quick Note ~
 
-        La difference nell'usare ">" o meno è che ">" prende
+        La differenza nell'usare ">" o meno è che ">" prende
         soltanto i 'children' direttamente sotto l'elemento
         'parent', mentre lasciare " " prenderà tutti gli 
         elementi sottostanti di quel tipo, anche se "nested"
@@ -258,7 +258,7 @@ abbr {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: 2vh;
 }
     .function-buttons-section--buttons {
         background-color: rgba(37, 37, 37, 0.5);
@@ -268,12 +268,12 @@ abbr {
         text-align: center;
         line-height: 1.2;
         color: white;
-        font-size: 0.8rem;
+        font-size: 1.5vh;
         font-weight: bold;
 
-        padding: 0.6rem;
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
+        padding: 1vh;
+        margin-left: 1vh;
+        margin-right: 1vh;
 
         cursor: pointer;
         transition: 0.15s ease-in-out;
@@ -302,8 +302,8 @@ abbr {
 
 /** Menù Notizie */
 #news-menu--work-in-progress-image {
-    height: 250px;
-    width: 250px;
+    height: 20vh;
+    width: 20vh;
 }
 
 
@@ -319,12 +319,15 @@ abbr {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1vh;
 }
+    /* Tutte le 'boxes' tranne la prima avranno il 'margin-top' */
+    .accessibility-menu--option-boxes:not(:first-child) {
+        margin-top: 1vh;
+    }
     .accessibility-menu--option-boxes--nametags {
         color: white;
-        font-size: 1.1rem;
+        font-size: 2vh;
     }
 
 /* Range slider per la prima box (codice formattato, non modificare questa sotto-sezione!) */
@@ -333,8 +336,8 @@ abbr {
     --spessore-linea: 5px;
     --grandezza-cursore: 15px;
 
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 2vh;
+    margin-right: 2vh;
     -webkit-appearance :none;
     -moz-appearance :none;
     appearance :none;
@@ -361,14 +364,14 @@ abbr {
 
 #accessibility-menu--slider--value {
     color: white;
-    margin-right: 1rem;
+    margin-right: 2vh;
 }
 
 #accessibility-menu--slider--reset-button {     /* Eredita da "function-buttons-section--buttons" */
-    font-size: 1.25rem;
-    padding: 0.5rem;
-    margin-left: 0rem;
-    margin-right: 0rem;
+    font-size: 2.25vh;
+    padding: 1vh;
+    margin-left: 0vh;
+    margin-right: 0vh;
 }
 
 /* I vari switch (codice formattato, non modificare questa sotto-sezione!) */
@@ -428,11 +431,11 @@ abbr {
 }
 
 #settings-menu--legend {
-    margin-bottom: 1rem;
+    margin-bottom: 1.6vh;
 }
     #settings-menu--legend--header {
         color: white;
-        margin-bottom: 0.75rem;
+        margin-bottom: 1vh;
         text-align: left;
         font-weight: bold;
     }
@@ -440,8 +443,8 @@ abbr {
     .legend--content--sections {
         display: flex;
         align-items: center;
-        margin-top: 0.25rem;
-        margin-bottom: 0.25rem;
+        margin-top: 0.5vh;
+        margin-bottom: 0.5vh;
     }
         .legend--content--sections--nametags {
             font-weight: bold;
@@ -461,7 +464,7 @@ abbr {
 
 #settings-menu--language-selection--header {
     color: white;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.6vh;
     text-align: left;
     font-weight: bold;
 }
@@ -469,7 +472,7 @@ abbr {
 
 /** Menù Chi Siamo? */
 #chi-siamo-menu {
-    width: 69ch;
+    width: 50vh;
     text-align: left;   /* Sovrascritto da "#menu" */
 }
 
@@ -479,13 +482,13 @@ abbr {
 }
 
 #chi-siamo-menu--feedback-section--header {
-    margin-top: 2rem;
+    margin-top: 3vh;
 }
 
 /* Scritta "Seguici su Instagram: " */
 #chi-siamo-menu--feedback-section--instagram {
-    margin-top: 0.75rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 
 #chi-siamo-menu--feedback-section--instagram > span{
@@ -505,7 +508,6 @@ abbr {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bolder;
-    margin-bottom: 1rem;
     filter: contrast(200%);
 
     transition: 0.2s;
@@ -531,8 +533,8 @@ abbr {
 /** Formattazione pop-ups */
 .popup--title {
     margin: 0 !important;   /* "!important" per bypassare quelli di Leaflet */
-    padding-top: 1.5rem;
-    font-size: 1.4rem;
+    padding-top: 2.5vh;
+    font-size: 2.5vh;
     text-align: center;
     font-weight: bold;
     color: white;
@@ -541,45 +543,47 @@ abbr {
 .popup--rating {
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
 }
     .popup--stars {
-        height: 2.5rem;
-        width: 2.5rem;
+        height: 4.5vh;
+        width: 4.5vh;
     }
 
 .popup--description {
     color: white;
     text-align: left;
-    margin: 0 !important;   /* "!important" per bypassare quelli di Leaflet */
-    font-size: 1rem;
+    margin: auto !important;   /* "!important" per bypassare quelli di Leaflet */
+    width: 25vh;
+    font-size: 1.6vh;
     line-height: 1.6;
     overflow: auto;
     overflow-wrap: break-word;
-    max-height: 9rem;
+    max-height: 14vh;
     background-color: var(--dark-base-color);
     border-radius: var(--standard-border-radius);
-    padding: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 1.5vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
 }
 
 .popup--image {
-    width: 9rem;
-    height: 9rem;
+    width: 16vh;
+    height: 16vh;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
     border-radius: var(--standard-border-radius);
     object-fit: cover;
 }
 
 .popup--completed-button {
-    width: 100%;
-    margin-bottom: 1rem;
+    width: 90%;
+    margin-bottom: 2vh;
+    margin-left: 5%;
 }
 
 
@@ -587,8 +591,8 @@ abbr {
 /* "!important" per sovrascrivere quelli di Leaflet */
 a.leaflet-popup-close-button {
     color: whitesmoke !important;
-    top: 1rem !important;
-    right: 1rem !important;
+    top: 1.75vh !important;
+    right: 1.75vh !important;
     background-color: rgba(124, 124, 124, 0.5) !important;
     border-radius: 50% !important;
     border: 1px var(--highlight-color) solid !important;
@@ -622,9 +626,9 @@ a.leaflet-popup-close-button:active {
 }
 
 .leaflet-popup-content {
-    margin: 13px 20px 13px 20px !important;
+    margin: 2vh 2.5vh 2vh 2.5vh !important;
     color: white;
-    padding-right: 10px;
+    padding-right: 1vh;
 }
 
 
@@ -642,12 +646,12 @@ a.leaflet-popup-close-button:active {
 }
 
 #completed-itinerary--popup {
-    padding: 1rem;
+    padding: 2vh;
     background-color: var(--dark-base-color);
     color: var(--highlight-color);
     font-weight: bolder;
-    font-size: 150%;
-    border-radius: calc(var(--standard-border-radius) * 1.5);
+    font-size: 3vh;
+    border-radius: calc(var(--standard-border-radius) * 2);
     transition: 0.3s ease-out;
     letter-spacing: 3px;
     text-shadow: 1px 1px 3px red;
@@ -761,9 +765,14 @@ a.leaflet-popup-close-button:active {
     width: 3.5vh !important;
     height: 3.5vh !important;
     line-height: 3.5vh !important;
+    margin-right: 2rem;
 }
 
 .leaflet-touch .leaflet-control-zoom-in,
  .leaflet-touch .leaflet-control-zoom-out {
     font-size: 2.5vh !important;
+}
+
+.leaflet-control {
+    margin-right: 0px !important;
 }
