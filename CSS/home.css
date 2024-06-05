@@ -52,6 +52,7 @@ abbr {
         padding-top: 1vh;
         padding-bottom: 1vh;
         width: 100%;
+        white-space: nowrap;
         -webkit-text-stroke-color: #f1a918;
         -webkit-text-stroke-width: 0.06px;
         letter-spacing: 5px;
@@ -739,6 +740,8 @@ a.leaflet-popup-close-button:active {
 /* "!important" per sovrascrivere quelli di Leaflet */
 .leaflet-control-zoom {
     border: none !important;
+    margin-top: 2vh !important;
+    margin-right: 2rem !important;
 }
 
 .leaflet-control-zoom a {
@@ -765,14 +768,9 @@ a.leaflet-popup-close-button:active {
     width: 3.5vh !important;
     height: 3.5vh !important;
     line-height: 3.5vh !important;
-    margin-right: 2rem;
 }
 
 .leaflet-touch .leaflet-control-zoom-in,
  .leaflet-touch .leaflet-control-zoom-out {
     font-size: 2.5vh !important;
-}
-
-.leaflet-control {
-    margin-right: 0px !important;
 }

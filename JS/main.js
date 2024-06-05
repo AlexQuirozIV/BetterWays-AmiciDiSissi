@@ -11,6 +11,7 @@ var currentImageIndexRight = 1;
 // Variabili globali per le immagini
 var images = [];
 var informaitons = [];
+var automaticCycleDelay = 4000; // ms
 
 // Inizializzazione
 async function loadSlidingImages() {
@@ -35,6 +36,7 @@ document.body.onload = () => {
 /* Immagini a sinistra */
 function slideLeft(direction) {
     showImageLeft(currentImageIndexLeft += direction);
+    automaticCycleDelay = 4000;
 }
 
 function showImageLeft(index) {
@@ -58,6 +60,7 @@ function showImageLeft(index) {
 /* Immagini a destra */
 function slideRight(direction) {
     showImageRight(currentImageIndexRight += direction);
+    automaticCycleDelay = 4000;
 }
 
 function showImageRight(index) {
@@ -82,7 +85,7 @@ function automaticSlide() {
     setInterval(function() {
         slideLeft(+1);
         slideRight(+1);
-    }, 4000);
+    }, automaticCycleDelay);
 }
 
 

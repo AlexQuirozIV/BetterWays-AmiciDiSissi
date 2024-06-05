@@ -193,6 +193,14 @@ document.body.onload = () => {
         __shouldNavbarExpand__ = false;
         toggleExpandedNavbar();
     });
+    
+    // Aggiungi polylinea alla mappa la Via Francigena (lag)
+    L.polyline(viaFrancigenaCoords, {
+        color: 'red',
+        weight: 5,
+        opacity: 0.7,
+        smoothFactor: 1
+    }).addTo(map);
 
     //TODO: Rimuovere questo quando non servirà più (cancellare "DEBUGGING.js")
     coordinatesOnClick();
