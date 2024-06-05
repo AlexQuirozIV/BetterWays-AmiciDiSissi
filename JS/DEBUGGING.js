@@ -3,32 +3,64 @@
 */
 "use strict";
 
-let clicksLog = [];
-function coordinatesOnClick() {
+let console__clicksLog = [];
+let console__markers = {};
+var console__route;
+function console__coordinatesOnClick() {
     // Click e output coordinate in console
     map.on('click', (e) => {
         console.log('[' + e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6) + ']');
 
-        clicksLog.push([e.latlng.lat.toFixed(6), e.latlng.lng.toFixed(6)])
+        console__logCoordinates([e.latlng.lat.toFixed(6), e.latlng.lng.toFixed(6)]);
     });
 }
 
-function markerFromConsole([latitude, longitude]) {
-    let coords = [latitude, longitude];
-    let output = "[" + coords[0] + ", " + coords[1] + "]";
-    L.marker(coords).addTo(map).bindPopup(output).openPopup();
+function console__logCoordinates([a, b]) {
+    console__clicksLog.push([a, b])
 }
 
-// Passare un array di array [long., lati.]
-function routeFromConsole(coords) {
+function console__emptyLog(from, to) {
+    if (from === undefined && to === undefined) {
+        console__clicksLog = [];
+    }
+
+    from = from === undefined ? 0 : from; from--;
+    to = to === undefined ? console__clicksLog.length : to;
+
+    console__clicksLog.splice(from, to - from);
+}
+
+function console__createMarker([latitude, longitude]) {
+    let coords = [latitude, longitude];
+    let output = "[" + coords[0] + ", " + coords[1] + "]";
+    return L.marker(coords).addTo(map).bindPopup(output).openPopup();
+}
+
+// Passare un array di array [long., lati.] (solitamente "console__ClicksLog")
+function console__createRoute(coords) {
+    try {
+        console__removeMarkersAndRoute();
+    } catch (e) {
+        console.log();
+    }
+
     coords = orderCoordinates(coords);
 
-    L.Routing.control({
+    console__route = L.Routing.control({
         waypoints: coords,
 
         draggableWaypoints: false,
         addWaypoints: false,
 
-        createMarker: () => { null; }
+        createMarker: (_i) => {
+            console__markers[_i] = console__createMarker([coords[_i][0], coords[_i][1]]);
+        }
     }).addTo(map);
+}
+
+function console__removeMarkersAndRoute() {
+    map.removeControl(console__route);
+    for (const marker in console__markers) {
+        map.removeLayer(console__markers[marker]);
+    }
 }

@@ -177,6 +177,7 @@ function recenterMap() {
 function clearAllFromMap() {
     removeLaidPackage();
     singleMarkerMenuRemoveAll();
+    console__removeMarkersAndRoute();
 
     let clearAllButton = document.getElementById('clear-all-from-map--action-button');
 
@@ -203,7 +204,7 @@ document.body.onload = () => {
     }).addTo(map);
 
     //TODO: Rimuovere questo quando non servirà più (cancellare "DEBUGGING.js")
-    coordinatesOnClick();
+    console__coordinatesOnClick();
 };
 
 //! Funzionalità menu
