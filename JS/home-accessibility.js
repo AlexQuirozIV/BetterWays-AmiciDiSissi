@@ -139,7 +139,7 @@ function convertToSpeech(text) {
         // Leggi ogni paragrafo
         paragraphs.forEach(function(paragraph) {
             var message = new SpeechSynthesisUtterance(paragraph);
-            message.lang = localStorage.getItem('currentLanguageID');
+            message.lang = languageID;
             message.rate = 0.9;
             window.speechSynthesis.speak(message);
         });

@@ -59,7 +59,12 @@ function console__createRoute(coords) {
 }
 
 function console__removeMarkersAndRoute() {
-    map.removeControl(console__route);
+    try {
+        map.removeControl(console__route);
+    } catch (e) {
+        /* Nothing to do */
+    }
+
     for (const marker in console__markers) {
         map.removeLayer(console__markers[marker]);
     }

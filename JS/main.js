@@ -91,7 +91,7 @@ function automaticSlide() {
 
 // Testo 'mappa'
 function changeMapText() {
-    let language = localStorage.getItem('currentLanguageID');
+    let language = languageID;
     let mappa = document.querySelector('#mappaLink span');
 
     switch (language) {

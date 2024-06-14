@@ -1,0 +1,464 @@
+{
+    "Castello Visconteo": {
+        "coordinates": [45.312376641034014, 9.498816848941937],
+        "titles": {
+            "it": "Castello Visconteo",
+            "en": "Visconti Castle",
+            "fr": "Château Visconti",
+            "de": "Schloss Visconteo",
+            "es": "Castillo Visconteo",
+            "pt-BR": "Castelo Visconteo"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "Il Castello Visconteo è stata una fortificazione difensiva della città di Lodi, è sede dalla locale Questura.",
+            "en": "The Visconti Castle was a defensive fortification of the city of Lodi, and it houses the local Police Headquarters.",
+            "fr": "Le château Visconti était une fortification défensive de la ville de Lodi, et il abrite le siège de la Police locale.",
+            "de": "Die Burg Visconteo war eine defensive Befestigungsanlage der Stadt Lodi und beherbergt die örtliche Polizeidirektion.",
+            "es": "El Castillo Visconteo fue una fortificación defensiva de la ciudad de Lodi y alberga la Jefatura de Policía local.",
+            "pt-BR": "O Castelo Visconteo era uma fortificação defensiva da cidade de Lodi e abriga a sede da Polícia local."
+        },
+        "image": "../img/tappe-popup/Castello_Visconteo.jpg"
+    },
+    "Chiesa di San Francesco": {
+        "coordinates": [45.314617754968054, 9.507929720552477],
+        "titles": {
+            "it": "Chiesa di San Francesco",
+            "en": "San Francesco Church",
+            "fr": "Église Saint François",
+            "de": "Kirche San Francesco",
+            "es": "Iglesia de San Francisco",
+            "pt-BR": "Igreja de São Francisco"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "La chiesa di San Francesco, risalente alla fine del Duecento, è l'edificio sacro più originale della città di Lodi. ",
+            "en": "The Church of San Francesco, dating back to the late 13th century, is the most original sacred building in the city of Lodi.",
+            "fr": "L'église de San Francesco, datant de la fin du XIIIe siècle, est le bâtiment sacré le plus original de la ville de Lodi.",
+            "de": "Die Kirche San Francesco, die aus dem späten 13. Jahrhundert stammt, ist das originellste Sakralgebäude der Stadt Lodi.",
+            "es": "La iglesia de San Francisco, que data de finales del siglo XIII, es el edificio sagrado más original de la ciudad de Lodi.",
+            "pt-BR": "A igreja de San Francesco, que remonta ao final do século XIII, é o edifício sagrado mais original da cidade de Lodi."
+        },
+        "image": "../img/tappe-popup/Chiesa_San_Francesco.jpeg"
+    },
+    "Duomo di Lodi": {
+        "coordinates": [45.314214319510235, 9.503150096251492],
+        "titles": {
+            "it": "Duomo di Lodi",
+            "en": "Lodi Cathedral",
+            "fr": "Duomo de Lodi",
+            "de": "Dom von Lodi",
+            "es": "Catedral de Lodi",
+            "pt-BR": "Duomo de Lodi"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "Il Duomo di Lodi rappresenta una delle più grandi della Lombardia ed inoltre è il monumento più antico di Lodi. <br>L’accesso mediante la porta di destra è possibile per chiunque, ciò non si puo dire per la porta di sinistra. La porta d’ ingresso misura 1,24 m. Da via Cavour è accessibile, presenta un gradino per l’accesso alla saletta la cui misura  è di 10  cm, il chiostro è completamente accessibile e la sua porta misura 1 m. I gradini per l’altare sono in totale 19 e misurano 15 cm. <br>Per quanto riguarda la cripta di San Bassiano sono presenti 13 gradini che misurano 15 cm.",
+            "en": "The Cathedral of Lodi is one of the largest in Lombardy and is also the oldest monument in Lodi. <br>Access through the right door is possible for anyone, the same cannot be said for the left door. The entrance door measures 1.24 m. It is accessible from Via Cavour, with a step to access the hall measuring 10 cm, the cloister is completely accessible and its door measures 1 m. The steps to the altar are a total of 19 and measure 15 cm. As for the crypt of San Bassiano, there are 13 steps measuring 15 cm.",
+            "fr": "Le Duomo de Lodi est l'un des plus grands de Lombardie et est également le monument le plus ancien de Lodi. <br>L'accès par la porte de droite est possible pour tous, ce qui n'est pas le cas pour la porte de gauche. La porte d'entrée mesure 1,24 mètre. Il est accessible depuis la Via Cavour, présentant une marche pour l'accès à la salle dont la mesure est de 10 cm, le cloître est entièrement accessible et sa porte mesure 1 mètre. Les marches vers le sanctuaire sont au nombre de 19 et mesurent 15 cm. En ce qui concerne la crypte de San Bassiano, il y a 13 marches mesurant 15 cm.",
+            "de": "Der Dom von Lodi ist einer der größten in der Lombardei und gleichzeitig das älteste Denkmal von Lodi. <br>Der Zugang durch die rechte Tür ist für alle möglich, das Gleiche gilt nicht für die linke Tür. Die Eingangstür misst 1,24 Meter. Über die Via Cavour ist er zugänglich, mit einer Stufe von 10 cm, um Zugang zum Saal zu erhalten. Der Kreuzgang ist vollständig zugänglich und seine Tür misst 1 Meter. Die Stufen zum Altar sind insgesamt 19 und messen 15 cm. Was die Krypta von San Bassiano betrifft, so gibt es 13 Stufen mit einer Höhe von 15 cm.",
+            "es": "La Catedral de Lodi es una de las más grandes de Lombardía y además es el monumento más antiguo de Lodi. <br>El acceso por la puerta derecha es posible para cualquiera, lo mismo no se puede decir para la puerta izquierda. La puerta de entrada mide 1,24 m. Desde Via Cavour es accesible, con un escalón de 10 cm para acceder al salón, el claustro es completamente accesible y su puerta mide 1 m. Los escalones hacia el altar son en total 19 y miden 15 cm. En cuanto a la cripta de San Bassiano, hay 13 escalones que miden 15 cm.",
+            "pt-BR": "O Duomo de Lodi representa um dos maiores da Lombardia e também é o monumento mais antigo de Lodi. O acesso através da porta da direita é possível para qualquer pessoa, o que não se pode dizer da porta da esquerda. A porta de entrada mede 1,24 m. É acessível pela via Cavour, apresenta um degrau para acesso à salinha, cuja medida é de 10 cm, o claustro é completamente acessível e sua porta mede 1 m. Os degraus para o altar totalizam 19 e medem 15 cm. Quanto à cripta de San Bassiano, existem 13 degraus que medem 15 cm."
+        },
+        "image": "../img/tappe-popup/Lodi_Duomo_facciata.jpg"
+    },
+    "Faustina Sporting Club": {
+        "coordinates": [45.30054479572416, 9.50729370117188],
+        "titles": {
+            "it": "Faustina Sporting Club",
+            "en": "Faustina Sporting Club",
+            "fr": "Club Sportif Faustina",
+            "de": "Faustina Sporting Club",
+            "es": "Faustina Sporting Club",
+            "pt-BR": "Faustina Sporting Club"
+        },
+        "rating": 5,
+        "descriptions": {
+            "it": "Impianto sportivo che venne inaugurato nel 2013.",
+            "en": "Sports facility inaugurated in 2013.",
+            "fr": "Installation sportive inaugurée en 2013.",
+            "de": "Sportanlage, die 2013 eröffnet wurde.",
+            "es": "Instalación deportiva inaugurada en 2013.",
+            "pt-BR": "Instalação esportiva que foi inaugurada em 2013."
+        },
+        "image": "../img/tappe-popup/Faustina.jpg"
+    },
+    "Monumento alla Resistenza": {
+        "coordinates": [45.31043780366223, 9.501946341831502],
+        "titles": {
+            "it": "Monumento alla Resistenza",
+            "en": "Monumento alla Resistenza",
+            "fr": "Monument à la Résistance",
+            "de": "Denkmal für den Widerstand",
+            "es": "Monumento a la Resistencia",
+            "pt-BR": "Monumento à Resistência"
+        },
+        "rating": 5,
+        "descriptions": {
+            "it": "Monumento in rame posto in piazzale delle Medaglie d'Oro, è dedicato alla resistenza partigiana e venne inaugurato nel 1967. <br>Venne inoltre iniziata una fase di restaurazione che si concluse nel 2015.",
+            "en": "Copper monument located in the Medaglie d'Oro square, dedicated to the partisan resistance, was inaugurated in 1967. <br>Furthermore, a restoration phase was initiated, which was concluded in 2015.",
+            "fr": "Monument en cuivre situé sur la place des Médailles d'Or, dédié à la résistance partisane, inauguré en 1967. Une phase de restauration a également été entreprise, achevée en 2015.",
+            "de": "Das Kupferdenkmal auf dem Platz der Goldenen Medaillen ist der partisantischen Resistenz gewidmet und wurde 1967 eingeweiht. <br>Es wurde auch eine Restaurierungsphase begonnen, die 2015 abgeschlossen wurde.",
+            "es": "Monumento de cobre ubicado en la Plaza de las Medallas de Oro, dedicado a la resistencia partisana, fue inaugurado en 1967. Además, se inició una fase de restauración que concluyó en 2015.",
+            "pt-BR": "Monumento de cobre localizado na Praça das Medalhas de Ouro, é dedicado à resistência partidária e foi inaugurado em 1967. Além disso, foi iniciada uma fase de restauração que foi concluída em 2015."
+        },
+        "image": "../img/tappe-popup/Monumento_alla_Resistenza.jpg"
+    },
+    "Museo della Stampa": {
+        "coordinates": [45.31796325796598, 9.502647436164928],
+        "titles": {
+            "it": "Museo della Stampa",
+            "en": "Museum of Printing",
+            "fr": "Musée de l'Impression",
+            "de": "Museum der Druckkunst",
+            "es": "Museo de la Imprenta",
+            "pt-BR": "Museu da Imprensa"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "Il Museo della stampa e stampa d'arte è un museo civico del comune di Lodi inaugurato nel giugno 2008 e dedicato ad Andrea Schiavi, che ha raccolto numerosissime macchine di vario genere.",
+            "en": "The Museum of Printing and Art Printing is a civic museum of the municipality of Lodi, inaugurated in June 2008 and dedicated to Andrea Schiavi, who collected numerous machines of various kinds.",
+            "fr": "Le Musée de l'imprimerie et de l'art de l'impression est un musée municipal de la commune de Lodi, inauguré en juin 2008 et dédié à Andrea Schiavi, qui a rassemblé de nombreuses machines de différents types.",
+            "de": "Das Museum für Druck und Kunsthandwerk ist ein städtisches Museum der Gemeinde Lodi, das im Juni 2008 eröffnet wurde und Andrea Schiavi gewidmet ist, der zahlreiche Maschinen verschiedener Art gesammelt hat.",
+            "es": "El Museo de la Imprenta y la Impresión de Arte es un museo cívico del municipio de Lodi, inaugurado en junio de 2008 y dedicado a Andrea Schiavi, quien recopiló numerosas máquinas de diversos tipos.",
+            "pt-BR": "O Museu da Imprensa e Impressão de Arte é um museu cívico da cidade de Lodi inaugurado em junho de 2008 e dedicado a Andrea Schiavi, que reuniu inúmeras máquinas de vários tipos."
+        },
+        "image": "../img/tappe-popup/Lodi_Museo_della_Stampa.jpg"
+    },
+    "Museo dello Strumento Musicale & della Musica": {
+        "coordinates": [45.30701338770822, 9.50199549913424],
+        "titles": {
+            "it": "Museo dello Strumento Musicale & della Musica",
+            "en": "Museum of Musical Instruments & Music",
+            "fr": "Musée de l'Instrument Musical et de la Musique",
+            "de": "Museum für Musikinstrumente & Musik",
+            "es": "Museo del Instrumento Musical y de la Música",
+            "pt-BR": "Museu do Instrumento Musical & da Música"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "Il museo dello Strumento Musica e della Musica presenta un esposizione di oltre 500 strumenti musicali.",
+            "en": "The museum features an exhibition of over 500 musical instruments.",
+            "fr": "",
+            "de": "Das Museum präsentiert eine Ausstellung mit über 500 Musikinstrumenten.",
+            "es": "El museo presenta una exposición de más de 500 instrumentos musicales.",
+            "pt-BR": "O Museu do Instrumento Musical e da Música apresenta uma exposição de mais de 500 instrumentos musicais."
+        },
+        "image": "../img/tappe-popup/Museo_dello_Strumento_Musicale_e_della_Musica.jpg"
+    },
+    "Museo di Paolo Gorini": {
+        "coordinates": [45.3138348117735, 9.508056454515657],
+        "titles": {
+            "it": "Museo di Paolo Gorini",
+            "en": "Paolo Gorini Museum",
+            "fr": "Musée de Paolo Gorini",
+            "de": "Museum von Paolo Gorini",
+            "es": "Museo de Paolo Gorini",
+            "pt-BR": "Museu de Paolo Gorini"
+        },
+        "rating": 5,
+        "descriptions": {
+            "it": "La collezione anatomica di Paolo Gorini venne inaugurata nel 1981. <br>È  composta di una raccolta di circa 166 preparazioni anatomiche ed è posta in quella che oggi è la sede dell’ASL. Lo scopo di questo museo è quello di far conoscere a più persone possibili i preparati anatomici dell'omonimo scienziato.",
+            "en": "The anatomical collection of Paolo Gorini was inaugurated in 1981. <br>It consists of a collection of approximately 166 anatomical preparations and is located in what is now the headquarters of the ASL. The purpose of this museum is to make the anatomical preparations of the scientist of the same name known to as many people as possible.",
+            "fr": "La collection anatomique de Paolo Gorini a été inaugurée en 1981. <br>Elle se compose d'une collection d'environ 166 préparations anatomiques et est située dans ce qui est aujourd'hui le siège de l'ASL. Le but de ce musée est de faire connaître les préparations anatomiques du même scientifique au plus grand nombre de personnes possible.",
+            "de": "Die anatomische Sammlung von Paolo Gorini wurde 1981 eröffnet. <br>Sie besteht aus einer Sammlung von etwa 166 anatomischen Präparaten und befindet sich in dem, was heute der Sitz der ASL ist. Das Ziel dieses Museums ist es, die anatomischen Präparate des gleichnamigen Wissenschaftlers einer möglichst breiten Öffentlichkeit bekannt zu machen.",
+            "es": "La colección anatómica de Paolo Gorini fue inaugurada en 1981. <br>Está compuesta por una colección de aproximadamente 166 preparaciones anatómicas y está ubicada en lo que hoy es la sede de la ASL. El objetivo de este museo es dar a conocer las preparaciones anatómicas del científico homónimo al mayor número posible de personas.",
+            "pt-BR": "A coleção anatômica de Paolo Gorini foi inaugurada em 1981. É composta por uma coleção de cerca de 166 preparações anatômicas e está localizada na sede atual da ASL. O objetivo deste museu é dar a conhecer a um maior número possível de pessoas as preparações anatômicas do cientista homônimo."
+        },
+        "image": "../img/tappe-popup/Museo_Paolo_Gorini.jpg"
+    },
+    "Palazzetto Palacastellotti": {
+        "coordinates": [45.297359483089814, 9.510770296119013],
+        "titles": {
+            "it": "Palazzetto Palacastellotti",
+            "en": "Palacastellotti Sport Facility",
+            "fr": "Palais Palacastellotti",
+            "de": "Sporteinrichtung Palacastellotti",
+            "es": "Palazzetto Palacastellotti",
+            "pt-BR": "Palazzetto Palacastellotti"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "Il palazzetto dello sport, noto per ospitare gli incontri di hockey su pista dell'Amatori Lodi e delle altre formazioni lodigiane in questo sport.",
+            "en": "Sports arena known for hosting roller hockey matches of Amatori Lodi and other Lodigian formations in this sport.",
+            "fr": "Salle de sport connue pour accueillir les matchs de hockey sur piste de l'Amatori Lodi et d'autres équipes lodigianes dans ce sport.",
+            "de": "Sportarena, bekannt für die Austragung von Rollhockey-Spielen des Amatori Lodi und anderer Lodigianer Teams in diesem Sport.",
+            "es": "Pabellón deportivo conocido por albergar los partidos de hockey sobre patines del Amatori Lodi y otros equipos lodigianos en este deporte.",
+            "pt-BR": "O pavilhão desportivo, conhecido por hospedar os jogos de hóquei em patins do Amatori Lodi e outras equipes de Lodi neste esporte."
+        },
+        "image": "../img/tappe-popup/Palacastellotti.jpg"
+    },
+    "Parco Adda Sud": {
+        "coordinates": [45.314040272551736, 9.498271300674975],
+        "titles": {
+            "it": "Parco Adda Sud",
+            "en": "Adda Sud Park",
+            "fr": "Parc Adda Sud",
+            "de": "Park Adda Süd",
+            "es": "Parque Adda Sud",
+            "pt-BR": "Parque Adda Sul"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "Il parco di tipo fluviale e agricolo è posto lungo il basso corso dell’Adda e comprende due province: Lodi e Cremona. <br>Il parco il cui obiettivo è quello di tutelare la natura e l’ambiente è conosciuto per promuovere l’educazione ambientale verso i più giovani.",
+            "en": "The park, of a river and agricultural type, is located along the lower course of the Adda and includes two provinces: Lodi and Cremona. <br>The park, whose objective is to protect nature and the environment, is known for promoting environmental education among young people.",
+            "fr": "Le parc, de type fluvial et agricole, est situé le long du bas cours de l'Adda et comprend deux provinces: Lodi et Crémone. <br>Le parc, dont l'objectif est de protéger la nature et l'environnement, est connu pour promouvoir l'éducation environnementale des jeunes.",
+            "de": "Der Fluss- und Agrarpark erstreckt sich entlang des Unterlaufs des Adda und umfasst zwei Provinzen: Lodi und Cremona. <br>Der Park, dessen Ziel es ist, die Natur und die Umwelt zu schützen, ist bekannt für die Förderung der Umwelterziehung für Jugendliche.",
+            "es": "El parque de tipo fluvial y agrícola está ubicado a lo largo del curso bajo del Adda e incluye dos provincias: Lodi y Cremona. <br>El parque, cuyo objetivo es proteger la naturaleza y el medio ambiente, es conocido por promover la educación ambiental entre los jóvenes.",
+            "pt-BR": "O parque de tipo fluvial e agrícola está localizado ao longo do baixo curso do rio Adda e abrange duas províncias: Lodi e Cremona. O parque, cujo objetivo é proteger a natureza e o meio ambiente, é conhecido por promover a educação ambiental para os mais jovens."
+        },
+        "image": "../img/tappe-popup/Parco_Adda_Sud.jpg"
+    },
+    "Parco dell'Isola Carolina": {
+        "coordinates": [45.315097006869266, 9.498896680791935],
+        "titles": {
+            "it": "Parco dell'Isola Carolina",
+            "en": "Isola Carolina Park",
+            "fr": "Parc de l'Île Carolina",
+            "de": "Park der Isola Carolina",
+            "es": "Parque Isla Carolina",
+            "pt-BR": "Parque Ilha Carolina"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "Il parco di tipo pubblico venne realizzato intorno alla metà del Novecento. <br>È situato a pochi metri dal torrione nel centro storico, il parco è accessibile da un ingresso, mentre l’altro non è accessibile.",
+            "en": "The public park was built around the mid-twentieth century. <br>It is located a few meters from the turret in the historic center, the park is accessible from one entrance, while the other is not accessible.",
+            "fr": "Le parc de type public a été réalisé vers le milieu du XXe siècle. <br>Il est situé à quelques mètres de la tour dans le centre historique, le parc est accessible par une entrée, tandis que l'autre n'est pas accessible.",
+            "de": "Der öffentliche Park wurde um die Mitte des 20. <br>Jahrhunderts angelegt. Er befindet sich nur wenige Meter vom Turm im historischen Zentrum entfernt und ist von einem Eingang aus zugänglich, während der andere nicht zugänglich ist.",
+            "es": "El parque de tipo público fue construido alrededor de mediados del siglo XX. <br>Está situado a pocos metros del torreón en el centro histórico, el parque es accesible desde una entrada, mientras que la otra no lo es.",
+            "pt-BR": "O parque de tipo público foi construído por volta da metade do século XX. Localizado a poucos metros da torre no centro histórico, o parque é acessível por uma entrada, enquanto a outra não é acessível."
+        },
+        "image": "../img/tappe-popup/Isola_Carolina.jpg"
+    },
+    "Parco Villa Braila": {
+        "coordinates": [45.30376301489828, 9.508691843847435],
+        "titles": {
+            "it": "Parco Villa Braila",
+            "en": "Villa Braila Park",
+            "fr": "Parc de la Villa Braila",
+            "de": "Park Villa Braila",
+            "es": "Parque Villa Braila",
+            "pt-BR": "Parque Villa Braila"
+        },
+        "rating": 5,
+        "descriptions": {
+            "it": "Il parco è situato a circa una decina di minuti dal centro, è molto vasto e presenta un’immensa area verde all’interno di questo parco. Inoltre troviamo una biblioteca comunale e una storica costruzione progettata nel 1901 che da il nome al parco.",
+            "en": "Park located about ten minutes from the center, the park is very large and has a huge green area. Inside the park there is also a municipal library and a historic building designed in 1901 that gives its name to the park.",
+            "fr": "Parc situé à environ dix minutes du centre, le parc est très étendu et présente une immense zone verte. <br>À l'intérieur de ce parc, on trouve également une bibliothèque municipale et un bâtiment historique conçu en 1901 qui donne son nom au parc.",
+            "de": "Park, der etwa zehn Minuten vom Zentrum entfernt liegt, der Park ist sehr weitläufig und verfügt über eine riesige Grünfläche. <br>Im Inneren des Parks befindet sich auch eine städtische Bibliothek und ein historisches Gebäude, das 1901 entworfen wurde und dem Park seinen Namen gibt.",
+            "es": "Parque ubicado a unos diez minutos del centro, el parque es muy extenso y cuenta con una inmensa área verde. Dentro del parque también se encuentra una biblioteca municipal y una histórica construcción diseñada en 1901 que da nombre al parque.",
+            "pt-BR": "O parque está localizado a cerca de dez minutos do centro, é muito extenso e possui uma vasta área verde dentro dele. Além disso, encontramos uma biblioteca municipal e uma construção histórica projetada em 1901 que dá nome ao parque."
+        },
+        "image": "../img/tappe-popup/Villa_Braila.jpg"
+    },
+    "Stadio Dossenina": {
+        "coordinates": [45.30739132224016, 9.495022000717784],
+        "titles": {
+            "it": "Stadio Dossenina",
+            "en": "Dossenina Stadium",
+            "fr": "Stade Dossenina",
+            "de": "Stadion Dossenina",
+            "es": "Estadio Dossenina",
+            "pt-BR": "Estádio Dossenina"
+        },
+        "rating": 5,
+        "descriptions": {
+            "it": "Venne inaugurato attorno al 1920, l’accesso ai pedoni è facilitato dalla pista pedonale posta davanti ad esso. <br>Sono presenti due porte per l’ingresso, quella principale misura 4,30 m, mentre la porta per l’accesso al pubblico misura 1,20 m.",
+            "en": "It was inaugurated around 1920, pedestrian access is facilitated by the pedestrian track in front of it. <br>There are two entrance gates, the main one measuring 4.30 m, while the gate for public access measures 1.20 m.",
+            "fr": "Il a été inauguré vers 1920, l'accès des piétons est facilité par la piste piétonne devant lui. <br>Il y a deux portes d'entrée, la principale mesure 4,30 mètres, tandis que la porte d'accès au public mesure 1,20 mètre.",
+            "de": "Es wurde um 1920 eröffnet, der Zugang für Fußgänger wird durch den Gehweg vor ihm erleichtert. <br>Es gibt zwei Türen für den Eingang, die Haupttür ist 4,30 Meter breit, während die Tür für den Zugang der Öffentlichkeit 1,20 Meter misst.",
+            "es": "Fue inaugurado alrededor de 1920, el acceso peatonal está facilitado por la acera colocada frente a él. <br>Hay dos puertas de entrada, la principal mide 4,30 m, mientras que la puerta de acceso al público mide 1,20 m.",
+            "pt-BR": "Foi inaugurado por volta de 1920, o acesso dos pedestres é facilitado pela calçada em frente a ele. Há duas portas de entrada, a principal mede 4,30 m, enquanto a porta de acesso ao público mede 1,20 m."
+        },
+        "image": "../img/tappe-popup/Stadio_Dossenina.jpg"
+    },
+    "Teatro Alle Vigne": {
+        "coordinates": [45.31506910520015, 9.506154729318768],
+        "titles": {
+            "it": "Teatro Alle Vigne",
+            "en": "Alle Vigne Theater",
+            "fr": "Théâtre Alle Vigne",
+            "de": "Theater Alle Vigne",
+            "es": "Teatro Alle Vigne",
+            "pt-BR": "Teatro Alle Vigne"
+        },
+        "rating": 5,
+        "descriptions": {
+            "it": "Il teatro alle Vigne è il principale teatro della città di Lodi. <br>Originariamente si trattava di una chiesa, canonica dell'ordine degli Umiliati, ma nel 1570 passò ai padri barnabiti che lo convertirono in istituto superiore di teologia, morale e filosofia.",
+            "en": "The Theater at the Vineyards is the main theater in the city of Lodi. Originally, it was a church, belonging to the Order of the Humiliated, but in 1570 it passed to the Barnabite fathers who converted it into a higher institute of theology, morals, and philosophy.",
+            "fr": "Le théâtre aux Vignes est le principal théâtre de la ville de Lodi. <br>À l'origine, c'était une église, appartenant à l'ordre des Humiliés, mais en 1570, elle est passée aux pères barnabites qui l'ont transformée en institut supérieur de théologie, de morale et de philosophie.",
+            "de": "Das Theater an den Weinbergen ist das wichtigste Theater der Stadt Lodi. <br>Ursprünglich war es eine Kirche, die dem Orden der Demütigen gehörte, aber im Jahr 1570 ging sie an die Barnabiten über, die sie in eine höhere Schule für Theologie, Moral und Philosophie umwandelten.",
+            "es": "El Teatro de las Viñas es el principal teatro de la ciudad de Lodi. <br>Originalmente era una iglesia, perteneciente a la orden de los Humiliados, pero en 1570 pasó a los padres barnabitas que lo convirtieron en un instituto superior de teología, moral y filosofía.",
+            "pt-BR": "O Teatro das Vinhas é o principal teatro da cidade de Lodi. <br>Originalmente, era uma igreja pertencente à ordem dos Humilhados, mas em 1570 passou para os padres barnabitas, que o converteram em um instituto superior de teologia, moral e filosofia."
+        },
+        "image": "../img/tappe-popup/Teatro_alle_Vigne.jpg"
+    },
+    "Tempio Civico dell'Incoronata": {
+        "coordinates": [45.31465971960593, 9.502055674244136],
+        "titles": {
+            "it": "Tempio Civico dell'Incoronata",
+            "en": "Civic Temple of the Incoronata",
+            "fr": "Temple Civique de l'Incoronata",
+            "de": "Bürgerlicher Tempel der Incoronata",
+            "es": "Templo Cívico Incoronada",
+            "pt-BR": "Templo Cívico Incoronata"
+        },
+        "rating": 5,
+        "descriptions": {
+            "it": "Principale monumento artistico della città di Lodi venne edificato come Tempio Civico. <br>Presenta due gradini per accedere, che misurano rispettivamente 11 cm e 9 cm. La struttura è attrezzata per permettere l’accesso a chiunque, si ha infatti la possibilità di inserire uno scivolo, se esso viene richiesto. Tutta la struttura interna è accessibile. La Porta per accedere al museo è di 1 m, per accedere al museo bisogna attraversare dei gradini dunque non risulta accessibile per tutti. I corridoi hanno dimensione di 1 m circa.",
+            "en": "The main artistic monument of the city of Lodi was built as a Civic Temple. <br>It has two steps to access, measuring respectively 11 cm and 9 cm. The structure is equipped to allow access to anyone, in fact, there is the possibility of installing a slide, if requested. The entire internal structure is accessible. The door to access the museum is 1 m, but to access the museum you have to go through steps so it is not accessible to everyone. The corridors are about 1 m wide.",
+            "fr": "Principal monument artistique de la ville de Lodi, il a été construit comme Temple Civique. <br>Il présente deux marches pour accéder, mesurant respectivement 11 cm et 9 cm. La structure est équipée pour permettre l'accès à tous, il est en effet possible d'installer une rampe, si nécessaire. Toute la structure interne est accessible. La porte d'accès au musée mesure 1 mètre, mais pour accéder au musée, il faut monter des marches donc il n'est pas accessible à tous. Les couloirs ont une largeur d'environ 1 mètre.",
+            "de": "Das wichtigste Kunstwerk der Stadt Lodi wurde als Bürgerlicher Tempel erbaut. <br>Es gibt zwei Stufen zum Eingang, die jeweils 11 cm und 9 cm messen. Die Struktur ist so ausgelegt, dass der Zugang für alle ermöglicht wird, es besteht die Möglichkeit, eine Rampe einzubauen, wenn sie benötigt wird. Die gesamte innere Struktur ist zugänglich. Die Tür zum Museumszugang ist 1 Meter breit, aber um das Museum zu betreten, müssen Stufen überwunden werden, daher ist es nicht für alle zugänglich. Die Flure sind etwa 1 Meter breit.",
+            "es": "El principal monumento artístico de la ciudad de Lodi fue construido como Templo Cívico. <br>Tiene dos escalones para acceder, que miden respectivamente 11 cm y 9 cm. La estructura está equipada para permitir el acceso a cualquier persona, de hecho, existe la posibilidad de instalar un tobogán, si es necesario. Toda la estructura interna es accesible. La puerta para acceder al museo mide 1 m, pero para acceder al museo hay que subir escalones, por lo que no es accesible para todos. Los pasillos tienen un ancho de aproximadamente 1 m.",
+            "pt-BR": "Principal monumento artístico da cidade de Lodi, foi construído como Templo Cívico. Possui dois degraus de acesso, que medem respectivamente 11 cm e 9 cm. A estrutura é equipada para permitir o acesso a todos, de fato, há a possibilidade de instalar uma rampa, se solicitada. Toda a estrutura interna é acessível. A porta de acesso ao museu tem 1 m de largura, mas para entrar no museu é necessário subir alguns degraus, portanto não é acessível para todos. Os corredores têm cerca de 1 m de largura."
+        },
+        "image": "../img/tappe-popup/Tempio_Incoronata.jpg"
+    },
+    "Torrione di Lodi": {
+        "coordinates": [45.3126397552172, 9.498001343678204],
+        "titles": {
+            "it": "Torrione di Lodi",
+            "en": "Lodi Rook",
+            "fr": "Torréone de Lodi",
+            "de": "Lodi-Turm",
+            "es": "Torrione de Lodi",
+            "pt-BR": "Torrão de Lodi"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "Torre di forma cilindrica, fu voluta da Francesco Sforza nel 1456 e rappresenta uno dei simboli principali di Lodi. <br>Non si può visitare all'interno, ma è visionabile unicamente da fuori. Per poterla osservare ci si può posizionare sulla pista ciclabile presente vicino ad esso, composta da sanpietrini.",
+            "en": "A cylindrical tower, ordered by Francesco Sforza in 1456, represents one of the main symbols of Lodi. <br>It cannot be visited inside, but it can only be viewed from the outside. To observe it, you can position yourself on the bike path nearby, made up of cobblestones.",
+            "fr": "Tour de forme cylindrique, voulue par Francesco Sforza en 1456, elle est l'un des principaux symboles de Lodi. On ne peut pas la visiter à l'intérieur, mais on peut la voir uniquement de l'extérieur. Pour l'observer, on peut se positionner sur la piste cyclable à proximité, composée de pavés.",
+            "de": "Ein zylindrischer Turm, der 1456 von Francesco Sforza erbaut wurde und eines der Hauptsymbole von Lodi darstellt. <br>Man kann ihn nicht von innen besichtigen, aber man kann ihn nur von außen betrachten. Um ihn zu sehen, kann man sich auf den nahegelegenen Radweg stellen, der aus Kopfsteinpflaster besteht.",
+            "es": "Una torre de forma cilíndrica, ordenada por Francesci Sforza en 1456 y representa uno de los principales símbolos de Lodi. <br>No se puede visitar por dentro, pero se puede ver desde afuera. Para poder observarlo, uno puede ubicarse en el carril bici cercano, compuesto por adoquines.",
+            "pt-BR": "Torre de forma cilíndrica, foi encomendada por Francesco Sforza em 1456 e é um dos principais símbolos de Lodi. Não é possível visitá-la por dentro, mas só pode ser vista do lado de fora. Para observá-la, você pode se posicionar na ciclovia próxima a ela, composta por paralelepípedos."
+        },
+        "image": "../img/tappe-popup/Torrione.jpg"
+    },
+    "Piazza Broletto": {
+        "coordinates": [45.31452738912999, 9.50285367329064],
+        "titles": {
+            "it": "Piazza Broletto",
+            "en": "Broletto Square",
+            "fr": "Place Broletto",
+            "de": "Broletto Platz",
+            "es": "Piazza Broletto",
+            "pt-BR": "Piazza Broletto"
+        },
+        "rating": 3,
+        "descriptions": {
+            "it": "Situata in prossimità della cattedrale, è un complesso architettonico dove ha sede l’amministrazione comunale di Lodi, è completamente  accessibile al pubblico ed è importante da menzionare poiché in essa è situato l’ufficio turistico, importante per chiunque voglia avere ulteriori informazioni sulla città di Lodi.",
+            "en": "Located near the cathedral, it is an architectural complex where the municipal administration of Lodi is located, it is completely accessible to the public and it is important to mention it because the tourist office is located in it, important for anyone who wants to have further information about the city of Lodi.",
+            "fr": "Située à proximité de la cathédrale, c'est un complexe architectural abritant l'administration municipale de Lodi, entièrement accessible au public et important à mentionner car le bureau du tourisme s'y trouve, important pour quiconque souhaite obtenir des informations supplémentaires sur la ville de Lodi.",
+            "de": "In der Nähe der Kathedrale gelegen, ist es ein architektonischer Komplex, in dem sich die Stadtverwaltung von Lodi befindet. <br>Es ist vollständig für die Öffentlichkeit zugänglich und erwähnenswert, da sich dort das Tourismusbüro befindet, wichtig für alle, die weitere Informationen über die Stadt Lodi wünschen.",
+            "es": "Ubicada cerca de la catedral, es un complejo arquitectónico donde tiene su sede la administración municipal de Lodi, es completamente accesible al público y es importante mencionarlo porque en ella se encuentra la oficina de turismo, importante para cualquiera que desee obtener más información sobre la ciudad de Lodi.",
+            "pt-BR": "Localizado próximo à catedral, é um complexo arquitetônico onde está localizada a administração municipal de Lodi, é completamente acessível ao público e é importante mencionar porque nela está localizado o escritório de turismo, importante para quem deseja obter mais informações sobre a cidade de Lodi."
+        },
+        "image": "../img/tappe-popup/Piazza_Broletto.jpeg"
+    },
+    "Piazza Mercato": {
+        "coordinates": [45.315046320365575, 9.504111225140116],
+        "titles": {
+            "it": "Piazza Mercato",
+            "en": "Market Square",
+            "fr": "Place du Marché",
+            "de": "Marktplatz",
+            "es": "Plaza del Mercado",
+            "pt-BR": "Piazza Mercato"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "Piazza adibita al mercato è accessibile al pubblico poiché non presenta alcuna barriera architettonica.",
+            "en": "Market square is accessible to the public as it does not present any architectural barriers.",
+            "fr": "Place dédiée au marché, accessible au public car elle ne présente aucune barrière architecturale.",
+            "de": "Der als Markt genutzte Platz ist für die Öffentlichkeit zugänglich, da er keine architektonischen Barrieren aufweist.",
+            "es": "Plaza destinada al mercado, es accesible para el público ya que no presenta barreras arquitectónicas.",
+            "pt-BR": "A praça destinada ao mercado é acessível ao público, pois não apresenta nenhuma barreira arquitetônica."
+        },
+        "image": "../img/tappe-popup/Piazza_Mercato.jpg"
+    },
+    "Ufficio turistico": {
+        "coordinates": [45.31457313558977, 9.502831126442807],
+        "titles": {
+            "it": "Ufficio turistico",
+            "en": "Tourist Office",
+            "fr": "Office de tourisme",
+            "de": "Touristenbüro",
+            "es": "Oficina de Turismo",
+            "pt-BR": "Ufficio turistico"
+        },
+        "rating": 5,
+        "descriptions": {
+            "it": "Punto di informazione per i turisti.",
+            "en": "Information point for tourists.",
+            "fr": "Point d'information pour les touristes.",
+            "de": "Informationspunkt für Touristen.",
+            "es": "Punto de información para turistas.",
+            "pt-BR": "Ponto de informação para turistas."
+        },
+        "image": "../img/tappe-popup/Piazza_Mercato.jpg"
+    },
+    "Chiesa della Maddalena": {
+        "coordinates": [45.31835179420975, 9.504352611647226],
+        "titles": {
+            "it": "Chiesa della Maddalena",
+            "en": "Church of Magdalene",
+            "fr": "Église de la Madeleine",
+            "de": "Kirche der Magdalena",
+            "es": "Iglesia de la Magdalena",
+            "pt-BR": "Chiesa della Maddalena"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "La chiesa venne costruita attorno alla prima metà del Settecento ed è nota per essere un pieno esempio  dello stile del barocco. <br>Internamente è presente una navata unica. Per quanto riguarda la parte esterna è presente un gradino per l’accesso la cui misura è di circa 13 cm e la porta d’accesso ha una dimensione di  90 cm.Inoltre è importante dire che è visibile anche dalla via che la fronteggia.",
+            "en": "The church was built around the first half of the eighteenth century and is known for being a full example of the Baroque style. <br>Internally there is a single nave. As for the external part, there is a step for access measuring approximately 13 cm and the entrance door measures 90 cm. It is also important to say that it is visible from the street facing it.",
+            "fr": "L'église a été construite vers la première moitié du XVIIIe siècle et est connue pour être un exemple parfait du style baroque. À l'intérieur, il y a une seule nef. En ce qui concerne l'extérieur, il y a une marche pour l'accès dont la mesure est d'environ 13 cm et la porte d'entrée mesure 90 cm. Il est également important de mentionner qu'elle est visible depuis la rue qui lui fait face.",
+            "de": "Die Kirche wurde um die erste Hälfte des 18. <br>Jahrhunderts erbaut und ist ein vollständiges Beispiel des Barockstils. Im Inneren gibt es ein einziges Kirchenschiff. Was den äußeren Teil betrifft, so gibt es eine Stufe zum Zugang mit einer Höhe von etwa 13 cm und die Eingangstür ist 90 cm breit. Es ist auch erwähnenswert, dass sie von der Straße aus sichtbar ist.",
+            "es": "La iglesia fue construida alrededor de la primera mitad del siglo XVIII y es conocida por ser un ejemplo completo del estilo barroco. <br>Internamente hay una sola nave. En cuanto a la parte exterior, hay un escalón para acceder que mide aproximadamente 13 cm y la puerta de acceso mide 90 cm. Además, es importante mencionar que también es visible desde la calle que la enfrenta.",
+            "pt-BR": "A igreja foi construída por volta da primeira metade do século XVIII e é conhecida por ser um exemplo pleno do estilo barroco. Internamente, há uma única nave. Quanto à parte externa, há um degrau para acesso, com cerca de 13 cm de altura, e a porta de entrada tem uma largura de 90 cm. Além disso, é importante mencionar que ela também é visível da rua em frente."
+        },
+        "image": "../img/tappe-popup/Chiesa_della_Maddalena.jpeg"
+    },
+    "Biblioteca Laudense": {
+        "coordinates": [45.316260560309566, 9.504173325140222],
+        "titles": {
+            "it": "Biblioteca Laudense",
+            "en": "Laudense Library",
+            "fr": "Bibliothèque Laudense",
+            "de": "Laudense Bibliothek",
+            "es": "Biblioteca Laudense",
+            "pt-BR": "Biblioteca Laudense"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "La Biblioteca comunale Laudense è la più antica biblioteca di Lodi, aperta al pubblico dal 1792. <br>Si trova nel centro della città, poco distante da piazza della Vittoria, ed è adiacente alla coeva chiesa di San Filippo Neri, con cui condivide lo stile barocco lombardo della facciata.",
+            "en": "The Municipal Library Laudense is the oldest library in Lodi, open to the public since 1792. <br>It is located in the city center, not far from Victory Square, and is adjacent to the contemporary church of San Filippo Neri, with which it shares the Lombard Baroque style of the facade.",
+            "fr": "La Bibliothèque municipale Laudense est la plus ancienne bibliothèque de Lodi, ouverte au public depuis 1792. <br>Elle est située dans le centre-ville, non loin de la place de la Victoire, et est adjacente à l'église contemporaine de San Filippo Neri, avec laquelle elle partage le style baroque lombard de la façade.",
+            "de": "Die Stadtbibliothek Laudense ist die älteste Bibliothek in Lodi und seit 1792 für die Öffentlichkeit zugänglich. <br>Sie befindet sich im Stadtzentrum, unweit vom Siegesplatz entfernt, und grenzt an die zeitgenössische Kirche San Filippo Neri, mit der sie den lombardischen barocken Stil der Fassade teilt.",
+            "es": "La Biblioteca Municipal Laudense es la biblioteca más antigua de Lodi, abierta al público desde 1792. <br>Se encuentra en el centro de la ciudad, no muy lejos de la plaza de la Victoria, y está adyacente a la iglesia contemporánea de San Filippo Neri, con la que comparte el estilo barroco lombardo de la fachada.",
+            "pt-BR": "A Biblioteca Municipal Laudense é a biblioteca mais antiga de Lodi, aberta ao público desde 1792. Localiza-se no centro da cidade, não muito longe da Praça da Vitória, e está adjacente à contemporânea Igreja de San Filippo Neri, com a qual compartilha o estilo barroco lombardo da fachada."
+        },
+        "image": "../img/tappe-popup/Biblioteca_Laudense.png"
+    },
+    "Piazza Castello": {
+        "coordinates": [45.3126698, 9.4997774],
+        "titles": {
+            "it": "Piazza Castello",
+            "en": "Castle Square",
+            "fr": "Place du Château",
+            "de": "Schlossplatz",
+            "es": "Plaza-del-Castillo",
+            "pt-BR": "Piazza Castello"
+        },
+        "rating": 4,
+        "descriptions": {
+            "it": "Sorge sull'antico complesso castellano, costruito da Bernabò Visconti nel 1370, su una precedente fortificazione.",
+            "en": "Rises above the ancient castle complex, built by Bernabò Visconti in 1370 on a previous fortification.",
+            "fr": "Se dresse au-dessus de l'ancien complexe de château, construit par Bernabò Visconti en 1370 sur une fortification précédente.",
+            "de": "Erhebt sich über dem alten Schlosskomplex, der 1370 von Bernabò Visconti auf einer früheren Befestigung erbaut wurde.",
+            "es": "Se alza sobre el antiguo complejo del castillo, construido por Bernabò Visconti en 1370 sobre una fortificación anterior.",
+            "pt-BR": "Ergue-se sobre o antigo complexo do castelo, construído por Bernabò Visconti em 1370, sobre uma fortificação anterior."
+        },
+        "image": "../img/tappe-popup/Piazza_Castello.jpeg"
+    }
+}

@@ -1,0 +1,113 @@
+{
+    "Castelli": {
+        "translations": {
+            "it":    "Castelli",
+            "en":    "Castles",
+            "es":    "Castillos",
+            "de":    "Schlösser",
+            "fr":    "Châteaux",
+            "pt-BR": "Castelos"
+        },
+        "stages": [
+            "Castello Visconteo",
+            "Torrione di Lodi"
+        ]
+    },
+
+    "Luoghi Religiosi": {
+        "translations": {
+            "it":    "Luoghi Religiosi",
+            "en":    "Places of Worship",
+            "es":    "Lugares Religiosos",
+            "de":    "Religiöse Stätten",
+            "fr":    "Lieux Religieux",
+            "pt-BR": "Locais Religiosos"
+        },
+        "stages": [
+            "Duomo di Lodi",
+            "Tempio Civico dell'Incoronata",
+            "Chiesa di San Francesco",
+            "Chiesa della Maddalena"
+        ]
+    },
+
+    "Monumenti Onoranti": {
+        "translations": {
+            "it":    "Monumenti Onoranti",
+            "en":    "Monuments",
+            "es":    "Monumentos Honoríficos",
+            "de":    "Ehrenmale",
+            "fr":    "Monuments Honorifiques",
+            "pt-BR": "Monumentos Honoríficos"
+        },
+        "stages": [
+            "Monumento alla Resistenza"
+        ]
+    },
+
+    "Musei & Teatri": {
+        "translations": {
+            "it":    "Musei & Teatri",
+            "en":    "Museums & Theaters",
+            "es":    "Museos y Teatros",
+            "de":    "Museen & Theater",
+            "fr":    "Musées et Théâtres",
+            "pt-BR": "Museus & Teatros"
+        },
+        "stages": [
+            "Museo della Stampa",
+            "Museo di Paolo Gorini",
+            "Teatro Alle Vigne",
+            "Museo dello Strumento Musicale & della Musica",
+            "Biblioteca Laudense"
+        ]
+    },
+
+    "Parchi": {
+        "translations": {
+            "it":    "Parchi",
+            "en":    "Parks",
+            "es":    "Parques",
+            "de":    "Parks",
+            "fr":    "Parcs",
+            "pt-BR": "Parques"
+        },
+        "stages": [
+            "Parco Adda Sud",
+            "Parco dell'Isola Carolina",
+            "Parco Villa Braila"
+        ]
+    },
+
+    "Strutture Sportive": {
+        "translations": {
+            "it":    "Strutture Sportive",
+            "en":    "Sport Buildings",
+            "es":    "Instalaciones Deportivas",
+            "de":    "Sporteinrichtungen",
+            "fr":    "Installations Sportives",
+            "pt-BR": "Instalações Esportivas"
+        },
+        "stages": [
+            "Stadio Dossenina",
+            "Faustina Sporting Club",
+            "Palazzetto Palacastellotti"
+        ]
+    },
+
+    "Piazze": {
+        "translations": {
+            "it":    "Piazze",
+            "en":    "Squares",
+            "es":    "Plazas",
+            "de":    "Piazze",
+            "fr":    "Places",
+            "pt-BR": "Praças"
+        },
+        "stages": [
+            "Piazza Broletto",
+            "Piazza Mercato",
+            "Piazza Castello"
+        ]
+    }
+}

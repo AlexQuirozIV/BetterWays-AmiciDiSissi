@@ -13,19 +13,19 @@ function chiSiamoMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    document.getElementById('chi-siamo-menu--title').textContent = informations.menuNames[21];
+    document.getElementById('chi-siamo-menu--title').textContent = menuTranslations["chi-siamo-menu--title"][languageID];
 
     /* La nostra bellissima presentazione */
-    document.getElementById('chi-siamo-menu--presentation').innerHTML = informations.menuNames[22];
+    document.getElementById('chi-siamo-menu--presentation').innerHTML = menuTranslations["chi-siamo-menu--presentation"][languageID];
 
     /* Header */
-    document.getElementById('chi-siamo-menu--feedback-section--header').textContent = informations.menuNames[23];
+    document.getElementById('chi-siamo-menu--feedback-section--header').textContent = menuTranslations["chi-siamo-menu--feedback-section--header"][languageID];
 
     /* Instagram */
-    document.querySelector('#chi-siamo-menu--feedback-section--instagram > span').textContent = informations.menuNames[24];
+    document.querySelector('#chi-siamo-menu--feedback-section--instagram > span').textContent = menuTranslations["chi-siamo-menu--feedback-section--instagram"][languageID];
 
     /* Instagram */
-    document.querySelector('#chi-siamo-menu--feedback-section--email > span').textContent = informations.menuNames[25];
+    document.querySelector('#chi-siamo-menu--feedback-section--email > span').textContent = menuTranslations["chi-siamo-menu--feedback-section--email"][languageID];
 
     /* Attiva il menu */
     menu.classList.toggle('menu--active');

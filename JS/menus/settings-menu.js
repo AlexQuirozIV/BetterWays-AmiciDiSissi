@@ -34,21 +34,22 @@ function settingsMenu() {
 
 
     /* Titolo */
-    document.getElementById('settings-menu--title').textContent = informations.menuNames[15];
+    document.getElementById('settings-menu--title').textContent = menuTranslations["settings-menu--title"][languageID];
 
 
     /* Legenda */
-    document.getElementById('settings-menu--legend--header').textContent = informations.menuNames[16];
+    document.getElementById('settings-menu--legend--header').textContent = menuTranslations["settings-menu--legend--header"][languageID];
 
     let legendContentTexts = document.getElementsByClassName('legend--content--sections--nametags');
-    for (let i = 0; i < legendContentTexts.length; i++) {
-        let legendContentText = legendContentTexts[i];
-        legendContentText.textContent = informations.menuNames[i + 17];
-    }
+
+    legendContentTexts[0].textContent = "= " + menuTranslations["legend--content--sections--destination-not-yet-reached"][languageID];
+    legendContentTexts[1].textContent = "= " + menuTranslations["legend--content--sections--destination-reached"][languageID];
+    legendContentTexts[2].textContent = "= " + menuTranslations["legend--content--sections--itinerary-completed"][languageID];
+
 
     // Sezione 'cambia lingua'
     let languageSwitch = document.getElementById('settings-menu--language-selection');
-    document.getElementById('settings-menu--language-selection--header').textContent = informations.menuNames[20];
+    document.getElementById('settings-menu--language-selection--header').textContent = menuTranslations["settings-menu--language-selection--header"][languageID];
 
     /* Opzioni per il select (lista delle lingue da 'languagesList') */
     let select = languageSwitch.querySelector('select');
@@ -72,10 +73,10 @@ function settingsMenu() {
         }
     }
 
-    // Trova l'elemento 'option' con il 'value' uguale a 'localStorage.getItem('currentLanguageID')'
+    // Trova l'elemento 'option' con il 'value' uguale a 'languageID'
     // e lo mette come selezionato
     Array.from(select.options).find(
-        option => option.value === localStorage.getItem('currentLanguageID')
+        option => option.value === languageID
     ).selected = true;
 
 
@@ -106,16 +107,15 @@ function handleLanguageChange(event) {
     removeLaidPackage();
 
     // Prendi le nuove informazioni (dato che ora abbiamo aggiornato 'currentLanguage' e 'currentLanguageID')
-    fetchInfos(event.target.value);
+    localStorage.setItem('currentLanguageID', (event.target.value === undefined ? 'it' : event.target.value));
+    languageID = localStorage.getItem('currentLanguageID');
 
     // Resetta il menu delle impostazioni
     resetSettingsMenu();
 }
 
-/* Reset del menu dopo aver cambiato lingua */
+/* Reset del menu dopo aver cambiato lingua (letteralmente spegni e riaccendi) */
 function resetSettingsMenu() {
     closeOpenMenus();
-    setTimeout(() => {
-        settingsMenu();
-    }, 300);
+    settingsMenu();
 }

@@ -12,7 +12,7 @@ function addSingleMarkerMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    menu.querySelector('span').textContent = informations.menuNames[29];
+    document.getElementById('single-marker-menu--title').textContent = menuTranslations["single-marker-menu--title"][languageID];
 
     /* Opzioni per il select */
     let select = menu.querySelector('select');
@@ -25,22 +25,30 @@ function addSingleMarkerMenu() {
         }
     }
 
-    // Ottieni i nomi e le chiavi associate
-    let optionsData = Object.entries(informations.placesNames).map(([key, value]) => ({
-        key: key,
-        name: value[1]
+    // ... ottieni e ordina alfabeticamente i nomi delle opzioni...
+    let optionsNames = Object.keys(placesTranslations)
+    .map(key => placesTranslations[key]["titles"][languageID]);
+
+    let optionsValues = Object.keys(placesTranslations);
+
+    let combinedOptions = optionsValues.map((value, index) => ({
+        value: value,
+        name: optionsNames[index]
     }));
 
-    // ... ordina le opzioni alfabeticamente...
-    optionsData.sort((a, b) => a.name.localeCompare(b.name));
+    combinedOptions.sort((a, b) => a.name.localeCompare(b.name));
+
+    optionsNames = combinedOptions.map(option => option.name);
+    optionsValues = combinedOptions.map(option => option.value);
+
 
     // ... e riempi il select con le "nuove" opzioni ordinate
-    optionsData.forEach(optionData => {
+    for (let i = 0; i < optionsNames.length; i++) {
         let option = document.createElement('option');
-        option.value = optionData.key;
-        option.text = optionData.name;
+        option.value = optionsValues[i];
+        option.text = optionsNames[i];
         select.appendChild(option);
-    });
+    }
 
     // Ripristina l'index per l'apertura
     if (selectedIndex >= 0 && selectedIndex < select.options.length) {
@@ -52,16 +60,16 @@ function addSingleMarkerMenu() {
     let buttons = menu.querySelectorAll('div button');
 
     // Testo e funzione per ciascuno
-    buttons[0].textContent = informations.menuNames[30];
+    buttons[0].textContent = menuTranslations["single-marker-menu--add-marker"][languageID];
     buttons[0].setAttribute('onclick', 'singleMarkerMenuPlace()');
 
-    buttons[1].textContent = informations.menuNames[31];
+    buttons[1].textContent = menuTranslations["single-marker-menu--remove-marker"][languageID];
     buttons[1].setAttribute('onclick', 'singleMarkerMenuRemove()');
 
-    buttons[2].textContent = informations.menuNames[32];
+    buttons[2].textContent = menuTranslations["single-marker-menu--add-all-markers"][languageID];
     buttons[2].setAttribute('onclick', 'singleMarkerMenuAddAll()');
 
-    buttons[3].textContent = informations.menuNames[33];
+    buttons[3].textContent = menuTranslations["single-marker-menu--remove-all-markers"][languageID];
     buttons[3].setAttribute('onclick', 'singleMarkerMenuRemoveAll()');
 
 
@@ -100,14 +108,14 @@ function singleMarkerMenuPlace() {
     if (availablePlace.includes(selectedPlace)) {
         // Genera le informazioni da aggiungere al popup con le informazioni da 'informations'
         var bindingInfos = bindPopupInfos(
-            informations.placesNames[selectedPlace][1],
-            informations.placesNames[selectedPlace][2],
-            informations.placesNames[selectedPlace][3],
-            informations.placesNames[selectedPlace][4]
+            placesTranslations[selectedPlace]["titles"][languageID],
+            placesTranslations[selectedPlace]["rating"],
+            placesTranslations[selectedPlace]["descriptions"][languageID],
+            placesTranslations[selectedPlace]["image"]
         );
 
         // Piazza il menu e salvalo in 'singleMarkers'
-        singleMarkers[selectedPlace] = newSingleMarker(informations.placesNames[selectedPlace][0], bindingInfos);
+        singleMarkers[selectedPlace] = newSingleMarker(placesTranslations[selectedPlace]["coordinates"], bindingInfos);
         // Svuota lo spazio da 'availablePlace'
         availablePlace[availablePlace.indexOf(selectedPlace)] = null;
     }
@@ -133,26 +141,26 @@ function singleMarkerMenuAddAll() {
     }
 
     // ... altrimenti, lo piazza
-    for (let i = 0; i < availablePlace.length; i++) {
-        let marker = availablePlace[i];
+    availablePlace.forEach(place => {
+        let marker = availablePlace[availablePlace.indexOf(place)];
 
         if (marker === null) {
-            continue; // Skippa al prossimo se il corrente è 'null'
+            return; // Skippa al prossimo se il corrente è 'null'
         }
 
         // Genera le informazioni da aggiungere al popup con le informazioni da 'informations'
         var bindingInfos = bindPopupInfos(
-            informations.placesNames[marker][1],
-            informations.placesNames[marker][2],
-            informations.placesNames[marker][3],
-            informations.placesNames[marker][4]
+            placesTranslations[place]["titles"][languageID],
+            placesTranslations[place]["rating"],
+            placesTranslations[place]["descriptions"][languageID],
+            placesTranslations[place]["image"]
         );
 
         // Piazza il menu e salvalo in 'singleMarkers'
-        singleMarkers[marker] = newSingleMarker(informations.placesNames[marker][0], bindingInfos);
+        singleMarkers[marker] = newSingleMarker(placesTranslations[place]["coordinates"], bindingInfos);
         // Svuota lo spazio da 'availablePlace'
-        availablePlace[i] = null;
-    }
+        availablePlace[availablePlace.indexOf(place)] = null;
+    });
 }
 
 function singleMarkerMenuRemoveAll() {
@@ -163,7 +171,7 @@ function singleMarkerMenuRemoveAll() {
     singleMarkers = {};
     // Svuota e riempi 'availablePlace' con i posti (resettati)
     availablePlace = [];
-    Object.keys(informations.placesNames).forEach(place => {
+    Object.keys(placesTranslations).forEach(place => {
         availablePlace.push(place);
     });
 }

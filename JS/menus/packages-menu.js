@@ -23,7 +23,7 @@ function packagesMenu() {
 
 
     /* Titolo */
-    menu.querySelector('span').textContent = informations.menuNames[3];
+    document.getElementById('packages-menu--title').textContent = menuTranslations["packages-menu--title"][languageID];
 
 
     /* Opzioni per il select */
@@ -38,12 +38,26 @@ function packagesMenu() {
     }
 
     // ... ottieni e ordina alfabeticamente i nomi delle opzioni...
-    let optionsNames = Object.keys(informations.itineraryNames).sort((a, b) => a.localeCompare(b));
+    let optionsNames = Object.keys(itinerariesTranslations)
+    .map(key => itinerariesTranslations[key]["translations"][languageID]);
+
+    let optionsValues = Object.keys(itinerariesTranslations);
+
+    let combinedOptions = optionsValues.map((value, index) => ({
+        value: value,
+        name: optionsNames[index]
+    }));
+
+    combinedOptions.sort((a, b) => a.name.localeCompare(b.name));
+
+    optionsNames = combinedOptions.map(option => option.name);
+    optionsValues = combinedOptions.map(option => option.value);
+
 
     // ... e riempi il select con le "nuove" opzioni ordinate
     for (let i = 0; i < optionsNames.length; i++) {
         let option = document.createElement('option');
-        option.value = optionsNames[i];
+        option.value = optionsValues[i];
         option.text = optionsNames[i];
         select.appendChild(option);
     }
@@ -58,10 +72,10 @@ function packagesMenu() {
     let buttons = menu.querySelectorAll('div button');
 
     // Testo e funzione per ciascuno
-    buttons[0].textContent = informations.menuNames[4];
+    buttons[0].textContent = menuTranslations["packages-menu--start-new-itinerary-button"][languageID];
     buttons[0].setAttribute('onclick', 'layPackage()');
 
-    buttons[1].textContent = informations.menuNames[5];
+    buttons[1].textContent = menuTranslations["packages-menu--cancel-current-itinerary-button"][languageID];
     buttons[1].setAttribute('onclick', 'removeLaidPackage()');
 
 
@@ -87,19 +101,19 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
 
 
     /* Contiene la lista dei luoghi (tappe) (ID) nel pacchetto */
-    var listOfPlacesInThePackage = informations.itineraryNames[selectedPackage];
+    var listOfPlacesInThePackage = itinerariesTranslations[selectedPackage]["stages"];
 
 
     /* Continene le informazioni per ciascun luogo (tappa) */
     var places = [];
     listOfPlacesInThePackage.forEach(element => {
-        places.push(informations.placesNames[element]);
+        places.push(placesTranslations[element]);
     });
 
 
     /* Preleva le coordinate da 'places' e le salva in 'waypoints' */
     waypoints = places.map((place) => {
-        return place[0];
+        return place["coordinates"];
     });
     // Ordina le coordinate in base alla DISTANZA
     // (non conteggia il persorso migliore) (how the fuck would I do that)
@@ -107,19 +121,19 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
 
 
     /* Preleva titoli */
-    var titles = places.map((title) => { return title[1]; });
+    var titles = places.map(place => place.titles[languageID]);
 
 
     /* Preleva rating */
-    var ratings = places.map((rating) => { return rating[2]; });
+    var ratings = places.map(place => place.rating);
 
 
     /* Preleva description */
-    var descriptions = places.map((description) => { return description[3]; });
+    var descriptions = places.map(place => place.descriptions[languageID]);
 
 
     /* Preleva imageLink */
-    var imageLinks = places.map((imageLink) => { return imageLink[4]; });
+    var imageLinks = places.map(place => place.image);
 
 
     /* Aggiungi alla mappa */
@@ -130,7 +144,7 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
         lineOptions: {
             styles: [{ color: pathColor, opacity: 0.8, weight: 4 }]
         },
-        language: localStorage.getItem('currentLanguageID'),
+        language: languageID,
 
         // Impostazioni per evitare 'dragging' dei waypoints e 'lines' (percorsi in rosso)
         draggableWaypoints: false,
@@ -184,9 +198,9 @@ function layPackage(__isFinal__, __shouldDrawProgess__) {
                 bindPopupInfos(titles[_i], ratings[_i], descriptions[_i], imageLinks[_i]) +
                     '<button class="function-buttons-section--buttons popup--completed-button text-to-speak" onclick="recreateCompletedRoute(' + (_i + 1) + ')">' +
                     (
-                        _i == 0 ? informations.menuNames[6] :
-                        _i == waypoints.length - 1 ? informations.menuNames[8] :
-                        informations.menuNames[7]
+                        _i == 0 ? menuTranslations["packages-popup--begin-itinerary-button"][languageID] :
+                        _i == waypoints.length - 1 ? menuTranslations["packages-popup--completed-itinerary-button"][languageID] :
+                        menuTranslations["packages-popup--arrived-itinerary-button"][languageID]
                     ) +
                     '</button>'
             );
@@ -247,7 +261,7 @@ function compleatedItineraryCelebration() {
     /* Controllo classi per animazione pop-up */
     var completedItineraryPopupContainer = document.getElementById("completed-itinerary");
     var completedItineraryPopup = document.getElementById("completed-itinerary--popup");
-    completedItineraryPopup.innerHTML = informations.menuNames[34];
+    completedItineraryPopup.innerHTML = menuTranslations["completed-itinerary--popup"][languageID];
 
     completedItineraryPopupContainer.classList.toggle('completed-itinerary--popup--shown');
     setTimeout(() => {

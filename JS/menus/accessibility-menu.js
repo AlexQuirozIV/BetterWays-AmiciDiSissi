@@ -15,16 +15,16 @@ function accessibilityMenu() {
 
 
     /* Titolo */
-    document.getElementById("accessibility-menu--title").textContent = informations.menuNames[10];
+    document.getElementById("accessibility-menu--title").textContent = menuTranslations["accessibility-menu--title"][languageID];
 
 
     /* Opzioni */
     let options = document.getElementsByClassName('accessibility-menu--option-boxes--nametags');
 
-    options[0].textContent = informations.menuNames[11];
-    options[1].textContent = informations.menuNames[12];
-    options[2].textContent = informations.menuNames[13];
-    options[3].textContent = informations.menuNames[14];
+    options[0].textContent = menuTranslations["accessibility-menu--option-boxes--font-size"][languageID];
+    options[1].textContent = menuTranslations["accessibility-menu--option-boxes--color-contrast"][languageID];
+    options[2].textContent = menuTranslations["accessibility-menu--option-boxes--black-and-white"][languageID];
+    options[3].textContent = menuTranslations["accessibility-menu--option-boxes--text-to-speech"][languageID];
 
     
     /* Attiva il menu */

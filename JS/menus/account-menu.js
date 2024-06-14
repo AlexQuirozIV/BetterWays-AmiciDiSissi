@@ -14,12 +14,12 @@ function accountMenu() {
     if (shouldThisMenuClose == 'yes') { return; }
 
     /* Titolo */
-    document.getElementById('account-menu--title').textContent = informations.menuNames[1];
+    document.getElementById('account-menu--title').textContent = menuTranslations["account-menu--title"][languageID];
 
     /* Nomi pulsanti */
     let button = document.getElementById('account-menu--function-buttons-section--login-button');
 
-    button.textContent = informations.menuNames[2];
+    button.textContent = menuTranslations["account-menu--login-button"][languageID];
 
     /* Attiva il menu */
     menu.classList.toggle('menu--active');

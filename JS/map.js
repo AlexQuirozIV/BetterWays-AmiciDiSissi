@@ -20,131 +20,9 @@ const menus = [                     // ID di ogni singolo menu esistente
 var availablePlace = [];            // Flag se il marker esiste già o no (prevenire spam)
 var singleMarkers = {};             // Contiene i singoli markers creati
 var __shouldNavbarExpand__ = true;  // La barra laterale dovrebbe espandersi al prossimo click?
-var informations;                   // Contiene le informazioni presi dai JSON
 var openedMenuId;                   // Contiene l'id del menu aperto in quel momento
 var currentPackageRouting;          // Quale pacchetto è "piazzato"?
 
-
-//! Fetch e inizializzazione informazioni
-/* Prendi informazioni dai JSON... */
-async function fetchInfos(languageToFetch) {
-    // Resetta tutto...
-    availablePlace = [];
-    singleMarkers = {};
-    currentPackageRouting = undefined;
-    informations = undefined;
-
-    // Prendi dal JSON giusto..
-    if (localStorage.length != 0 && languageToFetch === undefined) {
-        languageToFetch = localStorage.getItem('currentLanguageID');
-    }
-
-    switch (languageToFetch) {
-        case 'it':
-            var response = await fetch('../JSON/languageTranslations/italiano.json');
-            informations = await response.json();
-            availablePlaceLanguageRefill();     // Refilla 'availablePlace'
-
-            break;
-
-        case 'en':
-            var response = await fetch('../JSON/languageTranslations/english.json');
-            informations = await response.json();
-            availablePlaceLanguageRefill();
-
-            break;
-
-        case 'es':
-            var response = await fetch('../JSON/languageTranslations/espanol.json');
-            informations = await response.json();
-            availablePlaceLanguageRefill();
-
-            break;
-
-        case 'de':
-            var response = await fetch('../JSON/languageTranslations/deutsch.json');
-            informations = await response.json();
-            availablePlaceLanguageRefill();
-
-            break;
-
-        case 'fr':
-            var response = await fetch('../JSON/languageTranslations/francais.json');
-            informations = await response.json();
-            availablePlaceLanguageRefill();
-
-            break;
-
-        case 'pt-BR':
-            var response = await fetch('../JSON/languageTranslations/portugues.json');
-            informations = await response.json();
-            availablePlaceLanguageRefill();
-
-            break;
-
-        default:
-            var response = await fetch('../JSON/languageTranslations/italiano.json');
-            informations = await response.json();
-            availablePlaceLanguageRefill();
-
-            break;
-    }
-
-    localStorage.setItem('currentLanguageID', (languageToFetch === undefined ? 'it' : languageToFetch));
-
-    // Funzione per refillare 'availablePlace'
-    function availablePlaceLanguageRefill() {
-        Object.keys(informations.placesNames).forEach(place => {
-            availablePlace.push(place);
-        });
-    }
-
-    // Chiama per aggiornare i tooltip dei pulsanti
-    setButtonTooltips();
-
-    // Notifica di quale è stato fetchato
-    console.log('Successfully fetched [', localStorage.getItem('currentLanguageID'), ']');
-}
-/* Mette tooltips ai pulsanti */
-function setButtonTooltips() {
-    /* Per i pulsanti nella navbar */
-    let functionButtons = document.getElementsByClassName('function-button');
-
-    let functionButtonsTitles = [
-        informations.menuNames[0],  // Espandi / chiudi
-        informations.menuNames[1],  // Account
-        informations.menuNames[3],  // Itinerari
-        informations.menuNames[9],  // Notizie
-        informations.menuNames[10], // Accessibilità
-        informations.menuNames[15], // Impostazioni
-        informations.menuNames[21], // Il Nostro Team
-        informations.menuNames[25], // Pagina principale
-        informations.menuNames[1]   // Account x2
-    ];
-
-    for (let i = 0; i < functionButtons.length; i++) {
-        functionButtons[i].title = functionButtonsTitles[i];
-    }
-
-
-    /* Per i pulsanti nella navbar */
-    let actionButtons = document.getElementsByClassName('action-button');
-
-    let actionButtonsTitles = [
-        informations.menuNames[27],
-        informations.menuNames[28]
-    ];
-
-    for (let i = 0; i < actionButtons.length; i++) {
-        actionButtons[i].title = actionButtonsTitles[i];
-    }
-}
-
-/* Attendiamo di aver preso i dati prima di procedere all'avvio della pagina... */
-async function startWebsite() {
-    await fetchInfos();
-}
-startWebsite();
 
 //! Funzioni mappa
 /* Inizializza 'onLoad' */
@@ -186,26 +64,46 @@ function clearAllFromMap() {
     toggleExpandedNavbar();
     clearAllButton.classList.remove('clear-all-from-map--action-button--shown');
 }
-/* Avvia mappa a caricamento pagina */
-document.body.onload = () => {
-    initializeMap();
-    map.on('click', () => {
-        closeOpenMenus();
-        __shouldNavbarExpand__ = false;
-        toggleExpandedNavbar();
-    });
-    
-    // Aggiungi polylinea alla mappa la Via Francigena (no, non fa niente, è solo lì)
-    L.polyline(viaFrancigenaCoords, {
-        color: 'red',
-        weight: 5,
-        opacity: 0.7,
-        smoothFactor: 1
-    }).addTo(map);
+/* Mette tooltips ai pulsanti */
+function setButtonTooltips() {
+    /* Per i pulsanti nella navbar */
+    let functionButtons = document.getElementsByClassName('function-button');
 
-    //TODO: Rimuovere questo quando non servirà più (cancellare "DEBUGGING.js")
-    console__coordinatesOnClick();
-};
+    let functionButtonsTitles = [
+        menuTranslations["navbar--tooltip"][languageID],  // Espandi / chiudi
+        menuTranslations["account-menu--title"][languageID],  // Account
+        menuTranslations["packages-menu--title"][languageID],  // Itinerari
+        menuTranslations["news-menu--title"][languageID],  // Notizie
+        menuTranslations["accessibility-menu--title"][languageID], // Accessibilità
+        menuTranslations["settings-menu--title"][languageID], // Impostazioni
+        menuTranslations["chi-siamo-menu--title"][languageID], // Il Nostro Team
+        menuTranslations["home-page-link--tooltip"][languageID], // Pagina principale
+        menuTranslations["account-menu--title"][languageID]   // Account x2
+    ];
+
+    for (let i = 0; i < functionButtons.length; i++) {
+        functionButtons[i].title = functionButtonsTitles[i];
+    }
+
+
+    /* Per i pulsanti nella navbar */
+    let actionButtons = document.getElementsByClassName('action-button');
+
+    let actionButtonsTitles = [
+        menuTranslations["recenter-map--action-button--tooltip"][languageID],
+        menuTranslations["clear-all-from-map--action-button--tooltip"][languageID]
+    ];
+
+    for (let i = 0; i < actionButtons.length; i++) {
+        actionButtons[i].title = actionButtonsTitles[i];
+    }
+}
+// Funzione per refillare 'availablePlace'
+function availablePlaceLanguageRefill() {
+    Object.keys(placesTranslations).forEach(place => {
+        availablePlace.push(place);
+    });
+}
 
 //! Funzionalità menu
 /* Chiudi tutti menu aperti */
