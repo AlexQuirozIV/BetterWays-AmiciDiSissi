@@ -4,7 +4,8 @@ var menuTranslations;
 var placesTranslations;
 var itinerariesTranslations;
 
-let languageID = localStorage.getItem('currentLanguageID');
+              // Controlla se 'currentLanguageID' non sia vuoto (o inesistente), altrimenti imposta 'it' come default.
+let languageID = localStorage.getItem('currentLanguageID') ? localStorage.getItem('currentLanguageID') : localStorage.setItem('currentLanguageID', 'it');
 
 async function fetchTranslations() {
     async function getResponse(url) {
