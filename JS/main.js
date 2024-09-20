@@ -4,6 +4,9 @@
 
 "use strict";
 
+              // Controlla se 'currentLanguageID' non sia vuoto (o inesistente), altrimenti imposta 'it' come default.
+let languageID = localStorage.getItem('currentLanguageID') ? localStorage.getItem('currentLanguageID') : localStorage.setItem('currentLanguageID', 'it');
+
 // Indici
 var currentImageIndexLeft = 1;
 var currentImageIndexRight = 1;
