@@ -56,13 +56,9 @@ function clearAllFromMap() {
     removeLaidPackage();
     singleMarkerMenuRemoveAll();
     console__removeMarkersAndRoute();
-
-    let clearAllButton = document.getElementById('clear-all-from-map--action-button');
-
     closeOpenMenus();
     __shouldNavbarExpand__ = false;
     toggleExpandedNavbar();
-    clearAllButton.classList.remove('clear-all-from-map--action-button--shown');
 }
 /* Mette tooltips ai pulsanti */
 function setButtonTooltips() {

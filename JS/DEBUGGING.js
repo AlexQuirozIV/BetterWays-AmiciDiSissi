@@ -25,9 +25,9 @@ function console__emptyLog(from, to) {
     }
 
     from = from === undefined ? 0 : from; from--;
-    to = to === undefined ? console__clicksLog.length : to;
+    to = to === undefined ? console__clicksLog.length : to; to = to - from;
 
-    console__clicksLog.splice(from, to - from);
+    console__clicksLog.splice(from, to);
 }
 
 function console__createMarker([latitude, longitude]) {

@@ -54,7 +54,6 @@ function contrastAction() {
     });
 }
 
-
 //* Funzione per mettere il bianco e nero
 function blackAndWhiteAction() {
     originalFilters.forEach(filter => {
